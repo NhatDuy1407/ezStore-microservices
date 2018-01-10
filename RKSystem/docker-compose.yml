@@ -1,0 +1,8 @@
+version: '3'
+
+services:
+  rksystem.userservice:
+    image: rksystem.userservice
+    build:
+      context: .
+      dockerfile: RKSystem.UserService/Dockerfile
