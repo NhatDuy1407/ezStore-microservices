@@ -7,3 +7,9 @@ services:
     ports:
       - "80"
     network_mode: bridge
+  rksystem.documentservice:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    ports:
+      - "80"
+    network_mode: bridge

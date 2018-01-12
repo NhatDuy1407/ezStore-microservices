@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\RKSystem.UserService.Models\RKSystem.UserService.Models.csproj" />
+    <ProjectReference Include="..\RKSystem.Core\RKSystem.Core.csproj" />
+    <ProjectReference Include="..\RKSystem.DataAccess.MongoDB\RKSystem.DataAccess.MongoDB.csproj" />
+    <ProjectReference Include="..\RKSystem.DataAccess\RKSystem.DataAccess.csproj" />
+  </ItemGroup>
+
+</Project>

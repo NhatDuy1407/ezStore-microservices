@@ -3,9 +3,27 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27130.2010
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RKSystem.UserService", "RKSystem.UserService\RKSystem.UserService.csproj", "{B321258D-7FB8-4837-9E30-90FE49EC37E5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RKSystem.UserService", "RKSystem.UserService\RKSystem.UserService.csproj", "{B321258D-7FB8-4837-9E30-90FE49EC37E5}"
 EndProject
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{B09E5580-0541-48FC-9CCE-E5FBC3EE48A9}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RKSystem.DocumentService", "..\RKSystem.DocumentService\RKSystem.DocumentService.csproj", "{C2B2D50D-D8B3-4CDF-ACC8-6F0D1F2F6E1E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2.UserService", "2.UserService", "{E6CDC7F3-2697-41AB-A780-140E64E7A02D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3.DocumentService", "3.DocumentService", "{91302DBD-425C-4D24-AD33-7A1764E2FB81}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RKSystem.UserService.Data", "RKSystem.UserService.Data\RKSystem.UserService.Data.csproj", "{BA67FD6D-AFC1-4F70-AB11-A014A75CC99F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1.Libraries", "1.Libraries", "{28A4C146-B733-4343-A40A-291BAB266093}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RKSystem.Core", "RKSystem.Core\RKSystem.Core.csproj", "{7F13F12D-577C-41BC-899A-AEC047823D13}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RKSystem.DataAccess.MongoDB", "RKSystem.DataAccess.MongoDB\RKSystem.DataAccess.MongoDB.csproj", "{F5A207A5-8FBA-4DD1-A15A-90EF2DBD46D3}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RKSystem.DataAccess", "RKSystem.DataAccess\RKSystem.DataAccess.csproj", "{FA6031DA-44B2-48DA-984A-7DDF8D15C5B3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RKSystem.UserService.Models", "..\RKSystem.UserService.Models\RKSystem.UserService.Models.csproj", "{5BAFCC13-3D1C-4457-8F02-0A4DCC027135}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,9 +39,42 @@ Global
 		{B09E5580-0541-48FC-9CCE-E5FBC3EE48A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B09E5580-0541-48FC-9CCE-E5FBC3EE48A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B09E5580-0541-48FC-9CCE-E5FBC3EE48A9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C2B2D50D-D8B3-4CDF-ACC8-6F0D1F2F6E1E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C2B2D50D-D8B3-4CDF-ACC8-6F0D1F2F6E1E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C2B2D50D-D8B3-4CDF-ACC8-6F0D1F2F6E1E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C2B2D50D-D8B3-4CDF-ACC8-6F0D1F2F6E1E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BA67FD6D-AFC1-4F70-AB11-A014A75CC99F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BA67FD6D-AFC1-4F70-AB11-A014A75CC99F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BA67FD6D-AFC1-4F70-AB11-A014A75CC99F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BA67FD6D-AFC1-4F70-AB11-A014A75CC99F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7F13F12D-577C-41BC-899A-AEC047823D13}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7F13F12D-577C-41BC-899A-AEC047823D13}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7F13F12D-577C-41BC-899A-AEC047823D13}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7F13F12D-577C-41BC-899A-AEC047823D13}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F5A207A5-8FBA-4DD1-A15A-90EF2DBD46D3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F5A207A5-8FBA-4DD1-A15A-90EF2DBD46D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F5A207A5-8FBA-4DD1-A15A-90EF2DBD46D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F5A207A5-8FBA-4DD1-A15A-90EF2DBD46D3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FA6031DA-44B2-48DA-984A-7DDF8D15C5B3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FA6031DA-44B2-48DA-984A-7DDF8D15C5B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FA6031DA-44B2-48DA-984A-7DDF8D15C5B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FA6031DA-44B2-48DA-984A-7DDF8D15C5B3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5BAFCC13-3D1C-4457-8F02-0A4DCC027135}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5BAFCC13-3D1C-4457-8F02-0A4DCC027135}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5BAFCC13-3D1C-4457-8F02-0A4DCC027135}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5BAFCC13-3D1C-4457-8F02-0A4DCC027135}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{B321258D-7FB8-4837-9E30-90FE49EC37E5} = {E6CDC7F3-2697-41AB-A780-140E64E7A02D}
+		{C2B2D50D-D8B3-4CDF-ACC8-6F0D1F2F6E1E} = {91302DBD-425C-4D24-AD33-7A1764E2FB81}
+		{BA67FD6D-AFC1-4F70-AB11-A014A75CC99F} = {E6CDC7F3-2697-41AB-A780-140E64E7A02D}
+		{7F13F12D-577C-41BC-899A-AEC047823D13} = {28A4C146-B733-4343-A40A-291BAB266093}
+		{F5A207A5-8FBA-4DD1-A15A-90EF2DBD46D3} = {28A4C146-B733-4343-A40A-291BAB266093}
+		{FA6031DA-44B2-48DA-984A-7DDF8D15C5B3} = {28A4C146-B733-4343-A40A-291BAB266093}
+		{5BAFCC13-3D1C-4457-8F02-0A4DCC027135} = {E6CDC7F3-2697-41AB-A780-140E64E7A02D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {95736F7A-DB81-4FFF-AD7E-7AB5BF6513B3}
