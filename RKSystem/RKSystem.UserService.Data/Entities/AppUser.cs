@@ -44,8 +44,6 @@ namespace RKSystem.UserService.Data.Entities
 
         public DateTime? LastLoginDate { get; set; }
 
-        public DateTime? CreatedDate { get; set; }
-
         public string ActivationCode { get; set; }
 
         public string ForgotPasswordCode { get; set; }
