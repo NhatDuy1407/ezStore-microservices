@@ -9,7 +9,7 @@ namespace RKSystem.UserService.Mapper
         public ServiceMapperProfile()
         {
             CreateMap<AppUser, AppUserDto>();
-            CreateMap<AppUserDto, AppUser>().ForMember(x => x._id, opt => opt.Ignore());
+            CreateMap<AppUserDto, AppUser>();
         }
     }
 }

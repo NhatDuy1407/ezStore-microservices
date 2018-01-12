@@ -16,7 +16,13 @@ namespace RKSystem.DataAccess.Entities
             }
         }
 
-        public virtual T Id { get; set; }
+        private T _idField;
+
+        public virtual T Id
+        {
+            get => _idField;
+            set => _idField = value;
+        }
 
         public DateTime CreatedDate { get; set; }
 
