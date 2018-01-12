@@ -6,7 +6,7 @@ namespace RKSystem.DataAccess.Entities
 {
     public class BaseModel
     {
-        public DateTime CreatedDate { get; set; }
+        public DateTime? CreatedDate { get; set; }
 
         public string CreatedBy { get; set; }
 

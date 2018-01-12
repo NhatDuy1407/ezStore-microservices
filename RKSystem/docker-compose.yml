@@ -6,10 +6,3 @@ services:
     build:
       context: .
       dockerfile: RKSystem.UserService/Dockerfile
-
-  rksystem.documentservice:
-    image: rksystem.documentservice
-    build:
-      context: .
-      dockerfile: ../RKSystem.DocumentService/Dockerfile
-
