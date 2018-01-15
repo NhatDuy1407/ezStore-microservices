@@ -23,6 +23,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RKSystem.DataAccess", "RKSy
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RKSystem.UserService.Models", "RKSystem.UserService.Models\RKSystem.UserService.Models.csproj", "{9C7E5798-7108-4226-AD23-929EE304AB4E}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RKSystem.DocumentService", "RKSystem.DocumentService\RKSystem.DocumentService.csproj", "{E1071CE8-901C-4F1E-948E-278ECC60B8ED}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -57,6 +59,10 @@ Global
 		{9C7E5798-7108-4226-AD23-929EE304AB4E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9C7E5798-7108-4226-AD23-929EE304AB4E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9C7E5798-7108-4226-AD23-929EE304AB4E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E1071CE8-901C-4F1E-948E-278ECC60B8ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E1071CE8-901C-4F1E-948E-278ECC60B8ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E1071CE8-901C-4F1E-948E-278ECC60B8ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E1071CE8-901C-4F1E-948E-278ECC60B8ED}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -68,6 +74,7 @@ Global
 		{F5A207A5-8FBA-4DD1-A15A-90EF2DBD46D3} = {28A4C146-B733-4343-A40A-291BAB266093}
 		{FA6031DA-44B2-48DA-984A-7DDF8D15C5B3} = {28A4C146-B733-4343-A40A-291BAB266093}
 		{9C7E5798-7108-4226-AD23-929EE304AB4E} = {E6CDC7F3-2697-41AB-A780-140E64E7A02D}
+		{E1071CE8-901C-4F1E-948E-278ECC60B8ED} = {91302DBD-425C-4D24-AD33-7A1764E2FB81}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {95736F7A-DB81-4FFF-AD7E-7AB5BF6513B3}
