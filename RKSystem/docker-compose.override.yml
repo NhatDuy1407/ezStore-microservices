@@ -6,11 +6,11 @@ services:
       - ASPNETCORE_ENVIRONMENT=Development
     ports:
       - "80"
-    network_mode: bridge
+    network_mode: my-bridge-network
     
   rksystem.documentservice:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
     ports:
       - "80"
-    network_mode: bridge
+    network_mode: my-bridge-network
