@@ -25,6 +25,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RKSystem.UserService.Models
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RKSystem.DocumentService", "RKSystem.DocumentService\RKSystem.DocumentService.csproj", "{E1071CE8-901C-4F1E-948E-278ECC60B8ED}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RKSystem.Service.Core", "..\RKSystem.Service.Core\RKSystem.Service.Core.csproj", "{BBA142F2-86B6-49BE-AF24-67CA7C2D1830}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -63,6 +65,10 @@ Global
 		{E1071CE8-901C-4F1E-948E-278ECC60B8ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E1071CE8-901C-4F1E-948E-278ECC60B8ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E1071CE8-901C-4F1E-948E-278ECC60B8ED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BBA142F2-86B6-49BE-AF24-67CA7C2D1830}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BBA142F2-86B6-49BE-AF24-67CA7C2D1830}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BBA142F2-86B6-49BE-AF24-67CA7C2D1830}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BBA142F2-86B6-49BE-AF24-67CA7C2D1830}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -75,6 +81,7 @@ Global
 		{FA6031DA-44B2-48DA-984A-7DDF8D15C5B3} = {28A4C146-B733-4343-A40A-291BAB266093}
 		{9C7E5798-7108-4226-AD23-929EE304AB4E} = {E6CDC7F3-2697-41AB-A780-140E64E7A02D}
 		{E1071CE8-901C-4F1E-948E-278ECC60B8ED} = {91302DBD-425C-4D24-AD33-7A1764E2FB81}
+		{BBA142F2-86B6-49BE-AF24-67CA7C2D1830} = {28A4C146-B733-4343-A40A-291BAB266093}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {95736F7A-DB81-4FFF-AD7E-7AB5BF6513B3}
