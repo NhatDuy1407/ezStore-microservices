@@ -1,7 +1,14 @@
 version: '3'
 
 services:
-  rksystem.userservice:
+  rksystem.userservice.api:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    ports:
+      - "80"
+    network_mode: my-bridge-network
+
+  rksystem.userservice.writeside:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
     ports:
@@ -14,3 +21,4 @@ services:
     ports:
       - "80"
     network_mode: my-bridge-network
+

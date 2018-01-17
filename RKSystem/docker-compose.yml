@@ -1,14 +1,21 @@
 version: '3'
 
 services:
-  rksystem.userservice:
+  rksystem.userservice.api:
     image: rksystem.userservice
     build:
       context: .
-      dockerfile: RKSystem.UserService/Dockerfile
+      dockerfile: RKSystem.UserService.API/Dockerfile
+
+  rksystem.userservice.writeside:
+    image: rksystem.userservice.writeside
+    build:
+      context: .
+      dockerfile: RKSystem.UserService.WriteSide/Dockerfile
 
   rksystem.documentservice:
     image: rksystem.documentservice
     build:
       context: .
       dockerfile: RKSystem.DocumentService/Dockerfile
+

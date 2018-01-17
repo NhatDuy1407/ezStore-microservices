@@ -5,7 +5,7 @@ using RKSystem.DataAccess.MongoDB.Interfaces;
 
 namespace RKSystem.DataAccess.MongoDB
 {
-    public class BaseRepository<TModel> : IRepository<TModel> where TModel : class
+    public class BaseRepository<TModel> : IReadOnlyRepository<TModel> where TModel : class
     {
         protected readonly MongoDbContext Context;
         internal IMongoCollection<TModel> DbSet;
