@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Threading.Tasks;
-using MassTransit.Util;
 using RKSystem.Service.Core.Interfaces;
 
 namespace RKSystem.Service.Core
@@ -12,16 +11,20 @@ namespace RKSystem.Service.Core
             if (command == null)
                 throw new ArgumentNullException("command");
 
-            // send command to MQ
-            var requestClient = new RequestClient();
-            var busControl = requestClient.CreateBus();
+            //1.Validate the report object.
+            
+            //2.Convert the command into an event.
+            
+            //Emit the event on a message queue.
+            //var requestClient = new RequestClient();
+            //var busControl = requestClient.CreateBus();
 
-            TaskUtil.Await(() => busControl.StartAsync());
-            requestClient.CreateRequestClient(busControl);
-            var client = requestClient.CreateRequestClient(busControl);
-            var respone = client.Request(command);
+            //TaskUtil.Await(() => busControl.StartAsync());
+            //requestClient.CreateRequestClient(busControl);
+            //var client = requestClient.CreateRequestClient(busControl);
+            //var respone = client.Request(command);
 
-            return Task.FromResult(respone);
+            return Task.FromResult(true);
         }
     }
 }
