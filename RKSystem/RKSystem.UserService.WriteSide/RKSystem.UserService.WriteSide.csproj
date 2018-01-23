@@ -10,6 +10,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="6.2.2" />
+    <PackageReference Include="MassTransit.RabbitMQ" Version="4.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.3" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="2.0.0" />
   </ItemGroup>
@@ -19,7 +21,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\RKSystem.DataAccess.MongoDB\RKSystem.DataAccess.MongoDB.csproj" />
+    <ProjectReference Include="..\RKSystem.DataAccess\RKSystem.DataAccess.csproj" />
     <ProjectReference Include="..\RKSystem.Service.Core\RKSystem.Service.Core.csproj" />
+    <ProjectReference Include="..\RKSystem.UserService.Data\RKSystem.UserService.Data.csproj" />
+    <ProjectReference Include="..\RKSystem.UserService.Models\RKSystem.UserService.Models.csproj" />
   </ItemGroup>
 
 </Project>

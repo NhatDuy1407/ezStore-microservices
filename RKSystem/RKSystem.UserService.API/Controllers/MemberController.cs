@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
+using MassTransit;
+using MassTransit.Util;
 using Microsoft.AspNetCore.Mvc;
 using RKSystem.Service.Core.Interfaces;
 using RKSystem.UserService.API.ViewModels;
@@ -40,9 +42,21 @@ namespace RKSystem.UserService.API.Controllers
             if (ModelState.IsValid)
             {
                 var command = new CreateUserCommand(AutoMapper.Mapper.Map<AppUserDto>(info));
-                CommandBus.ExecuteAsync(command).Wait();
-                //result.Data = command.NewId;
-                //result.Code = ResponseResultCode.Ok;
+                //CommandBus.ExecuteAsync(command).Wait();
+
+                var busControl = Bus.Factory.CreateUsingRabbitMq(x => {
+                    x.Host(new Uri("rabbitmq://192.168.0.101"), h =>
+                    {
+                        //h.Username("guest");
+                        //h.Password("guest");
+                    });
+
+                });
+
+                TaskUtil.Await(() => busControl.StartAsync());
+                var serviceAddress = new Uri("rabbitmq://192.168.0.101/user_service");
+                IRequestClient<CreateUserCommand, object> client = busControl.CreateRequestClient<CreateUserCommand, object>(serviceAddress, TimeSpan.FromSeconds(500));
+                client.Request(command);
             }
             else
             {

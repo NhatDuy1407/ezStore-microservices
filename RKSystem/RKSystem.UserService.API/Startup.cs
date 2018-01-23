@@ -9,6 +9,7 @@ using RKSystem.Service.Core.Interfaces;
 using RKSystem.UserService.ReadSide;
 using RKSystem.UserService.ReadSide.Mapper;
 using RKSystem.UserService.Swagger;
+using ServiceMapperProfile = RKSystem.UserService.API.Mapper.ServiceMapperProfile;
 
 namespace RKSystem.UserService.API
 {
@@ -39,8 +40,11 @@ namespace RKSystem.UserService.API
             // Add framework services.
             services.AddMvc();
 
-            AutoMapper.Mapper.Initialize(cfg => { cfg.AddProfile<ServiceMapperProfile>(); }
-            );
+            AutoMapper.Mapper.Initialize(cfg =>
+            {
+                cfg.AddProfile<ServiceMapperProfile>();
+                cfg.AddProfile<ReadSide.Mapper.ServiceMapperProfile>();
+            });
 
             // Add application services.
             services.AddTransient<ICommandBus, CommandBus>();

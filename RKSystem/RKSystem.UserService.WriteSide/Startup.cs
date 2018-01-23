@@ -1,7 +1,9 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using System.Threading.Tasks;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using RKSystem.UserService.WriteSide.Mapper;
 
 namespace RKSystem.UserService.WriteSide
 {
@@ -19,9 +21,16 @@ namespace RKSystem.UserService.WriteSide
         {
             //services.AddMvc();
 
-            //var serviceManager = new UserServiceManager();
-            //serviceManager.ConfigureLogger();
-            //serviceManager.Start();
+            AutoMapper.Mapper.Initialize(cfg => { cfg.AddProfile<ServiceMapperProfile>(); }
+            );
+
+            Task.Factory.StartNew(() =>
+            {
+                var requestService = new RequestService();
+                requestService.Start();
+            });
+
+            ServiceConfiguration.ConfigureServices(services, Configuration);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

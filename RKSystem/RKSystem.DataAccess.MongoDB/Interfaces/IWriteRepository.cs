@@ -6,8 +6,7 @@ namespace RKSystem.DataAccess.MongoDB.Interfaces
     public interface IWriteRepository<TModel> : IReadOnlyRepository<TModel>
     {
         void Delete(Expression<Func<TModel, bool>> filter = null);
-        void Insert(TModel entity);
 
-        void Update(TModel entity);
+        void Insert(TModel entity);
     }
 }

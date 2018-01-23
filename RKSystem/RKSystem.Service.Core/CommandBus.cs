@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
+using MassTransit;
+using MassTransit.Util;
 using RKSystem.Service.Core.Interfaces;
 
 namespace RKSystem.Service.Core
@@ -12,17 +14,23 @@ namespace RKSystem.Service.Core
                 throw new ArgumentNullException("command");
 
             //1.Validate the report object.
-            
-            //2.Convert the command into an event.
-            
-            //Emit the event on a message queue.
-            //var requestClient = new RequestClient();
-            //var busControl = requestClient.CreateBus();
 
-            //TaskUtil.Await(() => busControl.StartAsync());
-            //requestClient.CreateRequestClient(busControl);
-            //var client = requestClient.CreateRequestClient(busControl);
-            //var respone = client.Request(command);
+            //2.Convert the command into an event.
+
+            //Emit the event on a message queue.
+            var busControl = Bus.Factory.CreateUsingRabbitMq(x => {
+                x.Host(new Uri("rabbitmq://192.168.0.101"), h =>
+                {
+                    //h.Username("guest");
+                    //h.Password("guest");
+                });
+
+            });
+
+            TaskUtil.Await(() => busControl.StartAsync());
+            var serviceAddress = new Uri("rabbitmq://192.168.0.101/user_service");
+            IRequestClient<object, object> client = busControl.CreateRequestClient<object, object>(serviceAddress, TimeSpan.FromSeconds(500));
+            client.Request(command);
 
             return Task.FromResult(true);
         }
