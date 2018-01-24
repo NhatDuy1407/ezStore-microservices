@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using Microsoft.Extensions.Configuration;
+using MongoDB.Driver;
 using RKSystem.DataAccess.MongoDB;
 using RKSystem.DataAccess.MongoDB.Interfaces;
 using RKSystem.UserService.Data.Entities;
@@ -28,10 +29,14 @@ namespace RKSystem.UserService.WriteSide
         {
         }
 
-        public void Add(AppUserDto entity)
+        public Guid Add(AppUserDto entity)
         {
             var user = AutoMapper.Mapper.Map<AppUser>(entity);
-            UnitOfWork.Repository<AppUser>().Insert(user);
+            if (!UnitOfWork.Repository<AppUser>().Get(i => i.Id == user.Id).Any())
+            {
+                UnitOfWork.Repository<AppUser>().Insert(user);
+            }
+            return user.Id;
         }
 
         public void Delete(Guid id)

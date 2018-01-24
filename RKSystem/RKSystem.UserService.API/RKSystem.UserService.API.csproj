@@ -23,6 +23,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\RKSystem.CacheService\RKSystem.CacheService.csproj" />
     <ProjectReference Include="..\RKSystem.DataAccess.MongoDB\RKSystem.DataAccess.MongoDB.csproj" />
     <ProjectReference Include="..\RKSystem.Service.Core\RKSystem.Service.Core.csproj" />
     <ProjectReference Include="..\RKSystem.UserService.Data\RKSystem.UserService.Data.csproj" />

@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 using MassTransit;
-using RKSystem.DataAccess.MongoDB;
+using RKSystem.CacheService.Interfaces;
 using RKSystem.UserService.Models.Commands;
 using RKSystem.UserService.WriteSide.Interfaces;
 
@@ -8,12 +8,19 @@ namespace RKSystem.UserService.WriteSide
 {
     public class AddUserConsumer : IConsumer<CreateUserCommand>
     {
-        public Task Consume(ConsumeContext<CreateUserCommand> context)
+        public async Task Consume(ConsumeContext<CreateUserCommand> context)
         {
             IUserService service = new UserService();
-            service.Add(context.Message.userDto);
+            var newId = service.Add(context.Message.userDto);
 
-            return Task.CompletedTask;
+            // write to cache for special data
+            //ICacheService cacheService = new CacheService.CacheService();
+            //await cacheService.Put(context.Message.CommandId, newId);
+
+            // todo: publish event 
+            //context.Publish(new UserCreatedEvent(newId));
+
+            context.Respond(new CreateUserCommand { NewId = newId });
         }
     }
 }

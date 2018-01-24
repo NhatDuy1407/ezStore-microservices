@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using MassTransit;
 using MassTransit.Util;
 using Microsoft.AspNetCore.Mvc;
+using RKSystem.CacheService.Interfaces;
 using RKSystem.Service.Core.Interfaces;
 using RKSystem.UserService.API.ViewModels;
 using RKSystem.UserService.Models;
@@ -16,9 +17,23 @@ namespace RKSystem.UserService.API.Controllers
     {
         private readonly IUserService _clientService;
 
+        private IBusControl busControl;
+
         public MemberController(IUserService clientService, ICommandBus commandBus) : base(commandBus)
         {
             _clientService = clientService;
+
+            busControl = Bus.Factory.CreateUsingRabbitMq(x =>
+           {
+               x.Host(new Uri("rabbitmq://192.168.0.101"), h =>
+               {
+                    //h.Username("guest");
+                    //h.Password("guest");
+                });
+
+           });
+
+            TaskUtil.Await(() => busControl.StartAsync());
         }
 
         [HttpGet("{id}")]
@@ -44,19 +59,18 @@ namespace RKSystem.UserService.API.Controllers
                 var command = new CreateUserCommand(AutoMapper.Mapper.Map<AppUserDto>(info));
                 //CommandBus.ExecuteAsync(command).Wait();
 
-                var busControl = Bus.Factory.CreateUsingRabbitMq(x => {
-                    x.Host(new Uri("rabbitmq://192.168.0.101"), h =>
-                    {
-                        //h.Username("guest");
-                        //h.Password("guest");
-                    });
-
-                });
-
-                TaskUtil.Await(() => busControl.StartAsync());
                 var serviceAddress = new Uri("rabbitmq://192.168.0.101/user_service");
-                IRequestClient<CreateUserCommand, object> client = busControl.CreateRequestClient<CreateUserCommand, object>(serviceAddress, TimeSpan.FromSeconds(500));
-                client.Request(command);
+                IRequestClient<CreateUserCommand, CreateUserCommand> client = busControl.CreateRequestClient<CreateUserCommand, CreateUserCommand>(serviceAddress, TimeSpan.FromSeconds(500));
+                var result = client.Request(command).Result;
+
+                // todo: subcribe event
+
+                // get from cache, for special data
+                //ICacheService cacheService = new CacheService.CacheService();
+                //var newId = cacheService.Get<Guid>(command.CommandId).Result;
+
+                var newData = _clientService.Get(result.NewId);
+                return Json(newData);
             }
             else
             {

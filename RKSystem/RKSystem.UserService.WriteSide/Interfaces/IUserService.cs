@@ -5,7 +5,7 @@ namespace RKSystem.UserService.WriteSide.Interfaces
 {
     public interface IUserService
     {
-        void Add(AppUserDto entity);
+        Guid Add(AppUserDto entity);
         void Delete(Guid id);
     }
 }
