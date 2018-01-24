@@ -17,23 +17,9 @@ namespace RKSystem.UserService.API.Controllers
     {
         private readonly IUserService _clientService;
 
-        private IBusControl busControl;
-
         public MemberController(IUserService clientService, ICommandBus commandBus) : base(commandBus)
         {
             _clientService = clientService;
-
-            busControl = Bus.Factory.CreateUsingRabbitMq(x =>
-           {
-               x.Host(new Uri("rabbitmq://192.168.0.101"), h =>
-               {
-                    //h.Username("guest");
-                    //h.Password("guest");
-                });
-
-           });
-
-            TaskUtil.Await(() => busControl.StartAsync());
         }
 
         [HttpGet("{id}")]
@@ -57,19 +43,13 @@ namespace RKSystem.UserService.API.Controllers
             if (ModelState.IsValid)
             {
                 var command = new CreateUserCommand(AutoMapper.Mapper.Map<AppUserDto>(info));
-                //CommandBus.ExecuteAsync(command).Wait();
+                CommandBus.ExecuteAsync(command).Wait();
 
-                var serviceAddress = new Uri("rabbitmq://192.168.0.101/user_service");
-                IRequestClient<CreateUserCommand, CreateUserCommand> client = busControl.CreateRequestClient<CreateUserCommand, CreateUserCommand>(serviceAddress, TimeSpan.FromSeconds(500));
-                var result = client.Request(command).Result;
+                // get from cache
+                ICacheService cacheService = new CacheService.CacheService();
+                var newId = cacheService.Get<Guid>(command.CommandId).Result;
 
-                // todo: subcribe event
-
-                // get from cache, for special data
-                //ICacheService cacheService = new CacheService.CacheService();
-                //var newId = cacheService.Get<Guid>(command.CommandId).Result;
-
-                var newData = _clientService.Get(result.NewId);
+                var newData = _clientService.Get(newId);
                 return Json(newData);
             }
             else

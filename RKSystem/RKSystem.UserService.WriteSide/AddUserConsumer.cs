@@ -1,6 +1,7 @@
 ﻿using System.Threading.Tasks;
 using MassTransit;
 using RKSystem.CacheService.Interfaces;
+using RKSystem.UserService.Models;
 using RKSystem.UserService.Models.Commands;
 using RKSystem.UserService.WriteSide.Interfaces;
 
@@ -14,13 +15,13 @@ namespace RKSystem.UserService.WriteSide
             var newId = service.Add(context.Message.userDto);
 
             // write to cache for special data
-            //ICacheService cacheService = new CacheService.CacheService();
-            //await cacheService.Put(context.Message.CommandId, newId);
+            ICacheService cacheService = new CacheService.CacheService();
+            await cacheService.Put(context.Message.CommandId, newId);
 
             // todo: publish event 
             //context.Publish(new UserCreatedEvent(newId));
 
-            context.Respond(new CreateUserCommand { NewId = newId });
+            context.Respond(new ResultDto { Status = true });
         }
     }
 }

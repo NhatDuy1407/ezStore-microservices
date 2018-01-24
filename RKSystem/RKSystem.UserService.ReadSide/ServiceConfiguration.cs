@@ -2,6 +2,8 @@
 using Microsoft.Extensions.DependencyInjection;
 using RKSystem.DataAccess.MongoDB;
 using RKSystem.DataAccess.MongoDB.Interfaces;
+using RKSystem.Service.Core;
+using RKSystem.UserService.Models.Commands;
 using RKSystem.UserService.ReadSide.Interfaces;
 
 namespace RKSystem.UserService.ReadSide
@@ -14,6 +16,8 @@ namespace RKSystem.UserService.ReadSide
             services.AddTransient(i => new MongoDbContext(configuration.GetConnectionString("DefaultConnection"), configuration.GetConnectionString("DefaultDatabaseName"), false));
             services.AddTransient<IReadOnlyUnitOfWork>(i => new ReadOnlyUnitOfWork(i.GetService<MongoDbContext>()));
             services.AddTransient<IUserService, UserService>();
+
+            services.AddTransient<ICommandHandler<CreateUserCommand>, CommandService>();
         }
     }
 }
