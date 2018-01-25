@@ -4,10 +4,9 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using RKSystem.CacheService.Interfaces;
 using RKSystem.Service.Core;
 using RKSystem.Service.Core.Interfaces;
-using RKSystem.UserService.ReadSide;
-using RKSystem.UserService.ReadSide.Mapper;
 using RKSystem.UserService.Swagger;
 using ServiceMapperProfile = RKSystem.UserService.API.Mapper.ServiceMapperProfile;
 
@@ -43,11 +42,12 @@ namespace RKSystem.UserService.API
             AutoMapper.Mapper.Initialize(cfg =>
             {
                 cfg.AddProfile<ServiceMapperProfile>();
-                cfg.AddProfile<ReadSide.Mapper.ServiceMapperProfile>();
+                cfg.AddProfile<RKSystem.UserService.Mapper.ServiceMapperProfile>();
             });
 
             // Add application services.
             services.AddTransient<ICommandBus, CommandBus>();
+            services.AddTransient<ICacheService, CacheService.CacheService>();
             ServiceConfiguration.ConfigureServices(services, Configuration);
         }
 

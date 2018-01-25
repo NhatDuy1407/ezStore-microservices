@@ -23,12 +23,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\RKSystem.CacheService\RKSystem.CacheService.csproj" />
+    <ProjectReference Include="..\RKSystem.CacheService\RKSystem.CacheService.csproj" />
     <ProjectReference Include="..\RKSystem.DataAccess.MongoDB\RKSystem.DataAccess.MongoDB.csproj" />
     <ProjectReference Include="..\RKSystem.Service.Core\RKSystem.Service.Core.csproj" />
     <ProjectReference Include="..\RKSystem.UserService.Data\RKSystem.UserService.Data.csproj" />
     <ProjectReference Include="..\RKSystem.UserService.Models\RKSystem.UserService.Models.csproj" />
-    <ProjectReference Include="..\RKSystem.UserService.ReadSide\RKSystem.UserService.ReadSide.csproj" />
+    <ProjectReference Include="..\RKSystem.UserService\RKSystem.UserService.csproj" />
   </ItemGroup>
 
 </Project>

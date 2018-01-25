@@ -6,7 +6,7 @@ using RKSystem.Service.Core;
 using RKSystem.UserService.Models;
 using RKSystem.UserService.Models.Commands;
 
-namespace RKSystem.UserService.ReadSide
+namespace RKSystem.UserService
 {
     public class CommandService : ICommandHandler<CreateUserCommand>
     {

@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using MongoDB.Driver;
 using RKSystem.DataAccess.MongoDB.Interfaces;
 using RKSystem.UserService.Data.Entities;
+using RKSystem.UserService.Interfaces;
 using RKSystem.UserService.Models;
-using RKSystem.UserService.ReadSide.Interfaces;
 
-namespace RKSystem.UserService.ReadSide
+namespace RKSystem.UserService
 {
     public class UserService : BaseService, IUserService
     {
@@ -18,17 +18,6 @@ namespace RKSystem.UserService.ReadSide
         {
             return AutoMapper.Mapper.Map<List<AppUserDto>>(UnitOfWork.Repository<AppUser>().Get().ToList());
         }
-
-        //public void Add(AppUserDto entity)
-        //{
-        //    var user = AutoMapper.Mapper.Map<AppUser>(entity);
-        //    UnitOfWork.Repository<AppUser>().Insert(user);
-        //}
-
-        //public void Delete(Guid id)
-        //{
-        //    UnitOfWork.Repository<AppUser>().Delete(i => i.Id == id);
-        //}
 
         public AppUserDto Get(Guid id)
         {

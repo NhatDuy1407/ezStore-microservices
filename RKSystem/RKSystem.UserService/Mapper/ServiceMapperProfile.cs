@@ -2,7 +2,7 @@
 using RKSystem.UserService.Data.Entities;
 using RKSystem.UserService.Models;
 
-namespace RKSystem.UserService.ReadSide.Mapper
+namespace RKSystem.UserService.Mapper
 {
     public class ServiceMapperProfile : Profile
     {

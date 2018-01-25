@@ -1,7 +1,7 @@
 ﻿using System;
 using RKSystem.DataAccess.MongoDB.Interfaces;
 
-namespace RKSystem.UserService.ReadSide
+namespace RKSystem.UserService
 {
     public class BaseService : IDisposable
     {

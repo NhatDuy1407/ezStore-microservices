@@ -3,10 +3,10 @@ using Microsoft.Extensions.DependencyInjection;
 using RKSystem.DataAccess.MongoDB;
 using RKSystem.DataAccess.MongoDB.Interfaces;
 using RKSystem.Service.Core;
+using RKSystem.UserService.Interfaces;
 using RKSystem.UserService.Models.Commands;
-using RKSystem.UserService.ReadSide.Interfaces;
 
-namespace RKSystem.UserService.ReadSide
+namespace RKSystem.UserService
 {
     public static class ServiceConfiguration
     {

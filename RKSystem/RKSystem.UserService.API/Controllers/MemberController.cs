@@ -6,9 +6,9 @@ using Microsoft.AspNetCore.Mvc;
 using RKSystem.CacheService.Interfaces;
 using RKSystem.Service.Core.Interfaces;
 using RKSystem.UserService.API.ViewModels;
+using RKSystem.UserService.Interfaces;
 using RKSystem.UserService.Models;
 using RKSystem.UserService.Models.Commands;
-using RKSystem.UserService.ReadSide.Interfaces;
 
 namespace RKSystem.UserService.API.Controllers
 {
@@ -16,10 +16,11 @@ namespace RKSystem.UserService.API.Controllers
     public class MemberController : BaseController
     {
         private readonly IUserService _clientService;
-
-        public MemberController(IUserService clientService, ICommandBus commandBus) : base(commandBus)
+        private readonly ICacheService _cacheService;
+        public MemberController(IUserService clientService, ICommandBus commandBus, ICacheService cacheService) : base(commandBus)
         {
             _clientService = clientService;
+            _cacheService = new CacheService.CacheService();
         }
 
         [HttpGet("{id}")]
@@ -46,8 +47,7 @@ namespace RKSystem.UserService.API.Controllers
                 CommandBus.ExecuteAsync(command).Wait();
 
                 // get from cache
-                ICacheService cacheService = new CacheService.CacheService();
-                var newId = cacheService.Get<Guid>(command.CommandId).Result;
+                var newId = _cacheService.Get<Guid>(command.CommandId).Result;
 
                 var newData = _clientService.Get(newId);
                 return Json(newData);
