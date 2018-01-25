@@ -17,7 +17,7 @@ namespace RKSystem.UserService
             services.AddTransient<IReadOnlyUnitOfWork>(i => new ReadOnlyUnitOfWork(i.GetService<MongoDbContext>()));
             services.AddTransient<IUserService, UserService>();
 
-            services.AddTransient<ICommandHandler<CreateUserCommand>, CommandService>();
+            services.AddTransient<ICommandHandler<CreateUserCommand>>(i => new CommandUserService(configuration.GetConnectionString("RabbitMQHost"), configuration.GetConnectionString("UserServiceAddress")));
         }
     }
 }

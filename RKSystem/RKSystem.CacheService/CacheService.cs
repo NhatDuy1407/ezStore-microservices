@@ -7,7 +7,7 @@ namespace RKSystem.CacheService
 {
     public class CacheService : ICacheService
     {
-        public Task Put<T>(Guid key, T data)
+        public Task Set<T>(Guid key, T data)
         {
             var manager = new RedisManagerPool("192.168.0.102:6379");
             using (var client = manager.GetClient())

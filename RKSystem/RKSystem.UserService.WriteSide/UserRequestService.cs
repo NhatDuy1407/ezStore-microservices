@@ -1,12 +1,14 @@
 ﻿using System;
 using MassTransit;
 using MassTransit.RabbitMqTransport;
+using RKSystem.Service.Core.Request;
+using RKSystem.UserService.WriteSide.Consumers;
 
 namespace RKSystem.UserService.WriteSide
 {
-    public class RequestService : Service.Core.Request.RequestService
+    public class UserRequestService : RequestService
     {
-        public RequestService() : base("rabbitmq://192.168.0.101", "user_service")
+        public UserRequestService(string host, string service) : base(host, service)
         {
         }
 

@@ -8,30 +8,30 @@ using RKSystem.UserService.Models.Commands;
 
 namespace RKSystem.UserService
 {
-    public class CommandService : ICommandHandler<CreateUserCommand>
+    public class CommandUserService : ICommandHandler<CreateUserCommand>
     {
         private readonly IBusControl _busControl;
-        public CommandService()
+        private readonly string _serviceAddress;
+        public CommandUserService(string rabbitMqHost, string serviceAddress)
         {
+            _serviceAddress = serviceAddress;
             _busControl = Bus.Factory.CreateUsingRabbitMq(x =>
             {
-                x.Host(new Uri("rabbitmq://192.168.0.101"), h =>
+                x.Host(new Uri(rabbitMqHost), h =>
                 {
                     //h.Username("guest");
                     //h.Password("guest");
                 });
-
             });
-
-            TaskUtil.Await(() => _busControl.StartAsync());
         }
 
         public Task ExecuteAsync(CreateUserCommand command)
         {
             TaskUtil.Await(() => _busControl.StartAsync());
-            var serviceAddress = new Uri("rabbitmq://192.168.0.101/user_service");
+            var serviceAddress = new Uri(_serviceAddress);
             var client = _busControl.CreateRequestClient<CreateUserCommand, ResultDto>(serviceAddress, TimeSpan.FromSeconds(500));
             client.Request(command).Wait();
+            TaskUtil.Await(() => _busControl.StopAsync());
 
             return Task.CompletedTask;
         }

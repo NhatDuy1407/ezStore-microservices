@@ -26,7 +26,7 @@ namespace RKSystem.UserService.WriteSide
 
             Task.Factory.StartNew(() =>
             {
-                var requestService = new RequestService();
+                var requestService = new UserRequestService(Configuration.GetConnectionString("RabbitMQHost"), Configuration.GetConnectionString("ServiceAddress"));
                 requestService.Start();
             });
 

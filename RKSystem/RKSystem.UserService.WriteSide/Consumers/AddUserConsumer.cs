@@ -5,7 +5,7 @@ using RKSystem.UserService.Models;
 using RKSystem.UserService.Models.Commands;
 using RKSystem.UserService.WriteSide.Interfaces;
 
-namespace RKSystem.UserService.WriteSide
+namespace RKSystem.UserService.WriteSide.Consumers
 {
     public class AddUserConsumer : IConsumer<CreateUserCommand>
     {
@@ -16,7 +16,7 @@ namespace RKSystem.UserService.WriteSide
 
             // write to cache for special data
             ICacheService cacheService = new CacheService.CacheService();
-            await cacheService.Put(context.Message.CommandId, newId);
+            await cacheService.Set(context.Message.CommandId, newId);
 
             // todo: publish event 
             //context.Publish(new UserCreatedEvent(newId));
