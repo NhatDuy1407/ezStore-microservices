@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using RKSystem.Service.Core.Constants;
 using RKSystem.UserService.WriteSide.Mapper;
 
 namespace RKSystem.UserService.WriteSide
@@ -21,12 +22,14 @@ namespace RKSystem.UserService.WriteSide
         {
             //services.AddMvc();
 
-            AutoMapper.Mapper.Initialize(cfg => { cfg.AddProfile<ServiceMapperProfile>(); }
-            );
+            AutoMapper.Mapper.Initialize(cfg =>
+            {
+                cfg.AddProfile<ServiceMapperProfile>();
+            });
 
             Task.Factory.StartNew(() =>
             {
-                var requestService = new UserRequestService(Configuration.GetConnectionString("RabbitMQHost"), Configuration.GetConnectionString("ServiceAddress"));
+                var requestService = new UserRequestService(Configuration.GetConnectionString("RabbitMQHost"), ServiceAddresses.UserServiceAddress);
                 requestService.Start();
             });
 

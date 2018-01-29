@@ -1,4 +1,6 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using System;
+using MassTransit;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using RKSystem.DataAccess.MongoDB;
 using RKSystem.DataAccess.MongoDB.Interfaces;
@@ -17,7 +19,19 @@ namespace RKSystem.UserService
             services.AddTransient<IReadOnlyUnitOfWork>(i => new ReadOnlyUnitOfWork(i.GetService<MongoDbContext>()));
             services.AddTransient<IUserService, UserService>();
 
-            services.AddTransient<ICommandHandler<CreateUserCommand>>(i => new CommandUserService(configuration.GetConnectionString("RabbitMQHost"), configuration.GetConnectionString("UserServiceAddress")));
+            services.AddTransient(i =>
+            {
+               return Bus.Factory.CreateUsingRabbitMq(x =>
+                {
+                    x.Host(new Uri(configuration.GetConnectionString("RabbitMQHost")), h =>
+                    {
+                        //h.Username("guest");
+                        //h.Password("guest");
+                    });
+                });
+            });
+
+            services.AddTransient<ICommandHandler<CreateUserCommand>, CommandUserService>();
         }
     }
 }
