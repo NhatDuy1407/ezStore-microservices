@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using RKSystem.CacheService;
 using RKSystem.CacheService.Interfaces;
 using RKSystem.Service.Core;
 using RKSystem.Service.Core.Interfaces;
@@ -23,7 +24,7 @@ namespace RKSystem.UserService.API
         }
 
         public IConfiguration Configuration { get; }
-        
+
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
@@ -50,7 +51,7 @@ namespace RKSystem.UserService.API
 
             // Add application services.
             services.AddTransient<ICommandBus, CommandBus>();
-            services.AddTransient<ICacheService, CacheService.CacheService>();
+            services.AddTransient<ICacheService>(i => new RedisCacheService(Configuration.GetConnectionString("RedisAddress")));
             ServiceConfiguration.ConfigureServices(services, Configuration);
         }
 

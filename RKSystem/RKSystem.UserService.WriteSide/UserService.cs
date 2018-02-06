@@ -12,15 +12,10 @@ namespace RKSystem.UserService.WriteSide
 {
     public class UserService : BaseService, IUserService
     {
-        public UserService()
+        public UserService(IConfiguration configuration)
         {
-            var builder = new ConfigurationBuilder()
-                .SetBasePath(Directory.GetCurrentDirectory())
-                .AddJsonFile("appsettings.json");
-
-            var configuration = builder.Build();
-            var defaultConnection = configuration["ConnectionStrings:DefaultConnection"];
-            var defaultDatabaseName = configuration["ConnectionStrings:DefaultDatabaseName"];
+            var defaultConnection = configuration.GetConnectionString("DefaultConnection");
+            var defaultDatabaseName = configuration.GetConnectionString("DefaultDatabaseName");
 
             UnitOfWork = new WriteUnitOfWork(new MongoDbContext(defaultConnection, defaultDatabaseName, false));
         }

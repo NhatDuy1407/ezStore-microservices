@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Threading.Tasks;
-using MassTransit;
-using MassTransit.Util;
 using Microsoft.AspNetCore.Mvc;
+using RKSystem.CacheService;
 using RKSystem.CacheService.Interfaces;
 using RKSystem.Service.Core.Interfaces;
 using RKSystem.UserService.API.ViewModels;
@@ -20,7 +18,7 @@ namespace RKSystem.UserService.API.Controllers
         public MemberController(IUserService clientService, ICommandBus commandBus, ICacheService cacheService) : base(commandBus)
         {
             _clientService = clientService;
-            _cacheService = new CacheService.CacheService();
+            _cacheService = cacheService;
         }
 
         [HttpGet("{id}")]

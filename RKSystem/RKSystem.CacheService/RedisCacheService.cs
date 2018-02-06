@@ -5,11 +5,17 @@ using ServiceStack.Redis;
 
 namespace RKSystem.CacheService
 {
-    public class CacheService : ICacheService
+    public class RedisCacheService : ICacheService
     {
+        private string _connectionString;
+        public RedisCacheService(string connectionString)
+        {
+            _connectionString = connectionString;
+        }
+
         public Task Set<T>(Guid key, T data)
         {
-            var manager = new RedisManagerPool("192.168.0.102:6379");
+            var manager = new RedisManagerPool(_connectionString);
             using (var client = manager.GetClient())
             {
                 client.Set(key.ToString(), data);
@@ -20,7 +26,7 @@ namespace RKSystem.CacheService
 
         public Task<T> Get<T>(Guid key)
         {
-            var manager = new RedisManagerPool("192.168.0.102:6379");
+            var manager = new RedisManagerPool(_connectionString);
             using (var client = manager.GetClient())
             {
                 return Task.FromResult(client.Get<T>(key.ToString()));

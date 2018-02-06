@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using MassTransit;
 using MassTransit.RabbitMqTransport;
 using MassTransit.Util;

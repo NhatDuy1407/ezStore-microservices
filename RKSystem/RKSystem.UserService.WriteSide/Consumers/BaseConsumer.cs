@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Configuration;
+using RKSystem.CacheService;
 using RKSystem.CacheService.Interfaces;
 
 namespace RKSystem.UserService.WriteSide.Consumers
@@ -8,10 +10,10 @@ namespace RKSystem.UserService.WriteSide.Consumers
     {
         private readonly ICacheService _cacheService;
 
-        public BaseConsumer()
+        public BaseConsumer(IConfiguration configuration)
         {
             // write to cache for special data
-            _cacheService = new CacheService.CacheService();
+            _cacheService = new RedisCacheService(configuration.GetConnectionString("RedisAddress"));
         }
         protected async Task WriteCacheAsync(Guid id, object data)
         {
