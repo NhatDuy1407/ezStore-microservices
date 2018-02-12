@@ -10,18 +10,18 @@ namespace RKSystem.UserService
 {
     public class UserService : BaseService, IUserService
     {
-        public UserService(IReadOnlyUnitOfWork unitOfWork) : base(unitOfWork)
+        public UserService(IReadOnlyService service) : base(service)
         {
         }
 
         public List<AppUserDto> Get()
         {
-            return AutoMapper.Mapper.Map<List<AppUserDto>>(UnitOfWork.Repository<AppUser>().Get().ToList());
+            return AutoMapper.Mapper.Map<List<AppUserDto>>(Service.Repository<AppUser>().Get().ToList());
         }
 
         public AppUserDto Get(Guid id)
         {
-            return AutoMapper.Mapper.Map<AppUserDto>(UnitOfWork.Repository<AppUser>().FirstOrDefault(i => i.Id == id));
+            return AutoMapper.Mapper.Map<AppUserDto>(Service.Repository<AppUser>().FirstOrDefault(i => i.Id == id));
         }
     }
 }

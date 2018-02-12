@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace RKSystem.UserService.API.ViewModels
+﻿namespace RKSystem.UserService.API.ViewModels
 {
     public class UserVm
     {

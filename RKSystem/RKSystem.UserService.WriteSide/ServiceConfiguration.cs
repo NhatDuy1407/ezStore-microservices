@@ -12,8 +12,8 @@ namespace RKSystem.UserService.WriteSide
         {
             // Add application services.
             services.AddTransient(i => new MongoDbContext(configuration.GetConnectionString("DefaultConnection"), configuration.GetConnectionString("DefaultDatabaseName"), false));
-            services.AddTransient<IReadOnlyUnitOfWork>(i => new ReadOnlyUnitOfWork(i.GetService<MongoDbContext>()));
-            services.AddTransient<IUserService, WriteSide.UserService>();
+            services.AddTransient<IReadOnlyService>(i => new ReadOnlyService(i.GetService<MongoDbContext>()));
+            services.AddTransient<IUserService, UserService>();
         }
     }
 }

@@ -3,7 +3,6 @@ using MassTransit;
 using Microsoft.Extensions.Configuration;
 using RKSystem.UserService.Models;
 using RKSystem.UserService.Models.Commands;
-using RKSystem.UserService.Models.Events;
 using RKSystem.UserService.WriteSide.Interfaces;
 
 namespace RKSystem.UserService.WriteSide.Consumers
@@ -22,7 +21,7 @@ namespace RKSystem.UserService.WriteSide.Consumers
 
             await WriteCacheAsync(context.Message.CommandId, newId);
 
-            context.Publish(new UserCreatedEvent(newId));
+            // context.Publish(new UserCreatedEvent(newId));
 
             context.Respond(new ResultDto { Status = true });
         }

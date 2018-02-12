@@ -1,8 +1,10 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using RKSystem.DataAccess.MongoDB;
 using RKSystem.UserService.WriteSide.Mapper;
 
 namespace RKSystem.UserService.WriteSide
@@ -26,13 +28,13 @@ namespace RKSystem.UserService.WriteSide
                 cfg.AddProfile<ServiceMapperProfile>();
             });
 
+            ServiceConfiguration.ConfigureServices(services, Configuration);
+
             Task.Factory.StartNew(() =>
             {
                 var requestService = new UserRequestService(Configuration);
                 requestService.Start();
             });
-
-            ServiceConfiguration.ConfigureServices(services, Configuration);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

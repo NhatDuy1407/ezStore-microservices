@@ -1,6 +1,5 @@
 ﻿using System;
 using Microsoft.AspNetCore.Mvc;
-using RKSystem.CacheService;
 using RKSystem.CacheService.Interfaces;
 using RKSystem.Service.Core.Interfaces;
 using RKSystem.UserService.API.ViewModels;

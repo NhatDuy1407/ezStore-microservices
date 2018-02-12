@@ -48,11 +48,11 @@ namespace RKSystem.DataAccess.Entities
 
         protected void RemoveChildrenItems<TEntity>(ICollection<TEntity> list) where TEntity : class
         {
-            //var unitOfWork = ApplicationDependencyResolver.ServiceDependencyResolver.GetScope()
+            //var service = ApplicationDependencyResolver.ServiceDependencyResolver.GetScope()
             //    .Resolve<IRepositoryFactory>();
             //var list2Delete = list.ToList();
             //foreach (var item in list2Delete)
-            //    unitOfWork.Repository<TEntity>().Delete(item);
+            //    service.Repository<TEntity>().Delete(item);
         }
     }
 }

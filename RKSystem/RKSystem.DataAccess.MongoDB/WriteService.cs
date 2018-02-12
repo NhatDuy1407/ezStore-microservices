@@ -4,11 +4,11 @@ using RKSystem.DataAccess.MongoDB.Interfaces;
 
 namespace RKSystem.DataAccess.MongoDB
 {
-    public class WriteUnitOfWork : IWriteUnitOfWork
+    public class WriteService : IWriteService
     {
         private readonly Hashtable _hashRepository;
 
-        public WriteUnitOfWork(MongoDbContext dbContext)
+        public WriteService(MongoDbContext dbContext)
         {
             _hashRepository = new Hashtable();
             Context = dbContext;

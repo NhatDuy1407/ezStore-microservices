@@ -5,11 +5,11 @@ namespace RKSystem.UserService
 {
     public class BaseService : IDisposable
     {
-        protected IReadOnlyUnitOfWork UnitOfWork;
+        protected IReadOnlyService Service;
 
-        public BaseService(IReadOnlyUnitOfWork unitOfWork)
+        public BaseService(IReadOnlyService service)
         {
-            UnitOfWork = unitOfWork;
+            Service = service;
         }
 
         #region Dispose
@@ -17,8 +17,8 @@ namespace RKSystem.UserService
         protected virtual void Dispose(bool disposing)
         {
             if (disposing)
-                if (UnitOfWork != null)
-                    UnitOfWork.Dispose();
+                if (Service != null)
+                    Service.Dispose();
         }
 
         public void Dispose()
