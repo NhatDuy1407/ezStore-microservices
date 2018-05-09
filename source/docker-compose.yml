@@ -1,0 +1,29 @@
+version: '3'
+
+services:
+  microservice.service.userservice.api:
+    image: microservice.service.userservice.api
+    build:
+      context: .
+      dockerfile: Microservice.Service.UserService.API/Dockerfile
+
+  microservice.service.userservice.writeside:
+    image: microservice.service.userservice.writeside
+    build:
+      context: .
+      dockerfile: Microservice.Service.UserService.WriteSide/Dockerfile
+
+
+  microservice.identityserver:
+    image: microservice.identityserver
+    build:
+      context: .
+      dockerfile: Microservice.IdentityServer/Dockerfile
+
+
+  microservice.logging.api:
+    image: microservice.logging.api
+    build:
+      context: .
+      dockerfile: Microservice.Logging.API/Dockerfile
+
