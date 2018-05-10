@@ -1,4 +1,4 @@
-﻿using Microservice.Core.Domain;
+﻿using Microservice.Core.Models;
 using Microservice.Member.Domain.DomainEvents;
 
 namespace Microservice.Member.Domain.MemberAggregate

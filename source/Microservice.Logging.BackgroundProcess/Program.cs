@@ -18,7 +18,7 @@ namespace Microservice.Logging.BackgroundProcess
 
             Task.Factory.StartNew(() =>
             {
-                var requestService = new UserRequestService(configuration);
+                var requestService = new MemberRequestService(configuration);
                 requestService.Start();
             });
 

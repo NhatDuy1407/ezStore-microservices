@@ -1,4 +1,4 @@
-﻿using Microservice.Core.Domain;
+﻿using Microservice.Core.Interfaces;
 
 namespace Microservice.Member.Domain.DomainEvents
 {

@@ -1,4 +1,4 @@
-﻿using Microservice.Core.Domain;
+﻿using Microservice.Core.Models;
 
 namespace Microservice.Core.DataAccess.Interfaces
 {

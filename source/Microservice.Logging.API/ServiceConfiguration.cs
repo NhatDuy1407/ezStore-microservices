@@ -1,4 +1,5 @@
-﻿using Microservice.Core.DataAccess.Interfaces;
+﻿using Microservice.Core;
+using Microservice.Core.DataAccess.Interfaces;
 using Microservice.Core.Service;
 using Microservice.Logging.API.Application.Commands;
 using Microservice.Logging.Infrastructure;

@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using Microservice.Core.Service.Interfaces;
+using Microservice.Core.Interfaces;
 using Microservice.Logging.API.Application.Commands;
 using Microservice.Logging.API.Application.Queries;
 using Microservice.Logging.API.Application.ViewModels;

@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using MassTransit;
 using Microservice.Core.DataAccess.MongoDB;
-using Microservice.Core.Domain;
+using Microservice.Core.Interfaces;
+using Microservice.Core.Models;
 using Microsoft.Extensions.Configuration;
 
 namespace Microservice.Member.Infrastructure
@@ -33,12 +34,14 @@ namespace Microservice.Member.Infrastructure
         {
             foreach (var @event in Events)
             {
-                //var type = @event.GetType();
-                //Activator.CreateInstance(@event.GetType());
-
+                var eventData = new Event
+                {
+                    ModelName = @event.GetType().Name,
+                    Data = @event.Data
+                };
                 var serviceAddress = GetServiceAddress("member_service");
-                var client = _busControl.CreateRequestClient<IEvent, Object>(serviceAddress, TimeSpan.FromSeconds(500));
-                client.Request(@event);
+                var client = _busControl.CreateRequestClient<Event, Object>(serviceAddress, TimeSpan.FromSeconds(500));
+                client.Request(eventData);
             }
         }
 

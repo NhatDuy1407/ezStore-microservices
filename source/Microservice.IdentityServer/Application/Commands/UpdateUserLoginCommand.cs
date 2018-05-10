@@ -1,4 +1,4 @@
-﻿using Microservice.Core.Service.Models;
+﻿using Microservice.Core.Models;
 
 namespace Microservice.IdentityServer.Application.Commands
 {

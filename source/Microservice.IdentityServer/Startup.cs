@@ -1,6 +1,6 @@
 ﻿using System.Reflection;
-using Microservice.Core.Service;
-using Microservice.Core.Service.Interfaces;
+using Microservice.Core;
+using Microservice.Core.Interfaces;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;

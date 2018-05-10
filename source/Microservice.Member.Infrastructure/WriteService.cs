@@ -2,7 +2,7 @@
 using System.Collections;
 using Microservice.Core.DataAccess.Interfaces;
 using Microservice.Core.DataAccess.MongoDB;
-using Microservice.Core.Domain;
+using Microservice.Core.Models;
 
 namespace Microservice.Member.Infrastructure
 {

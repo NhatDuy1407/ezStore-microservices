@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Microservice.Core.Domain;
+﻿using Microservice.Core.Models;
 
 namespace Microservice.Logging.Domain.ExceptionLoggingAggregate
 {

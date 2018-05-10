@@ -1,4 +1,4 @@
-﻿using Microservice.Core.Service.Models;
+﻿using Microservice.Core.Models;
 using Microservice.Logging.API.Application.ViewModels;
 
 namespace Microservice.Logging.API.Application.Commands

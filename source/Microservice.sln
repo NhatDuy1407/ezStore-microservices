@@ -13,8 +13,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microservice.Core.DataAcces
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microservice.Core.CachingService", "Microservice.Core.CachingService\Microservice.Core.CachingService.csproj", "{B359F45F-0538-48F2-9C82-058675B08F59}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microservice.Core.Service", "Microservice.Core.Service\Microservice.Core.Service.csproj", "{5DF31529-E20D-4854-931E-E5326CC37D37}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "02. Services", "02. Services", "{4221A031-3665-41E5-8017-D499ED8F7A31}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microservice.Core", "Microservice.Core\Microservice.Core.csproj", "{89622E04-C7E2-4B67-B535-6F3D25FA7BDC}"
@@ -35,7 +33,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microservice.Member.Domain"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microservice.Member.Infrastructure", "Microservice.Member.Infrastructure\Microservice.Member.Infrastructure.csproj", "{CC09031A-6332-4801-BE11-3A59DE897E16}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microservice.Logging.BackgroundProcess", "Microservice.Logging.BackgroundProcess\Microservice.Logging.BackgroundProcess.csproj", "{67ED0F60-80D0-434D-8DB0-62462129A420}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microservice.Logging.BackgroundProcess", "Microservice.Logging.BackgroundProcess\Microservice.Logging.BackgroundProcess.csproj", "{67ED0F60-80D0-434D-8DB0-62462129A420}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -55,10 +53,6 @@ Global
 		{B359F45F-0538-48F2-9C82-058675B08F59}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B359F45F-0538-48F2-9C82-058675B08F59}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B359F45F-0538-48F2-9C82-058675B08F59}.Release|Any CPU.Build.0 = Release|Any CPU
-		{5DF31529-E20D-4854-931E-E5326CC37D37}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5DF31529-E20D-4854-931E-E5326CC37D37}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5DF31529-E20D-4854-931E-E5326CC37D37}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5DF31529-E20D-4854-931E-E5326CC37D37}.Release|Any CPU.Build.0 = Release|Any CPU
 		{89622E04-C7E2-4B67-B535-6F3D25FA7BDC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{89622E04-C7E2-4B67-B535-6F3D25FA7BDC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{89622E04-C7E2-4B67-B535-6F3D25FA7BDC}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -104,7 +98,6 @@ Global
 		{A447ECFD-D0DA-40A2-915A-3A5A8580A003} = {A6613CAF-30A7-471B-A661-52D34D481943}
 		{EB610B2F-BC65-4488-9EE3-D907245F8EBC} = {A6613CAF-30A7-471B-A661-52D34D481943}
 		{B359F45F-0538-48F2-9C82-058675B08F59} = {A6613CAF-30A7-471B-A661-52D34D481943}
-		{5DF31529-E20D-4854-931E-E5326CC37D37} = {A6613CAF-30A7-471B-A661-52D34D481943}
 		{89622E04-C7E2-4B67-B535-6F3D25FA7BDC} = {A6613CAF-30A7-471B-A661-52D34D481943}
 		{F9D71BA9-CB39-4786-BB6F-460007E68FE8} = {03214D78-0E18-46B4-AFE1-19C06D5D27AC}
 		{1E993341-DFAF-4959-BD2E-79989A24A3EB} = {4221A031-3665-41E5-8017-D499ED8F7A31}

@@ -1,5 +1,5 @@
 ﻿using System;
-using Microservice.Core.Domain;
+using Microservice.Core.Models;
 
 namespace Microservice.Logging.Domain.AuditLoggingAggregate
 {

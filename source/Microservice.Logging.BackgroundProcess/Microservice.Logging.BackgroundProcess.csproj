@@ -23,7 +23,6 @@
   <ItemGroup>
     <ProjectReference Include="..\Microservice.Core.CachingService\Microservice.Core.CachingService.csproj" />
     <ProjectReference Include="..\Microservice.Core.DataAccess\Microservice.Core.DataAccess.csproj" />
-    <ProjectReference Include="..\Microservice.Core.Service\Microservice.Core.Service.csproj" />
     <ProjectReference Include="..\Microservice.Logging.Domain\Microservice.Logging.Domain.csproj" />
     <ProjectReference Include="..\Microservice.Logging.Infrastructure\Microservice.Logging.Infrastructure.csproj" />
   </ItemGroup>

@@ -1,6 +1,7 @@
 ﻿using System;
 using MassTransit;
 using MassTransit.Util;
+using Microservice.Core;
 using Microservice.Core.DataAccess.Interfaces;
 using Microservice.Core.Service;
 using Microservice.IdentityServer.Application.Commands;

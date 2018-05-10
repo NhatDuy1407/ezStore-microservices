@@ -1,22 +1,18 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
 using Microservice.IdentityServer.Models;
 using Microservice.IdentityServer.Models.AccountViewModels;
 using Microservice.IdentityServer.Services;
 using IdentityServer4.Quickstart.UI;
 using IdentityServer4.Services;
 using IdentityServer4.Stores;
-using Microservice.Core.Service.Interfaces;
+using Microservice.Core.Interfaces;
 using Microservice.IdentityServer.Application.Commands;
 using Microsoft.AspNetCore.Http;
 
