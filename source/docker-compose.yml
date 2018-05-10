@@ -1,0 +1,23 @@
+version: '3'
+
+services:
+
+  microservice.identityserver:
+    image: microservice.identityserver
+    build:
+      context: .
+      dockerfile: Microservice.IdentityServer/Dockerfile
+
+
+  microservice.logging.api:
+    image: microservice.logging.api
+    build:
+      context: .
+      dockerfile: Microservice.Logging.API/Dockerfile
+
+  microservice.logging.backgroundprocess:
+    image: microservice.logging.backgroundprocess
+    build:
+      context: .
+      dockerfile: Microservice.Logging.BackgroundProcess/Dockerfile
+

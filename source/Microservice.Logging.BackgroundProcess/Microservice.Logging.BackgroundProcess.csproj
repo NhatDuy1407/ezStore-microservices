@@ -1,0 +1,30 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MassTransit" Version="5.0.2" />
+    <PackageReference Include="MassTransit.RabbitMQ" Version="5.0.2" />
+    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.5" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="appsettings.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Microservice.Core.CachingService\Microservice.Core.CachingService.csproj" />
+    <ProjectReference Include="..\Microservice.Core.DataAccess\Microservice.Core.DataAccess.csproj" />
+    <ProjectReference Include="..\Microservice.Logging.Domain\Microservice.Logging.Domain.csproj" />
+    <ProjectReference Include="..\Microservice.Logging.Infrastructure\Microservice.Logging.Infrastructure.csproj" />
+  </ItemGroup>
+
+</Project>
