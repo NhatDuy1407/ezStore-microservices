@@ -16,6 +16,8 @@ using Microservice.IdentityServer.Services;
 using IdentityServer4.Quickstart.UI;
 using IdentityServer4.Services;
 using IdentityServer4.Stores;
+using Microservice.Core.Service.Interfaces;
+using Microservice.IdentityServer.Application.Commands;
 using Microsoft.AspNetCore.Http;
 
 namespace Microservice.IdentityServer.Controllers
@@ -30,6 +32,7 @@ namespace Microservice.IdentityServer.Controllers
         private readonly ILogger _logger;
 
         private readonly IIdentityServerInteractionService _interaction;
+        private readonly ICommandBus _commandBus;
         private readonly AccountService _account;
 
         public AccountController(
@@ -40,7 +43,7 @@ namespace Microservice.IdentityServer.Controllers
             IIdentityServerInteractionService interaction,
             IClientStore clientStore,
             IHttpContextAccessor httpContextAccessor,
-            IAuthenticationSchemeProvider schemeProvider
+            IAuthenticationSchemeProvider schemeProvider, ICommandBus commandBus
         )
         {
             _userManager = userManager;
@@ -49,6 +52,7 @@ namespace Microservice.IdentityServer.Controllers
             _logger = logger;
 
             _interaction = interaction;
+            _commandBus = commandBus;
             _account = new AccountService(interaction, httpContextAccessor, schemeProvider, clientStore);
         }
 
@@ -80,6 +84,9 @@ namespace Microservice.IdentityServer.Controllers
                 if (result.Succeeded)
                 {
                     _logger.LogInformation("User logged in.");
+                    var command = new UpdateUserLoginCommand(model.Email);
+                    _commandBus.ExecuteAsync(command);
+
                     return RedirectToLocal(returnUrl);
                 }
                 if (result.RequiresTwoFactor)
@@ -479,7 +486,6 @@ namespace Microservice.IdentityServer.Controllers
             return View();
         }
 
-
         [HttpGet]
         public IActionResult AccessDenied()
         {
@@ -508,6 +514,6 @@ namespace Microservice.IdentityServer.Controllers
             }
         }
 
-        #endregion
+        #endregion Helpers
     }
 }

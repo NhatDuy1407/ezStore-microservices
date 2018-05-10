@@ -36,12 +36,7 @@ namespace Microservice.Logging.API.Controllers
             {
                 var command = new AddExceptionLogCommand(info);
                 CommandBus.ExecuteAsync(command).Wait();
-
-                // get from cache
-                var newId = _cacheService.Get<Guid>(command.CommandId).Result;
-
-                var newData = _clientService.Get(newId);
-                return Json(newData);
+                return Ok();
             }
             return Ok(true);
         }

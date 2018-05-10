@@ -16,6 +16,7 @@ namespace Microservice.Core.Domain
         public bool Deleted { get; set; }
 
         private List<IEvent> events;
+        public List<IEvent> Events => events;
 
         protected void AddDomainEvent(IEvent @event)
         {

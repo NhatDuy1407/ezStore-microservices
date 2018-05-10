@@ -2,10 +2,11 @@
 using System.Collections;
 using Microservice.Core.DataAccess.Interfaces;
 using Microservice.Core.DataAccess.MongoDB;
+using Microservice.Core.Domain;
 
 namespace Microservice.Member.Infrastructure
 {
-    public class WriteService : IWriteService
+    public class WriteService : IAttachEntityWriteService
     {
         private readonly Hashtable _hashRepository;
 
@@ -28,6 +29,16 @@ namespace Microservice.Member.Infrastructure
             }
 
             return (IWriteRepository<TEntity>)_hashRepository[key];
+        }
+
+        public void AttachEntity(DomainEntity entity)
+        {
+            Context.AddEvents(entity);
+        }
+
+        public void SaveChanges()
+        {
+            Context.SaveChanges();
         }
     }
 }

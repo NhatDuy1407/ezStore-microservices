@@ -26,7 +26,7 @@ namespace Microservice.Core.DataAccess.MongoDB
                 _hashRepository[key] = repository;
             }
 
-            return (IWriteRepository<TEntity>) _hashRepository[key];
+            return (IWriteRepository<TEntity>)_hashRepository[key];
         }
 
         #region disposed
@@ -48,6 +48,11 @@ namespace Microservice.Core.DataAccess.MongoDB
             _disposed = true;
         }
 
-        #endregion
+        public void SaveChanges()
+        {
+            throw new NotImplementedException();
+        }
+
+        #endregion disposed
     }
 }

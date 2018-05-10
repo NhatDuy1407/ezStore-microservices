@@ -10,6 +10,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Microservice.Core.DataAccess\Microservice.Core.DataAccess.csproj" />
+    <ProjectReference Include="..\Microservice.Core\Microservice.Core.csproj" />
   </ItemGroup>
 
 </Project>

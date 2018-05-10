@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Microservice.Core.DataAccess.Entities;
 using Microservice.Core.Domain;
 
 namespace Microservice.Logging.Domain.AuditLoggingAggregate
@@ -10,6 +7,10 @@ namespace Microservice.Logging.Domain.AuditLoggingAggregate
     {
         public AuditLogging()
         {
+            CreatedDate = DateTime.Now;
+            UpdatedDate = DateTime.Now;
         }
+
+        public string Content { get; set; }
     }
 }

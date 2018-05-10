@@ -5,9 +5,11 @@ namespace Microservice.Member.Domain.MemberAggregate
 {
     public class User : DomainEntity
     {
+        public string UserName { get; set; }
+
         public void NotifyUserLogin()
         {
-            base.AddDomainEvent(new UserLoginedEvent());
+            base.AddDomainEvent(new UserLoginedEvent(UserName));
         }
     }
 }

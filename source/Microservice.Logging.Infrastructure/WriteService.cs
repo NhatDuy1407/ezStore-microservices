@@ -29,5 +29,10 @@ namespace Microservice.Logging.Infrastructure
 
             return (IWriteRepository<TEntity>)_hashRepository[key];
         }
+
+        public void SaveChanges()
+        {
+            // Method intentionally left empty.
+        }
     }
 }

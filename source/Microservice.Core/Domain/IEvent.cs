@@ -2,5 +2,6 @@
 {
     public interface IEvent
     {
+        object Data { get; set; }
     }
 }

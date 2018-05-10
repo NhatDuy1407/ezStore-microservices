@@ -6,6 +6,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Folder Include="Application\Queries\" />
+    <Folder Include="Application\ViewModels\" />
     <Folder Include="wwwroot\" />
   </ItemGroup>
 
@@ -17,6 +19,14 @@
 
   <ItemGroup>
     <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Microservice.Core.DataAccess\Microservice.Core.DataAccess.csproj" />
+    <ProjectReference Include="..\Microservice.Core.Service\Microservice.Core.Service.csproj" />
+    <ProjectReference Include="..\Microservice.Core\Microservice.Core.csproj" />
+    <ProjectReference Include="..\Microservice.Member.Domain\Microservice.Member.Domain.csproj" />
+    <ProjectReference Include="..\Microservice.Member.Infrastructure\Microservice.Member.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

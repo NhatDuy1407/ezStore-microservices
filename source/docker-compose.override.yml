@@ -1,20 +1,6 @@
 version: '3'
 
 services:
-  microservice.service.userservice.api:
-    environment:
-      - ASPNETCORE_ENVIRONMENT=Development
-    ports:
-      - "80"
-    network_mode: my-bridge-network
-
-  microservice.service.userservice.writeside:
-    environment:
-      - ASPNETCORE_ENVIRONMENT=Development
-    ports:
-      - "80"
-    network_mode: my-bridge-network
-
   microservice.identityserver:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
@@ -23,6 +9,13 @@ services:
     network_mode: my-bridge-network
 
   microservice.logging.api:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    ports:
+      - "80"
+    network_mode: my-bridge-network
+
+  microservice.logging.backgroundprocess:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
     ports:

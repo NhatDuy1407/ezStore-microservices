@@ -17,14 +17,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microservice.Core.Service",
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "02. Services", "02. Services", "{4221A031-3665-41E5-8017-D499ED8F7A31}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "User Service", "User Service", "{522FCB2F-6568-41C5-97D6-22AE5852B3E5}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microservice.Service.UserService", "Microservice.Service.UserService\Microservice.Service.UserService.csproj", "{DFA401D6-E9B7-4A65-B89A-CCE22D728B56}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microservice.Service.UserService.API", "Microservice.Service.UserService.API\Microservice.Service.UserService.API.csproj", "{23BBD1B9-DA75-40F0-92D9-121E12C0FBD4}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microservice.Service.UserService.WriteSide", "Microservice.Service.UserService.WriteSide\Microservice.Service.UserService.WriteSide.csproj", "{17B85F02-2738-42E2-8ACA-006DA4D6570B}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microservice.Core", "Microservice.Core\Microservice.Core.csproj", "{89622E04-C7E2-4B67-B535-6F3D25FA7BDC}"
 EndProject
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{DB73F604-428A-4DDA-A352-0AF084E52AC6}"
@@ -39,9 +31,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microservice.Logging.Domain
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microservice.Logging.Infrastructure", "Microservice.Logging.Infrastructure\Microservice.Logging.Infrastructure.csproj", "{81F9B4B9-AF41-4DB9-A6CA-5E1AECC3EEFB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microservice.Member.Domain", "Microservice.Member.Domain\Microservice.Member.Domain.csproj", "{E4C15112-040A-4656-9AB4-811C4A3F5E28}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microservice.Member.Domain", "Microservice.Member.Domain\Microservice.Member.Domain.csproj", "{E4C15112-040A-4656-9AB4-811C4A3F5E28}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microservice.Member.Infrastructure", "Microservice.Member.Infrastructure\Microservice.Member.Infrastructure.csproj", "{CC09031A-6332-4801-BE11-3A59DE897E16}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microservice.Member.Infrastructure", "Microservice.Member.Infrastructure\Microservice.Member.Infrastructure.csproj", "{CC09031A-6332-4801-BE11-3A59DE897E16}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microservice.Logging.BackgroundProcess", "Microservice.Logging.BackgroundProcess\Microservice.Logging.BackgroundProcess.csproj", "{67ED0F60-80D0-434D-8DB0-62462129A420}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -65,18 +59,6 @@ Global
 		{5DF31529-E20D-4854-931E-E5326CC37D37}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5DF31529-E20D-4854-931E-E5326CC37D37}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5DF31529-E20D-4854-931E-E5326CC37D37}.Release|Any CPU.Build.0 = Release|Any CPU
-		{DFA401D6-E9B7-4A65-B89A-CCE22D728B56}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{DFA401D6-E9B7-4A65-B89A-CCE22D728B56}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{DFA401D6-E9B7-4A65-B89A-CCE22D728B56}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{DFA401D6-E9B7-4A65-B89A-CCE22D728B56}.Release|Any CPU.Build.0 = Release|Any CPU
-		{23BBD1B9-DA75-40F0-92D9-121E12C0FBD4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{23BBD1B9-DA75-40F0-92D9-121E12C0FBD4}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{23BBD1B9-DA75-40F0-92D9-121E12C0FBD4}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{23BBD1B9-DA75-40F0-92D9-121E12C0FBD4}.Release|Any CPU.Build.0 = Release|Any CPU
-		{17B85F02-2738-42E2-8ACA-006DA4D6570B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{17B85F02-2738-42E2-8ACA-006DA4D6570B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{17B85F02-2738-42E2-8ACA-006DA4D6570B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{17B85F02-2738-42E2-8ACA-006DA4D6570B}.Release|Any CPU.Build.0 = Release|Any CPU
 		{89622E04-C7E2-4B67-B535-6F3D25FA7BDC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{89622E04-C7E2-4B67-B535-6F3D25FA7BDC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{89622E04-C7E2-4B67-B535-6F3D25FA7BDC}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -109,6 +91,10 @@ Global
 		{CC09031A-6332-4801-BE11-3A59DE897E16}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CC09031A-6332-4801-BE11-3A59DE897E16}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CC09031A-6332-4801-BE11-3A59DE897E16}.Release|Any CPU.Build.0 = Release|Any CPU
+		{67ED0F60-80D0-434D-8DB0-62462129A420}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{67ED0F60-80D0-434D-8DB0-62462129A420}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{67ED0F60-80D0-434D-8DB0-62462129A420}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{67ED0F60-80D0-434D-8DB0-62462129A420}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -119,10 +105,6 @@ Global
 		{EB610B2F-BC65-4488-9EE3-D907245F8EBC} = {A6613CAF-30A7-471B-A661-52D34D481943}
 		{B359F45F-0538-48F2-9C82-058675B08F59} = {A6613CAF-30A7-471B-A661-52D34D481943}
 		{5DF31529-E20D-4854-931E-E5326CC37D37} = {A6613CAF-30A7-471B-A661-52D34D481943}
-		{522FCB2F-6568-41C5-97D6-22AE5852B3E5} = {4221A031-3665-41E5-8017-D499ED8F7A31}
-		{DFA401D6-E9B7-4A65-B89A-CCE22D728B56} = {522FCB2F-6568-41C5-97D6-22AE5852B3E5}
-		{23BBD1B9-DA75-40F0-92D9-121E12C0FBD4} = {522FCB2F-6568-41C5-97D6-22AE5852B3E5}
-		{17B85F02-2738-42E2-8ACA-006DA4D6570B} = {522FCB2F-6568-41C5-97D6-22AE5852B3E5}
 		{89622E04-C7E2-4B67-B535-6F3D25FA7BDC} = {A6613CAF-30A7-471B-A661-52D34D481943}
 		{F9D71BA9-CB39-4786-BB6F-460007E68FE8} = {03214D78-0E18-46B4-AFE1-19C06D5D27AC}
 		{1E993341-DFAF-4959-BD2E-79989A24A3EB} = {4221A031-3665-41E5-8017-D499ED8F7A31}
@@ -131,6 +113,7 @@ Global
 		{81F9B4B9-AF41-4DB9-A6CA-5E1AECC3EEFB} = {1E993341-DFAF-4959-BD2E-79989A24A3EB}
 		{E4C15112-040A-4656-9AB4-811C4A3F5E28} = {03214D78-0E18-46B4-AFE1-19C06D5D27AC}
 		{CC09031A-6332-4801-BE11-3A59DE897E16} = {03214D78-0E18-46B4-AFE1-19C06D5D27AC}
+		{67ED0F60-80D0-434D-8DB0-62462129A420} = {1E993341-DFAF-4959-BD2E-79989A24A3EB}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {88D9F8A4-8F8A-4E03-A92F-34BCFF26A09D}
