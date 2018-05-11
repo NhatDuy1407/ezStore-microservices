@@ -35,7 +35,7 @@ namespace Microservice.IdentityServer
             });
 
             // Add application services.
-            services.AddTransient(i => new MemberContext(configuration.GetConnectionString("MongoDefaultConnection"), configuration.GetConnectionString("MongoDefaultDatabaseName"), false, i.GetService<IBusControl>(), i.GetService<IConfiguration>()));
+            services.AddTransient(i => new MemberContext(configuration.GetConnectionString("MongoDefaultConnection"), configuration.GetConnectionString("MongoDefaultDatabaseName"), false, i.GetService<IBusControl>()));
             services.AddTransient<IAttachEntityWriteService>(i => new WriteService(i.GetService<MemberContext>()));
             services.AddTransient<ICommandHandler<UpdateUserLoginCommand>, MemberCommandHandler>();
         }
