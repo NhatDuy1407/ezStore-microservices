@@ -1,7 +1,6 @@
 ﻿using System.Threading.Tasks;
 using Microservice.Core;
 using Microservice.Core.DataAccess.Interfaces;
-using Microservice.Core.Service;
 using Microservice.Member.Domain.MemberAggregate;
 
 namespace Microservice.IdentityServer.Application.Commands

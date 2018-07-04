@@ -1,13 +1,6 @@
 version: '3.4'
 
 services:
-  microservice.identityserver:
-    environment:
-      - ASPNETCORE_ENVIRONMENT=Development
-    ports:
-      - "80"
-    network_mode: my-bridge-network
-
   microservice.logging.api:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
