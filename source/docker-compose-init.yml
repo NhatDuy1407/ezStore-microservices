@@ -1,0 +1,57 @@
+version: '3.4'
+
+networks:
+  microservice-bridge-network:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+      - subnet: 192.168.0.0/16
+    
+services:
+  identity-db:
+    build:
+      context: .
+      dockerfile: Dockerfile-Postgres
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_PASSWORD=12345678
+      - POSTGRES_USER=IdentityServer
+      - POSTGRES_DB=IdentityServer
+    networks:
+      microservice-bridge-network:
+        ipv4_address: 192.168.0.103
+
+  services-queue:
+    build:
+      context: .
+      dockerfile: Dockerfile-RabbitMQ
+    ports:
+      - 5672:5672
+      - 15672:15672
+    networks:
+      microservice-bridge-network:
+        ipv4_address: 192.168.0.101
+
+  services-db:
+    image: mongo:latest
+    build:
+      context: .
+      dockerfile: Dockerfile-MongoDB
+    ports:
+      - 27017:27017
+    networks:
+      microservice-bridge-network:
+        ipv4_address: 192.168.0.100
+
+  services-redis:
+    image: redis:latest
+    build:
+      context: .
+      dockerfile: Dockerfile-Redis
+    ports:
+      - 6379:6379
+    networks:
+      microservice-bridge-network:
+        ipv4_address: 192.168.0.102

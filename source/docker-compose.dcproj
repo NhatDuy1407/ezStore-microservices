@@ -7,13 +7,19 @@
     <DockerLaunchBrowser>True</DockerLaunchBrowser>
     <DockerServiceUrl>http://localhost:{ServicePort}/api/values</DockerServiceUrl>
     <DockerServiceName>microservice.service.userservice.api</DockerServiceName>
+    <DockerLaunchAction>LaunchBrowser</DockerLaunchAction>
   </PropertyGroup>
   <ItemGroup>
+    <None Include="docker-compose-init.yml" />
     <None Include="docker-compose.override.yml">
       <DependentUpon>docker-compose.yml</DependentUpon>
     </None>
     <None Include="docker-compose.yml" />
     <None Include=".dockerignore" />
     <None Include="docker-compose.ci.build.yml" />
+    <None Include="Dockerfile-Redis" />
+    <None Include="Dockerfile-Postgres" />
+    <None Include="Dockerfile-MongoDB" />
+    <None Include="Dockerfile-RabbitMQ" />
   </ItemGroup>
 </Project>
