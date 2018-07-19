@@ -1,2 +1,2 @@
-FROM rabbitmq:3.7
+FROM rabbitmq:latest
 RUN rabbitmq-plugins enable rabbitmq_management

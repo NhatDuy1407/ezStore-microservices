@@ -28,7 +28,7 @@ namespace Microservice.IdentityServer
         {
             // Add framework services.
             services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseNpgsql(Configuration.GetConnectionString("DefaultConnection")));
+                options.UseMySql(Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()
@@ -48,13 +48,13 @@ namespace Microservice.IdentityServer
                 .AddConfigurationStore(options =>
                 {
                     options.ConfigureDbContext = builder =>
-                        builder.UseNpgsql(Configuration.GetConnectionString("DefaultConnection"),
+                        builder.UseMySql(Configuration.GetConnectionString("DefaultConnection"),
                             db => db.MigrationsAssembly(migrationsAssembly));
                 })
                 .AddOperationalStore(options =>
                 {
                     options.ConfigureDbContext = builder =>
-                        builder.UseNpgsql(Configuration.GetConnectionString("DefaultConnection"),
+                        builder.UseMySql(Configuration.GetConnectionString("DefaultConnection"),
                             db => db.MigrationsAssembly(migrationsAssembly));
                 });
 
