@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace Microservice.Core.DataAccess.Entities
+namespace Microservice.Core.Models
 {
-    public class BaseModel
+    public class ModelEntity
     {
         public DateTime? CreatedDate { get; set; }
 

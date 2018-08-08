@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microservice.Core.Interfaces;
-using Microservice.Logging.API.Application.Commands;
 using Microservice.Logging.API.Application.Queries;
 using Microservice.Logging.API.Application.ViewModels;
 using Microsoft.AspNetCore.Mvc;
@@ -22,21 +21,17 @@ namespace Microservice.Logging.API.Controllers
 
         // GET api/values
         [HttpGet]
-        public Task<List<LogViewModel>> Get()
+        [Route("ExceptionLogs")]
+        public Task<List<LogViewModel>> ExceptionLogs()
         {
-            return Task.FromResult(_loggingQueries.GetLogs().Result);
+            return Task.FromResult(_loggingQueries.GetExceptionLogs().Result);
         }
 
-        [HttpPost]
-        public IActionResult Log([FromBody]LogViewModel info)
+        [HttpGet]
+        [Route("AuditLogs")]
+        public Task<List<LogViewModel>> AuditLogs()
         {
-            if (ModelState.IsValid)
-            {
-                var command = new AddExceptionLogCommand(info);
-                CommandBus.ExecuteAsync(command).Wait();
-                return Ok();
-            }
-            return Ok(true);
+            return Task.FromResult(_loggingQueries.GetAuditLogs().Result);
         }
     }
 }

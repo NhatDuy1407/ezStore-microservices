@@ -1,5 +1,6 @@
 ﻿using Microservice.Core;
 using Microservice.Core.Interfaces;
+using Microservice.Logging.API.Application.Queries;
 using Microservice.Logging.API.Swagger;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Cors.Infrastructure;
@@ -45,6 +46,7 @@ namespace Microservice.Logging.API
 
             //// Add application services.
             services.AddTransient<ICommandBus, CommandBus>();
+            services.AddTransient<ILoggingQueries, LoggingQueries>();
             //services.AddTransient<ICacheService>(i => new RedisCacheService(Configuration.GetConnectionString("RedisAddress")));
             ServiceConfiguration.ConfigureServices(services, Configuration);
         }

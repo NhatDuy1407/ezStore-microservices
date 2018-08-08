@@ -1,8 +1,9 @@
-﻿using System;
+﻿using Microservice.Core.Models;
+using System;
 
 namespace Microservice.Core.DataAccess.Entities
 {
-    public class BaseGuidModel : BaseModel
+    public class BaseGuidModel : ModelEntity
     {
         public BaseGuidModel()
         {

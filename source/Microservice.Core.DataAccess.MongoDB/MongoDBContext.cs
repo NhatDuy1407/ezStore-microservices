@@ -1,12 +1,19 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Security.Authentication;
+using MassTransit;
+using Microservice.Core.Interfaces;
 using MongoDB.Driver;
 
 namespace Microservice.Core.DataAccess.MongoDB
 {
     public class MongoDbContext
     {
+        private readonly IBusControl _busControl;
+
+        public List<IEvent> Events { get; private set; }
+
         private readonly Hashtable _hashRepository;
 
         public MongoDbContext(string connectionString, string databaseName, bool isSsl)
@@ -15,7 +22,7 @@ namespace Microservice.Core.DataAccess.MongoDB
             {
                 var settings = MongoClientSettings.FromUrl(new MongoUrl(connectionString));
                 if (isSsl)
-                    settings.SslSettings = new SslSettings {EnabledSslProtocols = SslProtocols.Tls12};
+                    settings.SslSettings = new SslSettings { EnabledSslProtocols = SslProtocols.Tls12 };
                 var mongoClient = new MongoClient(settings);
                 Database = mongoClient.GetDatabase(databaseName);
 
@@ -35,7 +42,11 @@ namespace Microservice.Core.DataAccess.MongoDB
             if (!_hashRepository.Contains(key))
                 _hashRepository[key] = Database.GetCollection<TEntity>(key);
 
-            return (IMongoCollection<TEntity>) _hashRepository[key];
+            return (IMongoCollection<TEntity>)_hashRepository[key];
+        }
+
+        public void SaveChanges()
+        {
         }
     }
 }

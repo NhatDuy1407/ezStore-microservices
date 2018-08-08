@@ -81,7 +81,7 @@ namespace Microservice.IdentityServer.Controllers
                 {
                     _logger.LogInformation("User logged in.");
                     var command = new UpdateUserLoginCommand(model.Email);
-                    _commandBus.ExecuteAsync(command);
+                    await _commandBus.ExecuteAsync(command);
 
                     return RedirectToLocal(returnUrl);
                 }

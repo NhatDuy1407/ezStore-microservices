@@ -4,28 +4,17 @@ using Microservice.Core.Interfaces;
 
 namespace Microservice.Core.Models
 {
-    public class DomainEntity
+    public class DomainEntity: ModelEntity
     {
-        public DateTime? CreatedDate { get; set; }
+        public List<IEvent> Events { get; private set; }
 
-        public string CreatedBy { get; set; }
-
-        public DateTime? UpdatedDate { get; set; }
-
-        public string UpdatedBy { get; set; }
-
-        public bool Deleted { get; set; }
-
-        private List<IEvent> events;
-        public List<IEvent> Events => events;
-
-        protected void AddDomainEvent(IEvent @event)
+        protected void ApplyChange(IEvent @event)
         {
-            if (events == null)
+            if (Events == null)
             {
-                events = new List<IEvent>();
+                Events = new List<IEvent>();
             }
-            events.Add(@event);
+            Events.Add(@event);
         }
     }
 }

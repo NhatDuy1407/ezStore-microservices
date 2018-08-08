@@ -2,10 +2,9 @@
 using MassTransit;
 using MassTransit.Util;
 using Microservice.Core;
+using Microservice.Core.DataAccess;
 using Microservice.Core.DataAccess.Interfaces;
-using Microservice.Core.Service;
 using Microservice.IdentityServer.Application.Commands;
-using Microservice.Member.Infrastructure;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -35,8 +34,8 @@ namespace Microservice.IdentityServer
             });
 
             // Add application services.
-            services.AddTransient(i => new MemberContext(configuration.GetConnectionString("MongoDefaultConnection"), configuration.GetConnectionString("MongoDefaultDatabaseName"), false, i.GetService<IBusControl>()));
-            services.AddTransient<IAttachEntityWriteService>(i => new WriteService(i.GetService<MemberContext>()));
+            services.AddTransient<IDomainContext>(i => new DomainContext(i.GetService<IBusControl>()));
+            services.AddTransient<IDomainService>(i => new DomainService(i.GetService<IDomainContext>()));
             services.AddTransient<ICommandHandler<UpdateUserLoginCommand>, MemberCommandHandler>();
         }
     }

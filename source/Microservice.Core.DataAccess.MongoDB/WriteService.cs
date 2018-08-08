@@ -21,7 +21,7 @@ namespace Microservice.Core.DataAccess.MongoDB
             var key = typeof(TEntity).Name;
             if (!_hashRepository.Contains(key))
             {
-                var repositoryType = typeof(BaseRepository<>);
+                var repositoryType = typeof(BaseModelRepository<>);
                 var repository = Activator.CreateInstance(repositoryType.MakeGenericType(typeof(TEntity)), Context);
                 _hashRepository[key] = repository;
             }
@@ -29,30 +29,10 @@ namespace Microservice.Core.DataAccess.MongoDB
             return (IWriteRepository<TEntity>)_hashRepository[key];
         }
 
-        #region disposed
-
-        private bool _disposed;
-
-        public virtual void Dispose()
-        {
-            Dispose(true);
-            GC.SuppressFinalize(this);
-        }
-
-        protected virtual void Dispose(bool disposing)
-        {
-            if (!_disposed)
-                if (disposing)
-                {
-                }
-            _disposed = true;
-        }
 
         public void SaveChanges()
         {
-            throw new NotImplementedException();
+            Context.SaveChanges();
         }
-
-        #endregion disposed
     }
 }

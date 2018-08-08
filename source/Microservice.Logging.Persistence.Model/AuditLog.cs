@@ -1,11 +1,14 @@
 ﻿using System;
 using Microservice.Core.Models;
+using MongoDB.Bson;
 
-namespace Microservice.Logging.Domain.AuditLoggingAggregate
+namespace Microservice.Logging.Persistence.Model
 {
-    public class AuditLogging : DomainEntity
+    public class AuditLog : ModelEntity
     {
-        public AuditLogging()
+        public ObjectId Id { get; set; }
+
+        public AuditLog()
         {
             CreatedDate = DateTime.Now;
             UpdatedDate = DateTime.Now;

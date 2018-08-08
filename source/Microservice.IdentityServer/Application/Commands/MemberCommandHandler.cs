@@ -7,19 +7,19 @@ namespace Microservice.IdentityServer.Application.Commands
 {
     public class MemberCommandHandler : ICommandHandler<UpdateUserLoginCommand>
     {
-        private readonly IAttachEntityWriteService _writeService;
+        private readonly IDomainService _service;
 
-        public MemberCommandHandler(IAttachEntityWriteService writeService)
+        public MemberCommandHandler(IDomainService service)
         {
-            _writeService = writeService;
+            _service = service;
         }
 
         public Task ExecuteAsync(UpdateUserLoginCommand command)
         {
-            var user = new User { UserName = command.Email };
-            user.NotifyUserLogin();
-            _writeService.AttachEntity(user);
-            _writeService.SaveChanges();
+            var user = new UserDomain { Username = command.Email };
+            user.Login();
+            _service.Repository<UserDomain>().Save(user);
+            _service.SaveChanges();
             return Task.CompletedTask;
         }
     }

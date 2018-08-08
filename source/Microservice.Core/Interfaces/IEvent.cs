@@ -1,7 +1,9 @@
-﻿namespace Microservice.Core.Interfaces
+﻿using System;
+
+namespace Microservice.Core.Interfaces
 {
     public interface IEvent
     {
-        object Data { get; set; }
+        Guid Id { get; }
     }
 }

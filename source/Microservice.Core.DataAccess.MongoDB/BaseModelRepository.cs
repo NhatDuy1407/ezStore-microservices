@@ -2,16 +2,17 @@
 using System.Linq;
 using System.Linq.Expressions;
 using Microservice.Core.DataAccess.Interfaces;
+using Microservice.Core.Models;
 using MongoDB.Driver;
 
 namespace Microservice.Core.DataAccess.MongoDB
 {
-    public class BaseRepository<TModel> : IWriteRepository<TModel> where TModel : class
+    public class BaseModelRepository<TModel> : IWriteRepository<TModel> where TModel : ModelEntity
     {
         protected readonly MongoDbContext Context;
         internal IMongoCollection<TModel> DbSet;
 
-        public BaseRepository(MongoDbContext context)
+        public BaseModelRepository(MongoDbContext context)
         {
             Context = context;
             DbSet = Context.Set<TModel>();

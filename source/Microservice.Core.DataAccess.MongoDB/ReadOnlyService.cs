@@ -21,7 +21,7 @@ namespace Microservice.Core.DataAccess.MongoDB
             var key = typeof(TEntity).Name;
             if (!_hashRepository.Contains(key))
             {
-                var repositoryType = typeof(BaseRepository<>);
+                var repositoryType = typeof(BaseModelRepository<>);
                 var repository = Activator.CreateInstance(repositoryType.MakeGenericType(typeof(TEntity)), Context);
                 _hashRepository[key] = repository;
             }

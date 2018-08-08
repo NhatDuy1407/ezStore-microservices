@@ -27,7 +27,6 @@
     <ProjectReference Include="..\Microservice.Core.DataAccess\Microservice.Core.DataAccess.csproj" />
     <ProjectReference Include="..\Microservice.Core\Microservice.Core.csproj" />
     <ProjectReference Include="..\Microservice.Member.Domain\Microservice.Member.Domain.csproj" />
-    <ProjectReference Include="..\Microservice.Member.Infrastructure\Microservice.Member.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

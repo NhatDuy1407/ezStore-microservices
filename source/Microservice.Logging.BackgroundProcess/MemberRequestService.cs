@@ -1,9 +1,9 @@
 ﻿using System;
 using MassTransit;
 using MassTransit.RabbitMqTransport;
+using Microservice.Core.DataAccess.MongoDB;
 using Microservice.Core.Request;
 using Microservice.Logging.BackgroundProcess.Consumers;
-using Microservice.Logging.Infrastructure;
 using Microsoft.Extensions.Configuration;
 
 namespace Microservice.Logging.BackgroundProcess
@@ -21,7 +21,7 @@ namespace Microservice.Logging.BackgroundProcess
         {
             return e =>
             {
-                e.Consumer(() => new MemberConsumer(_configuration, new WriteService(new LoggingContext(_configuration.GetConnectionString("DefaultConnection"), _configuration.GetConnectionString("DefaultDatabaseName"), false))));
+                e.Consumer(() => new MemberConsumer(_configuration, new WriteService(new MongoDbContext(_configuration.GetConnectionString("DefaultConnection"), _configuration.GetConnectionString("DefaultDatabaseName"), false))));
             };
         }
     }
