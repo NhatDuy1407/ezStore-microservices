@@ -5,8 +5,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Microservice.SharedEvents\Microservice.SharedEvents.csproj" />
     <ProjectReference Include="..\Microservice.Core\Microservice.Core.csproj" />
+    <ProjectReference Include="..\Microservice.SharedEvents\Microservice.SharedEvents.csproj" />
   </ItemGroup>
 
 </Project>
