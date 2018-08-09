@@ -12,7 +12,7 @@ namespace Microservice.Logging.BackgroundProcess
     {
         private readonly IConfiguration _configuration;
 
-        public ComsummerService(IConfiguration configuration) : base(configuration.GetConnectionString("RabbitMQHost"), "member_service")
+        public ComsummerService(IConfiguration configuration) : base(configuration.GetConnectionString("RabbitMQHost"), "logging_service")
         {
             _configuration = configuration;
         }
