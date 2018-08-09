@@ -1,19 +1,23 @@
-﻿using Microservice.Logging.Persistence.Model;
+﻿using System;
+using Microservice.Logging.Persistence.Model;
 
 namespace Microservice.Logging.API.Application.ViewModels
 {
     public class LogViewModel
     {
-        public LogViewModel(ExceptionLog i)
+        public LogViewModel(LogData i)
         {
-            this.Content=i.Content;
+            Date = i.Date;
+            Level = i.Level;
+            Thread = i.Thread;
+            Logger = i.Logger;
+            Message = i.Message;
         }
 
-        public LogViewModel(AuditLog i)
-        {
-            this.Content = i.Content;
-        }
-
-        public string Content { get; set; }
+        public DateTime Date { get; }
+        public string Level { get; }
+        public string Thread { get; }
+        public string Logger { get; }
+        public string Message { get; }
     }
 }

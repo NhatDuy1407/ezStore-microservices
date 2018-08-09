@@ -4,16 +4,11 @@
     <TargetFramework>netcoreapp2.1</TargetFramework>
   </PropertyGroup>
 
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <LangVersion>7.1</LangVersion>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <LangVersion>7.1</LangVersion>
-  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="MassTransit" Version="5.1.4" />
+  </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Microservice.Core\Microservice.Core.csproj" />
     <ProjectReference Include="..\Microservice.SharedEvents\Microservice.SharedEvents.csproj" />
   </ItemGroup>
 

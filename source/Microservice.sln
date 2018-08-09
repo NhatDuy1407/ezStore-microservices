@@ -39,6 +39,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microservice.Core.DomainSer
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microservice.Core.MessageQueue", "Microservice.Core.MessageQueue\Microservice.Core.MessageQueue.csproj", "{F28A8C2B-FAD8-431B-8E3F-210318612A65}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microservice.Core.Logging", "Microservice.Core.Logging\Microservice.Core.Logging.csproj", "{DCDFB7AD-D08C-42C9-98F9-5FD47BE34D1C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -97,6 +99,10 @@ Global
 		{F28A8C2B-FAD8-431B-8E3F-210318612A65}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F28A8C2B-FAD8-431B-8E3F-210318612A65}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F28A8C2B-FAD8-431B-8E3F-210318612A65}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DCDFB7AD-D08C-42C9-98F9-5FD47BE34D1C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DCDFB7AD-D08C-42C9-98F9-5FD47BE34D1C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DCDFB7AD-D08C-42C9-98F9-5FD47BE34D1C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DCDFB7AD-D08C-42C9-98F9-5FD47BE34D1C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -117,6 +123,7 @@ Global
 		{BFB341A7-7E61-4C31-B1B3-A8D6F3E98693} = {DAFD73DB-D761-4C98-9D9C-A06AD76DA3A4}
 		{6D2DFFA7-4D77-495B-9B77-CFD8D12C4379} = {A6613CAF-30A7-471B-A661-52D34D481943}
 		{F28A8C2B-FAD8-431B-8E3F-210318612A65} = {A6613CAF-30A7-471B-A661-52D34D481943}
+		{DCDFB7AD-D08C-42C9-98F9-5FD47BE34D1C} = {A6613CAF-30A7-471B-A661-52D34D481943}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {88D9F8A4-8F8A-4E03-A92F-34BCFF26A09D}

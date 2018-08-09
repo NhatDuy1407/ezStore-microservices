@@ -16,14 +16,9 @@ namespace Microservice.Logging.API.Application.Queries
             this._readOnlyService = readOnlyService;
         }
 
-        public Task<List<LogViewModel>> GetExceptionLogs()
+        public Task<List<LogViewModel>> GetLogs()
         {
-            return Task.FromResult(this._readOnlyService.Repository<ExceptionLog>().Get().Select(i => new LogViewModel(i)).ToList());
-        }
-
-        public Task<List<LogViewModel>> GetAuditLogs()
-        {
-            return Task.FromResult(this._readOnlyService.Repository<AuditLog>().Get().Select(i => new LogViewModel(i)).ToList());
+            return Task.FromResult(this._readOnlyService.Repository<LogData>().Get().Select(i => new LogViewModel(i)).ToList());
         }
     }
 }

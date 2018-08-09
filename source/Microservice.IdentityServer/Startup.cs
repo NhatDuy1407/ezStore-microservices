@@ -9,8 +9,11 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microservice.IdentityServer.Data;
 using Microservice.IdentityServer.Models;
-using Microservice.IdentityServer.Services;
 using Microsoft.AspNetCore.Identity;
+using Microservice.Core.Logging;
+using System;
+using MassTransit;
+using Microservice.IdentityServer.Services;
 
 namespace Microservice.IdentityServer
 {
@@ -58,21 +61,22 @@ namespace Microservice.IdentityServer
                             db => db.MigrationsAssembly(migrationsAssembly));
                 });
 
-            services.AddAuthentication().AddTwitter(twitterOptions =>
-            {
-                twitterOptions.ConsumerKey = Configuration["Authentication:Twitter:ConsumerKey"];
-                twitterOptions.ConsumerSecret = Configuration["Authentication:Twitter:ConsumerSecret"];
-            });
+            //services.AddAuthentication().AddTwitter(twitterOptions =>
+            //{
+            //    twitterOptions.ConsumerKey = Configuration["Authentication:Twitter:ConsumerKey"];
+            //    twitterOptions.ConsumerSecret = Configuration["Authentication:Twitter:ConsumerSecret"];
+            //});
 
             services.AddTransient<ICommandBus, CommandBus>();
             ServiceConfiguration.ConfigureServices(services, Configuration);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory, IServiceProvider serviceProvider)
         {
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
+            loggerFactory.AddProvider(new MicroserviceLoggerProvider(serviceProvider.GetService<IBusControl>()));
 
             if (env.IsDevelopment())
             {

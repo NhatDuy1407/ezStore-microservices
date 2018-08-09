@@ -21,17 +21,10 @@ namespace Microservice.Logging.API.Controllers
 
         // GET api/values
         [HttpGet]
-        [Route("ExceptionLogs")]
-        public Task<List<LogViewModel>> ExceptionLogs()
+        [Route("Logs")]
+        public Task<List<LogViewModel>> Logs()
         {
-            return Task.FromResult(_loggingQueries.GetExceptionLogs().Result);
-        }
-
-        [HttpGet]
-        [Route("AuditLogs")]
-        public Task<List<LogViewModel>> AuditLogs()
-        {
-            return Task.FromResult(_loggingQueries.GetAuditLogs().Result);
+            return Task.FromResult(_loggingQueries.GetLogs().Result);
         }
     }
 }

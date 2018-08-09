@@ -6,8 +6,6 @@ namespace Microservice.Logging.API.Application.Queries
 {
     public interface ILoggingQueries
     {
-        Task<List<LogViewModel>> GetExceptionLogs();
-
-        Task<List<LogViewModel>> GetAuditLogs();
+        Task<List<LogViewModel>> GetLogs();
     }
 }

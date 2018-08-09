@@ -10,8 +10,7 @@ namespace Microservice.Core.DataAccess.Entities
         {
             if (Id is Guid)
             {
-                var obj = this as BaseEntity<Guid>;
-                if (obj != null)
+                if (this is BaseEntity<Guid> obj)
                     obj.Id = Guid.NewGuid();
             }
         }
