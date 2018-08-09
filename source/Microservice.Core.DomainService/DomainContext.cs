@@ -3,11 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using MassTransit;
-using Microservice.Core.DataAccess.Interfaces;
+using Microservice.Core.DomainService.Interfaces;
 using Microservice.Core.Interfaces;
 using Microservice.Core.Models;
 
-namespace Microservice.Core.DataAccess
+namespace Microservice.Core.DomainService
 {
     public class DomainContext: IDomainContext
     {

@@ -3,14 +3,14 @@ using MassTransit;
 using MassTransit.RabbitMqTransport;
 using MassTransit.Util;
 
-namespace Microservice.Core.Request
+namespace Microservice.Core.MessageQueue.Request
 {
-    public abstract class RequestService
+    public abstract class ComsumerService
     {
         private readonly string _rabbitMqHost;
         private readonly string _serviceQueueName;
 
-        protected RequestService(string rabbitMqHost, string serviceQueueName)
+        protected ComsumerService(string rabbitMqHost, string serviceQueueName)
         {
             _rabbitMqHost = rabbitMqHost;
             _serviceQueueName = serviceQueueName;

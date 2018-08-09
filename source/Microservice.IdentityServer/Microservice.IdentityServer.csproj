@@ -25,6 +25,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Microservice.Core.DataAccess\Microservice.Core.DataAccess.csproj" />
+    <ProjectReference Include="..\Microservice.Core.DomainService\Microservice.Core.DomainService.csproj" />
     <ProjectReference Include="..\Microservice.Core\Microservice.Core.csproj" />
     <ProjectReference Include="..\Microservice.Member.Domain\Microservice.Member.Domain.csproj" />
   </ItemGroup>

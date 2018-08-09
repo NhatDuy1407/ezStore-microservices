@@ -1,6 +1,6 @@
 ﻿namespace Microservice.Core.Interfaces
 {
-    public interface ICommand
+    public interface ICommand: IValidation
     {
     }
 }

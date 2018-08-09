@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections;
-using Microservice.Core.DataAccess.Interfaces;
+using Microservice.Core.DomainService.Interfaces;
 using Microservice.Core.Models;
 
-namespace Microservice.Core.DataAccess
+namespace Microservice.Core.DomainService
 {
     public class DomainService: IDomainService
     {

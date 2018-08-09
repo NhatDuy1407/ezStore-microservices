@@ -1,9 +1,9 @@
 ﻿using System;
 using Microservice.Core.Interfaces;
 
-namespace Microservice.Core.Models
+namespace Microservice.Core
 {
-    public class Command : ICommand
+    public abstract class Command : ICommand
     {
         public Guid CommandId { get; set; }
 
@@ -11,5 +11,7 @@ namespace Microservice.Core.Models
         {
             CommandId = Guid.NewGuid();
         }
+
+        public abstract bool Validate();
     }
 }

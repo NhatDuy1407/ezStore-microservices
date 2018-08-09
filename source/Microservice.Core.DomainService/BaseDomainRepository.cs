@@ -1,7 +1,7 @@
-﻿using Microservice.Core.DataAccess.Interfaces;
+﻿using Microservice.Core.DomainService.Interfaces;
 using Microservice.Core.Models;
 
-namespace Microservice.Core.DataAccess
+namespace Microservice.Core.DomainService
 {
     public class BaseDomainRepository<TModel> : ISaveRepository<TModel> where TModel : DomainEntity
     {

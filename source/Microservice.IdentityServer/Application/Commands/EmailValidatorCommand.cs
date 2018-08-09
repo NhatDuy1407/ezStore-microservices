@@ -2,18 +2,18 @@
 
 namespace Microservice.IdentityServer.Application.Commands
 {
-    public class UpdateUserLoginCommand : ValidationDecoratorCommand
+    public class EmailValidatorCommand : ValidationDecoratorCommand
     {
         public string Email { get; }
 
-        public UpdateUserLoginCommand(string email) : base(new EmailValidatorCommand(email))
+        public EmailValidatorCommand(string email)
         {
             this.Email = email;
         }
 
         public override bool SelfValidate()
         {
-            return true;
+            return !string.IsNullOrEmpty(Email);
         }
     }
 }

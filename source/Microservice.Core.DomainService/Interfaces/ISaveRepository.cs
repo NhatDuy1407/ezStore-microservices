@@ -1,4 +1,4 @@
-﻿namespace Microservice.Core.DataAccess.Interfaces
+﻿namespace Microservice.Core.DomainService.Interfaces
 {
     public interface ISaveRepository<TModel> 
     {

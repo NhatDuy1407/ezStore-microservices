@@ -17,7 +17,7 @@ namespace Microservice.Logging.BackgroundProcess.Consumers
             _writeService = writeService;
         }
 
-        public async Task Consume(ConsumeContext<UserLoginedEvent> context)
+        public Task Consume(ConsumeContext<UserLoginedEvent> context)
         {
             var username = context.Message.Username;
             _writeService.Repository<AuditLog>().Insert(new AuditLog()
@@ -25,6 +25,8 @@ namespace Microservice.Logging.BackgroundProcess.Consumers
                 Content = $"{username} log in at " + DateTime.Now.ToString("F")
             });
             context.Respond(new { Status = true });
+
+            return Task.CompletedTask;
         }
     }
 }

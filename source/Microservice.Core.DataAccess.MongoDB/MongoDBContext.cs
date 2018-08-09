@@ -2,7 +2,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Security.Authentication;
-using MassTransit;
 using Microservice.Core.Interfaces;
 using MongoDB.Driver;
 
@@ -10,8 +9,6 @@ namespace Microservice.Core.DataAccess.MongoDB
 {
     public class MongoDbContext
     {
-        private readonly IBusControl _busControl;
-
         public List<IEvent> Events { get; private set; }
 
         private readonly Hashtable _hashRepository;

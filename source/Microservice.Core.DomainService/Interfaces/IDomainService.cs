@@ -1,7 +1,7 @@
 ﻿using Microservice.Core.Models;
 using System;
 
-namespace Microservice.Core.DataAccess.Interfaces
+namespace Microservice.Core.DomainService.Interfaces
 {
     public interface IDomainService
     {

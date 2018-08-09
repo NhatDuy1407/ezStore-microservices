@@ -19,6 +19,9 @@ namespace Microservice.Core
             if (command == null)
                 throw new ArgumentNullException("command");
 
+            if(!command.Validate())
+                throw new ValidationErrorException(command.ToString());
+
             var handler = _provider.GetService(typeof(ICommandHandler<TCommand>));
 
             if (handler == null)

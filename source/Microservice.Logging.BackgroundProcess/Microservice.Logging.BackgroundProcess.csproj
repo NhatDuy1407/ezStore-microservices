@@ -5,7 +5,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="MassTransit.RabbitMQ" Version="5.1.4" />
     <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.8" />
   </ItemGroup>
 
@@ -23,6 +22,7 @@
     <ProjectReference Include="..\Microservice.Core.CachingService\Microservice.Core.CachingService.csproj" />
     <ProjectReference Include="..\Microservice.Core.DataAccess.MongoDB\Microservice.Core.DataAccess.MongoDB.csproj" />
     <ProjectReference Include="..\Microservice.Core.DataAccess\Microservice.Core.DataAccess.csproj" />
+    <ProjectReference Include="..\Microservice.Core.MessageQueue\Microservice.Core.MessageQueue.csproj" />
     <ProjectReference Include="..\Microservice.Logging.Persistence.Model\Microservice.Logging.Persistence.Model.csproj" />
     <ProjectReference Include="..\Microservice.SharedEvents\Microservice.SharedEvents.csproj" />
   </ItemGroup>

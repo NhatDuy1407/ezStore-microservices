@@ -2,13 +2,13 @@
 using MassTransit;
 using MassTransit.RabbitMqTransport;
 using Microservice.Core.DataAccess.MongoDB;
-using Microservice.Core.Request;
+using Microservice.Core.MessageQueue.Request;
 using Microservice.Logging.BackgroundProcess.Consumers;
 using Microsoft.Extensions.Configuration;
 
 namespace Microservice.Logging.BackgroundProcess
 {
-    public class MemberRequestService : RequestService
+    public class MemberRequestService : ComsumerService
     {
         private readonly IConfiguration _configuration;
 

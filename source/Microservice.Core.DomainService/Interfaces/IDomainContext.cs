@@ -1,6 +1,6 @@
 ﻿using Microservice.Core.Models;
 
-namespace Microservice.Core.DataAccess.Interfaces
+namespace Microservice.Core.DomainService.Interfaces
 {
     public interface IDomainContext
     {

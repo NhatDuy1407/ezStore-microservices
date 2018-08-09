@@ -2,8 +2,8 @@
 using MassTransit;
 using MassTransit.Util;
 using Microservice.Core;
-using Microservice.Core.DataAccess;
-using Microservice.Core.DataAccess.Interfaces;
+using Microservice.Core.DomainService;
+using Microservice.Core.DomainService.Interfaces;
 using Microservice.IdentityServer.Application.Commands;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;

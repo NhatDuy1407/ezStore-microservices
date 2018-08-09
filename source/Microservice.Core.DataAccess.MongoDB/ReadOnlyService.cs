@@ -28,26 +28,5 @@ namespace Microservice.Core.DataAccess.MongoDB
 
             return (IReadOnlyRepository<TEntity>) _hashRepository[key];
         }
-
-        #region disposed
-
-        private bool _disposed;
-
-        public virtual void Dispose()
-        {
-            Dispose(true);
-            GC.SuppressFinalize(this);
-        }
-
-        protected virtual void Dispose(bool disposing)
-        {
-            if (!_disposed)
-                if (disposing)
-                {
-                }
-            _disposed = true;
-        }
-
-        #endregion
     }
 }
