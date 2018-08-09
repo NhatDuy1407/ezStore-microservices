@@ -14,6 +14,8 @@ using Microservice.Core.Logging;
 using System;
 using MassTransit;
 using Microservice.IdentityServer.Services;
+using Microservice.Core.DomainService.Interfaces;
+using Microservice.Core.DomainService;
 
 namespace Microservice.IdentityServer
 {
@@ -31,7 +33,7 @@ namespace Microservice.IdentityServer
         {
             // Add framework services.
             services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseMySql(Configuration.GetConnectionString("DefaultConnection")));
+                options.UseMySql(Configuration.GetConnectionString(Constants.DefaultConnection)));
 
             services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()
@@ -51,13 +53,13 @@ namespace Microservice.IdentityServer
                 .AddConfigurationStore(options =>
                 {
                     options.ConfigureDbContext = builder =>
-                        builder.UseMySql(Configuration.GetConnectionString("DefaultConnection"),
+                        builder.UseMySql(Configuration.GetConnectionString(Constants.DefaultConnection),
                             db => db.MigrationsAssembly(migrationsAssembly));
                 })
                 .AddOperationalStore(options =>
                 {
                     options.ConfigureDbContext = builder =>
-                        builder.UseMySql(Configuration.GetConnectionString("DefaultConnection"),
+                        builder.UseMySql(Configuration.GetConnectionString(Constants.DefaultConnection),
                             db => db.MigrationsAssembly(migrationsAssembly));
                 });
 
@@ -76,7 +78,7 @@ namespace Microservice.IdentityServer
         {
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
-            loggerFactory.AddProvider(new MicroserviceLoggerProvider(serviceProvider.GetService<IBusControl>()));
+            loggerFactory.AddProvider(new MicroserviceLoggerProvider(serviceProvider.GetService<IBusControl>(), Configuration));
 
             if (env.IsDevelopment())
             {

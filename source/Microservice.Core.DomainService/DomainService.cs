@@ -16,7 +16,7 @@ namespace Microservice.Core.DomainService
         }
         private IDomainContext _context { get; }
 
-        public ISaveRepository<TEntity> Repository<TEntity>() where TEntity : DomainEntity
+        public IDomainRepository<TEntity> Repository<TEntity>() where TEntity : DomainEntity
         {
             var key = typeof(TEntity).Name;
             if (!_hashRepository.Contains(key))
@@ -26,7 +26,7 @@ namespace Microservice.Core.DomainService
                 _hashRepository[key] = repository;
             }
 
-            return (ISaveRepository<TEntity>)_hashRepository[key];
+            return (IDomainRepository<TEntity>)_hashRepository[key];
         }
 
 

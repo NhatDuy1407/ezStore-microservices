@@ -1,4 +1,5 @@
 ﻿using Microservice.Core;
+using Microservice.Core.DomainService;
 
 namespace Microservice.IdentityServer.Application.Commands
 {

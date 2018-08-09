@@ -1,6 +1,6 @@
 ﻿namespace Microservice.Core.DomainService.Interfaces
 {
-    public interface ISaveRepository<TModel> 
+    public interface IDomainRepository<TModel> 
     {
         void Save(TModel entity);
     }

@@ -45,9 +45,8 @@ namespace Microservice.Logging.API
             //});
 
             //// Add application services.
-            services.AddTransient<ICommandBus, CommandBus>();
             services.AddTransient<ILoggingQueries, LoggingQueries>();
-            //services.AddTransient<ICacheService>(i => new RedisCacheService(Configuration.GetConnectionString("RedisAddress")));
+            //services.AddTransient<ICacheService>(i => new RedisCacheService(Configuration.GetConnectionString(Constants.RedisAddress)));
             ServiceConfiguration.ConfigureServices(services, Configuration);
         }
 

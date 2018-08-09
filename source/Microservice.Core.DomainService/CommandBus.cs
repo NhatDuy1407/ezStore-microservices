@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Threading.Tasks;
-using Microservice.Core.Interfaces;
+using Microservice.Core.DomainService.Interfaces;
+using Microservice.Core.DomainService.Service;
 using Microservice.Core.Service;
 
-namespace Microservice.Core
+namespace Microservice.Core.DomainService
 {
     public class CommandBus : ICommandBus
     {
@@ -19,7 +20,7 @@ namespace Microservice.Core
             if (command == null)
                 throw new ArgumentNullException("command");
 
-            if(!command.Validate())
+            if (!command.Validate())
                 throw new ValidationErrorException(command.ToString());
 
             var handler = _provider.GetService(typeof(ICommandHandler<TCommand>));

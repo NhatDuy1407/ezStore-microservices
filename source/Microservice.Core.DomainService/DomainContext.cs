@@ -1,21 +1,22 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using MassTransit;
 using Microservice.Core.DomainService.Interfaces;
 using Microservice.Core.Interfaces;
 using Microservice.Core.Models;
+using Microsoft.Extensions.Configuration;
 
 namespace Microservice.Core.DomainService
 {
-    public class DomainContext: IDomainContext
+    public class DomainContext : IDomainContext
     {
         private readonly IBusControl _busControl;
+        private IConfiguration Configuration;
 
-        public DomainContext(IBusControl busControl)
+        public DomainContext(IConfiguration configuration, IBusControl busControl)
         {
             _busControl = busControl;
+            Configuration = configuration;
         }
 
         public List<IEvent> Events { get; private set; }
@@ -40,14 +41,24 @@ namespace Microservice.Core.DomainService
 
         public void SaveChanges()
         {
-            // everything was saved successfully
-
-            // collect event
+            // everything was validated successfully
 
             // publish events
             foreach (var @event in Events)
             {
-                _busControl.Publish(@event, @event.GetType());
+                var attr = @event.GetType().GetCustomAttributes(true).Where(i => i is MessageBusRouteAttribute).FirstOrDefault();
+                if (attr != null)
+                {
+                    foreach (var item in (attr as MessageBusRouteAttribute).RouteKeys)
+                    {
+                        var sendEndPoint = _busControl.GetSendEndpoint(new System.Uri(Configuration.GetConnectionString(Constants.RabbitMQHost) + "/" + item)).Result;
+                        sendEndPoint.Send(@event, @event.GetType());
+                    }
+                }
+                else
+                {
+                    _busControl.Publish(@event, @event.GetType());
+                }
             }
             Events.Clear();
         }

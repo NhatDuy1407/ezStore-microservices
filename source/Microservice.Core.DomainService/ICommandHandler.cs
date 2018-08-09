@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
-using Microservice.Core.Interfaces;
+using Microservice.Core.DomainService.Interfaces;
 
-namespace Microservice.Core
+namespace Microservice.Core.DomainService
 {
     public interface ICommandHandler<in TCommand> where TCommand : ICommand
     {

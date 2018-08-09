@@ -15,6 +15,7 @@ using IdentityServer4.Stores;
 using Microservice.Core.Interfaces;
 using Microservice.IdentityServer.Application.Commands;
 using Microsoft.AspNetCore.Http;
+using Microservice.Core.DomainService.Interfaces;
 
 namespace Microservice.IdentityServer.Controllers
 {

@@ -34,7 +34,7 @@ namespace Microservice.IdentityServer
             });
 
             // Add application services.
-            services.AddTransient<IDomainContext>(i => new DomainContext(i.GetService<IBusControl>()));
+            services.AddTransient<IDomainContext>(i => new DomainContext(i.GetService<IConfiguration>(), i.GetService<IBusControl>()));
             services.AddTransient<IDomainService>(i => new DomainService(i.GetService<IDomainContext>()));
             services.AddTransient<ICommandHandler<UpdateUserLoginCommand>, MemberCommandHandler>();
         }

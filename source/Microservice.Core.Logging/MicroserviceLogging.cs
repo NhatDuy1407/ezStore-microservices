@@ -1,5 +1,6 @@
 ﻿using MassTransit;
 using Microservice.SharedEvents.Logging;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using System;
 
@@ -9,11 +10,13 @@ namespace Microservice.Core.Logging
     {
         private readonly IBusControl _busControl;
         private readonly string CategoryName;
+        private IConfiguration Configuration;
 
-        public MicroserviceLogging(string categoryName, IBusControl busControl)
+        public MicroserviceLogging(string categoryName, IConfiguration configuration, IBusControl busControl)
         {
             CategoryName = categoryName;
             _busControl = busControl;
+            Configuration = configuration;
         }
 
         public IDisposable BeginScope<TState>(TState state)
@@ -39,7 +42,8 @@ namespace Microservice.Core.Logging
                 message = formatter(state, exception);
             }
 
-            _busControl.Publish(new WriteLogEvent()
+            var sendEndPoint = _busControl.GetSendEndpoint(new Uri(Configuration.GetConnectionString("RabbitMQHost") + "/logging_service")).Result;
+            sendEndPoint.Send(new WriteLogEvent()
             {
                 Level = logLevel.ToString(),
                 Logger = CategoryName,

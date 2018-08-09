@@ -1,5 +1,4 @@
 ﻿using System.Threading.Tasks;
-using Microservice.Core;
 using Microservice.Core.DomainService;
 using Microservice.Core.DomainService.Interfaces;
 using Microservice.Member.Domain.MemberAggregate;

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
+using Microservice.Core;
 using Microservice.Core.CachingService;
 using Microservice.Core.CachingService.Interfaces;
 using Microsoft.Extensions.Configuration;
@@ -13,7 +14,7 @@ namespace Microservice.Logging.BackgroundProcess.Consumers
         public BaseConsumer(IConfiguration configuration)
         {
             // write to cache for special data
-            _cacheService = new RedisCacheService(configuration.GetConnectionString("RedisAddress"));
+            _cacheService = new RedisCacheService(configuration.GetConnectionString(Constants.RedisAddress));
         }
 
         protected async Task WriteCacheAsync(Guid id, object data)

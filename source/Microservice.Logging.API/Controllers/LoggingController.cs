@@ -11,11 +11,9 @@ namespace Microservice.Logging.API.Controllers
     public class LoggingController : Controller
     {
         private readonly ILoggingQueries _loggingQueries;
-        protected readonly ICommandBus CommandBus;
 
-        public LoggingController(ILoggingQueries loggingQueries, ICommandBus commandBus)
+        public LoggingController(ILoggingQueries loggingQueries)
         {
-            CommandBus = commandBus;
             _loggingQueries = loggingQueries;
         }
 
