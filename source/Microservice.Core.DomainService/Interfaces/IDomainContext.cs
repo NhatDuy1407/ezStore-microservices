@@ -1,4 +1,5 @@
 ﻿using Microservice.Core.Models;
+using System.Threading.Tasks;
 
 namespace Microservice.Core.DomainService.Interfaces
 {
@@ -6,6 +7,6 @@ namespace Microservice.Core.DomainService.Interfaces
     {
         void AddEvents(DomainEntity entity);
 
-        void SaveChanges();
+        Task SaveChangesAsync();
     }
 }

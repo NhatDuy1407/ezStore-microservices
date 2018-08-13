@@ -1,6 +1,6 @@
 ﻿using Microservice.Core.DomainService;
 
-namespace Microservice.IdentityServer.Application.Commands
+namespace Microservice.Member.Domain.Application.Commands
 {
     public class UpdateUserLoginCommand : ValidationDecoratorCommand
     {

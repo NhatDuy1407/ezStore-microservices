@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using MassTransit;
 using Microservice.Core.DomainService.Interfaces;
 using Microservice.Core.Interfaces;
@@ -31,7 +32,7 @@ namespace Microservice.Core.DomainService
             {
                 foreach (var item in entity.Events)
                 {
-                    if (!Events.Any(i => i.Id == item.Id))
+                    if (!Events.Any(i => i.AggregateRootId == item.AggregateRootId))
                     {
                         Events.Add(item);
                     }
@@ -39,7 +40,7 @@ namespace Microservice.Core.DomainService
             }
         }
 
-        public void SaveChanges()
+        public async Task SaveChangesAsync()
         {
             // everything was validated successfully
 
@@ -52,12 +53,12 @@ namespace Microservice.Core.DomainService
                     foreach (var item in (attr as MessageBusRouteAttribute).RouteKeys)
                     {
                         var sendEndPoint = _busControl.GetSendEndpoint(new System.Uri(Configuration.GetConnectionString(Constants.RabbitMQHost) + "/" + item)).Result;
-                        sendEndPoint.Send(@event, @event.GetType());
+                        await sendEndPoint.Send(@event, @event.GetType());
                     }
                 }
                 else
                 {
-                    _busControl.Publish(@event, @event.GetType());
+                   await _busControl.Publish(@event, @event.GetType());
                 }
             }
             Events.Clear();

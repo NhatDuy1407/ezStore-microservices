@@ -7,9 +7,9 @@ namespace Microservice.Core.Models
     {
         public Event()
         {
-            Id = Guid.NewGuid();
+            AggregateRootId = Guid.NewGuid();
         }
 
-        public Guid Id { get; }
+        public Guid AggregateRootId { get; }
     }
 }

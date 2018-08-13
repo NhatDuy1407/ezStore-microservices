@@ -42,7 +42,7 @@ namespace Microservice.Core.Logging
                 message = formatter(state, exception);
             }
 
-            var sendEndPoint = _busControl.GetSendEndpoint(new Uri(Configuration.GetConnectionString("RabbitMQHost") + "/logging_service")).Result;
+            var sendEndPoint = _busControl.GetSendEndpoint(new Uri(Configuration.GetConnectionString(Constants.RabbitMQHost) + "/logging_service")).Result;
             sendEndPoint.Send(new WriteLogEvent()
             {
                 Level = logLevel.ToString(),

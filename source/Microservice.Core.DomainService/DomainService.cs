@@ -32,7 +32,7 @@ namespace Microservice.Core.DomainService
 
         public void SaveChanges()
         {
-            _context.SaveChanges();
+            _context.SaveChangesAsync();
         }
     }
 }

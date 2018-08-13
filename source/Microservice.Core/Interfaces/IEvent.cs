@@ -4,6 +4,6 @@ namespace Microservice.Core.Interfaces
 {
     public interface IEvent
     {
-        Guid Id { get; }
+        Guid AggregateRootId { get; }
     }
 }

@@ -12,10 +12,9 @@ using Microservice.IdentityServer.Services;
 using IdentityServer4.Quickstart.UI;
 using IdentityServer4.Services;
 using IdentityServer4.Stores;
-using Microservice.Core.Interfaces;
-using Microservice.IdentityServer.Application.Commands;
 using Microsoft.AspNetCore.Http;
 using Microservice.Core.DomainService.Interfaces;
+using Microservice.Member.Domain.Application.Commands;
 
 namespace Microservice.IdentityServer.Controllers
 {

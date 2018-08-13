@@ -8,7 +8,7 @@ namespace Microservice.Core.Models
     {
         public List<IEvent> Events { get; private set; }
 
-        protected void ApplyChange(IEvent @event)
+        protected void ApplyEvent(IEvent @event)
         {
             if (Events == null)
             {

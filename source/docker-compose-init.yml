@@ -31,6 +31,7 @@ services:
       dockerfile: Dockerfile-RabbitMQ
     ports:
       - 15673:15672
+      - 5673:5672
     networks:
       microservice-bridge-network:
         ipv4_address: 192.168.0.101

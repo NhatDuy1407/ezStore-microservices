@@ -6,5 +6,7 @@
         public const string DefaultConnection = "DefaultConnection";
         public const string DefaultDatabaseName = "DefaultDatabaseName";
         public const string RedisAddress = "RedisAddress";
+        public const string MemberDbConnection = "MemberDbConnection";
+        public const string MemberDbName = "MemberDbName";
     }
 }

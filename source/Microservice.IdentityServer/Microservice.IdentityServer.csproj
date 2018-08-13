@@ -3,6 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp2.1</TargetFramework>
     <DockerComposeProjectPath>..\docker-compose.dcproj</DockerComposeProjectPath>
+    <Configurations>Debug;Release;Local</Configurations>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
@@ -13,9 +14,11 @@
     <LangVersion>7.1</LangVersion>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Local|AnyCPU'">
+    <LangVersion>7.1</LangVersion>
+  </PropertyGroup>
+
   <ItemGroup>
-    <Folder Include="Application\Queries\" />
-    <Folder Include="Application\ViewModels\" />
     <Folder Include="wwwroot\" />
   </ItemGroup>
 
@@ -23,7 +26,7 @@
     <PackageReference Include="IdentityServer4.AspNetIdentity" Version="2.1.0" />
     <PackageReference Include="IdentityServer4.EntityFramework" Version="2.1.1" />
     <PackageReference Include="MassTransit.RabbitMQ" Version="5.1.4" />
-    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.8" />
+    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.1.2" />
     <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="2.1.1" />
   </ItemGroup>
 
@@ -32,10 +35,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Microservice.Core.DataAccess\Microservice.Core.DataAccess.csproj" />
+    <ProjectReference Include="..\Microservice.Core.DataAccess.MongoDB\Microservice.Core.DataAccess.MongoDB.csproj" />
     <ProjectReference Include="..\Microservice.Core.DomainService\Microservice.Core.DomainService.csproj" />
     <ProjectReference Include="..\Microservice.Core.Logging\Microservice.Core.Logging.csproj" />
-    <ProjectReference Include="..\Microservice.Core\Microservice.Core.csproj" />
     <ProjectReference Include="..\Microservice.Member.Domain\Microservice.Member.Domain.csproj" />
   </ItemGroup>
 

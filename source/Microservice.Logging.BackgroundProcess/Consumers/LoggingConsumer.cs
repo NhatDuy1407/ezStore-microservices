@@ -3,6 +3,7 @@ using MassTransit;
 using Microservice.Core.DataAccess.Interfaces;
 using Microservice.Logging.Persistence.Model;
 using Microservice.SharedEvents.Logging;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 
 namespace Microservice.Logging.BackgroundProcess.Consumers
@@ -11,7 +12,7 @@ namespace Microservice.Logging.BackgroundProcess.Consumers
     {
         private readonly IWriteService _writeService;
 
-        public LoggingConsumer(IConfiguration configuration, IWriteService writeService) : base(configuration)
+        public LoggingConsumer(IConfiguration configuration, IHostingEnvironment env, IWriteService writeService) : base(configuration, env)
         {
             _writeService = writeService;
         }
