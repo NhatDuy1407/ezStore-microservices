@@ -8,5 +8,6 @@
         public const string RedisAddress = "RedisAddress";
         public const string MemberDbConnection = "MemberDbConnection";
         public const string MemberDbName = "MemberDbName";
+        public const string LoggingNamespaces = "LoggingNamespaces";
     }
 }

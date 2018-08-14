@@ -35,8 +35,10 @@ namespace Microservice.IdentityServer
                 {
                     ClientId = "clientApp",
 
-                    // no interactive user, use the clientid/secret for authentication
-                    AllowedGrantTypes = GrantTypes.ClientCredentials,
+                    //// no interactive user, use the clientid/secret for authentication
+                    //AllowedGrantTypes = GrantTypes.ClientCredentials,
+
+                    AllowedGrantTypes = GrantTypes.ResourceOwnerPassword,
 
                     // secret for authentication
                     ClientSecrets =
@@ -45,7 +47,11 @@ namespace Microservice.IdentityServer
                     },
 
                     // scopes that client has access to
-                    AllowedScopes = { "apiApp" }
+                    AllowedScopes = {
+                        IdentityServerConstants.StandardScopes.OpenId,
+                        IdentityServerConstants.StandardScopes.Profile,
+                        "apiApp"
+                    }
                 },
 
                 // OpenID Connect implicit flow client (MVC)

@@ -69,6 +69,15 @@ namespace Microservice.IdentityServer
             //    twitterOptions.ConsumerSecret = Configuration["Authentication:Twitter:ConsumerSecret"];
             //});
 
+            //services.AddAuthentication("Bearer")
+            //    .AddIdentityServerAuthentication(options =>
+            //    {
+            //        options.Authority = "http://localhost:32776";
+            //        options.RequireHttpsMetadata = false;
+            //        options.ApiName = "clientApp";
+            //        options.ApiSecret = "secret";
+            //    });
+
             services.AddTransient<ICommandBus, CommandBus>();
             ServiceConfiguration.ConfigureServices(services, Configuration);
         }

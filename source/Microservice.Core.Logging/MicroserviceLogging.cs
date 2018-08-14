@@ -3,6 +3,7 @@ using Microservice.SharedEvents.Logging;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using System;
+using System.Linq;
 
 namespace Microservice.Core.Logging
 {
@@ -26,7 +27,13 @@ namespace Microservice.Core.Logging
 
         public bool IsEnabled(LogLevel logLevel)
         {
-            return CategoryName.StartsWith("Microservice.");
+            var logNamespaces = Configuration.GetSection("Logging")[Constants.LoggingNamespaces];
+            if (logNamespaces != null)
+            {
+                var logNamespacesArr = logNamespaces.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries).Select(i => i + ".").ToList();
+                return logNamespacesArr.Any(i => CategoryName.StartsWith(i));
+            }
+            return false;
         }
 
         public void Log<TState>(LogLevel logLevel, EventId eventId, TState state, Exception exception, Func<TState, Exception, string> formatter)
