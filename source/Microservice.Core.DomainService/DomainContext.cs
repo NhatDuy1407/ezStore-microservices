@@ -40,7 +40,7 @@ namespace Microservice.Core.DomainService
             }
         }
 
-        public async Task SaveChangesAsync()
+        public Task SaveChanges()
         {
             // everything was validated successfully
 
@@ -50,18 +50,19 @@ namespace Microservice.Core.DomainService
                 var attr = @event.GetType().GetCustomAttributes(true).Where(i => i is MessageBusRouteAttribute).FirstOrDefault();
                 if (attr != null)
                 {
-                    foreach (var item in (attr as MessageBusRouteAttribute).RouteKeys)
+                    foreach (var key in (attr as MessageBusRouteAttribute).RouteKeys)
                     {
-                        var sendEndPoint = _busControl.GetSendEndpoint(new System.Uri(Configuration.GetConnectionString(Constants.RabbitMQHost) + "/" + item)).Result;
-                        await sendEndPoint.Send(@event, @event.GetType());
+                        var sendEndPoint = _busControl.GetSendEndpoint(new System.Uri(Configuration.GetConnectionString(Constants.RabbitMQHost) + "/" + key)).Result;
+                        sendEndPoint.Send(@event, @event.GetType());
                     }
                 }
                 else
                 {
-                   await _busControl.Publish(@event, @event.GetType());
+                    _busControl.Publish(@event, @event.GetType());
                 }
             }
             Events.Clear();
+            return Task.CompletedTask;
         }
     }
 }

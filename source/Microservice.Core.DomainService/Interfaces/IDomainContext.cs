@@ -7,6 +7,6 @@ namespace Microservice.Core.DomainService.Interfaces
     {
         void AddEvents(DomainEntity entity);
 
-        Task SaveChangesAsync();
+        Task SaveChanges();
     }
 }

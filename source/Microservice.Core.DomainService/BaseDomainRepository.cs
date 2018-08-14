@@ -5,9 +5,9 @@ namespace Microservice.Core.DomainService
 {
     public class BaseDomainRepository<TModel> : IDomainRepository<TModel> where TModel : DomainEntity
     {
-        protected readonly DomainContext Context;
+        protected readonly IDomainContext Context;
 
-        public BaseDomainRepository(DomainContext context)
+        public BaseDomainRepository(IDomainContext context)
         {
             Context = context;
         }
