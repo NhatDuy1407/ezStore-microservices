@@ -1,9 +1,9 @@
 ﻿using System.Threading.Tasks;
 using MassTransit;
 using Microservice.Core.DataAccess.Interfaces;
+using Microservice.Core.MessageQueue;
 using Microservice.Logging.Persistence.Model;
 using Microservice.SharedEvents.Logging;
-using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 
 namespace Microservice.Logging.BackgroundProcess.Consumers
@@ -12,7 +12,7 @@ namespace Microservice.Logging.BackgroundProcess.Consumers
     {
         private readonly IWriteService _writeService;
 
-        public LoggingConsumer(IConfiguration configuration, IHostingEnvironment env, IWriteService writeService) : base(configuration, env)
+        public LoggingConsumer(IConfiguration configuration, IWriteService writeService) : base()
         {
             _writeService = writeService;
         }
@@ -26,6 +26,8 @@ namespace Microservice.Logging.BackgroundProcess.Consumers
                 Thread = context.Message.Thread,
                 Logger = context.Message.Logger,
                 Message = context.Message.Message,
+                Data = context.Message.Data,
+                StackTrace = context.Message.StackTrace
             });
             context.Respond(new { Status = true });
 

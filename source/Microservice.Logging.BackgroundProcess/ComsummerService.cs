@@ -28,7 +28,7 @@ namespace Microservice.Logging.BackgroundProcess
             var dbConnection = new WriteService(new MongoDbContext(_configuration.GetConnectionString(Constants.DefaultConnection), _configuration.GetConnectionString(Constants.DefaultDatabaseName), false));
             return e =>
             {
-                e.Consumer(() => new LoggingConsumer(_configuration, _env, dbConnection));
+                e.Consumer(() => new LoggingConsumer(_configuration, dbConnection));
             };
         }
     }

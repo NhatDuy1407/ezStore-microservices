@@ -13,5 +13,7 @@ namespace Microservice.SharedEvents.Logging
         public string Thread { get; set; }
         public string Logger { get; set; }
         public string Message { get; set; }
+        public string Data { get; set; }
+        public string StackTrace { get; set; }
     }
 }

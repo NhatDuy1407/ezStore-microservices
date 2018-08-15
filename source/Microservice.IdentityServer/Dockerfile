@@ -1,15 +1,18 @@
-FROM microsoft/dotnet:2.1.2-aspnetcore-runtime AS base
+FROM microsoft/dotnet:2.1-aspnetcore-runtime AS base
 WORKDIR /app
 EXPOSE 80
 
-FROM microsoft/dotnet:2.1.2-sdk AS build
+FROM microsoft/dotnet:2.1-sdk AS build
 WORKDIR /src
 COPY Microservice.IdentityServer/Microservice.IdentityServer.csproj Microservice.IdentityServer/
-COPY Microservice.Member.Infrastructure/Microservice.Member.Infrastructure.csproj Microservice.Member.Infrastructure/
+COPY Microservice.Core.Logging/Microservice.Core.Logging.csproj Microservice.Core.Logging/
+COPY Microservice.SharedEvents/Microservice.SharedEvents.csproj Microservice.SharedEvents/
 COPY Microservice.Core/Microservice.Core.csproj Microservice.Core/
-COPY Microservice.Core.DataAccess/Microservice.Core.DataAccess.csproj Microservice.Core.DataAccess/
 COPY Microservice.Core.DataAccess.MongoDB/Microservice.Core.DataAccess.MongoDB.csproj Microservice.Core.DataAccess.MongoDB/
+COPY Microservice.Core.DataAccess/Microservice.Core.DataAccess.csproj Microservice.Core.DataAccess/
+COPY Microservice.Core.DomainService/Microservice.Core.DomainService.csproj Microservice.Core.DomainService/
 COPY Microservice.Member.Domain/Microservice.Member.Domain.csproj Microservice.Member.Domain/
+COPY Microservice.Member.Infrastructure/Microservice.Member.Infrastructure.csproj Microservice.Member.Infrastructure/
 RUN dotnet restore Microservice.IdentityServer/Microservice.IdentityServer.csproj
 COPY . .
 WORKDIR /src/Microservice.IdentityServer

@@ -1,7 +1,13 @@
 version: '3.4'
 
 services:
-  microservice.identityserver:
+  microservice.logging.backgroundprocess:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    ports:
+      - "80"
+
+  microservice.notification.backgroundprocess:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
     ports:
@@ -13,7 +19,7 @@ services:
     ports:
       - "80"
 
-  microservice.logging.backgroundprocess:
+  microservice.identityserver:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
     ports:

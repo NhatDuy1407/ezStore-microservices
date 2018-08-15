@@ -15,6 +15,7 @@ using IdentityServer4.Stores;
 using Microsoft.AspNetCore.Http;
 using Microservice.Core.DomainService.Interfaces;
 using Microservice.Member.Domain.Application.Commands;
+using Newtonsoft.Json;
 
 namespace Microservice.IdentityServer.Controllers
 {
@@ -71,6 +72,17 @@ namespace Microservice.IdentityServer.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Login(LoginViewModel model, string returnUrl = null)
         {
+            try
+            {
+                var a = 0;
+                var b = 4 / a;
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, JsonConvert.SerializeObject(model));
+                throw;
+            }
+
             ViewData["ReturnUrl"] = returnUrl;
             if (ModelState.IsValid)
             {
@@ -82,7 +94,6 @@ namespace Microservice.IdentityServer.Controllers
                     _logger.LogInformation("User logged in.");
                     var command = new UpdateUserLoginCommand(model.Email);
                     await _commandBus.ExecuteAsync(command);
-
                     return RedirectToLocal(returnUrl);
                 }
                 if (result.RequiresTwoFactor)

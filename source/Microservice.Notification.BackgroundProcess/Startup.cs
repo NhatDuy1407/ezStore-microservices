@@ -1,9 +1,7 @@
-﻿using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
+﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Microservice.Logging.BackgroundProcess
+namespace Microservice.Notification.BackgroundProcess
 {
     public class Startup
     {
@@ -21,9 +19,9 @@ namespace Microservice.Logging.BackgroundProcess
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure()
         {
-            var requestService = new ComsummerService(Configuration, env);
+            var requestService = new ComsummerService(Configuration);
             requestService.Start();
         }
     }
