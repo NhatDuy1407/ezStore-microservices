@@ -8,5 +8,9 @@ namespace Microservice.Core.DataAccess.Interfaces
         void Delete(Expression<Func<TModel, bool>> filter = null);
 
         void Insert(TModel entity);
+
+        void Save(TModel entity);
+
+        void SaveChange();
     }
 }

@@ -3,13 +3,11 @@ using System;
 
 namespace Microservice.Core.DataAccess.Entities
 {
-    public class BaseGuidModel : ModelEntity
+    public class BaseGuidModel : ModelEntity<Guid>
     {
         public BaseGuidModel()
         {
             Id = Guid.NewGuid();
         }
-
-        public Guid? Id { get; set; }
     }
 }

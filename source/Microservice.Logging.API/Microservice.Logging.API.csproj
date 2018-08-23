@@ -19,8 +19,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="wwwroot\**" />
+    <Content Remove="wwwroot\**" />
+    <EmbeddedResource Remove="wwwroot\**" />
+    <None Remove="wwwroot\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="Properties\" />
-    <Folder Include="wwwroot\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -37,6 +43,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Microservice.Core.DataAccess.MongoDB\Microservice.Core.DataAccess.MongoDB.csproj" />
     <ProjectReference Include="..\Microservice.Core.DataAccess\Microservice.Core.DataAccess.csproj" />
+    <ProjectReference Include="..\Microservice.Logging.Domain\Microservice.Logging.Domain.csproj" />
     <ProjectReference Include="..\Microservice.Logging.Persistence.Model\Microservice.Logging.Persistence.Model.csproj" />
   </ItemGroup>
 

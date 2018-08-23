@@ -4,10 +4,8 @@ using System;
 
 namespace Microservice.Logging.Persistence.Model
 {
-    public class LogData : ModelEntity
+    public class LogData : ModelEntity<ObjectId>
     {
-        public ObjectId Id { get; set; }
-
         public LogData()
         {
             CreatedDate = DateTime.Now;

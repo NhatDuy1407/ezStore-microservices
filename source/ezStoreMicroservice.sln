@@ -13,7 +13,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microservice.Core.DataAcces
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microservice.Core.CachingService", "Microservice.Core.CachingService\Microservice.Core.CachingService.csproj", "{B359F45F-0538-48F2-9C82-058675B08F59}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "02. Services", "02. Services", "{4221A031-3665-41E5-8017-D499ED8F7A31}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "02. Core Services", "02. Core Services", "{4221A031-3665-41E5-8017-D499ED8F7A31}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microservice.Core", "Microservice.Core\Microservice.Core.csproj", "{89622E04-C7E2-4B67-B535-6F3D25FA7BDC}"
 EndProject
@@ -46,6 +46,23 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Notification", "Notification", "{9C6A3E2E-628A-4403-A721-2985B8A9A21D}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microservice.Notification.BackgroundProcess", "Microservice.Notification.BackgroundProcess\Microservice.Notification.BackgroundProcess.csproj", "{0C32BB03-8C21-4B49-B171-D0807A551FD5}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microservice.Core.DataAccess.Sql", "Microservice.Core.DataAccess.Sql\Microservice.Core.DataAccess.Sql.csproj", "{F3820681-8594-4C72-8771-E43AB5420DD2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "03. ezStore", "03. ezStore", "{895A0CB0-4717-43A3-ACC6-989C173B7D3E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MasterData", "MasterData", "{072F6B48-1A82-4B16-900E-E86B11EC7DEA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "HealthCheck", "HealthCheck", "{B4948BF3-659E-4AA5-A1E0-73B31D5EDB45}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microservice.MasterData.Persistence.Model", "Microservice.MasterData.Persistence.Model\Microservice.MasterData.Persistence.Model.csproj", "{7E04AE65-69EF-4C91-B912-5C8C08048BA2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microservice.Logging.Domain", "Microservice.Logging.Domain\Microservice.Logging.Domain.csproj", "{C2DBBF87-242D-4598-A42B-7729C7C826E7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "00. Documents", "00. Documents", "{27CF47C0-D490-4F3D-AA76-AC8DB3D48DC7}"
+	ProjectSection(SolutionItems) = preProject
+		..\README.md = ..\README.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -150,6 +167,24 @@ Global
 		{0C32BB03-8C21-4B49-B171-D0807A551FD5}.Docker|Any CPU.Build.0 = Debug|Any CPU
 		{0C32BB03-8C21-4B49-B171-D0807A551FD5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0C32BB03-8C21-4B49-B171-D0807A551FD5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F3820681-8594-4C72-8771-E43AB5420DD2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F3820681-8594-4C72-8771-E43AB5420DD2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F3820681-8594-4C72-8771-E43AB5420DD2}.Docker|Any CPU.ActiveCfg = Debug|Any CPU
+		{F3820681-8594-4C72-8771-E43AB5420DD2}.Docker|Any CPU.Build.0 = Debug|Any CPU
+		{F3820681-8594-4C72-8771-E43AB5420DD2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F3820681-8594-4C72-8771-E43AB5420DD2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7E04AE65-69EF-4C91-B912-5C8C08048BA2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7E04AE65-69EF-4C91-B912-5C8C08048BA2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7E04AE65-69EF-4C91-B912-5C8C08048BA2}.Docker|Any CPU.ActiveCfg = Debug|Any CPU
+		{7E04AE65-69EF-4C91-B912-5C8C08048BA2}.Docker|Any CPU.Build.0 = Debug|Any CPU
+		{7E04AE65-69EF-4C91-B912-5C8C08048BA2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7E04AE65-69EF-4C91-B912-5C8C08048BA2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C2DBBF87-242D-4598-A42B-7729C7C826E7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C2DBBF87-242D-4598-A42B-7729C7C826E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C2DBBF87-242D-4598-A42B-7729C7C826E7}.Docker|Any CPU.ActiveCfg = Debug|Any CPU
+		{C2DBBF87-242D-4598-A42B-7729C7C826E7}.Docker|Any CPU.Build.0 = Debug|Any CPU
+		{C2DBBF87-242D-4598-A42B-7729C7C826E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C2DBBF87-242D-4598-A42B-7729C7C826E7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -174,6 +209,11 @@ Global
 		{16497010-8AD6-4954-B0AD-43B6DF18F295} = {03214D78-0E18-46B4-AFE1-19C06D5D27AC}
 		{9C6A3E2E-628A-4403-A721-2985B8A9A21D} = {4221A031-3665-41E5-8017-D499ED8F7A31}
 		{0C32BB03-8C21-4B49-B171-D0807A551FD5} = {9C6A3E2E-628A-4403-A721-2985B8A9A21D}
+		{F3820681-8594-4C72-8771-E43AB5420DD2} = {A6613CAF-30A7-471B-A661-52D34D481943}
+		{072F6B48-1A82-4B16-900E-E86B11EC7DEA} = {4221A031-3665-41E5-8017-D499ED8F7A31}
+		{B4948BF3-659E-4AA5-A1E0-73B31D5EDB45} = {4221A031-3665-41E5-8017-D499ED8F7A31}
+		{7E04AE65-69EF-4C91-B912-5C8C08048BA2} = {072F6B48-1A82-4B16-900E-E86B11EC7DEA}
+		{C2DBBF87-242D-4598-A42B-7729C7C826E7} = {1E993341-DFAF-4959-BD2E-79989A24A3EB}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {88D9F8A4-8F8A-4E03-A92F-34BCFF26A09D}

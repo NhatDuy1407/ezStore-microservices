@@ -10,10 +10,8 @@ networks:
     
 services:
   identity-db:
+    image: mysql:5.7
     entrypoint: ['/entrypoint.sh', '--default-authentication-plugin=mysql_native_password']
-    build:
-      context: .
-      dockerfile: Dockerfile-MySql
     ports:
       - 3306:3306
     environment:
@@ -37,9 +35,7 @@ services:
         ipv4_address: 192.168.0.101
 
   services-db:
-    build:
-      context: .
-      dockerfile: Dockerfile-MongoDB
+    image: mongo:4.1.1
     ports:
       - 27017:27017
     networks:
@@ -47,9 +43,7 @@ services:
         ipv4_address: 192.168.0.100
 
   services-redis:
-    build:
-      context: .
-      dockerfile: Dockerfile-Redis
+    image: redis:4.0.11
     ports:
       - 6379:6379
     networks:

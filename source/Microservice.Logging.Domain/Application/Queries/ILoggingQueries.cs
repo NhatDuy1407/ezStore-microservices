@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using Microservice.Logging.API.Application.ViewModels;
+using Microservice.Logging.Domain.Application.ViewModels;
 
-namespace Microservice.Logging.API.Application.Queries
+namespace Microservice.Logging.Domain.Application.Queries
 {
     public interface ILoggingQueries
     {

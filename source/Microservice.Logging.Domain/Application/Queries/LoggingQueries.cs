@@ -2,10 +2,10 @@
 using System.Linq;
 using System.Threading.Tasks;
 using Microservice.Core.DataAccess.Interfaces;
-using Microservice.Logging.API.Application.ViewModels;
+using Microservice.Logging.Domain.Application.ViewModels;
 using Microservice.Logging.Persistence.Model;
 
-namespace Microservice.Logging.API.Application.Queries
+namespace Microservice.Logging.Domain.Application.Queries
 {
     public class LoggingQueries : ILoggingQueries
     {

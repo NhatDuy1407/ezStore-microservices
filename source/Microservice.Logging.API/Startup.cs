@@ -1,7 +1,5 @@
-﻿using Microservice.Core;
-using Microservice.Core.Interfaces;
-using Microservice.Logging.API.Application.Queries;
-using Microservice.Logging.API.Swagger;
+﻿using Microservice.Logging.API.Swagger;
+using Microservice.Logging.Domain.Application.Queries;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Cors.Infrastructure;
 using Microsoft.AspNetCore.Hosting;
@@ -38,15 +36,8 @@ namespace Microservice.Logging.API
             // Add framework services.
             services.AddMvc();
 
-            //AutoMapper.Mapper.Initialize(cfg =>
-            //{
-            //    cfg.AddProfile<ServiceMapperProfile>();
-            //    cfg.AddProfile<Microservice.Service.UserService.Mapper.ServiceMapperProfile>();
-            //});
-
             //// Add application services.
             services.AddTransient<ILoggingQueries, LoggingQueries>();
-            //services.AddTransient<ICacheService>(i => new RedisCacheService(Configuration.GetConnectionString(Constants.RedisAddress)));
             ServiceConfiguration.ConfigureServices(services, Configuration);
         }
 
@@ -57,16 +48,6 @@ namespace Microservice.Logging.API
 
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
-
-            //if (env.IsDevelopment())
-            //{
-            //    app.UseDeveloperExceptionPage();
-            //    app.UseBrowserLink();
-            //}
-            //else
-            //{
-            //    app.UseExceptionHandler("/Home/Error");
-            //}
 
             app.UseStaticFiles();
 

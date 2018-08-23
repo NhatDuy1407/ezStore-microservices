@@ -2,8 +2,10 @@
 
 namespace Microservice.Core.Models
 {
-    public class ModelEntity
+    public class ModelEntity<T>
     {
+        public T Id { get; set; }
+
         public DateTime? CreatedDate { get; set; }
 
         public string CreatedBy { get; set; }

@@ -31,9 +31,6 @@
     <None Include="docker-compose.yml" />
     <None Include=".dockerignore" />
     <None Include="docker-compose.ci.build.yml" />
-    <None Include="Dockerfile-MySql" />
-    <None Include="Dockerfile-Redis" />
-    <None Include="Dockerfile-MongoDB" />
     <None Include="Dockerfile-RabbitMQ" />
   </ItemGroup>
 </Project>
