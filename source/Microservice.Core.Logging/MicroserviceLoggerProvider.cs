@@ -1,14 +1,13 @@
 ﻿using MassTransit;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
-using System.Collections.Concurrent;
 
 namespace Microservice.Core.Logging
 {
     public class MicroserviceLoggerProvider : ILoggerProvider
     {
         private readonly IBusControl _busControl;
-        private IConfiguration Configuration;
+        private readonly IConfiguration Configuration;
 
         public MicroserviceLoggerProvider(IBusControl busControl, IConfiguration configuration)
         {

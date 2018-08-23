@@ -7,7 +7,7 @@ namespace Microservice.Core.DomainService
     {
         public Guid CommandId { get; set; }
 
-        public Command()
+        protected Command()
         {
             CommandId = Guid.NewGuid();
         }

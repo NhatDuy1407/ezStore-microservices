@@ -1,4 +1,4 @@
-﻿using Microservice.Core.Models;
+﻿using Microservice.Core.DomainService.Models;
 
 namespace Microservice.Core.DomainService.Interfaces
 {

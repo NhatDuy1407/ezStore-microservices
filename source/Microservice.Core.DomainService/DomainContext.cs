@@ -3,8 +3,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using MassTransit;
 using Microservice.Core.DomainService.Interfaces;
+using Microservice.Core.DomainService.Models;
 using Microservice.Core.Interfaces;
-using Microservice.Core.Models;
 using Microsoft.Extensions.Configuration;
 
 namespace Microservice.Core.DomainService
@@ -12,7 +12,7 @@ namespace Microservice.Core.DomainService
     public class DomainContext : IDomainContext
     {
         private readonly IBusControl _busControl;
-        private IConfiguration Configuration;
+        private readonly IConfiguration Configuration;
 
         public DomainContext(IConfiguration configuration, IBusControl busControl)
         {
@@ -47,7 +47,7 @@ namespace Microservice.Core.DomainService
             // publish events
             foreach (var @event in Events)
             {
-                var attr = @event.GetType().GetCustomAttributes(true).Where(i => i is MessageBusRouteAttribute).FirstOrDefault();
+                var attr = @event.GetType().GetCustomAttributes(true).FirstOrDefault(i => i is MessageBusRouteAttribute);
                 if (attr != null)
                 {
                     foreach (var key in (attr as MessageBusRouteAttribute).RouteKeys)

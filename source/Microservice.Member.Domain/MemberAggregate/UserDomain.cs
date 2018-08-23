@@ -1,8 +1,7 @@
 ﻿using Microservice.Core.DataAccess.Interfaces;
-using Microservice.Core.Models;
+using Microservice.Core.DomainService.Models;
 using Microservice.Member.Infrastructure.Models;
 using Microservice.SharedEvents.Logging;
-using Microservice.SharedEvents.Notification;
 using Microsoft.Extensions.Logging;
 
 namespace Microservice.Member.Domain.MemberAggregate

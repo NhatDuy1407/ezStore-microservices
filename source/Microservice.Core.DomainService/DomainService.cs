@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections;
 using Microservice.Core.DomainService.Interfaces;
-using Microservice.Core.Models;
+using Microservice.Core.DomainService.Models;
 
 namespace Microservice.Core.DomainService
 {

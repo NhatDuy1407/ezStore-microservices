@@ -9,20 +9,20 @@ namespace Microservice.Core.DomainService
 
         public Guid CommandId { get; set; }
 
-        public ValidationDecoratorCommand(ValidationDecoratorCommand root)
+        protected ValidationDecoratorCommand(ValidationDecoratorCommand root)
         {
             _root = root;
             CommandId = Guid.NewGuid();
         }
 
-        public ValidationDecoratorCommand()
+        protected ValidationDecoratorCommand()
         {
             CommandId = Guid.NewGuid();
         }
 
         public virtual bool Validate()
         {
-            return (_root == null ? true : _root.Validate()) && SelfValidate();
+            return (_root == null || _root.Validate()) && SelfValidate();
         }
 
         public abstract bool SelfValidate();

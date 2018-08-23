@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using Microservice.Core.Interfaces;
+using Microservice.Core.Models;
 
-namespace Microservice.Core.Models
+namespace Microservice.Core.DomainService.Models
 {
     public class DomainEntity: ModelEntity<Guid>
     {

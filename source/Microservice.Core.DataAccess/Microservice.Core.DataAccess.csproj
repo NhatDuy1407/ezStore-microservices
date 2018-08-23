@@ -21,4 +21,8 @@
     <ProjectReference Include="..\Microservice.Core\Microservice.Core.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Entities\" />
+  </ItemGroup>
+
 </Project>

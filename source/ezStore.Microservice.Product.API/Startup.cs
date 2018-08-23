@@ -1,13 +1,12 @@
-﻿using Microservice.Logging.API.Swagger;
-using Microservice.Logging.Domain.Application.Queries;
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Cors.Infrastructure;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 
-namespace Microservice.Logging.API
+namespace ezStore.Microservice.Product.API
 {
     public class Startup
     {
@@ -33,12 +32,7 @@ namespace Microservice.Logging.API
             // Add configuration for Swagger
             services.AddSwaggerCommon();
 
-            // Add framework services.
             services.AddMvc();
-
-            //// Add application services.
-            services.AddTransient<ILoggingQueries, LoggingQueries>();
-            ServiceConfiguration.ConfigureServices(services, Configuration);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -49,12 +43,12 @@ namespace Microservice.Logging.API
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
 
-            app.UseMvc();
-
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseMvc();
 
             app.UseSwaggerCommon();
         }

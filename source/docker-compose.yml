@@ -1,41 +1,32 @@
 version: '3.4'
-
-networks:
-  microservice-bridge-network:
-    driver: bridge
-    ipam:
-      driver: default
-      config:
-      - subnet: 192.168.0.0/16
     
 services:
   microservice.logging.backgroundprocess:
-    image: microserviceloggingbackgroundprocess
+    image: microservice/logging-background
     build:
       context: .
       dockerfile: Microservice.Logging.BackgroundProcess/Dockerfile
-    network_mode: source_microservice-bridge-network
 
   microservice.notification.backgroundprocess:
-    image: microservicenotificationbackgroundprocess
+    image: microservice/notification-background
     build:
       context: .
       dockerfile: Microservice.Notification.BackgroundProcess/Dockerfile
-    network_mode: source_microservice-bridge-network
-    dns:
-      - 8.8.8.8
 
   microservice.logging.api:
-    image: microserviceloggingapi
+    image: microservice/logging-api
     build:
       context: .
       dockerfile: Microservice.Logging.API/Dockerfile
-    network_mode: source_microservice-bridge-network
-
 
   microservice.identityserver:
-    image: microserviceidentityserver
+    image: microservice/identity-server
     build:
       context: .
       dockerfile: Microservice.IdentityServer/Dockerfile
-    network_mode: source_microservice-bridge-network
+
+  ezstore.microservice.product.api:
+    image: ezstore/product-api
+    build:
+      context: .
+      dockerfile: ezStore.Microservice.Product.API/Dockerfile
