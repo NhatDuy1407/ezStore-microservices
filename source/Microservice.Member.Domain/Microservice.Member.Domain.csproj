@@ -18,8 +18,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Application\Queries\**" />
     <Compile Remove="Application\ViewModels\**" />
+    <EmbeddedResource Remove="Application\Queries\**" />
     <EmbeddedResource Remove="Application\ViewModels\**" />
+    <None Remove="Application\Queries\**" />
     <None Remove="Application\ViewModels\**" />
   </ItemGroup>
 
@@ -35,10 +38,6 @@
     <Reference Include="Microsoft.Extensions.Logging.Abstractions">
       <HintPath>C:\Program Files\dotnet\sdk\NuGetFallbackFolder\microsoft.extensions.logging.abstractions\2.1.1\lib\netstandard2.0\Microsoft.Extensions.Logging.Abstractions.dll</HintPath>
     </Reference>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Application\Queries\" />
   </ItemGroup>
 
 </Project>

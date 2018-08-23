@@ -2,6 +2,7 @@
 using Microservice.Core.Models;
 using Microservice.Member.Infrastructure.Models;
 using Microservice.SharedEvents.Logging;
+using Microservice.SharedEvents.Notification;
 using Microsoft.Extensions.Logging;
 
 namespace Microservice.Member.Domain.MemberAggregate

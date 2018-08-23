@@ -2,8 +2,7 @@
 
 namespace Microservice.Core.DataAccess.Entities
 {
-    public class BaseIntModel : ModelEntity
+    public class BaseIntModel : ModelEntity<int>
     {
-        public int Id { get; set; }
     }
 }

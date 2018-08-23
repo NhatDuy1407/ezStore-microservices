@@ -4,7 +4,7 @@ using Microservice.Core.Interfaces;
 
 namespace Microservice.Core.Models
 {
-    public class DomainEntity: ModelEntity
+    public class DomainEntity: ModelEntity<Guid>
     {
         public List<IEvent> Events { get; private set; }
 

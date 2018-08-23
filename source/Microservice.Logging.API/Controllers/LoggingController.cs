@@ -1,8 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using Microservice.Core.Interfaces;
-using Microservice.Logging.API.Application.Queries;
-using Microservice.Logging.API.Application.ViewModels;
+using Microservice.Logging.Domain.Application.Queries;
+using Microservice.Logging.Domain.Application.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Microservice.Logging.API.Controllers

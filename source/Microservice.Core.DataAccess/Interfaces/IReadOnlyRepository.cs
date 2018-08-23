@@ -7,9 +7,11 @@ namespace Microservice.Core.DataAccess.Interfaces
     public interface IReadOnlyRepository<TModel> : IDisposable
     {
         IQueryable<TModel> Get(Expression<Func<TModel, bool>> filter = null,
-            Func<IQueryable<TModel>, IOrderedQueryable<TModel>> orderBy = null);
+            Func<IQueryable<TModel>, IOrderedQueryable<TModel>> orderBy = null,
+             string includeProperties = "", bool isIncludedIsDeleted = true);
 
         TModel FirstOrDefault(Expression<Func<TModel, bool>> filter = null,
-            Func<IQueryable<TModel>, IOrderedQueryable<TModel>> orderBy = null);
+            Func<IQueryable<TModel>, IOrderedQueryable<TModel>> orderBy = null,
+             string includeProperties = "", bool isIncludedIsDeleted = true);
     }
 }

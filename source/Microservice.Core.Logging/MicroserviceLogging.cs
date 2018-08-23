@@ -1,8 +1,12 @@
 ﻿using MassTransit;
+using Microservice.SharedEvents;
 using Microservice.SharedEvents.Logging;
+using Microservice.SharedEvents.Notification;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
+using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Microservice.Core.Logging
@@ -27,7 +31,7 @@ namespace Microservice.Core.Logging
 
         public bool IsEnabled(LogLevel logLevel)
         {
-            var logNamespaces = Configuration.GetSection("Logging")[Constants.LoggingNamespaces];
+            var logNamespaces = Configuration.GetSection(Constants.Logging)[Constants.LoggingNamespaces];
             if (logNamespaces != null)
             {
                 var logNamespacesArr = logNamespaces.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries).Select(i => i + ".").ToList();
@@ -49,14 +53,28 @@ namespace Microservice.Core.Logging
                 message = formatter(state, exception);
             }
 
-            var sendEndPoint = _busControl.GetSendEndpoint(new Uri(Configuration.GetConnectionString(Constants.RabbitMQHost) + "/logging_service")).Result;
+            var sendEndPoint = _busControl.GetSendEndpoint(new Uri(Configuration.GetConnectionString(Constants.RabbitMQHost) + $"/{EventRouteConstants.LoggingService}")).Result;
             sendEndPoint.Send(new WriteLogEvent()
             {
                 Level = logLevel.ToString(),
                 Logger = CategoryName,
                 Thread = eventId.ToString(),
-                Message = message
+                Message = logLevel != LogLevel.Error ? message : string.Format(Configuration.GetSection(Constants.Notification)[Constants.ErrorEmailSubject], exception.Message),
+                Data = state.ToString(),
+                StackTrace = exception == null ? "" : exception.StackTrace,
             });
+
+            if (logLevel == LogLevel.Error || exception != null)
+            {
+                var sendNotificationEndPoint = _busControl.GetSendEndpoint(new Uri(Configuration.GetConnectionString(Constants.RabbitMQHost) + $"/{EventRouteConstants.NotificationService}")).Result;
+                sendNotificationEndPoint.Send(new EmailContentCreated()
+                {
+                    From = Configuration.GetSection(Constants.Notification)[Constants.SystemEmail],
+                    To = Configuration.GetSection(Constants.Notification)[Constants.AdminEmail],
+                    Subject = string.Format(Configuration.GetSection(Constants.Notification)[Constants.ErrorEmailSubject], exception.Message),
+                    Body = $"Data:{message}, Trace:{exception.StackTrace}",
+                });
+            }
         }
 
         private class NoopDisposable : IDisposable

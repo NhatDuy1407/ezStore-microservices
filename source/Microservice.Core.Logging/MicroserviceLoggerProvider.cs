@@ -9,7 +9,6 @@ namespace Microservice.Core.Logging
     {
         private readonly IBusControl _busControl;
         private IConfiguration Configuration;
-        private readonly ConcurrentDictionary<string, MicroserviceLogging> _loggers = new ConcurrentDictionary<string, MicroserviceLogging>();
 
         public MicroserviceLoggerProvider(IBusControl busControl, IConfiguration configuration)
         {
@@ -24,7 +23,6 @@ namespace Microservice.Core.Logging
 
         public void Dispose()
         {
-            _loggers.Clear();
         }
     }
 }

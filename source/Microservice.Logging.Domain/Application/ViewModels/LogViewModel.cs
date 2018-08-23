@@ -1,7 +1,7 @@
 ﻿using System;
 using Microservice.Logging.Persistence.Model;
 
-namespace Microservice.Logging.API.Application.ViewModels
+namespace Microservice.Logging.Domain.Application.ViewModels
 {
     public class LogViewModel
     {

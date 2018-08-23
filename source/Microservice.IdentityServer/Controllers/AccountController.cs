@@ -15,6 +15,7 @@ using IdentityServer4.Stores;
 using Microsoft.AspNetCore.Http;
 using Microservice.Core.DomainService.Interfaces;
 using Microservice.Member.Domain.Application.Commands;
+using Newtonsoft.Json;
 
 namespace Microservice.IdentityServer.Controllers
 {
@@ -82,7 +83,6 @@ namespace Microservice.IdentityServer.Controllers
                     _logger.LogInformation("User logged in.");
                     var command = new UpdateUserLoginCommand(model.Email);
                     await _commandBus.ExecuteAsync(command);
-
                     return RedirectToLocal(returnUrl);
                 }
                 if (result.RequiresTwoFactor)

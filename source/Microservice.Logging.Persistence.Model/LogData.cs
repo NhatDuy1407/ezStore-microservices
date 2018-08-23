@@ -4,10 +4,8 @@ using System;
 
 namespace Microservice.Logging.Persistence.Model
 {
-    public class LogData : ModelEntity
+    public class LogData : ModelEntity<ObjectId>
     {
-        public ObjectId Id { get; set; }
-
         public LogData()
         {
             CreatedDate = DateTime.Now;
@@ -19,5 +17,7 @@ namespace Microservice.Logging.Persistence.Model
         public string Thread { get; set; }
         public string Logger { get; set; }
         public string Message { get; set; }
+        public string Data { get; set; }
+        public string StackTrace { get; set; }
     }
 }
