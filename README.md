@@ -8,6 +8,7 @@
 - mysql (5.7)
 - mongo (4.1.1)
 - rabbitmq (3.7)
+- DDD
 
 ## Docker
 - First run the database, message queue: `docker-compose -f docker-compose-init.yml up`

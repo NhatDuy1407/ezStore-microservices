@@ -59,16 +59,17 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microservice.Logging.Domain
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "00. Documents", "00. Documents", "{27CF47C0-D490-4F3D-AA76-AC8DB3D48DC7}"
 	ProjectSection(SolutionItems) = preProject
+		..\LICENSE = ..\LICENSE
 		..\README.md = ..\README.md
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Product", "Product", "{6C586ECA-4A65-45F4-86A0-13AD1D3392CE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ezStore.Microservice.Product.Domain", "ezStore.Microservice.Product.Domain\ezStore.Microservice.Product.Domain.csproj", "{851A2B84-BDA0-459E-9888-36775FD94983}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ezStore.Microservice.Product.Domain", "ezStore.Microservice.Product.Domain\ezStore.Microservice.Product.Domain.csproj", "{851A2B84-BDA0-459E-9888-36775FD94983}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ezStore.Microservice.SharedEvents", "ezStore.Microservice.SharedEvents\ezStore.Microservice.SharedEvents.csproj", "{756BD45E-CC11-4ED1-8DF1-924AF0422DBB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ezStore.Microservice.SharedEvents", "ezStore.Microservice.SharedEvents\ezStore.Microservice.SharedEvents.csproj", "{756BD45E-CC11-4ED1-8DF1-924AF0422DBB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ezStore.Microservice.Product.API", "ezStore.Microservice.Product.API\ezStore.Microservice.Product.API.csproj", "{8DD0594E-0132-4CCE-B6F4-7F3B14798D35}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ezStore.Microservice.Product.API", "ezStore.Microservice.Product.API\ezStore.Microservice.Product.API.csproj", "{8DD0594E-0132-4CCE-B6F4-7F3B14798D35}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
