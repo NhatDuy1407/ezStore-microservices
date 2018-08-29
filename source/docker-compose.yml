@@ -9,6 +9,7 @@ services:
       dockerfile: ezStore.Microservice.Product.API/Dockerfile
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
+      - DOTNET_USE_POLLING_FILE_WATCHER=1
     volumes:
       - ./03. ezStore/Product/ezStore.Microservice.Product.API/bin/Debug/netcoreapp2.1/publish:/app
     command: /bin/bash -c "dotnet ezStore.Microservice.Product.API.dll"

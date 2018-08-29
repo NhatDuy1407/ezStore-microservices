@@ -7,8 +7,17 @@
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/ezStore.Microservice.Product.API/ezStore.Microservice.Product.API.csproj"
+                "${workspaceFolder}/ezStoreMicroservice.sln"
             ],
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "publish",
+            "command": "dotnet",
+            "args": [                
+                "publish",
+                "${workspaceRoot}/ezStoreMicroservice.sln"
+            ],        
             "problemMatcher": "$msCompile"
         }
     ]

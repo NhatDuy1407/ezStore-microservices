@@ -1,39 +1,37 @@
 {
-   // Use IntelliSense to find out which attributes exist for C# debugging
-   // Use hover for the description of the existing attributes
-   // For further information visit https://github.com/OmniSharp/omnisharp-vscode/blob/master/debugger-launchjson.md
-   "version": "0.2.0",
-   "configurations": [
+    // Use IntelliSense to find out which attributes exist for C# debugging
+    // Use hover for the description of the existing attributes
+    // For further information visit https://github.com/OmniSharp/omnisharp-vscode/blob/master/debugger-launchjson.md
+    "version": "0.2.0",
+    "configurations": [
         {
-            "name": ".NET Core Launch (web)",
+            "name": ".NET Core Launch Docker ezStore.Microservice.Product.API",
             "type": "coreclr",
             "request": "launch",
-            "preLaunchTask": "build",
+            "preLaunchTask": "publish",
             // If you have changed target frameworks, make sure to update the program path.
-            "program": "${workspaceFolder}/ezStore.Microservice.Product.API/bin/Debug/netcoreapp2.1/ezStore.Microservice.Product.API.dll",
+            "program": "/app/ezStore.Microservice.Product.API.dll",
+            "sourceFileMap": {
+                "/app": "${workspaceRoot}/"
+            },
             "args": [],
             "cwd": "${workspaceFolder}/ezStore.Microservice.Product.API",
-            "stopAtEntry": false,
-            "internalConsoleOptions": "openOnSessionStart",
-            "launchBrowser": {
-                "enabled": true,
-                "args": "${auto-detect-url}",
+            "pipeTransport": {
+                "debuggerPath": "/app",
+                "pipeProgram": "/bin/bash",
+                "pipeCwd": "${workspaceRoot}",
+                "pipeArgs": [
+                    "-c",
+                    "docker exec -i ezstore.product.api /vsdbg/vsdbg --interpreter=vscode"
+                ],
                 "windows": {
-                    "command": "cmd.exe",
-                    "args": "/C start ${auto-detect-url}"
-                },
-                "osx": {
-                    "command": "open"
-                },
-                "linux": {
-                    "command": "xdg-open"
+                    "pipeProgram": "${env:windir}\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+                    "pipeCwd": "${workspaceRoot}",
+                    "pipeArgs": [
+                        "-c",
+                        "docker exec -i ezstore.product.api ${debuggerCommand}"
+                    ]
                 }
-            },
-            "env": {
-                "ASPNETCORE_ENVIRONMENT": "Development"
-            },
-            "sourceFileMap": {
-                "/Views": "${workspaceFolder}/Views"
             }
         },
         {
@@ -41,6 +39,6 @@
             "type": "coreclr",
             "request": "attach",
             "processId": "${command:pickProcess}"
-        }
-    ,]
+        },
+    ]
 }
