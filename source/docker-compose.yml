@@ -3,6 +3,7 @@ version: '3.4'
 services:
   ezstore.microservice.product.api:
     image: ezstore/product-api:dev
+    container_name: ezstore.product.api
     build:
       target: base
       context: ./03. ezStore/Product
@@ -10,12 +11,16 @@ services:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - DOTNET_USE_POLLING_FILE_WATCHER=1
+    ports:
+      - "80"
+    network_mode: source_microservice-bridge-network
     volumes:
       - ./03. ezStore/Product/ezStore.Microservice.Product.API/bin/Debug/netcoreapp2.1/publish:/app
     command: /bin/bash -c "dotnet ezStore.Microservice.Product.API.dll"
 
   microservice.identityserver:
     image: microservice/identity-server:dev
+    container_name: microservice.identityserver
     build:
       target: base
       context: ./02. Core Services/Member
@@ -23,12 +28,16 @@ services:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - DOTNET_USE_POLLING_FILE_WATCHER=1
+    ports:
+      - "80"
+    network_mode: source_microservice-bridge-network
     volumes:
       - ./02. Core Services/Member/Microservice.IdentityServer/bin/Debug/netcoreapp2.1/publish:/app
     command: /bin/bash -c "dotnet Microservice.IdentityServer.dll"
 
   microservice.logging.api:
     image: microservice/logging-api:dev
+    container_name: microservice.logging.api
     build:
       target: base
       context: ./02. Core Services/Logging
@@ -36,12 +45,16 @@ services:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - DOTNET_USE_POLLING_FILE_WATCHER=1
+    ports:
+      - "80"
+    network_mode: source_microservice-bridge-network
     volumes:
       - ./02. Core Services/Logging/Microservice.Logging.API/bin/Debug/netcoreapp2.1/publish:/app
     command: /bin/bash -c "dotnet Microservice.Logging.API.dll"
 
   microservice.logging.backgroundprocess:
     image: microservice/logging-background:dev
+    container_name: microservice.logging.background
     build:
       target: base
       context: ./02. Core Services/Logging
@@ -49,12 +62,16 @@ services:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - DOTNET_USE_POLLING_FILE_WATCHER=1
+    ports:
+      - "80"
+    network_mode: source_microservice-bridge-network
     volumes:
       - ./02. Core Services/Logging/Microservice.Logging.BackgroundProcess/bin/Debug/netcoreapp2.1/publish:/app
     command: /bin/bash -c "dotnet Microservice.Logging.BackgroundProcess.dll"
 
   microservice.notification.backgroundprocess:
     image: microservice/notification-background:dev
+    container_name: microservice.notification.background
     build:
       target: base
       context: ./02. Core Services/Notification
@@ -62,6 +79,11 @@ services:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - DOTNET_USE_POLLING_FILE_WATCHER=1
+    ports:
+      - "80"
+    network_mode: source_microservice-bridge-network
+    dns:
+      - 8.8.8.8
     volumes:
       - ./02. Core Services/Notification/Microservice.Notification.BackgroundProcess/bin/Debug/netcoreapp2.1/publish:/app
     command: /bin/bash -c "dotnet Microservice.Notification.BackgroundProcess.dll"

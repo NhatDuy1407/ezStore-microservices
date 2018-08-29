@@ -14,10 +14,10 @@
         {
             "label": "publish",
             "command": "dotnet",
-            "args": [                
+            "args": [
                 "publish",
                 "${workspaceRoot}/ezStoreMicroservice.sln"
-            ],        
+            ],
             "problemMatcher": "$msCompile"
         }
     ]

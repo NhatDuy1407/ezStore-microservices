@@ -9,15 +9,14 @@
             "type": "coreclr",
             "request": "launch",
             "preLaunchTask": "publish",
-            // If you have changed target frameworks, make sure to update the program path.
             "program": "/app/ezStore.Microservice.Product.API.dll",
             "sourceFileMap": {
                 "/app": "${workspaceRoot}/"
             },
             "args": [],
-            "cwd": "${workspaceFolder}/ezStore.Microservice.Product.API",
+            "cwd": "/app",
             "pipeTransport": {
-                "debuggerPath": "/app",
+                "debuggerPath": "/vsdbg/vsdbg",
                 "pipeProgram": "/bin/bash",
                 "pipeCwd": "${workspaceRoot}",
                 "pipeArgs": [
@@ -33,12 +32,6 @@
                     ]
                 }
             }
-        },
-        {
-            "name": ".NET Core Attach",
-            "type": "coreclr",
-            "request": "attach",
-            "processId": "${command:pickProcess}"
-        },
+        }
     ]
 }
