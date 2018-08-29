@@ -1,6 +1,6 @@
 version: '3.4'
-# If you want to comment a container, un-comment block of service
-# Run command: docker-compose -f docker-compose.debug.yml -f docker-compose.override.yml up --build
+# If you want to debug a container, un-comment block of service
+# Run command: docker-compose -f docker-compose.debug.yml --build
 # Run F5 with configuration in launch.json
 
 services:
