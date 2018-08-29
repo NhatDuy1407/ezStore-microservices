@@ -18,9 +18,16 @@
 - First run the database, message queue: `docker-compose -f docker-compose-init.yml up`
 - Then run the app as development by command:
   + dotnet publish .\ezStoreMicroservice.sln
-  + docker-compose -f docker-compose.yml -f docker-compose.override.yml up --force-recreate
+  + docker-compose -f docker-compose.yml up --build
+
+## Debugging
+- Open file docker-compose.debug.yml
+- If you want to debug a container, un-comment block of service
+- Run command: docker-compose -f docker-compose.debug.yml --build
+- Run F5 with configuration in launch.json
 
 ## Microservices
 - Logging Service
 - Notification Service
 - Identity Server
+- Product Store
