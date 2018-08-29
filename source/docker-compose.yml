@@ -1,41 +1,63 @@
 version: '3.4'
 
-networks:
-  microservice-bridge-network:
-    driver: bridge
-    ipam:
-      driver: default
-      config:
-      - subnet: 192.168.0.0/16
-    
 services:
-  microservice.logging.backgroundprocess:
-    image: microserviceloggingbackgroundprocess
+  ezstore.microservice.product.api:
+    image: ezstore/product-api:dev
     build:
-      context: .
-      dockerfile: Microservice.Logging.BackgroundProcess/Dockerfile
-    network_mode: source_microservice-bridge-network
-
-  microservice.notification.backgroundprocess:
-    image: microservicenotificationbackgroundprocess
-    build:
-      context: .
-      dockerfile: Microservice.Notification.BackgroundProcess/Dockerfile
-    network_mode: source_microservice-bridge-network
-    dns:
-      - 8.8.8.8
-
-  microservice.logging.api:
-    image: microserviceloggingapi
-    build:
-      context: .
-      dockerfile: Microservice.Logging.API/Dockerfile
-    network_mode: source_microservice-bridge-network
-
+      target: base
+      context: ./03. ezStore/Product
+      dockerfile: ezStore.Microservice.Product.API/Dockerfile
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - DOTNET_USE_POLLING_FILE_WATCHER=1
+    volumes:
+      - ./03. ezStore/Product/ezStore.Microservice.Product.API/bin/Debug/netcoreapp2.1/publish:/app
+    command: /bin/bash -c "dotnet ezStore.Microservice.Product.API.dll"
 
   microservice.identityserver:
-    image: microserviceidentityserver
+    image: microservice/identity-server:dev
     build:
-      context: .
+      target: base
+      context: ./02. Core Services/Member
       dockerfile: Microservice.IdentityServer/Dockerfile
-    network_mode: source_microservice-bridge-network
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    volumes:
+      - ./02. Core Services/Member/Microservice.IdentityServer/bin/Debug/netcoreapp2.1/publish:/app
+    command: /bin/bash -c "dotnet Microservice.IdentityServer.dll"
+
+  microservice.logging.api:
+    image: microservice/logging-api:dev
+    build:
+      target: base
+      context: ./02. Core Services/Logging
+      dockerfile: Microservice.Logging.API/Dockerfile
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    volumes:
+      - ./02. Core Services/Logging/Microservice.Logging.API/bin/Debug/netcoreapp2.1/publish:/app
+    command: /bin/bash -c "dotnet Microservice.Logging.API.dll"
+
+  microservice.logging.backgroundprocess:
+    image: microservice/logging-background:dev
+    build:
+      target: base
+      context: ./02. Core Services/Logging
+      dockerfile: Microservice.Logging.BackgroundProcess/Dockerfile
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    volumes:
+      - ./02. Core Services/Logging/Microservice.Logging.BackgroundProcess/bin/Debug/netcoreapp2.1/publish:/app
+    command: /bin/bash -c "dotnet Microservice.Logging.BackgroundProcess.dll"
+
+  microservice.notification.backgroundprocess:
+    image: microservice/notification-background:dev
+    build:
+      target: base
+      context: ./02. Core Services/Notification
+      dockerfile: Microservice.Notification.BackgroundProcess/Dockerfile
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    volumes:
+      - ./02. Core Services/Notification/Microservice.Notification.BackgroundProcess/bin/Debug/netcoreapp2.1/publish:/app
+    command: /bin/bash -c "dotnet Microservice.Notification.BackgroundProcess.dll"

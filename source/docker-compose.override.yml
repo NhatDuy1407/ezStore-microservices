@@ -6,21 +6,39 @@ services:
       - ASPNETCORE_ENVIRONMENT=Development
     ports:
       - "80"
-
-  microservice.notification.backgroundprocess:
-    environment:
-      - ASPNETCORE_ENVIRONMENT=Development
-    ports:
-      - "80"
+    network_mode: source_microservice-bridge-network
+    container_name: microservice.logging.background
 
   microservice.logging.api:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
     ports:
       - "80"
+    network_mode: source_microservice-bridge-network
+    container_name: microservice.logging.api
+
+  microservice.notification.backgroundprocess:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    ports:
+      - "80"
+    network_mode: source_microservice-bridge-network
+    dns:
+      - 8.8.8.8
+    container_name: microservice.notification.background
 
   microservice.identityserver:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
     ports:
       - "80"
+    network_mode: source_microservice-bridge-network
+    container_name: microservice.identityserver
+
+  ezstore.microservice.product.api:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    ports:
+      - "80"
+    network_mode: source_microservice-bridge-network
+    container_name: ezstore.product.api
