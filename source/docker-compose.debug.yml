@@ -1,0 +1,92 @@
+version: '3.4'
+# If you want to comment a container, un-comment block of service
+# Run command: docker-compose -f docker-compose.debug.yml -f docker-compose.override.yml up --build
+# Run F5 with configuration in launch.json
+
+services:
+  ezstore.microservice.product.api:
+    image: ezstore/product-api:dev
+    container_name: ezstore.product.api
+    build:
+      target: debug
+      context: ./03. ezStore/Product
+      dockerfile: ezStore.Microservice.Product.API/Dockerfile
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - DOTNET_USE_POLLING_FILE_WATCHER=1
+    ports:
+      - "80"
+    network_mode: source_microservice-bridge-network
+    volumes:
+      - ./03. ezStore/Product/ezStore.Microservice.Product.API/bin/Debug/netcoreapp2.1/publish:/app
+    entrypoint: tail -f /dev/null
+
+  # microservice.identityserver:
+  #   image: microservice/identity-server:dev
+  #   container_name: microservice.identityserver
+  #   build:
+  #     target: debug
+  #     context: ./02. Core Services/Member
+  #     dockerfile: Microservice.IdentityServer/Dockerfile
+  #   environment:
+  #     - ASPNETCORE_ENVIRONMENT=Development
+  #     - DOTNET_USE_POLLING_FILE_WATCHER=1
+  #   ports:
+  #     - "80"
+  #   network_mode: source_microservice-bridge-network
+  #   volumes:
+  #     - ./02. Core Services/Member/Microservice.IdentityServer/bin/Debug/netcoreapp2.1/publish:/app
+  #   entrypoint: tail -f /dev/null
+
+  # microservice.logging.api:
+  #   image: microservice/logging-api:dev
+  #   container_name: microservice.logging.api
+  #   build:
+  #     target: debug
+  #     context: ./02. Core Services/Logging
+  #     dockerfile: Microservice.Logging.API/Dockerfile
+  #   environment:
+  #     - ASPNETCORE_ENVIRONMENT=Development
+  #     - DOTNET_USE_POLLING_FILE_WATCHER=1
+  #   ports:
+  #     - "80"
+  #   network_mode: source_microservice-bridge-network
+  #   volumes:
+  #     - ./02. Core Services/Logging/Microservice.Logging.API/bin/Debug/netcoreapp2.1/publish:/app
+  #   entrypoint: tail -f /dev/null
+
+  # microservice.logging.backgroundprocess:
+  #   image: microservice/logging-background:dev
+  #   container_name: microservice.logging.background
+  #   build:
+  #     target: debug
+  #     context: ./02. Core Services/Logging
+  #     dockerfile: Microservice.Logging.BackgroundProcess/Dockerfile
+  #   environment:
+  #     - ASPNETCORE_ENVIRONMENT=Development
+  #     - DOTNET_USE_POLLING_FILE_WATCHER=1
+  #   ports:
+  #     - "80"
+  #   network_mode: source_microservice-bridge-network
+  #   volumes:
+  #     - ./02. Core Services/Logging/Microservice.Logging.BackgroundProcess/bin/Debug/netcoreapp2.1/publish:/app
+  #   entrypoint: tail -f /dev/null
+
+  # microservice.notification.backgroundprocess:
+  #   image: microservice/notification-background:dev
+  #   container_name: microservice.notification.background
+  #   build:
+  #     target: debug
+  #     context: ./02. Core Services/Notification
+  #     dockerfile: Microservice.Notification.BackgroundProcess/Dockerfile
+  #   environment:
+  #     - ASPNETCORE_ENVIRONMENT=Development
+  #     - DOTNET_USE_POLLING_FILE_WATCHER=1
+  #   ports:
+  #     - "80"
+  #   network_mode: source_microservice-bridge-network
+  #   dns:
+  #     - 8.8.8.8
+  #   volumes:
+  #     - ./02. Core Services/Notification/Microservice.Notification.BackgroundProcess/bin/Debug/netcoreapp2.1/publish:/app
+  #   entrypoint: tail -f /dev/null

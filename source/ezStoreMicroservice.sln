@@ -9,8 +9,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "01. Libraries", "01. Librar
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "02. Core Services", "02. Core Services", "{4221A031-3665-41E5-8017-D499ED8F7A31}"
 EndProject
-Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{DB73F604-428A-4DDA-A352-0AF084E52AC6}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Logging", "Logging", "{1E993341-DFAF-4959-BD2E-79989A24A3EB}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Notification", "Notification", "{9C6A3E2E-628A-4403-A721-2985B8A9A21D}"
@@ -79,14 +77,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{DB73F604-428A-4DDA-A352-0AF084E52AC6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{DB73F604-428A-4DDA-A352-0AF084E52AC6}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{DB73F604-428A-4DDA-A352-0AF084E52AC6}.Docker|Any CPU.ActiveCfg = Debug|Any CPU
-		{DB73F604-428A-4DDA-A352-0AF084E52AC6}.Docker|Any CPU.Build.0 = Debug|Any CPU
-		{DB73F604-428A-4DDA-A352-0AF084E52AC6}.Local|Any CPU.ActiveCfg = Local|Any CPU
-		{DB73F604-428A-4DDA-A352-0AF084E52AC6}.Local|Any CPU.Build.0 = Local|Any CPU
-		{DB73F604-428A-4DDA-A352-0AF084E52AC6}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{DB73F604-428A-4DDA-A352-0AF084E52AC6}.Release|Any CPU.Build.0 = Release|Any CPU
 		{F7AF47CE-3501-4E39-8570-5E3284A6A01A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{F7AF47CE-3501-4E39-8570-5E3284A6A01A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F7AF47CE-3501-4E39-8570-5E3284A6A01A}.Docker|Any CPU.ActiveCfg = Debug|Any CPU
