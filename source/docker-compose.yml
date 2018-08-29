@@ -22,6 +22,7 @@ services:
       dockerfile: Microservice.IdentityServer/Dockerfile
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
+      - DOTNET_USE_POLLING_FILE_WATCHER=1
     volumes:
       - ./02. Core Services/Member/Microservice.IdentityServer/bin/Debug/netcoreapp2.1/publish:/app
     command: /bin/bash -c "dotnet Microservice.IdentityServer.dll"
@@ -34,6 +35,7 @@ services:
       dockerfile: Microservice.Logging.API/Dockerfile
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
+      - DOTNET_USE_POLLING_FILE_WATCHER=1
     volumes:
       - ./02. Core Services/Logging/Microservice.Logging.API/bin/Debug/netcoreapp2.1/publish:/app
     command: /bin/bash -c "dotnet Microservice.Logging.API.dll"
@@ -46,6 +48,7 @@ services:
       dockerfile: Microservice.Logging.BackgroundProcess/Dockerfile
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
+      - DOTNET_USE_POLLING_FILE_WATCHER=1
     volumes:
       - ./02. Core Services/Logging/Microservice.Logging.BackgroundProcess/bin/Debug/netcoreapp2.1/publish:/app
     command: /bin/bash -c "dotnet Microservice.Logging.BackgroundProcess.dll"
@@ -58,6 +61,7 @@ services:
       dockerfile: Microservice.Notification.BackgroundProcess/Dockerfile
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
+      - DOTNET_USE_POLLING_FILE_WATCHER=1
     volumes:
       - ./02. Core Services/Notification/Microservice.Notification.BackgroundProcess/bin/Debug/netcoreapp2.1/publish:/app
     command: /bin/bash -c "dotnet Microservice.Notification.BackgroundProcess.dll"
