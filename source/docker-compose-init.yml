@@ -22,6 +22,7 @@ services:
     networks:
       microservice-bridge-network:
         ipv4_address: 192.168.0.103
+    container_name: microservice.identity.db
 
   services-queue:
     build:
@@ -29,10 +30,10 @@ services:
       dockerfile: Dockerfile-RabbitMQ
     ports:
       - 15672:15672
-      - 5672:5672
     networks:
       microservice-bridge-network:
         ipv4_address: 192.168.0.101
+    container_name: microservice.services.queue
 
   services-db:
     image: mongo:4.1.1
@@ -41,6 +42,7 @@ services:
     networks:
       microservice-bridge-network:
         ipv4_address: 192.168.0.100
+    container_name: microservice.services.db
 
   services-redis:
     image: redis:4.0.11
@@ -49,3 +51,4 @@ services:
     networks:
       microservice-bridge-network:
         ipv4_address: 192.168.0.102
+    container_name: microservice.services.redis

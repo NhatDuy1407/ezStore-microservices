@@ -8,10 +8,17 @@
 - mysql (5.7)
 - mongo (4.1.1)
 - rabbitmq (3.7)
+- Docker-ce
+- DDD
+
+## IDE
+- Visual studio code
 
 ## Docker
 - First run the database, message queue: `docker-compose -f docker-compose-init.yml up`
-- Then run the app from Visual Studio 2017
+- Then run the app as development by command:
+  + dotnet publish .\ezStoreMicroservice.sln
+  + docker-compose -f docker-compose.yml -f docker-compose.override.yml up --force-recreate
 
 ## Microservices
 - Logging Service
