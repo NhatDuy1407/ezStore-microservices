@@ -1,0 +1,44 @@
+version: '3.4'
+
+services:
+  microservice.identityserver:
+    image: microservice.identity.server
+    container_name: microservice-identity-server
+    build:
+      target: deploy
+      context: 02.CoreServices/Member/Microservice.IdentityServer
+      dockerfile: Dockerfile.deploy
+
+  microservice.logging.api:
+    image: microservice.logging.api
+    container_name: microservice-logging-api
+    build:
+      target: deploy
+      context: 02.CoreServices/Logging/Microservice.Logging.API
+      dockerfile: Dockerfile.deploy
+
+  microservice.logging.backgroundprocess:
+    image: microservice.logging.background
+    container_name: microservice-logging-background
+    build:
+      target: deploy
+      context: 02.CoreServices/Logging/Microservice.Logging.BackgroundProcess
+      dockerfile: Dockerfile.deploy
+
+  microservice.notification.backgroundprocess:
+    image: microservice.notification.background
+    container_name: microservice-notification-background
+    build:
+      target: deploy
+      context: 02.CoreServices/Notification/Microservice.Notification.BackgroundProcess
+      dockerfile: Dockerfile.deploy
+    dns:
+      - 8.8.8.8
+
+  ezstore.microservice.product.api:
+    image: ezstore.product.api
+    container_name: ezstore-product-api
+    build:
+      target: deploy
+      context: 03.ezStore/Product/ezStore.Microservice.Product.API
+      dockerfile: Dockerfile.deploy

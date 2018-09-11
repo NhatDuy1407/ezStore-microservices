@@ -8,26 +8,27 @@
 - mysql (5.7)
 - mongo (4.1.1)
 - rabbitmq (3.7)
-- Docker-ce
+- Docker-ce (version 18.06.1-ce, build e68fc7a)
+- Kubenetes (1.10.3)
 - DDD
 
 ## IDE
-- Visual studio code
+- Visual Studio Community 15.8.1
+- Visual Studio Code
 
-## Docker
-- First run the database, message queue: `docker-compose -f docker-compose-init.yml up`
-- Then run the app as development by command:
-  + dotnet publish .\ezStoreMicroservice.sln
-  + docker-compose -f docker-compose.yml up --build
+## Local Development
+- First run `docker-compose -f docker-compose.init.yml up` to start databases and queues
+- Wait for databases and queues ready
+- Run application from Visual Studio.
 
-## Debugging
-- Open file docker-compose.debug.yml
-- If you want to debug a container, un-comment block of service
-- Run command: docker-compose -f docker-compose.debug.yml --build
-- Run F5 with configuration in launch.json
+## Local Kubenetes Deployment 
+- First run `k8s\build-db.bat`, this will build images for databases and queues then push to Docker repository (optional: if images are already there)
+- Deploy databases and queue to Kubenetes by running `k8s\deploy-db.bat`
+- Run `k8s\build-api.bat` to build and publish API image
+- Deploy API to Kubenetes by running `k8s\deploy-api.bat`
 
 ## Microservices
+- Identity Server
 - Logging Service
 - Notification Service
-- Identity Server
 - Product Store
