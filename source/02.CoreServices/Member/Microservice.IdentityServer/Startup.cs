@@ -21,7 +21,6 @@ namespace Microservice.IdentityServer
     public class Startup
     {
         public IConfiguration Configuration { get; }
-        public static Guid ApplicationGuid;
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -30,8 +29,6 @@ namespace Microservice.IdentityServer
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            ApplicationGuid = Guid.NewGuid();
-
             // Add framework services.
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseMySql(Configuration.GetConnectionString(Constants.DefaultConnection)));

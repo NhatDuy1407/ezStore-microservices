@@ -10,6 +10,6 @@ kubectl delete deployment microservice-logging-background
 kubectl delete service microservice-notification-background
 kubectl delete deployment microservice-notification-background
 
-kubectl create -f .\k8s.service.api.yaml
+kubectl create -f k8s\k8s.service.api.yaml
 
 kubectl get all

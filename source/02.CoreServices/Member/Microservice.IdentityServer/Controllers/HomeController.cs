@@ -5,7 +5,7 @@ using IdentityServer4.Quickstart.UI;
 
 namespace Microservice.IdentityServer.Controllers
 {
-    [SecurityHeaders]
+    //[SecurityHeaders]
     public class HomeController : Controller
     {
         private readonly IIdentityServerInteractionService _interaction;

@@ -1,4 +1,4 @@
-docker-compose -f ../docker-compose.init.yml build 
+docker-compose -f docker-compose.init.yml build 
 
 docker tag microservice.services.queue khainx127/microservice.services.queue
 docker push khainx127/microservice.services.queue

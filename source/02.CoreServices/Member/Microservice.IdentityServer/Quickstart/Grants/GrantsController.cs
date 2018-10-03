@@ -15,7 +15,7 @@ namespace IdentityServer4.Quickstart.UI
     /// <summary>
     /// This sample controller allows a user to revoke grants given to clients
     /// </summary>
-    [SecurityHeaders]
+    //[SecurityHeaders]
     [Authorize(AuthenticationSchemes = IdentityServer4.IdentityServerConstants.DefaultCookieAuthenticationScheme)]
     public class GrantsController : Controller
     {
