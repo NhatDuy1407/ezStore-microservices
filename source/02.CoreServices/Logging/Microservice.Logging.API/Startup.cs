@@ -1,5 +1,4 @@
 ﻿using Microservice.Logging.API.Swagger;
-using Microservice.Logging.Domain.Application.Queries;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -45,7 +44,6 @@ namespace Microservice.Logging.API
             services.AddMvc();
 
             //// Add application services.
-            services.AddTransient<ILoggingQueries, LoggingQueries>();
             ServiceConfiguration.ConfigureServices(services, Configuration);
         }
 

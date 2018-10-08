@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Microservice.Core.DataAccess.Sql
 {
-    public class BaseModelRepository<TModel> : IWriteRepository<TModel> where TModel : ModelEntity<Guid>
+    public class BaseModelRepository<TModel> : IDataAccessWriteRepository<TModel> where TModel : ModelEntity<Guid>
     {
         protected readonly DbContext Context;
         internal DbSet<TModel> DbSet;

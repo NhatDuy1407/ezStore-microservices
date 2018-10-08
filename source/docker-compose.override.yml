@@ -44,7 +44,7 @@ services:
     networks:
       - microservice-network
 
-  ezstore.microservice.product.api:
+  ezStore.product.api:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
     ports:

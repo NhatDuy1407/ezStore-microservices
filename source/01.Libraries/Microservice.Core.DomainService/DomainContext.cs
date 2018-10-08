@@ -22,7 +22,7 @@ namespace Microservice.Core.DomainService
 
         public List<IEvent> Events { get; private set; }
 
-        public void AddEvents(DomainEntity entity)
+        public void AddEvents(AggregateRoot entity)
         {
             if (Events == null)
             {
@@ -52,7 +52,7 @@ namespace Microservice.Core.DomainService
                 {
                     foreach (var key in (attr as MessageBusRouteAttribute).RouteKeys)
                     {
-                        var sendEndPoint = _busControl.GetSendEndpoint(new System.Uri(Configuration.GetConnectionString(Constants.RabbitMQHost) + "/" + key)).Result;
+                        var sendEndPoint = _busControl.GetSendEndpoint(new System.Uri($"{Configuration.GetConnectionString(Constants.RabbitMQHost)}/{key}")).Result;
                         sendEndPoint.Send(@event, @event.GetType());
                     }
                 }

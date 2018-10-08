@@ -5,7 +5,7 @@ namespace Microservice.Core.DomainService.Interfaces
 {
     public interface IDomainContext
     {
-        void AddEvents(DomainEntity entity);
+        void AddEvents(AggregateRoot entity);
 
         Task SaveChanges();
     }

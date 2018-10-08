@@ -8,7 +8,7 @@ using MongoDB.Driver;
 
 namespace Microservice.Core.DataAccess.MongoDB
 {
-    public class BaseModelRepository<TModel> : IWriteRepository<TModel> where TModel : ModelEntity<ObjectId>
+    public class BaseModelRepository<TModel> : IDataAccessWriteRepository<TModel> where TModel : ModelEntity<ObjectId>
     {
         protected readonly MongoDbContext Context;
         internal IMongoCollection<TModel> DbSet;

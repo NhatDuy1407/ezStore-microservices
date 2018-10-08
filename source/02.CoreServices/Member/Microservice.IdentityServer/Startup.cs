@@ -76,7 +76,6 @@ namespace Microservice.IdentityServer
             //        options.ApiSecret = "secret";
             //    });
 
-            services.AddTransient<ICommandBus, CommandBus>();
             ServiceConfiguration.ConfigureServices(services, Configuration);
         }
 

@@ -4,6 +4,12 @@ namespace Microservice.Core.Models
 {
     public class ModelEntity<T>
     {
+        public ModelEntity()
+        {
+            CreatedDate = DateTime.Now;
+            UpdatedDate = DateTime.Now;
+        }
+
         public T Id { get; set; }
 
         public DateTime? CreatedDate { get; set; }

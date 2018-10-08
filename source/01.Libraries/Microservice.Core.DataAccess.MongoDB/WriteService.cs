@@ -4,11 +4,11 @@ using Microservice.Core.DataAccess.Interfaces;
 
 namespace Microservice.Core.DataAccess.MongoDB
 {
-    public class WriteService : IWriteService
+    public class DataAccessWriteService : IDataAccessWriteService
     {
         private readonly Hashtable _hashRepository;
 
-        public WriteService(MongoDbContext dbContext)
+        public DataAccessWriteService(MongoDbContext dbContext)
         {
             _hashRepository = new Hashtable();
             Context = dbContext;
@@ -16,7 +16,7 @@ namespace Microservice.Core.DataAccess.MongoDB
 
         private MongoDbContext Context { get; }
 
-        public IWriteRepository<TEntity> Repository<TEntity>() where TEntity : class
+        public IDataAccessWriteRepository<TEntity> Repository<TEntity>() where TEntity : class
         {
             var key = typeof(TEntity).Name;
             if (!_hashRepository.Contains(key))
@@ -26,7 +26,7 @@ namespace Microservice.Core.DataAccess.MongoDB
                 _hashRepository[key] = repository;
             }
 
-            return (IWriteRepository<TEntity>)_hashRepository[key];
+            return (IDataAccessWriteRepository<TEntity>)_hashRepository[key];
         }
 
 

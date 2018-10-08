@@ -9,7 +9,6 @@
     <DockerServiceName>microservice.identityserver</DockerServiceName>
   </PropertyGroup>
   <ItemGroup>
-    <None Include="docker-compose.deploy.yml" />
     <None Include="docker-compose.init.yml" />
     <None Include="docker-compose.k8s.yml" />
     <None Include="docker-compose.override.yml">
@@ -17,6 +16,7 @@
     </None>
     <None Include="docker-compose.yml" />
     <None Include=".dockerignore" />
+    <None Include="Dockerfile.ezStore.product.db" />
     <None Include="Dockerfile.identity.db" />
     <None Include="Dockerfile.services.db" />
     <None Include="Dockerfile.services.queue" />

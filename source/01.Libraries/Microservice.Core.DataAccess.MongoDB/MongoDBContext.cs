@@ -44,6 +44,7 @@ namespace Microservice.Core.DataAccess.MongoDB
 
         public void SaveChanges()
         {
+            // Method intentionally left empty.
         }
     }
 }

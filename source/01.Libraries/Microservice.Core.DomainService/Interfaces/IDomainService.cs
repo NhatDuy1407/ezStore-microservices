@@ -4,9 +4,8 @@ namespace Microservice.Core.DomainService.Interfaces
 {
     public interface IDomainService
     {
-        IDomainRepository<TEntity> Repository<TEntity>() where TEntity : DomainEntity;
- 
+        void ApplyChanges<TEntity>(TEntity entity) where TEntity : AggregateRoot;
 
-         void SaveChanges();
+        void SaveChanges();
     }
 }

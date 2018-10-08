@@ -9,9 +9,9 @@ namespace Microservice.Logging.Domain.Application.Queries
 {
     public class LoggingQueries : ILoggingQueries
     {
-        private readonly IReadOnlyService _readOnlyService;
+        private readonly IDataAccessReadOnlyService _readOnlyService;
 
-        public LoggingQueries(IReadOnlyService readOnlyService)
+        public LoggingQueries(IDataAccessReadOnlyService readOnlyService)
         {
             this._readOnlyService = readOnlyService;
         }

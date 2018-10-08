@@ -4,7 +4,7 @@ using Microservice.Core.DataAccess.Interfaces;
 
 namespace Microservice.Core.DataAccess.MongoDB
 {
-    public class ReadOnlyService : IReadOnlyService
+    public class ReadOnlyService : IDataAccessReadOnlyService
     {
         private readonly Hashtable _hashRepository;
 
@@ -16,7 +16,7 @@ namespace Microservice.Core.DataAccess.MongoDB
 
         private MongoDbContext Context { get; }
 
-        public IReadOnlyRepository<TEntity> Repository<TEntity>() where TEntity : class
+        public IDataAccessReadOnlyRepository<TEntity> Repository<TEntity>() where TEntity : class
         {
             var key = typeof(TEntity).Name;
             if (!_hashRepository.Contains(key))
@@ -26,7 +26,7 @@ namespace Microservice.Core.DataAccess.MongoDB
                 _hashRepository[key] = repository;
             }
 
-            return (IReadOnlyRepository<TEntity>) _hashRepository[key];
+            return (IDataAccessReadOnlyRepository<TEntity>) _hashRepository[key];
         }
     }
 }

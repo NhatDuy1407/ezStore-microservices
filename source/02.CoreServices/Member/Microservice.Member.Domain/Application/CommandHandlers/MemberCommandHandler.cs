@@ -8,12 +8,12 @@ namespace Microservice.Member.Domain.Application.Commands
 {
     public class MemberCommandHandler : ICommandHandler<UpdateUserLoginCommand>
     {
-        private readonly IDomainService _service;
-        private readonly IWriteService _writeService;
+        private readonly IDomainService _domainService;
+        private readonly IDataAccessWriteService _writeService;
 
-        public MemberCommandHandler(IDomainService service, IWriteService writeService)
+        public MemberCommandHandler(IDomainService domainService, IDataAccessWriteService writeService)
         {
-            _service = service;
+            _domainService = domainService;
             _writeService = writeService;
         }
 
@@ -21,8 +21,8 @@ namespace Microservice.Member.Domain.Application.Commands
         {
             var user = new UserDomain(_writeService) { Username = command.Email };
             user.Login();
-            _service.Repository<UserDomain>().Save(user);
-            _service.SaveChanges();
+            _domainService.ApplyChanges(user);
+            _domainService.SaveChanges();
             return Task.CompletedTask;
         }
     }

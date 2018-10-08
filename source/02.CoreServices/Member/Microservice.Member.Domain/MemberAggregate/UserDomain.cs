@@ -6,11 +6,11 @@ using Microsoft.Extensions.Logging;
 
 namespace Microservice.Member.Domain.MemberAggregate
 {
-    public class UserDomain : DomainEntity
+    public class UserDomain : AggregateRoot
     {
-        private readonly IWriteService _writeService;
+        private readonly IDataAccessWriteService _writeService;
 
-        public UserDomain(IWriteService writeService)
+        public UserDomain(IDataAccessWriteService writeService)
         {
             _writeService = writeService;
         }
@@ -23,7 +23,7 @@ namespace Microservice.Member.Domain.MemberAggregate
             _writeService.Repository<UserLog>().Insert(userLog);
             _writeService.SaveChanges();
 
-            base.ApplyEvent(new WriteLogEvent()
+            ApplyEvent(new WriteLogEvent()
             {
                 Level = LogLevel.Information.ToString(),
                 Logger = nameof(UserDomain),

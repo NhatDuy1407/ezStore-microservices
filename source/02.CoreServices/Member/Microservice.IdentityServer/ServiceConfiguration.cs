@@ -35,11 +35,13 @@ namespace Microservice.IdentityServer
                 return _bus;
             });
 
+            services.AddTransient<ICommandBus, CommandBus>();
+
             // Add application services.
             services.AddTransient<IDomainContext>(i => new DomainContext(i.GetService<IConfiguration>(), i.GetService<IBusControl>()));
             services.AddTransient<IDomainService>(i => new DomainService(i.GetService<IDomainContext>()));
             services.AddTransient(i => new MongoDbContext(configuration.GetConnectionString(Constants.MemberDbConnection), configuration.GetConnectionString(Constants.MemberDbName), false));
-            services.AddTransient<IWriteService>(i => new WriteService(i.GetService<MongoDbContext>()));
+            services.AddTransient<IDataAccessWriteService>(i => new DataAccessWriteService(i.GetService<MongoDbContext>()));
             services.AddTransient<ICommandHandler<UpdateUserLoginCommand>, MemberCommandHandler>();
         }
     }

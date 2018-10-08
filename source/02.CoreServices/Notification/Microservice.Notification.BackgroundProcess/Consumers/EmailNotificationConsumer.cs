@@ -23,6 +23,7 @@ namespace Microservice.Notification.BackgroundProcess.Consumers
 
         public Task Consume(ConsumeContext<EmailContentCreated> context)
         {
+            var sendEndPoint = context.GetSendEndpoint(new System.Uri($"{Configuration.GetConnectionString(Constants.RabbitMQHost)}/{EventRouteConstants.LoggingService}")).Result;
             try
             {
                 var userName = Configuration.GetSection(Constants.SmtpSettings)[Constants.SmtpUserName];
@@ -38,7 +39,6 @@ namespace Microservice.Notification.BackgroundProcess.Consumers
                 };
                 client.Send(context.Message.From, context.Message.To, context.Message.Subject, context.Message.Body);
 
-                var sendEndPoint = context.GetSendEndpoint(new System.Uri(Configuration.GetConnectionString(Constants.RabbitMQHost) + "/" + EventRouteConstants.LoggingService)).Result;
                 sendEndPoint.Send(new WriteLogEvent()
                 {
                     Level = LogLevel.Information.ToString(),
@@ -49,7 +49,6 @@ namespace Microservice.Notification.BackgroundProcess.Consumers
             }
             catch (System.Exception ex)
             {
-                var sendEndPoint = context.GetSendEndpoint(new System.Uri(Configuration.GetConnectionString(Constants.RabbitMQHost) + "/" + EventRouteConstants.LoggingService)).Result;
                 sendEndPoint.Send(new WriteLogEvent()
                 {
                     Level = LogLevel.Error.ToString(),

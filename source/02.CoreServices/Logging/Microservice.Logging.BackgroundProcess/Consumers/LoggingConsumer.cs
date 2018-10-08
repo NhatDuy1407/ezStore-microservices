@@ -10,9 +10,9 @@ namespace Microservice.Logging.BackgroundProcess.Consumers
 {
     public class LoggingConsumer : BaseConsumer, IConsumer<WriteLogEvent>
     {
-        private readonly IWriteService _writeService;
+        private readonly IDataAccessWriteService _writeService;
 
-        public LoggingConsumer(IConfiguration configuration, IWriteService writeService) : base()
+        public LoggingConsumer(IConfiguration configuration, IDataAccessWriteService writeService) : base()
         {
             _writeService = writeService;
         }
