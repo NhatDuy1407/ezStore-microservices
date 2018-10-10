@@ -2,31 +2,32 @@ version: '3.5'
 
 services:
   microservice.identityserver:
-    image: microserviceidentityserver
+    image: microservice.identityserver
+    container_name: microservice-identityserver
     build:
       context: .
       dockerfile: 02.CoreServices/Member/Microservice.IdentityServer/Dockerfile
 
   microservice.logging.api:
-    image: microserviceloggingapi
+    image: microservice.logging.api
     build:
       context: .
       dockerfile: 02.CoreServices/Logging/Microservice.Logging.API/Dockerfile
 
   microservice.logging.backgroundprocess:
-    image: microserviceloggingbackgroundprocess
+    image: microservice.logging.backgroundprocess
     build:
       context: .
       dockerfile: 02.CoreServices/Logging/Microservice.Logging.BackgroundProcess/Dockerfile
 
   microservice.notification.backgroundprocess:
-    image: microservicenotificationbackgroundprocess
+    image: microservice.notification.backgroundprocess
     build:
       context: .
       dockerfile: 02.CoreServices/Notification/Microservice.Notification.BackgroundProcess/Dockerfile
 
   ezStore.product.api:
-    image: ezstoreproductapi
+    image: ezstore.product.api
     build:
       context: .
       dockerfile: 03.ezStore/Product/ezStore.Product.API/Dockerfile

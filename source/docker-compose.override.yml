@@ -49,5 +49,7 @@ services:
       - ASPNETCORE_ENVIRONMENT=Development
     ports:
       - "80"
+    ports:
+      - 6001:80
     networks:
       - microservice-network

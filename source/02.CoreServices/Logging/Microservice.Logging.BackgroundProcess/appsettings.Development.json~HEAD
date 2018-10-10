@@ -1,0 +1,14 @@
+﻿{
+  "ConnectionStrings": {
+    "DefaultConnection": "mongodb://10.101.37.225/",
+    "RabbitMQHost": "rabbitmq://10.100.161.1"
+  },
+  "Logging": {
+    "IncludeScopes": false,
+    "LogLevel": {
+      "Default": "Debug",
+      "System": "Information",
+      "Microsoft": "Information"
+    }
+  }
+}

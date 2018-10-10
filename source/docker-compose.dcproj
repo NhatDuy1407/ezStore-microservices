@@ -9,6 +9,7 @@
     <DockerServiceName>microservice.identityserver</DockerServiceName>
   </PropertyGroup>
   <ItemGroup>
+    <None Include="docker-compose-webui.yml" />
     <None Include="docker-compose.init.yml" />
     <None Include="docker-compose.k8s.yml" />
     <None Include="docker-compose.override.yml">

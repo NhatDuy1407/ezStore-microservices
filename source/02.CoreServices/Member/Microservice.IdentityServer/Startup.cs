@@ -37,6 +37,24 @@ namespace Microservice.IdentityServer
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();
 
+            services.AddCors(options =>
+            {
+                options.AddPolicy("AllowAllOrigins",
+                    builder => builder
+                    .AllowAnyOrigin()
+                    .AllowAnyMethod()
+                    .AllowAnyHeader()
+                    .AllowCredentials());
+
+                // note: use this if you want to allow a specific origin
+                //options.AddPolicy("AllowSpecificOrigins",
+                //    builder => builder
+                //    .WithOrigins("http://localhost:4200") // for a specific url. Don't add a forward slash on the end!
+                //    .AllowAnyMethod()
+                //    .AllowAnyHeader()
+                //    .AllowCredentials());
+            });
+
             services.AddMvc();
 
             // Add application services.
@@ -82,6 +100,8 @@ namespace Microservice.IdentityServer
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory, IServiceProvider serviceProvider)
         {
+            app.UseCors("AllowAllOrigins");
+
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
             loggerFactory.AddProvider(new MicroserviceLoggerProvider(serviceProvider.GetService<IBusControl>(), Configuration));

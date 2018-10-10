@@ -5,6 +5,8 @@
 - Microsoft.EntityFrameworkCore (2.1.1)
 - Microsoft.AspNetCore.Identity (2.1.2)
 - IdentityServer4 (2.1.1)
+- Angular6
+- CoreUI
 - mysql (5.7)
 - mongo (4.1.1)
 - rabbitmq (3.7)
@@ -20,6 +22,8 @@
 - First run `docker-compose -f docker-compose.init.yml up` to start databases and queues
 - Wait for databases and queues ready
 - Run application from Visual Studio.
+- Run Angular6 project from `source\03.ezStore\WebUI`. Note: I am using port 7001
+- If you want to deploy Angular project to docker, build project `ng build --prod` then run `docker-compose -f docker-compose-webui.yml up`
 
 ## Local Kubenetes Deployment 
 - First run `k8s\build-db.bat`, this will build images for databases and queues then push to Docker repository (optional: if images are already there)
