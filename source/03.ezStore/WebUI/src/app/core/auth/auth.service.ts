@@ -16,13 +16,13 @@ export class AuthService extends HttpService {
         return environment.identityServiceUrl;
     }
 
-    constructor(private router: Router, http: HttpClient, private notifierService: NotifierService) {
+    constructor(private router: Router, http: HttpClient) {
         super(http);
     }
 
     public hash_token: string = null;
 
-    async login(username, password) {
+    login(username, password, callback?, errorCallBack?) {
         const body = new HttpParams()
             .set('grant_type', 'password')
             .set('username', username)
@@ -35,15 +35,27 @@ export class AuthService extends HttpService {
             { headers: new HttpHeaders({ 'Content-Type': 'application/x-www-form-urlencoded' }) }).subscribe((tokenData: any) => {
                 if (tokenData) {
                     localStorage.setItem('access_token', tokenData.access_token);
+                    if (callback) { callback(); }
                     this.router.navigate(['/']);
                 }
-            },
-                error => {
-                    // error: {error: "invalid_grant", error_description: "invalid_username_or_password"}
-                    if (error.error.error_description === 'invalid_username_or_password') {
-                        this.notifierService.error('Invalid username or password', 'Login');
-                    }
-                });
+            }, () => {
+                if (errorCallBack) {
+                    errorCallBack();
+                }
+            });
+    }
+
+    register(data, callback?, errorCallBack?) {
+        this.post('api/registerUser', data
+        ).subscribe(() => {
+            if (callback) {
+                callback();
+            }
+        }, () => {
+            if (errorCallBack) {
+                errorCallBack();
+            }
+        });
     }
 
     isAuthenticate(): boolean {
@@ -51,6 +63,8 @@ export class AuthService extends HttpService {
     }
 
     logout() {
+        localStorage.removeItem('access_token');
+        this.router.navigate(['dashboard']);
     }
 
     getUserInfo() {

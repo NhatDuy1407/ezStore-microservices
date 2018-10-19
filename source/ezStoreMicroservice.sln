@@ -63,12 +63,26 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microservice.SharedEvents",
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "k8s", "k8s", "{9CC383E6-C307-4003-AE6D-9376CC747F7C}"
 	ProjectSection(SolutionItems) = preProject
-		k8s\build-api.bat = k8s\build-api.bat
-		k8s\build-db.bat = k8s\build-db.bat
-		k8s\deploy-api.bat = k8s\deploy-api.bat
-		k8s\deploy-db.bat = k8s\deploy-db.bat
+		k8s\00-kubernetes-admin.bat = k8s\00-kubernetes-admin.bat
+		k8s\01-build-db.bat = k8s\01-build-db.bat
+		k8s\02-delete-db.bat = k8s\02-delete-db.bat
+		k8s\02-deploy-db.bat = k8s\02-deploy-db.bat
+		k8s\03-build-api.bat = k8s\03-build-api.bat
+		k8s\04-delete-api.bat = k8s\04-delete-api.bat
+		k8s\04-deploy-api.bat = k8s\04-deploy-api.bat
+		k8s\05-build-webui.bat = k8s\05-build-webui.bat
+		k8s\06-publish-webui-image.bat = k8s\06-publish-webui-image.bat
+		k8s\07-deploy-webui.bat = k8s\07-deploy-webui.bat
+		k8s\istio-01-install.bat = k8s\istio-01-install.bat
+		k8s\istio-02-dashboard.bat = k8s\istio-02-dashboard.bat
+		k8s\istio-03-rules.bat = k8s\istio-03-rules.bat
+		k8s\istio-04-gateway.bat = k8s\istio-04-gateway.bat
+		k8s\istio-05-setup-api.bat = k8s\istio-05-setup-api.bat
+		k8s\istio-gateway.yaml = k8s\istio-gateway.yaml
+		k8s\istio-rules.yaml = k8s\istio-rules.yaml
 		k8s\k8s.service.api.yaml = k8s\k8s.service.api.yaml
 		k8s\k8s.service.db.yaml = k8s\k8s.service.db.yaml
+		k8s\k8s.webui.yaml = k8s\k8s.webui.yaml
 	EndProjectSection
 EndProject
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{9D62E8B8-5B03-44FF-BF78-5FB60AAFE514}"

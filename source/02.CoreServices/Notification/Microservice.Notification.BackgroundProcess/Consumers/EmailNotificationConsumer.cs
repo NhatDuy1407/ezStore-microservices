@@ -15,7 +15,8 @@ namespace Microservice.Notification.BackgroundProcess.Consumers
 {
     public class EmailNotificationConsumer : BaseConsumer, IConsumer<EmailContentCreated>
     {
-        IConfiguration Configuration;
+        private readonly IConfiguration Configuration;
+
         public EmailNotificationConsumer(IConfiguration configuration) : base()
         {
             Configuration = configuration;

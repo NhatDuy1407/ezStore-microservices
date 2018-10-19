@@ -1,4 +1,5 @@
 ﻿using ezStore.Product.Infrastructure;
+using IdentityServer4.AccessTokenValidation;
 using MassTransit;
 using Microservice.Core;
 using Microservice.Core.Logging;
@@ -47,7 +48,16 @@ namespace ezStore.Product.API
 
             services.AddMvc();
 
-            services.AddDbContext<ApplicationDbContext>(options => 
+            services.AddAuthentication(IdentityServerAuthenticationDefaults.AuthenticationScheme)
+                .AddIdentityServerAuthentication(options =>
+                {
+                    options.Authority = Configuration.GetConnectionString(Constants.IdentityServerIssuerUri);
+                    options.RequireHttpsMetadata = false;
+                    options.ApiName = Constants.IdentityServerAPIName;
+                    options.ApiSecret = Constants.IdentityServerSecret;
+                });
+
+            services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseMySql(Configuration.GetConnectionString(Constants.DefaultConnection), b => b.MigrationsAssembly("ezStore.Product.API")));
 
             ServiceConfiguration.ConfigureServices(services, Configuration);
@@ -57,6 +67,7 @@ namespace ezStore.Product.API
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory, IServiceProvider serviceProvider)
         {
             app.UseCors("AllowAllOrigins");
+            app.UseAuthentication();
 
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();

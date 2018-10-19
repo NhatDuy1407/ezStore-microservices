@@ -6,10 +6,12 @@ using ezStore.Product.API.ViewModels;
 using ezStore.Product.Domain.Application.Commands;
 using ezStore.Product.Domain.Application.Queries;
 using Microservice.Core.DomainService.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ezStore.Product.API.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class ProductCategoryController : ControllerBase

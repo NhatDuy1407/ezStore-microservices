@@ -15,7 +15,7 @@
 - DDD
 
 ## IDE
-- Visual Studio Community 15.8.1
+- Visual Studio Community 2017
 - Visual Studio Code
 
 ## Local Development
@@ -26,10 +26,23 @@
 - If you want to deploy Angular project to docker, build project `ng build --prod` then run `docker-compose -f docker-compose-webui.yml up`
 
 ## Local Kubenetes Deployment 
-- First run `k8s\build-db.bat`, this will build images for databases and queues then push to Docker repository (optional: if images are already there)
-- Deploy databases and queue to Kubenetes by running `k8s\deploy-db.bat`
-- Run `k8s\build-api.bat` to build and publish API image
-- Deploy API to Kubenetes by running `k8s\deploy-api.bat`
+- First run `k8s\01-build-db.bat`, this will build images for databases and queues then push to Docker repository (optional: if images are already there)
+- Deploy databases and queue to Kubenetes by running `k8s\02-deploy-db.bat`
+- Run `k8s\03-build-api.bat` to build and publish API image
+- Deploy API to Kubenetes by running `k8s\04-deploy-api.bat`
+- Run `k8s\05-build-webui.bat` to build WebUI image
+- Run `k8s\06-publish-webui-image.bat` to publish WebUI image
+- Deploy WebUI to Kubenetes by running `k8s\07-deploy-webui.bat`
+
+## Istio Dashboard (Application metric & health check)
+- Download Istio from https://github.com/istio/istio/releases/
+- From Istio folder, run `kubectl apply -f install/kubernetes/istio-demo.yaml`
+- Waiting for Istio ready, run Istio Dashboard: `kubectl -n istio-system port-forward $(kubectl -n istio-system get pod -l app=grafana -o jsonpath='{.items[0].metadata.name}') 3000:3000 &` and open http://localhost:3000
+- Run `k8s\istio-03-rules.bat` to allow Istio Service to connect database from outside 
+- Run 'k8s\istio-04-gateway.bat' to allow run API from domain name http://microservice.identityserver:30001/
+- Run `k8s\istio-05-setup-api.bat` to set up API with injected Istio sidecar
+- Run `kubectl -n istio-system port-forward istio-egressgateway-56bdd5fcfb-rxbzs 30001` to forward port 30001. (`istio-egressgateway-56bdd5fcfb-rxbzs` is istio-egressgateway)
+- Open site http://microservice.identityserver:30001/ and check activity from http://localhost:3000 
 
 ## Microservices
 - Identity Server

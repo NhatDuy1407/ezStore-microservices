@@ -1,33 +1,33 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: microservice-identity-server
+  name: microservice-identityserver
 spec:
   type: NodePort
   ports:
-  - name: identity-server
+  - name: identityserver
     protocol: TCP
     port: 80
   selector:
-    app: microservice-identity-server
+    app: microservice-identityserver
 ---
 apiVersion: apps/v1beta1
 kind: Deployment
 metadata:
-  name: microservice-identity-server
+  name: microservice-identityserver
 spec:
-  replicas: 1
+  replicas: 2
   minReadySeconds: 10
   strategy:
     type: Recreate
   template:
     metadata:
       labels:
-        app: microservice-identity-server
+        app: microservice-identityserver
     spec:
       containers:
-      - name: microservice-identity-server
-        image: khainx127/microservice.identity.server
+      - name: microservice-identityserver
+        image: khainx127/microservice.identityserver
         ports:
         - containerPort: 80
         env:
@@ -35,17 +35,19 @@ spec:
             value: "k8s"
         command: ["/bin/bash"]
         args: ["-c", "dotnet /app/Microservice.IdentityServer.dll"]
+
 ---
 apiVersion: v1
 kind: Service
 metadata:
   name: microservice-logging-api
 spec:
-  type: NodePort
+  type: ClusterIP
   ports:
   - name: logging-api
     protocol: TCP
     port: 80
+    targetPort: 30002
   selector:
     app: microservice-logging-api
 ---
@@ -73,13 +75,14 @@ spec:
             value: "k8s"
         command: ["/bin/bash"]
         args: ["-c", "dotnet /app/Microservice.Logging.API.dll"]
+
 ---
 apiVersion: v1
 kind: Service
 metadata:
   name: microservice-logging-background
 spec:
-  type: NodePort
+  type: ClusterIP
   ports:
   - name: logging-api
     protocol: TCP
@@ -111,13 +114,14 @@ spec:
             value: "k8s"
         command: ["/bin/bash"]
         args: ["-c", "dotnet /app/Microservice.Logging.BackgroundProcess.dll"]
+
 ---
 apiVersion: v1
 kind: Service
 metadata:
   name: microservice-notification-background
 spec:
-  type: NodePort
+  type: ClusterIP
   ports:
   - name: logging-api
     protocol: TCP
@@ -152,3 +156,42 @@ spec:
       dnsConfig:
         nameservers:
         - 8.8.8.8
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ezstore-product-api
+spec:
+  type: NodePort
+  ports:
+  - name: ezstore-product-api
+    protocol: TCP
+    port: 80
+  selector:
+    app: ezstore-product-api
+---
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: ezstore-product-api
+spec:
+  replicas: 2
+  minReadySeconds: 10
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: ezstore-product-api
+    spec:
+      containers:
+      - name: ezstore-product-api
+        image: khainx127/ezstore.product.api
+        ports:
+        - containerPort: 80
+        env:
+          - name: ASPNETCORE_ENVIRONMENT
+            value: "k8s"
+        command: ["/bin/bash"]
+        args: ["-c", "dotnet /app/ezStore.Product.API.dll"]

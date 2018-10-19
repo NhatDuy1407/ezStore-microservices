@@ -6,9 +6,9 @@ networks:
     driver: bridge
 
 services:
-  ezStore.product.webui:
-    image: ezstore.product.webui
-    container_name: ezStore-product-webui
+  ezStore.webui:
+    image: ezstore.webui
+    container_name: ezstore-webui
     build:
       context: 03.ezStore\WebUI
       dockerfile: dockerfile

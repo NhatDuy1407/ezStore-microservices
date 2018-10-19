@@ -29,8 +29,12 @@ export class HandleErrorInterceptor implements HttpInterceptor {
                         if (err.status === 401) {
                             this._router.navigate(['login']);
                         } else if (err.error && Object.keys(err.error).length > 0) {
-                            const msg = err.message || '';
-                            this.notification.error(msg, 'Http Error');
+                            const msg = JSON.parse(err.error).error_description || '';
+                            if (msg === 'invalid_username_or_password') {
+                                this.notification.error('Invalid username or password', 'Login');
+                            } else {
+                                this.notification.error(msg, 'Http Error');
+                            }
                         }
                     }
                 }));

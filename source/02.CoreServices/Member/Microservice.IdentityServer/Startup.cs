@@ -15,6 +15,8 @@ using MassTransit;
 using Microservice.IdentityServer.Services;
 using Microservice.Core.DomainService.Interfaces;
 using Microservice.Core.DomainService;
+using Microservice.IdentityServer.Swagger;
+using IdentityServer4.AccessTokenValidation;
 
 namespace Microservice.IdentityServer
 {
@@ -57,13 +59,16 @@ namespace Microservice.IdentityServer
 
             services.AddMvc();
 
+            // Add configuration for Swagger
+            services.AddSwaggerCommon();
+
             // Add application services.
             services.AddTransient<IEmailSender, AuthMessageSender>();
             services.AddTransient<ISmsSender, AuthMessageSender>();
 
             var migrationsAssembly = typeof(Startup).GetTypeInfo().Assembly.GetName().Name;
 
-            services.AddIdentityServer()
+            services.AddIdentityServer(x => { x.IssuerUri = Configuration.GetConnectionString(Constants.IdentityServerIssuerUri); })
                 .AddDeveloperSigningCredential()
                 .AddAspNetIdentity<ApplicationUser>()
                 .AddConfigurationStore(options =>
@@ -85,14 +90,14 @@ namespace Microservice.IdentityServer
             //    twitterOptions.ConsumerSecret = Configuration["Authentication:Twitter:ConsumerSecret"];
             //});
 
-            //services.AddAuthentication("Bearer")
-            //    .AddIdentityServerAuthentication(options =>
-            //    {
-            //        options.Authority = "http://localhost:32776";
-            //        options.RequireHttpsMetadata = false;
-            //        options.ApiName = "clientApp";
-            //        options.ApiSecret = "secret";
-            //    });
+            services.AddAuthentication(IdentityServerAuthenticationDefaults.AuthenticationScheme)
+                .AddIdentityServerAuthentication(options =>
+                {
+                    options.Authority = Configuration.GetConnectionString(Constants.IdentityServerIssuerUri);
+                    options.RequireHttpsMetadata = false;
+                    options.ApiName = Constants.IdentityServerAPIName;
+                    options.ApiSecret = Constants.IdentityServerSecret;
+                });
 
             ServiceConfiguration.ConfigureServices(services, Configuration);
         }
@@ -101,6 +106,8 @@ namespace Microservice.IdentityServer
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory, IServiceProvider serviceProvider)
         {
             app.UseCors("AllowAllOrigins");
+
+            app.UseSwaggerCommon();
 
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();

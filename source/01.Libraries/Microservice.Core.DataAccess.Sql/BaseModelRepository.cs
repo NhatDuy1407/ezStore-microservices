@@ -75,11 +75,6 @@ namespace Microservice.Core.DataAccess.Sql
             Context.SaveChanges();
         }
 
-        private void Attach(TModel entity)
-        {
-            DbSet.Attach(entity);
-        }
-
         public void Transaction()
         {
             Context.Database.BeginTransaction();

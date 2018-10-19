@@ -1,0 +1,69 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: Gateway
+metadata:
+  name: microservice-identityserver-gateway
+spec:
+  selector:
+    istio: ingressgateway # use Istio default gateway implementation
+  servers:
+  - port:
+      number: 30001
+      name: http
+      protocol: HTTP
+    hosts:
+    - "microservice.identityserver"
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: microservice-identityserver
+spec:
+  hosts:
+  - "microservice.identityserver"
+  gateways:
+  - microservice-identityserver-gateway
+  http:
+  - match:
+    - uri:
+        prefix: /
+    route:
+    - destination:
+        host: microservice-identityserver
+        port:
+          number: 80
+---
+
+apiVersion: networking.istio.io/v1alpha3
+kind: Gateway
+metadata:
+  name: ezstore-product-api-gateway
+spec:
+  selector:
+    istio: ingressgateway # use Istio default gateway implementation
+  servers:
+  - port:
+      number: 30002
+      name: http
+      protocol: HTTP
+    hosts:
+    - "ezstore.productapi"
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: ezstore-product-api
+spec:
+  hosts:
+  - "ezstore.productapi"
+  gateways:
+  - ezstore-product-api-gateway
+  http:
+  - match:
+    - uri:
+        prefix: /
+    route:
+    - destination:
+        host: ezstore-product-api
+        port:
+          number: 80
+---

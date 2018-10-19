@@ -7,6 +7,5 @@ kubectl delete deployment microservice-services-queue
 kubectl delete service microservice-services-db
 kubectl delete deployment microservice-services-db
 
-kubectl create -f k8s\k8s.service.db.yaml
-
-kubectl get all
+kubectl delete service ezstore-product-db
+kubectl delete deployment ezstore-product-db

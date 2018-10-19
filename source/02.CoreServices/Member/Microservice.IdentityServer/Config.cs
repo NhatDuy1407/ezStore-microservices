@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using IdentityServer4;
 using IdentityServer4.Models;
+using Microservice.Core;
 using Microsoft.Extensions.Configuration;
 
 namespace Microservice.IdentityServer
@@ -21,7 +22,7 @@ namespace Microservice.IdentityServer
         {
             return new List<ApiResource>
             {
-                new ApiResource("apiApp", "My API")
+                new ApiResource(Constants.IdentityServerAPIName, "My API")
             };
         }
 
@@ -43,14 +44,14 @@ namespace Microservice.IdentityServer
                     // secret for authentication
                     ClientSecrets =
                     {
-                        new Secret("secret".Sha256())
+                        new Secret(Constants.IdentityServerSecret.Sha256())
                     },
 
                     // scopes that client has access to
                     AllowedScopes = {
                         IdentityServerConstants.StandardScopes.OpenId,
                         IdentityServerConstants.StandardScopes.Profile,
-                        "apiApp"
+                        Constants.IdentityServerAPIName
                     }
                 },
 
@@ -65,7 +66,7 @@ namespace Microservice.IdentityServer
 
                     ClientSecrets =
                     {
-                        new Secret("secret".Sha256())
+                        new Secret(Constants.IdentityServerSecret.Sha256())
                     },
 
                     RedirectUris = { $"{configuration["ClientAddress"]}/signin-oidc" },
@@ -75,7 +76,7 @@ namespace Microservice.IdentityServer
                     {
                         IdentityServerConstants.StandardScopes.OpenId,
                         IdentityServerConstants.StandardScopes.Profile,
-                        "apiApp"
+                        Constants.IdentityServerAPIName
                     },
                     AllowOfflineAccess = true
                 },
@@ -97,7 +98,7 @@ namespace Microservice.IdentityServer
                     {
                         IdentityServerConstants.StandardScopes.OpenId,
                         IdentityServerConstants.StandardScopes.Profile,
-                        "apiApp"
+                        Constants.IdentityServerAPIName
                     },
 
                 }

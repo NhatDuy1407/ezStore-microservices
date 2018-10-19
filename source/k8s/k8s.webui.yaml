@@ -1,0 +1,33 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: ezstore-webui
+spec:
+  type: NodePort
+  ports:
+  - name: ezstore-webui
+    protocol: TCP
+    port: 80
+    nodePort: 32001
+  selector:
+    app: ezstore-webui
+---
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: ezstore-webui
+spec:
+  replicas: 1
+  minReadySeconds: 10
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: ezstore-webui
+    spec:
+      containers:
+      - name: ezstore-webui
+        image: khainx127/ezstore.webui
+        ports:
+        - containerPort: 80

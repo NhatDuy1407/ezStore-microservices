@@ -27,5 +27,9 @@
         public const string SystemEmail = "SystemEmail";
         public const string AdminEmail = "AdminEmail";
         public const string ErrorEmailSubject = "ErrorEmailSubject";
+
+        public const string IdentityServerIssuerUri = "IssuerUri";
+        public const string IdentityServerSecret = "secret";
+        public const string IdentityServerAPIName = "apiApp";
     }
 }

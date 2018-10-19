@@ -10,9 +10,9 @@ export abstract class HttpService {
         this.http = http;
     }
 
-    protected get(resource: string) {
+    protected get<T>(resource: string) {
         const url = this.api + resource;
-        return this.http.get(url);
+        return this.http.get<T>(url);
     }
 
     protected put(resource: string, body: any) {

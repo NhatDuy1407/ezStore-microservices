@@ -15,7 +15,7 @@ namespace Microservice.Notification.BackgroundProcess.Consumers
 
         public Task Consume(ConsumeContext<PushNotificationContentCreated> context)
         {
-            // todo: implement PushNotification with a online service. E.g: OneSignal
+            // implement PushNotification with a online service. E.g: OneSignal
             context.Respond(new { Status = true });
             return Task.CompletedTask;
         }

@@ -4,9 +4,7 @@ using Microservice.SharedEvents.Logging;
 using Microservice.SharedEvents.Notification;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
-using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 
 namespace Microservice.Core.Logging
@@ -71,8 +69,8 @@ namespace Microservice.Core.Logging
                 {
                     From = Configuration.GetSection(Constants.Notification)[Constants.SystemEmail],
                     To = Configuration.GetSection(Constants.Notification)[Constants.AdminEmail],
-                    Subject = string.Format(Configuration.GetSection(Constants.Notification)[Constants.ErrorEmailSubject], exception.Message),
-                    Body = $"Data:{message}, Trace:{exception.StackTrace}",
+                    Subject = string.Format(Configuration.GetSection(Constants.Notification)[Constants.ErrorEmailSubject], exception?.Message),
+                    Body = $"Data:{message}, Trace:{exception?.StackTrace}",
                 });
             }
         }

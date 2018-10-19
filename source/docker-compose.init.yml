@@ -40,17 +40,6 @@ services:
     networks:
       - microservice-network
 
-  services.redis:
-    image: microservice.services.redis
-    container_name: microservice-services-redis
-    build:
-      context: .
-      dockerfile: Dockerfile.services.redis
-    ports:
-      - 6379:6379
-    networks:
-      - microservice-network
-
   ezStore.product.db:
     image: ezstore.product.db
     container_name: ezstore-product-db

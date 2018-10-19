@@ -2,8 +2,8 @@ version: '3.4'
 
 services:
   microservice.identityserver:
-    image: microservice.identity.server
-    container_name: microservice-identity-server
+    image: microservice.identityserver
+    container_name: microservice-identityserver
     build:
       target: deploy
       context: 02.CoreServices/Member/Microservice.IdentityServer
@@ -35,7 +35,7 @@ services:
     dns:
       - 8.8.8.8
 
-  ezStore.product.api:
+  ezstore.product.api:
     image: ezstore.product.api
     container_name: ezstore-product-api
     build:

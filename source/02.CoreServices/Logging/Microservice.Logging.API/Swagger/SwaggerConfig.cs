@@ -14,8 +14,7 @@ namespace Microservice.Logging.API.Swagger
         {
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new Info { Title = "OO API", Version = "v1" });
-                //c.AddSecurityDefinition("Bearer", BuildApiKeyScheme());
+                c.SwaggerDoc("v1", new Info { Title = "Logging API", Version = "v1" });
             });
         }
 
@@ -26,22 +25,7 @@ namespace Microservice.Logging.API.Swagger
         public static void UseSwaggerCommon(this IApplicationBuilder app)
         {
             app.UseSwagger();
-            app.UseSwaggerUI(c => { c.SwaggerEndpoint("/swagger/v1/swagger.json", "OO API V1"); });
+            app.UseSwaggerUI(c => { c.SwaggerEndpoint("/swagger/v1/swagger.json", "Logging API V1"); });
         }
-
-        /// <summary>
-        /// Build api key scheme
-        /// </summary>
-        /// <returns></returns>
-        //private static ApiKeyScheme BuildApiKeyScheme()
-        //{
-        //    return new ApiKeyScheme()
-        //    {
-        //        Description = "JWT Authorization header using the Bearer scheme. Example: \"Authorization: Bearer {token}\"",
-        //        Name = "Authorization",
-        //        In = "header",
-        //        Type = "apiKey"
-        //    };
-        //}
     }
 }

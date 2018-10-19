@@ -16,6 +16,7 @@ using Microsoft.AspNetCore.Http;
 using Microservice.Core.DomainService.Interfaces;
 using Microservice.Member.Domain.Application.Commands;
 using Newtonsoft.Json;
+using System.Linq;
 
 namespace Microservice.IdentityServer.Controllers
 {
@@ -486,6 +487,42 @@ namespace Microservice.IdentityServer.Controllers
         public IActionResult AccessDenied()
         {
             return View();
+        }
+
+        [AllowAnonymous]
+        [HttpPost("/api/RegisterUser")]
+        public async Task<IActionResult> RegisterUser([FromBody]RegisterViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                var result = await _userManager.CreateAsync(user, model.Password);
+                if (result.Succeeded)
+                {
+                    _logger.LogInformation("User created a new account with password.");
+
+                    var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
+                    var callbackUrl = Url.EmailConfirmationLink(user.Id, code, Request.Scheme);
+                    await _emailSender.SendEmailConfirmationAsync(model.Email, callbackUrl);
+                }
+                else
+                {
+                    if (result.Errors.Any())
+                    {
+                        return StatusCode(StatusCodes.Status400BadRequest, new { error_description = result.Errors.FirstOrDefault().Description });
+                    }
+                }
+            }
+            else
+            {
+                var errors = ModelState.Select(x => x.Value.Errors).Where(y => y.Count > 0).ToList();
+                if (errors.Any())
+                {
+                    return StatusCode(StatusCodes.Status400BadRequest, new { error_description = errors.FirstOrDefault().FirstOrDefault().ErrorMessage });
+                }
+            }
+
+            return StatusCode(StatusCodes.Status201Created);
         }
 
         #region Helpers

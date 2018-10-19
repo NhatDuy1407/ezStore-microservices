@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Swashbuckle.AspNetCore.Swagger;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace ezStore.Product.API
 {
@@ -14,8 +16,9 @@ namespace ezStore.Product.API
         {
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new Info { Title = "OO API", Version = "v1" });
-                //c.AddSecurityDefinition("Bearer", BuildApiKeyScheme());
+                c.SwaggerDoc("v1", new Info { Title = "Product API", Version = "v1" });
+                c.AddSecurityDefinition("Bearer", BuildApiKeyScheme());
+                c.AddSecurityRequirement(new Dictionary<string, IEnumerable<string>> { { "Bearer", Enumerable.Empty<string>() } });
             });
         }
 
@@ -26,22 +29,22 @@ namespace ezStore.Product.API
         public static void UseSwaggerCommon(this IApplicationBuilder app)
         {
             app.UseSwagger();
-            app.UseSwaggerUI(c => { c.SwaggerEndpoint("/swagger/v1/swagger.json", "OO API V1"); });
+            app.UseSwaggerUI(c => { c.SwaggerEndpoint("/swagger/v1/swagger.json", "Product API V1"); });
         }
 
         /// <summary>
         /// Build api key scheme
         /// </summary>
         /// <returns></returns>
-        //private static ApiKeyScheme BuildApiKeyScheme()
-        //{
-        //    return new ApiKeyScheme()
-        //    {
-        //        Description = "JWT Authorization header using the Bearer scheme. Example: \"Authorization: Bearer {token}\"",
-        //        Name = "Authorization",
-        //        In = "header",
-        //        Type = "apiKey"
-        //    };
-        //}
+        private static ApiKeyScheme BuildApiKeyScheme()
+        {
+            return new ApiKeyScheme()
+            {
+                Description = "JWT Authorization header using the Bearer scheme. Example: \"Authorization: Bearer {token}\"",
+                Name = "Authorization",
+                In = "header",
+                Type = "apiKey"
+            };
+        }
     }
 }

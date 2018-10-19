@@ -19,16 +19,14 @@ namespace Microservice.Core.DataAccess.MongoDB
             DbSet = Context.Set<TModel>();
         }
 
-        private IFindFluent<TModel, TModel> GetData(Expression<Func<TModel, bool>> filter = null)
-        {
-            if (filter == null)
-                filter = i => true;
-            return DbSet.Find(filter);
-        }
-
         public IQueryable<TModel> Get(Expression<Func<TModel, bool>> filter = null, Func<IQueryable<TModel>, IOrderedQueryable<TModel>> orderBy = null,
              string includeProperties = "", bool isIncludedIsDeleted = true)
         {
+            if (filter == null)
+                filter = i => true;
+
+            var filterDefinition = Builders<TModel>.Filter.And(filter);
+
             if (typeof(TModel).GetProperty("Deleted") != null && isIncludedIsDeleted)
             {
                 var param = Expression.Parameter(typeof(TModel), "x");
@@ -36,10 +34,10 @@ namespace Microservice.Core.DataAccess.MongoDB
                     Expression.Convert(Expression.Constant(true), typeof(bool)));
                 var isDeletedFilter = Expression.Lambda<Func<TModel, bool>>(body, param);
 
-                filter = s => filter.Compile()(s) && isDeletedFilter.Compile()(s);
+                filterDefinition = Builders<TModel>.Filter.And(filterDefinition, isDeletedFilter);
             }
 
-            var query = GetData(filter).ToListAsync().Result.AsQueryable();
+            var query = DbSet.Find(filterDefinition).ToListAsync().Result.AsQueryable();
             return orderBy != null ? orderBy(query) : query;
         }
 

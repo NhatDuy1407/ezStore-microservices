@@ -44,10 +44,10 @@ spec:
     protocol: TCP
     port: 5672
     targetPort: 5672
-  - name: rabbitmq-management
+  - name: epmd
     protocol: TCP
-    port: 15672
-    targetPort: 15672
+    port: 4369
+    targetPort: epmd
   selector:
     app: microservice-services-queue
 ---
@@ -68,9 +68,6 @@ spec:
       containers:
       - image: khainx127/microservice.services.queue
         name: microservice-services-queue
-        ports:
-        - containerPort: 5672
-          name: rabbitmq   
 ---
 apiVersion: v1
 kind: Service
@@ -105,4 +102,41 @@ spec:
         name: microservice-services-db
         ports:
         - containerPort: 27017
-          name: mongodb     
+          name: mongodb
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ezstore-product-db
+spec:
+  type: ClusterIP
+  ports:
+  - name: mysql
+    protocol: TCP
+    port: 3306
+    targetPort: 3306
+  selector:
+    app: ezstore-product-db
+---
+apiVersion: apps/v1 # for versions before 1.9.0 use apps/v1beta2
+kind: Deployment
+metadata:
+  name: ezstore-product-db
+spec:
+  minReadySeconds: 10
+  selector:
+    matchLabels:
+      app: ezstore-product-db
+  template:
+    metadata:
+      labels:
+        app: ezstore-product-db
+    spec:
+      containers:
+      - image: khainx127/ezstore.product.db
+        name: ezstore-product-db
+        ports:
+        - containerPort: 3306
+          name: mysql
+---

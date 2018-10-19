@@ -44,9 +44,11 @@ import { AuthGuard } from './core/auth/auth.guard';
 import { AuthService } from './core/auth/auth.service';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { NgxLoadingModule } from 'ngx-loading';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NotifierService } from './core/notifier/notifier.service';
 import { ToastrService, ToastrModule } from 'ngx-toastr';
+import { HandleErrorInterceptor } from './core/http/handle-error.interceptor';
+import { AuthInterceptor } from './core/auth/auth.interceptor';
 
 @NgModule({
   imports: [
@@ -85,7 +87,17 @@ import { ToastrService, ToastrModule } from 'ngx-toastr';
     NotifierService,
     HttpClient,
     AuthService,
-    AuthGuard
+    AuthGuard,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HandleErrorInterceptor,
+      multi: true,
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true,
+    },
   ],
   bootstrap: [AppComponent]
 })
