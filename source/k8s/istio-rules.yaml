@@ -31,9 +31,39 @@ spec:
 apiVersion: networking.istio.io/v1alpha3
 kind: DestinationRule
 metadata:
+ name: "ezstore-order-db"
+spec:
+ host: "ezstore-order-db.default.svc.cluster.local"
+ trafficPolicy:
+   tls:
+     mode: DISABLE
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: DestinationRule
+metadata:
+ name: "ezstore-payment-db"
+spec:
+ host: "ezstore-payment-db.default.svc.cluster.local"
+ trafficPolicy:
+   tls:
+     mode: DISABLE
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: DestinationRule
+metadata:
  name: "ezstore-product-db"
 spec:
  host: "ezstore-product-db.default.svc.cluster.local"
+ trafficPolicy:
+   tls:
+     mode: DISABLE
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: DestinationRule
+metadata:
+ name: "ezstore-warehouse-db"
+spec:
+ host: "ezstore-warehouse-db.default.svc.cluster.local"
  trafficPolicy:
    tls:
      mode: DISABLE

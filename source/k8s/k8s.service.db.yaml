@@ -108,6 +108,78 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
+  name: ezstore-order-db
+spec:
+  type: ClusterIP
+  ports:
+  - name: mysql
+    protocol: TCP
+    port: 3306
+    targetPort: 3306
+  selector:
+    app: ezstore-order-db
+---
+apiVersion: apps/v1 # for versions before 1.9.0 use apps/v1beta2
+kind: Deployment
+metadata:
+  name: ezstore-order-db
+spec:
+  minReadySeconds: 10
+  selector:
+    matchLabels:
+      app: ezstore-order-db
+  template:
+    metadata:
+      labels:
+        app: ezstore-order-db
+    spec:
+      containers:
+      - image: khainx127/ezstore.order.db
+        name: ezstore-order-db
+        ports:
+        - containerPort: 3306
+          name: mysql
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ezstore-payment-db
+spec:
+  type: ClusterIP
+  ports:
+  - name: mysql
+    protocol: TCP
+    port: 3306
+    targetPort: 3306
+  selector:
+    app: ezstore-payment-db
+---
+apiVersion: apps/v1 # for versions before 1.9.0 use apps/v1beta2
+kind: Deployment
+metadata:
+  name: ezstore-payment-db
+spec:
+  minReadySeconds: 10
+  selector:
+    matchLabels:
+      app: ezstore-payment-db
+  template:
+    metadata:
+      labels:
+        app: ezstore-payment-db
+    spec:
+      containers:
+      - image: khainx127/ezstore.payment.db
+        name: ezstore-payment-db
+        ports:
+        - containerPort: 3306
+          name: mysql
+
+---
+apiVersion: v1
+kind: Service
+metadata:
   name: ezstore-product-db
 spec:
   type: ClusterIP
@@ -136,6 +208,42 @@ spec:
       containers:
       - image: khainx127/ezstore.product.db
         name: ezstore-product-db
+        ports:
+        - containerPort: 3306
+          name: mysql
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ezstore-warehouse-db
+spec:
+  type: ClusterIP
+  ports:
+  - name: mysql
+    protocol: TCP
+    port: 3306
+    targetPort: 3306
+  selector:
+    app: ezstore-warehouse-db
+---
+apiVersion: apps/v1 # for versions before 1.9.0 use apps/v1beta2
+kind: Deployment
+metadata:
+  name: ezstore-warehouse-db
+spec:
+  minReadySeconds: 10
+  selector:
+    matchLabels:
+      app: ezstore-warehouse-db
+  template:
+    metadata:
+      labels:
+        app: ezstore-warehouse-db
+    spec:
+      containers:
+      - image: khainx127/ezstore.warehouse.db
+        name: ezstore-warehouse-db
         ports:
         - containerPort: 3306
           name: mysql

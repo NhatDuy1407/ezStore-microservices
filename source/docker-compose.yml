@@ -26,8 +26,26 @@ services:
       context: .
       dockerfile: 02.CoreServices/Notification/Microservice.Notification.BackgroundProcess/Dockerfile
 
+  ezStore.order.api:
+    image: ezstore.order.api
+    build:
+      context: .
+      dockerfile: 03.ezStore/Order/ezStore.Order.API/Dockerfile
+
+  ezStore.payment.api:
+    image: ezstore.payment.api
+    build:
+      context: .
+      dockerfile: 03.ezStore/Payment/ezStore.Payment.API/Dockerfile
+
   ezStore.product.api:
     image: ezstore.product.api
     build:
       context: .
       dockerfile: 03.ezStore/Product/ezStore.Product.API/Dockerfile
+
+  ezStore.warehouse.api:
+    image: ezstore.warehouse.api
+    build:
+      context: .
+      dockerfile: 03.ezStore/WareHouse/ezStore.WareHouse.API/Dockerfile

@@ -1,4 +1,5 @@
-﻿using ezStore.Product.Domain.Application.CommandHandlers;
+﻿using ezStore.Product.Domain;
+using ezStore.Product.Domain.Application.CommandHandlers;
 using ezStore.Product.Domain.Application.Commands;
 using ezStore.Product.Domain.Application.Queries;
 using ezStore.Product.Infrastructure;
@@ -27,10 +28,19 @@ namespace ezStore.Product.API
                 {
                     _bus = Bus.Factory.CreateUsingRabbitMq(x =>
                     {
+                        var username = configuration.GetConnectionString(Constants.RabbitMQUsername);
+                        var password = configuration.GetConnectionString(Constants.RabbitMQPassword);
                         x.Host(new Uri(configuration.GetConnectionString(Constants.RabbitMQHost)), h =>
                         {
-                            //h.Username("guest");
-                            //h.Password("guest");
+                            if (!string.IsNullOrEmpty(username))
+                            {
+                                h.Username(configuration.GetConnectionString(Constants.RabbitMQUsername));
+                            }
+                            if (!string.IsNullOrEmpty(password))
+                            {
+                                h.Password(configuration.GetConnectionString(Constants.RabbitMQPassword));
+                            }
+
                         });
                     });
                     TaskUtil.Await(() => _bus.StartAsync());
@@ -48,9 +58,7 @@ namespace ezStore.Product.API
             services.AddTransient<IDataAccessReadOnlyService>(i => new DataAccessReadOnlyService(i.GetService<ApplicationDbContext>()));
             services.AddTransient<IDataAccessWriteService>(i => new DataAccessWriteService(i.GetService<ApplicationDbContext>()));
 
-            services.AddTransient<ICommandHandler<CreateProductCategoryCommand>, ProductCategoryCommandHandler>();
-            services.AddTransient<ICommandHandler<UpdateProductCategoryCommand>, ProductCategoryCommandHandler>();
-            services.AddTransient<ICommandHandler<DeleteProductCategoryCommand>, ProductCategoryCommandHandler>();
+            Domain.HandlerRegister.Register(services);
         }
     }
 }

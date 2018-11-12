@@ -35,10 +35,34 @@ services:
     dns:
       - 8.8.8.8
 
+  ezstore.order.api:
+    image: ezstore.order.api
+    container_name: ezstore-order-api
+    build:
+      target: deploy
+      context: 03.ezStore/Order/ezStore.Order.API
+      dockerfile: Dockerfile.deploy
+
+  ezstore.payment.api:
+    image: ezstore.payment.api
+    container_name: ezstore-payment-api
+    build:
+      target: deploy
+      context: 03.ezStore/Payment/ezStore.Payment.API
+      dockerfile: Dockerfile.deploy
+
   ezstore.product.api:
     image: ezstore.product.api
     container_name: ezstore-product-api
     build:
       target: deploy
       context: 03.ezStore/Product/ezStore.Product.API
+      dockerfile: Dockerfile.deploy
+
+  ezstore.warehouse.api:
+    image: ezstore.warehouse.api
+    container_name: ezstore-warehouse-api
+    build:
+      target: deploy
+      context: 03.ezStore/WareHouse/ezStore.WareHouse.API
       dockerfile: Dockerfile.deploy

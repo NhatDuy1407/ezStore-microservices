@@ -17,6 +17,9 @@
     </None>
     <None Include="docker-compose.yml" />
     <None Include=".dockerignore" />
+    <None Include="Dockerfile.ezStore.order.db" />
+    <None Include="Dockerfile.ezStore.payment.db" />
+    <None Include="Dockerfile.ezStore.warehouse.db" />
     <None Include="Dockerfile.ezStore.product.db" />
     <None Include="Dockerfile.identity.db" />
     <None Include="Dockerfile.services.db" />

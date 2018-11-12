@@ -3,6 +3,8 @@
     public static class Constants
     {
         public const string RabbitMQHost = "RabbitMQHost";
+        public const string RabbitMQUsername = "RabbitMQUsername";
+        public const string RabbitMQPassword = "RabbitMQPassword";
 
         public const string DefaultConnection = "DefaultConnection";
         public const string DefaultDatabaseName = "DefaultDatabaseName";
@@ -21,7 +23,6 @@
         public const string SmtpAddress = "Address";
         public const string SmtpPort = "Port";
         public const string SmtpEnableSsl = "EnableSsl";
-
 
         public const string Notification = "Notification";
         public const string SystemEmail = "SystemEmail";

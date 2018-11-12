@@ -10,7 +10,7 @@ namespace ezStore.Product.Infrastructure
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
              : base(options)
         {
-            
+
         }
 
         public DbSet<Entities.Product> Products { get; set; }
@@ -19,6 +19,10 @@ namespace ezStore.Product.Infrastructure
         public DbSet<ProductCategoryMapping> ProductCategoryMappings { get; set; }
         public DbSet<ProductTag> ProductTags { get; set; }
         public DbSet<ProductAttributeValue> ProductAttributeValues { get; set; }
+        public DbSet<ProductTapMapping> ProductTapMappings { get; set; }
+        public DbSet<Manufacture> Manufactures { get; set; }
+        public DbSet<ProductManufactureMapping> ProductManufactureMappings { get; set; }
+
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

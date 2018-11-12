@@ -44,12 +44,42 @@ services:
     networks:
       - microservice-network
 
-  ezStore.product.api:
+  ezStore.order.api:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
     ports:
       - "80"
     ports:
       - 6001:80
+    networks:
+      - microservice-network
+
+  ezStore.payment.api:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    ports:
+      - "80"
+    ports:
+      - 6002:80
+    networks:
+      - microservice-network
+
+  ezStore.product.api:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    ports:
+      - "80"
+    ports:
+      - 6003:80
+    networks:
+      - microservice-network
+
+  ezStore.warehouse.api:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    ports:
+      - "80"
+    ports:
+      - 6004:80
     networks:
       - microservice-network

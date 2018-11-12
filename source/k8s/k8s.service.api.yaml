@@ -161,6 +161,84 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
+  name: ezstore-order-api
+spec:
+  type: NodePort
+  ports:
+  - name: ezstore-order-api
+    protocol: TCP
+    port: 80
+  selector:
+    app: ezstore-order-api
+---
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: ezstore-order-api
+spec:
+  replicas: 2
+  minReadySeconds: 10
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: ezstore-order-api
+    spec:
+      containers:
+      - name: ezstore-order-api
+        image: khainx127/ezstore.order.api
+        ports:
+        - containerPort: 80
+        env:
+          - name: ASPNETCORE_ENVIRONMENT
+            value: "k8s"
+        command: ["/bin/bash"]
+        args: ["-c", "dotnet /app/ezStore.Order.API.dll"]
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ezstore-payment-api
+spec:
+  type: NodePort
+  ports:
+  - name: ezstore-payment-api
+    protocol: TCP
+    port: 80
+  selector:
+    app: ezstore-payment-api
+---
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: ezstore-payment-api
+spec:
+  replicas: 2
+  minReadySeconds: 10
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: ezstore-payment-api
+    spec:
+      containers:
+      - name: ezstore-payment-api
+        image: khainx127/ezstore.payment.api
+        ports:
+        - containerPort: 80
+        env:
+          - name: ASPNETCORE_ENVIRONMENT
+            value: "k8s"
+        command: ["/bin/bash"]
+        args: ["-c", "dotnet /app/ezStore.Payment.API.dll"]
+
+---
+apiVersion: v1
+kind: Service
+metadata:
   name: ezstore-product-api
 spec:
   type: NodePort
@@ -195,3 +273,42 @@ spec:
             value: "k8s"
         command: ["/bin/bash"]
         args: ["-c", "dotnet /app/ezStore.Product.API.dll"]
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ezstore-warehouse-api
+spec:
+  type: NodePort
+  ports:
+  - name: ezstore-warehouse-api
+    protocol: TCP
+    port: 80
+  selector:
+    app: ezstore-warehouse-api
+---
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: ezstore-warehouse-api
+spec:
+  replicas: 2
+  minReadySeconds: 10
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: ezstore-warehouse-api
+    spec:
+      containers:
+      - name: ezstore-warehouse-api
+        image: khainx127/ezstore.warehouse.api
+        ports:
+        - containerPort: 80
+        env:
+          - name: ASPNETCORE_ENVIRONMENT
+            value: "k8s"
+        command: ["/bin/bash"]
+        args: ["-c", "dotnet /app/ezStore.WareHouse.API.dll"]
