@@ -1,9 +1,8 @@
 ﻿using Microservice.Core.Models;
-using System;
 
 namespace ezStore.Product.Infrastructure.Entities
 {
-    public class ProductAttribute : ModelEntity<Guid>
+    public class ProductAttribute : ModelGuidIdEntity
     {
         public string Name { get; set; }
     }

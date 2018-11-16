@@ -13,8 +13,6 @@ using Microservice.Core.Logging;
 using System;
 using MassTransit;
 using Microservice.IdentityServer.Services;
-using Microservice.Core.DomainService.Interfaces;
-using Microservice.Core.DomainService;
 using Microservice.IdentityServer.Swagger;
 using IdentityServer4.AccessTokenValidation;
 
@@ -33,7 +31,7 @@ namespace Microservice.IdentityServer
         {
             // Add framework services.
             services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseMySql(Configuration.GetConnectionString(Constants.DefaultConnection)));
+                options.UseMySql(Configuration.GetConnectionString(MicroserviceConstants.DefaultConnection)));
 
             services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()
@@ -68,19 +66,19 @@ namespace Microservice.IdentityServer
 
             var migrationsAssembly = typeof(Startup).GetTypeInfo().Assembly.GetName().Name;
 
-            services.AddIdentityServer(x => { x.IssuerUri = Configuration.GetConnectionString(Constants.IdentityServerIssuerUri); })
+            services.AddIdentityServer(x => { x.IssuerUri = Configuration.GetConnectionString(MicroserviceConstants.IdentityServerIssuerUri); })
                 .AddDeveloperSigningCredential()
                 .AddAspNetIdentity<ApplicationUser>()
                 .AddConfigurationStore(options =>
                 {
                     options.ConfigureDbContext = builder =>
-                        builder.UseMySql(Configuration.GetConnectionString(Constants.DefaultConnection),
+                        builder.UseMySql(Configuration.GetConnectionString(MicroserviceConstants.DefaultConnection),
                             db => db.MigrationsAssembly(migrationsAssembly));
                 })
                 .AddOperationalStore(options =>
                 {
                     options.ConfigureDbContext = builder =>
-                        builder.UseMySql(Configuration.GetConnectionString(Constants.DefaultConnection),
+                        builder.UseMySql(Configuration.GetConnectionString(MicroserviceConstants.DefaultConnection),
                             db => db.MigrationsAssembly(migrationsAssembly));
                 });
 
@@ -93,10 +91,10 @@ namespace Microservice.IdentityServer
             services.AddAuthentication(IdentityServerAuthenticationDefaults.AuthenticationScheme)
                 .AddIdentityServerAuthentication(options =>
                 {
-                    options.Authority = Configuration.GetConnectionString(Constants.IdentityServerIssuerUri);
+                    options.Authority = Configuration.GetConnectionString(MicroserviceConstants.IdentityServerIssuerUri);
                     options.RequireHttpsMetadata = false;
-                    options.ApiName = Constants.IdentityServerAPIName;
-                    options.ApiSecret = Constants.IdentityServerSecret;
+                    options.ApiName = MicroserviceConstants.IdentityServerAPIName;
+                    options.ApiSecret = MicroserviceConstants.IdentityServerSecret;
                 });
 
             ServiceConfiguration.ConfigureServices(services, Configuration);

@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ezStore.Product.Infrastructure.Entities
 {
-    public class ProductTapMapping : ModelEntity<Guid>
+    public class ProductTapMapping : ModelGuidIdEntity
     {
         public Guid ProductTagId { get; set; }
 

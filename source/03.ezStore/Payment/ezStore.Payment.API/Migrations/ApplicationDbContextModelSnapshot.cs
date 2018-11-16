@@ -7,7 +7,7 @@ using ezStore.Payment.Infrastructure;
 
 namespace ezStore.Payment.API.Migrations
 {
-    [DbContext(typeof(ApplicationDbContext))]
+    [DbContext(typeof(PaymentDbContext))]
     partial class ApplicationDbContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)

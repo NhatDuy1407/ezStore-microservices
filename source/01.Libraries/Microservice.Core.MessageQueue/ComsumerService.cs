@@ -2,18 +2,19 @@
 using MassTransit;
 using MassTransit.RabbitMqTransport;
 using MassTransit.Util;
+using Microsoft.Extensions.Configuration;
 
 namespace Microservice.Core.MessageQueue.Request
 {
     public abstract class ComsumerService
     {
-        private readonly string _rabbitMqHost;
         private readonly string _serviceQueueName;
+        private readonly IConfiguration _configuration;
 
-        protected ComsumerService(string rabbitMqHost, string serviceQueueName)
+        protected ComsumerService(IConfiguration configuration, string serviceQueueName)
         {
-            _rabbitMqHost = rabbitMqHost;
             _serviceQueueName = serviceQueueName;
+            _configuration = configuration;
         }
 
         private IBusControl _busControl;
@@ -22,10 +23,18 @@ namespace Microservice.Core.MessageQueue.Request
         {
             _busControl = Bus.Factory.CreateUsingRabbitMq(x =>
             {
-                IRabbitMqHost host = x.Host(new Uri(_rabbitMqHost), h =>
+                var username = _configuration.GetConnectionString(MicroserviceConstants.RabbitMQUsername);
+                var password = _configuration.GetConnectionString(MicroserviceConstants.RabbitMQPassword);
+                IRabbitMqHost host = x.Host(new Uri(_configuration.GetConnectionString(MicroserviceConstants.RabbitMQHost)), h =>
                 {
-                    //h.Username("guest");
-                    //h.Password("guest");
+                    if (!string.IsNullOrEmpty(username))
+                    {
+                        h.Username(_configuration.GetConnectionString(MicroserviceConstants.RabbitMQUsername));
+                    }
+                    if (!string.IsNullOrEmpty(password))
+                    {
+                        h.Password(_configuration.GetConnectionString(MicroserviceConstants.RabbitMQPassword));
+                    }
                 });
 
                 x.ReceiveEndpoint(host, _serviceQueueName, Configure());

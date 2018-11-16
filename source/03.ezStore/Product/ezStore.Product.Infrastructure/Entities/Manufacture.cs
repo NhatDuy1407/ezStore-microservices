@@ -4,7 +4,7 @@ using System;
 
 namespace ezStore.Product.Infrastructure.Entities
 {
-    public class Manufacture : ModelEntity<Guid>
+    public class Manufacture : ModelGuidIdEntity
     {
         public string Name { get; set; }
     }

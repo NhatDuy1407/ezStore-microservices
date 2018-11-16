@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ezStore.Product.Infrastructure.Entities
 {
-    public class ProductAttributeValue : ModelEntity<Guid>
+    public class ProductAttributeValue : ModelGuidIdEntity
     {
         public Guid AttributeId { get; set; }
 

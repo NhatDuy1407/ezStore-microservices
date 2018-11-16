@@ -1,25 +1,24 @@
-﻿using System.Threading.Tasks;
-using MassTransit;
+﻿using MassTransit;
 using Microservice.Core.DataAccess.Interfaces;
 using Microservice.Core.MessageQueue;
+using Microservice.DomainEvents.Logging;
 using Microservice.Logging.Persistence.Model;
-using Microservice.SharedEvents.Logging;
-using Microsoft.Extensions.Configuration;
+using System.Threading.Tasks;
 
 namespace Microservice.Logging.BackgroundProcess.Consumers
 {
     public class LoggingConsumer : BaseConsumer, IConsumer<WriteLogEvent>
     {
-        private readonly IDataAccessWriteService _writeService;
+        private readonly IDataAccessWriteService writeService;
 
-        public LoggingConsumer(IConfiguration configuration, IDataAccessWriteService writeService) : base()
+        public LoggingConsumer(IDataAccessWriteService writeService) : base()
         {
-            _writeService = writeService;
+            this.writeService = writeService;
         }
 
         public Task Consume(ConsumeContext<WriteLogEvent> context)
         {
-            _writeService.Repository<LogData>().Insert(new LogData()
+            writeService.Repository<LogData>().Insert(new LogData()
             {
                 Date = context.Message.Date,
                 Level = context.Message.Level,

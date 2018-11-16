@@ -51,14 +51,14 @@ namespace ezStore.Order.API
             services.AddAuthentication(IdentityServerAuthenticationDefaults.AuthenticationScheme)
                 .AddIdentityServerAuthentication(options =>
                 {
-                    options.Authority = Configuration.GetConnectionString(Constants.IdentityServerIssuerUri);
+                    options.Authority = Configuration.GetConnectionString(MicroserviceConstants.IdentityServerIssuerUri);
                     options.RequireHttpsMetadata = false;
-                    options.ApiName = Constants.IdentityServerAPIName;
-                    options.ApiSecret = Constants.IdentityServerSecret;
+                    options.ApiName = MicroserviceConstants.IdentityServerAPIName;
+                    options.ApiSecret = MicroserviceConstants.IdentityServerSecret;
                 });
 
-            services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseMySql(Configuration.GetConnectionString(Constants.DefaultConnection), b => b.MigrationsAssembly("ezStore.Order.API")));
+            services.AddDbContext<OrderDbContext>(options =>
+                options.UseMySql(Configuration.GetConnectionString(MicroserviceConstants.DefaultConnection), b => b.MigrationsAssembly("ezStore.Order.API")));
 
             ServiceConfiguration.ConfigureServices(services, Configuration);
         }

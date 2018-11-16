@@ -23,7 +23,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\02.CoreServices\Microservice.SharedEvents\Microservice.SharedEvents.csproj" />
+    <ProjectReference Include="..\..\02.CoreServices\DomainEvents\Microservice.DomainEvents.csproj" />
   </ItemGroup>
 
 </Project>

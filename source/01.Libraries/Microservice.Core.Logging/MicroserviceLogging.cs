@@ -1,7 +1,7 @@
 ﻿using MassTransit;
-using Microservice.SharedEvents;
-using Microservice.SharedEvents.Logging;
-using Microservice.SharedEvents.Notification;
+using Microservice.DomainEvents;
+using Microservice.DomainEvents.Logging;
+using Microservice.DomainEvents.Notification;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using System;
@@ -29,7 +29,7 @@ namespace Microservice.Core.Logging
 
         public bool IsEnabled(LogLevel logLevel)
         {
-            var logNamespaces = Configuration.GetSection(Constants.Logging)[Constants.LoggingNamespaces];
+            var logNamespaces = Configuration.GetSection(MicroserviceConstants.Logging)[MicroserviceConstants.LoggingNamespaces];
             if (logNamespaces != null)
             {
                 var logNamespacesArr = logNamespaces.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries).Select(i => i + ".").ToList();
@@ -51,25 +51,25 @@ namespace Microservice.Core.Logging
                 message = formatter(state, exception);
             }
 
-            var sendEndPoint = _busControl.GetSendEndpoint(new Uri(Configuration.GetConnectionString(Constants.RabbitMQHost) + $"/{EventRouteConstants.LoggingService}")).Result;
+            var sendEndPoint = _busControl.GetSendEndpoint(new Uri(Configuration.GetConnectionString(MicroserviceConstants.RabbitMQHost) + $"/{EventRouteConstants.LoggingService}")).Result;
             sendEndPoint.Send(new WriteLogEvent()
             {
                 Level = logLevel.ToString(),
                 Logger = CategoryName,
                 Thread = eventId.ToString(),
-                Message = logLevel != LogLevel.Error ? message : string.Format(Configuration.GetSection(Constants.Notification)[Constants.ErrorEmailSubject], exception.Message),
+                Message = logLevel != LogLevel.Error ? message : string.Format(Configuration.GetSection(MicroserviceConstants.Notification)[MicroserviceConstants.ErrorEmailSubject], exception.Message),
                 Data = state.ToString(),
                 StackTrace = exception == null ? "" : exception.StackTrace,
             });
 
             if (logLevel == LogLevel.Error || exception != null)
             {
-                var sendNotificationEndPoint = _busControl.GetSendEndpoint(new Uri(Configuration.GetConnectionString(Constants.RabbitMQHost) + $"/{EventRouteConstants.NotificationService}")).Result;
+                var sendNotificationEndPoint = _busControl.GetSendEndpoint(new Uri(Configuration.GetConnectionString(MicroserviceConstants.RabbitMQHost) + $"/{EventRouteConstants.NotificationService}")).Result;
                 sendNotificationEndPoint.Send(new EmailContentCreated()
                 {
-                    From = Configuration.GetSection(Constants.Notification)[Constants.SystemEmail],
-                    To = Configuration.GetSection(Constants.Notification)[Constants.AdminEmail],
-                    Subject = string.Format(Configuration.GetSection(Constants.Notification)[Constants.ErrorEmailSubject], exception?.Message),
+                    From = Configuration.GetSection(MicroserviceConstants.Notification)[MicroserviceConstants.SystemEmail],
+                    To = Configuration.GetSection(MicroserviceConstants.Notification)[MicroserviceConstants.AdminEmail],
+                    Subject = string.Format(Configuration.GetSection(MicroserviceConstants.Notification)[MicroserviceConstants.ErrorEmailSubject], exception?.Message),
                     Body = $"Data:{message}, Trace:{exception?.StackTrace}",
                 });
             }

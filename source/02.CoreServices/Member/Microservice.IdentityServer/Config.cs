@@ -22,7 +22,7 @@ namespace Microservice.IdentityServer
         {
             return new List<ApiResource>
             {
-                new ApiResource(Constants.IdentityServerAPIName, "My API")
+                new ApiResource(MicroserviceConstants.IdentityServerAPIName, "My API")
             };
         }
 
@@ -44,14 +44,14 @@ namespace Microservice.IdentityServer
                     // secret for authentication
                     ClientSecrets =
                     {
-                        new Secret(Constants.IdentityServerSecret.Sha256())
+                        new Secret(MicroserviceConstants.IdentityServerSecret.Sha256())
                     },
 
                     // scopes that client has access to
                     AllowedScopes = {
                         IdentityServerConstants.StandardScopes.OpenId,
                         IdentityServerConstants.StandardScopes.Profile,
-                        Constants.IdentityServerAPIName
+                        MicroserviceConstants.IdentityServerAPIName
                     }
                 },
 
@@ -66,7 +66,7 @@ namespace Microservice.IdentityServer
 
                     ClientSecrets =
                     {
-                        new Secret(Constants.IdentityServerSecret.Sha256())
+                        new Secret(MicroserviceConstants.IdentityServerSecret.Sha256())
                     },
 
                     RedirectUris = { $"{configuration["ClientAddress"]}/signin-oidc" },
@@ -76,7 +76,7 @@ namespace Microservice.IdentityServer
                     {
                         IdentityServerConstants.StandardScopes.OpenId,
                         IdentityServerConstants.StandardScopes.Profile,
-                        Constants.IdentityServerAPIName
+                        MicroserviceConstants.IdentityServerAPIName
                     },
                     AllowOfflineAccess = true
                 },
@@ -98,7 +98,7 @@ namespace Microservice.IdentityServer
                     {
                         IdentityServerConstants.StandardScopes.OpenId,
                         IdentityServerConstants.StandardScopes.Profile,
-                        Constants.IdentityServerAPIName
+                        MicroserviceConstants.IdentityServerAPIName
                     },
 
                 }

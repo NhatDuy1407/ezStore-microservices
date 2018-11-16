@@ -13,7 +13,7 @@ namespace Microservice.Logging.API
         {
             // Add application services.
             services.AddTransient<ILoggingQueries, LoggingQueries>();
-            services.AddTransient(i => new MongoDbContext(configuration.GetConnectionString(Constants.DefaultConnection), configuration.GetConnectionString(Constants.DefaultDatabaseName), false));
+            services.AddTransient(i => new MongoDbContext(configuration.GetConnectionString(MicroserviceConstants.DefaultConnection), configuration.GetConnectionString(MicroserviceConstants.DefaultDatabaseName), false));
             services.AddTransient<IDataAccessReadOnlyService>(i => new ReadOnlyService(i.GetService<MongoDbContext>()));
         }
     }

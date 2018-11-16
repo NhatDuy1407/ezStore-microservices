@@ -13,17 +13,17 @@ namespace ezStore.Product.Domain.Application.CommandHandlers
         ICommandHandler<DeleteProductCategoryCommand>
     {
         private readonly IDomainService _domainService;
-        private readonly IDataAccessWriteService _writeService;
+        private readonly IDataAccessWriteService writeService;
 
         public ProductCategoryCommandHandler(IDomainService domainService, IDataAccessWriteService writeService)
         {
             _domainService = domainService;
-            _writeService = writeService;
+            this.writeService = writeService;
         }
 
         public Task ExecuteAsync(CreateProductCategoryCommand command)
         {
-            var productCategoryDomain = new ProductCategoryDomain(_writeService);
+            var productCategoryDomain = new ProductCategoryDomain(writeService);
             productCategoryDomain.Add(new Dtos.ProductCategoryDto
             {
                 Name = command.Name
@@ -36,7 +36,7 @@ namespace ezStore.Product.Domain.Application.CommandHandlers
 
         public Task ExecuteAsync(UpdateProductCategoryCommand command)
         {
-            var productCategoryDomain = new ProductCategoryDomain(_writeService);
+            var productCategoryDomain = new ProductCategoryDomain(writeService);
             productCategoryDomain.Update(new Dtos.ProductCategoryDto
             {
                 Id = command.Id,
@@ -50,7 +50,7 @@ namespace ezStore.Product.Domain.Application.CommandHandlers
 
         public Task ExecuteAsync(DeleteProductCategoryCommand command)
         {
-            var productCategoryDomain = new ProductCategoryDomain(_writeService);
+            var productCategoryDomain = new ProductCategoryDomain(writeService);
             productCategoryDomain.Delete(command.Id);
 
             _domainService.ApplyChanges(productCategoryDomain);

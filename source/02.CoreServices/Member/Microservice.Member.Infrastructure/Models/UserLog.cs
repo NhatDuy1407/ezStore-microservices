@@ -1,6 +1,5 @@
 ﻿using Microservice.Core.Models;
 using MongoDB.Bson;
-using System;
 
 namespace Microservice.Member.Infrastructure.Models
 {

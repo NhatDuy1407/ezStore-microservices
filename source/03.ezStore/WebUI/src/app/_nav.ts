@@ -23,6 +23,11 @@ export const navItems = [
         url: '/admin/catalog/product-category',
         icon: 'icon-puzzle'
       },
+      {
+        name: 'Munafactures',
+        url: '/admin/catalog/manufacture',
+        icon: 'icon-puzzle'
+      },
       // {
       //   name: 'Manufacturers',
       //   url: '/admin/manufacturer',

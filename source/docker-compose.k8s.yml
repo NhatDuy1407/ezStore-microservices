@@ -17,6 +17,14 @@ services:
       context: 02.CoreServices/Logging/Microservice.Logging.API
       dockerfile: Dockerfile.deploy
 
+  microservice.setting.api:
+    image: microservice.setting.api
+    container_name: microservice-setting-api
+    build:
+      target: deploy
+      context: 02.CoreServices/Setting/Microservice.Setting.API
+      dockerfile: Dockerfile.deploy
+
   microservice.logging.backgroundprocess:
     image: microservice.logging.background
     container_name: microservice-logging-background

@@ -1,4 +1,7 @@
-﻿namespace Microservice.Core.DomainService.Commands
+﻿using System;
+using System.Net.Mail;
+
+namespace Microservice.Core.DomainService.Commands
 {
     public class EmailValidatorCommand : ValidationDecoratorCommand
     {
@@ -11,7 +14,19 @@
 
         public override bool SelfValidate()
         {
-            return !string.IsNullOrEmpty(Email);
+            try
+            {
+                var mail = new MailAddress(Email);
+                if (string.IsNullOrEmpty(mail.Address))
+                {
+                    return false;
+                }
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
         }
     }
 }

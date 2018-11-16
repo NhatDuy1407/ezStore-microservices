@@ -8,7 +8,7 @@ using ezStore.Payment.Infrastructure;
 
 namespace ezStore.Payment.API.Migrations
 {
-    [DbContext(typeof(ApplicationDbContext))]
+    [DbContext(typeof(PaymentDbContext))]
     [Migration("20181112033734_Initial")]
     partial class Initial
     {

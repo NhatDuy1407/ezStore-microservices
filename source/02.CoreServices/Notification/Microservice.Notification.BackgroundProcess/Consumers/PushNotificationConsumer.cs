@@ -1,8 +1,8 @@
-﻿using System.Threading.Tasks;
-using MassTransit;
+﻿using MassTransit;
 using Microservice.Core.MessageQueue;
-using Microservice.SharedEvents.Notification;
+using Microservice.DomainEvents.Notification;
 using Microsoft.Extensions.Configuration;
+using System.Threading.Tasks;
 
 namespace Microservice.Notification.BackgroundProcess.Consumers
 {

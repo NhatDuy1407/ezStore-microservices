@@ -13,7 +13,7 @@ namespace ezStore.Payment.Infrastructure.Migration
 
         private static void PerformMigrations(IServiceProvider services)
         {
-            services.GetRequiredService<ApplicationDbContext>().Database.Migrate();
+            services.GetRequiredService<PaymentDbContext>().Database.Migrate();
         }
     }
 }

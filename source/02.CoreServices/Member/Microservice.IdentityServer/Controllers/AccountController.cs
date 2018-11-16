@@ -81,7 +81,7 @@ namespace Microservice.IdentityServer.Controllers
                 var result = await _signInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, lockoutOnFailure: false);
                 if (result.Succeeded)
                 {
-                    _logger.LogInformation("User logged in.");
+                    _logger.LogInformation($"Member {model.Email} logged in");
                     var command = new UpdateUserLoginCommand(model.Email);
                     await _commandBus.ExecuteAsync(command);
                     return RedirectToLocal(returnUrl);

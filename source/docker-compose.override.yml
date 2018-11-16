@@ -26,6 +26,16 @@ services:
     networks:
       - microservice-network
 
+  microservice.setting.api:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    ports:
+      - "80"
+    ports:
+      - 5003:80
+    networks:
+      - microservice-network
+
   microservice.logging.backgroundprocess:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development

@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ezStore.Product.Infrastructure.Entities
 {
-    public class ProductManufactureMapping : ModelEntity<Guid>
+    public class ProductManufactureMapping : ModelGuidIdEntity
     {
         public Guid ManufactureId { get; set; }
 

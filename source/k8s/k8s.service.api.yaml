@@ -80,6 +80,46 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
+  name: microservice-setting-api
+spec:
+  type: ClusterIP
+  ports:
+  - name: setting-api
+    protocol: TCP
+    port: 80
+    targetPort: 30003
+  selector:
+    app: microservice-setting-api
+---
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: microservice-setting-api
+spec:
+  replicas: 1
+  minReadySeconds: 10
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: microservice-setting-api
+    spec:
+      containers:
+      - name: microservice-setting-api
+        image: khainx127/microservice.setting.api
+        ports:
+        - containerPort: 80
+        env:
+          - name: ASPNETCORE_ENVIRONMENT
+            value: "k8s"
+        command: ["/bin/bash"]
+        args: ["-c", "dotnet /app/Microservice.Setting.API.dll"]
+
+---
+apiVersion: v1
+kind: Service
+metadata:
   name: microservice-logging-background
 spec:
   type: ClusterIP

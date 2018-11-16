@@ -3,7 +3,7 @@ using System;
 
 namespace ezStore.Product.Infrastructure.Entities
 {
-    public class ProductTag : ModelEntity<Guid>
+    public class ProductTag : ModelGuidIdEntity
     {
         public string Name { get; set; }
     }

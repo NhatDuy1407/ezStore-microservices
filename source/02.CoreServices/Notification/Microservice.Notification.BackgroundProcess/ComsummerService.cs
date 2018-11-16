@@ -1,11 +1,10 @@
-﻿using System;
-using MassTransit;
+﻿using MassTransit;
 using MassTransit.RabbitMqTransport;
-using Microservice.Core;
 using Microservice.Core.MessageQueue.Request;
+using Microservice.DomainEvents;
 using Microservice.Notification.BackgroundProcess.Consumers;
-using Microservice.SharedEvents;
 using Microsoft.Extensions.Configuration;
+using System;
 
 namespace Microservice.Notification.BackgroundProcess
 {
@@ -13,7 +12,7 @@ namespace Microservice.Notification.BackgroundProcess
     {
         private readonly IConfiguration _configuration;
 
-        public ComsummerService(IConfiguration configuration) : base(configuration.GetConnectionString(Constants.RabbitMQHost), EventRouteConstants.NotificationService)
+        public ComsummerService(IConfiguration configuration) : base(configuration, EventRouteConstants.NotificationService)
         {
             _configuration = configuration;
         }

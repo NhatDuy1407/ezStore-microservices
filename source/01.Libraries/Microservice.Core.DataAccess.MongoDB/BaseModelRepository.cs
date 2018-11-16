@@ -1,10 +1,11 @@
-﻿using System;
-using System.Linq;
-using System.Linq.Expressions;
+﻿using Microservice.Core.DataAccess.Entities;
 using Microservice.Core.DataAccess.Interfaces;
 using Microservice.Core.Models;
 using MongoDB.Bson;
 using MongoDB.Driver;
+using System;
+using System.Linq;
+using System.Linq.Expressions;
 
 namespace Microservice.Core.DataAccess.MongoDB
 {
@@ -19,8 +20,35 @@ namespace Microservice.Core.DataAccess.MongoDB
             DbSet = Context.Set<TModel>();
         }
 
-        public IQueryable<TModel> Get(Expression<Func<TModel, bool>> filter = null, Func<IQueryable<TModel>, IOrderedQueryable<TModel>> orderBy = null,
+        public IQueryable<TModel> Get(Expression<Func<TModel, bool>> filter = null,
+            Func<IQueryable<TModel>, IOrderedQueryable<TModel>> orderBy = null,
+            string includeProperties = "", bool isIncludedIsDeleted = true)
+        {
+            var query = GetQueryable(filter, includeProperties, isIncludedIsDeleted);
+            return orderBy != null ? orderBy(query) : query;
+        }
+
+        public virtual IQueryable<TModel> Get1(Expression<Func<TModel, bool>> filter = null,
+             string orderBy = null, bool orderAsc = true,
              string includeProperties = "", bool isIncludedIsDeleted = true)
+        {
+            string methodName = "";
+            if (orderAsc)
+            {
+                methodName = "OrderBy";
+            }
+            else
+            {
+                methodName = "OrderByDescending";
+            }
+            var query = GetQueryable(filter, includeProperties, isIncludedIsDeleted);
+            var orderQuery = query.ApplyOrder(orderBy, methodName);
+            IOrderedQueryable<TModel> orderByFunc(IQueryable<TModel> i) => orderQuery;
+            return Get(filter, orderByFunc, includeProperties, isIncludedIsDeleted);
+        }
+
+        private IQueryable<TModel> GetQueryable(Expression<Func<TModel, bool>> filter = null,
+            string includeProperties = "", bool isIncludedIsDeleted = true)
         {
             if (filter == null)
                 filter = i => true;
@@ -37,8 +65,50 @@ namespace Microservice.Core.DataAccess.MongoDB
                 filterDefinition = Builders<TModel>.Filter.And(filterDefinition, isDeletedFilter);
             }
 
-            var query = DbSet.Find(filterDefinition).ToListAsync().Result.AsQueryable();
-            return orderBy != null ? orderBy(query) : query;
+            // Todo: optimize order
+            return DbSet.Find(filterDefinition).ToListAsync().Result.AsQueryable();
+        }
+
+        public PagedResult<TModel> GetPaged(Expression<Func<TModel, bool>> filter = null,
+            Func<IQueryable<TModel>, IOrderedQueryable<TModel>> orderBy = null,
+            string includeProperties = "", bool isIncludedIsDeleted = true,
+            int page = 1, int pageSize = 20)
+        {
+            IQueryable<TModel> query = Get(filter, orderBy, includeProperties, isIncludedIsDeleted);
+            var result = new PagedResult<TModel>
+            {
+                CurrentPage = page,
+                PageSize = pageSize,
+                RowCount = query.Count()
+            };
+
+            var pageCount = (double)result.RowCount / pageSize;
+            result.PageCount = (int)Math.Ceiling(pageCount);
+
+            var skip = (page - 1) * pageSize;
+            result.Results = query.Skip(skip).Take(pageSize).ToList();
+
+            return result;
+        }
+
+        public PagedResult<TModel> GetPaged1(Expression<Func<TModel, bool>> filter = null,
+            string orderBy = null, bool orderAsc = true,
+           string includeProperties = "", bool isIncludedIsDeleted = true,
+           int page = 1, int pageSize = 20)
+        {
+            string methodName = "";
+            if (orderAsc)
+            {
+                methodName = "OrderBy";
+            }
+            else
+            {
+                methodName = "OrderByDescending";
+            }
+            var query = GetQueryable(filter, includeProperties, isIncludedIsDeleted);
+            var orderQuery = query.ApplyOrder(orderBy, methodName);
+            IOrderedQueryable<TModel> orderByFunc(IQueryable<TModel> i) => orderQuery;
+            return GetPaged(filter, orderByFunc, includeProperties, isIncludedIsDeleted);
         }
 
         public TModel FirstOrDefault(Expression<Func<TModel, bool>> filter = null, Func<IQueryable<TModel>, IOrderedQueryable<TModel>> orderBy = null,

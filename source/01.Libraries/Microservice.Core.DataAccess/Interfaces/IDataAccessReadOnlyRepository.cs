@@ -1,17 +1,32 @@
-﻿using System;
+﻿using Microservice.Core.DataAccess.Entities;
+using System;
 using System.Linq;
 using System.Linq.Expressions;
 
 namespace Microservice.Core.DataAccess.Interfaces
 {
-    public interface IDataAccessReadOnlyRepository<TModel> : IDisposable
+    public interface IDataAccessReadOnlyRepository<TModel> : IDisposable where TModel : class
     {
         IQueryable<TModel> Get(Expression<Func<TModel, bool>> filter = null,
-            Func<IQueryable<TModel>, IOrderedQueryable<TModel>> orderBy = null,
+             Func<IQueryable<TModel>, IOrderedQueryable<TModel>> orderBy = null,
              string includeProperties = "", bool isIncludedIsDeleted = true);
+
+        IQueryable<TModel> Get1(Expression<Func<TModel, bool>> filter = null,
+             string orderBy = null, bool orderAsc = true,
+             string includeProperties = "", bool isIncludedIsDeleted = true);
+
+        PagedResult<TModel> GetPaged(Expression<Func<TModel, bool>> filter = null,
+            Func<IQueryable<TModel>, IOrderedQueryable<TModel>> orderBy = null,
+            string includeProperties = "", bool isIncludedIsDeleted = true,
+            int page = 1, int pageSize = 20);
+
+        PagedResult<TModel> GetPaged1(Expression<Func<TModel, bool>> filter = null,
+            string orderBy = null, bool orderAsc = true,
+            string includeProperties = "", bool isIncludedIsDeleted = true,
+            int page = 1, int pageSize = 20);
 
         TModel FirstOrDefault(Expression<Func<TModel, bool>> filter = null,
             Func<IQueryable<TModel>, IOrderedQueryable<TModel>> orderBy = null,
-             string includeProperties = "", bool isIncludedIsDeleted = true);
+            string includeProperties = "", bool isIncludedIsDeleted = true);
     }
 }

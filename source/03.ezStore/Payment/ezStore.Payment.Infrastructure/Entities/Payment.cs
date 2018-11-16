@@ -3,7 +3,7 @@ using System;
 
 namespace ezStore.Payment.Infrastructure.Entities
 {
-    public class Payment : ModelEntity<Guid>
+    public class Payment : ModelGuidIdEntity
     {
         public string Name { get; set; }
     }

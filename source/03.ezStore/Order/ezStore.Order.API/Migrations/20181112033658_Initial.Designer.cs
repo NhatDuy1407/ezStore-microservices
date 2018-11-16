@@ -8,7 +8,7 @@ using ezStore.Order.Infrastructure;
 
 namespace ezStore.Order.API.Migrations
 {
-    [DbContext(typeof(ApplicationDbContext))]
+    [DbContext(typeof(OrderDbContext))]
     [Migration("20181112033658_Initial")]
     partial class Initial
     {

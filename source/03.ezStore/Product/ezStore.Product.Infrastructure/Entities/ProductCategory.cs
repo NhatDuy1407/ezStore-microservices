@@ -3,7 +3,7 @@ using System;
 
 namespace ezStore.Product.Infrastructure.Entities
 {
-    public class ProductCategory : ModelEntity<Guid>
+    public class ProductCategory : ModelGuidIdEntity
     {
         public ProductCategory()
         {

@@ -5,7 +5,7 @@ using Microservice.Core.Models;
 
 namespace Microservice.Core.DomainService.Models
 {
-    public class AggregateRoot : ModelEntity<Guid>
+    public class AggregateRoot : ModelGuidIdEntity
     {
         public List<IEvent> Events { get; private set; }
 

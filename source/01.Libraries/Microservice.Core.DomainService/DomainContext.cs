@@ -52,7 +52,7 @@ namespace Microservice.Core.DomainService
                 {
                     foreach (var key in (attr as MessageBusRouteAttribute).RouteKeys)
                     {
-                        var sendEndPoint = _busControl.GetSendEndpoint(new System.Uri($"{Configuration.GetConnectionString(Constants.RabbitMQHost)}/{key}")).Result;
+                        var sendEndPoint = _busControl.GetSendEndpoint(new System.Uri($"{Configuration.GetConnectionString(MicroserviceConstants.RabbitMQHost)}/{key}")).Result;
                         sendEndPoint.Send(@event, @event.GetType());
                     }
                 }

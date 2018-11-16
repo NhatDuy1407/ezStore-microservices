@@ -1,12 +1,12 @@
-﻿using System;
-using MassTransit;
+﻿using MassTransit;
 using MassTransit.RabbitMqTransport;
 using Microservice.Core;
 using Microservice.Core.DataAccess.MongoDB;
 using Microservice.Core.MessageQueue.Request;
+using Microservice.DomainEvents;
 using Microservice.Logging.BackgroundProcess.Consumers;
-using Microservice.SharedEvents;
 using Microsoft.Extensions.Configuration;
+using System;
 
 namespace Microservice.Logging.BackgroundProcess
 {
@@ -14,7 +14,7 @@ namespace Microservice.Logging.BackgroundProcess
     {
         private readonly IConfiguration _configuration;
 
-        public ComsummerService(IConfiguration configuration) : base(configuration.GetConnectionString(Constants.RabbitMQHost), EventRouteConstants.LoggingService)
+        public ComsummerService(IConfiguration configuration) : base(configuration, EventRouteConstants.LoggingService)
         {
             _configuration = configuration;
         }
@@ -22,10 +22,10 @@ namespace Microservice.Logging.BackgroundProcess
 
         public override Action<IRabbitMqReceiveEndpointConfigurator> Configure()
         {
-            var dbConnection = new DataAccessWriteService(new MongoDbContext(_configuration.GetConnectionString(Constants.DefaultConnection), _configuration.GetConnectionString(Constants.DefaultDatabaseName), false));
+            var dbConnection = new DataAccessWriteService(new MongoDbContext(_configuration.GetConnectionString(MicroserviceConstants.DefaultConnection), _configuration.GetConnectionString(MicroserviceConstants.DefaultDatabaseName), false));
             return e =>
             {
-                e.Consumer(() => new LoggingConsumer(_configuration, dbConnection));
+                e.Consumer(() => new LoggingConsumer(dbConnection));
             };
         }
     }

@@ -7,6 +7,9 @@ docker push khainx127/microservice.identityserver
 docker tag microservice.logging.api khainx127/microservice.logging.api
 docker push khainx127/microservice.logging.api
 
+docker tag microservice.setting.api khainx127/microservice.setting.api
+docker push khainx127/microservice.setting.api
+
 docker tag microservice.logging.background khainx127/microservice.logging.background
 docker push khainx127/microservice.logging.background
 

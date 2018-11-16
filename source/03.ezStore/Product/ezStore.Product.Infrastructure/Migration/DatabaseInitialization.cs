@@ -13,7 +13,7 @@ namespace ezStore.Product.Infrastructure.Migration
 
         private static void PerformMigrations(IServiceProvider services)
         {
-            services.GetRequiredService<ApplicationDbContext>().Database.Migrate();
+            services.GetRequiredService<ProductDbContext>().Database.Migrate();
         }
     }
 }

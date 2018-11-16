@@ -56,7 +56,7 @@
 - From `ezStore.Product.API`, register service:
 
 `services.AddDbContext<ApplicationDbContext>(options => 
-                options.UseMySql(Configuration.GetConnectionString(Constants.DefaultConnection), b => b.MigrationsAssembly("ezStore.Product.API")));`
+                options.UseMySql(Configuration.GetConnectionString(MicroserviceConstants.DefaultConnection), b => b.MigrationsAssembly("ezStore.Product.API")));`
 - Add migration:
     - From Visual Studio run command: `Add-Migration Initial`
     - Or, run command line: `dotnet ef migrations add Initial`

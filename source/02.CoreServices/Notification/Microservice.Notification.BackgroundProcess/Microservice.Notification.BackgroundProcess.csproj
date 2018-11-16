@@ -17,7 +17,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\..\01.Libraries\Microservice.Core.MessageQueue\Microservice.Core.MessageQueue.csproj" />
     <ProjectReference Include="..\..\..\01.Libraries\Microservice.Core\Microservice.Core.csproj" />
-    <ProjectReference Include="..\..\Microservice.SharedEvents\Microservice.SharedEvents.csproj" />
+    <ProjectReference Include="..\..\DomainEvents\Microservice.DomainEvents.csproj" />
   </ItemGroup>
 
   <ItemGroup>

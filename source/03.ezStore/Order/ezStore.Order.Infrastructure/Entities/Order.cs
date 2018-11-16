@@ -3,7 +3,7 @@ using System;
 
 namespace ezStore.Order.Infrastructure.Entities
 {
-    public class Order : ModelEntity<Guid>
+    public class Order : ModelGuidIdEntity
     {
         public string Name { get; set; }
     }

@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace ezStore.Product.Domain.Application.Queries
+namespace ezStore.WareHouse.Domain.Application.Queries
 {
     public interface IWareHouseQueries
     {

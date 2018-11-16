@@ -14,6 +14,12 @@ services:
       context: .
       dockerfile: 02.CoreServices/Logging/Microservice.Logging.API/Dockerfile
 
+  microservice.setting.api:
+    image: microservice.setting.api
+    build:
+      context: .
+      dockerfile: 02.CoreServices/Setting/Microservice.Setting.API/Dockerfile
+
   microservice.logging.backgroundprocess:
     image: microservice.logging.backgroundprocess
     build:

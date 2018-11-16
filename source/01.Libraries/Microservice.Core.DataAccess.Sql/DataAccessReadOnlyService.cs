@@ -1,7 +1,7 @@
-﻿using System;
-using System.Collections;
-using Microservice.Core.DataAccess.Interfaces;
+﻿using Microservice.Core.DataAccess.Interfaces;
 using Microsoft.EntityFrameworkCore;
+using System;
+using System.Collections;
 
 namespace Microservice.Core.DataAccess.Sql
 {

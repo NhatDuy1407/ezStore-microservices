@@ -1,14 +1,9 @@
-﻿using System;
+﻿using Microservice.Core.Models;
 
 namespace ezStore.Product.API.ViewModels
 {
-    public class ProductCategoryViewModel
+    public class ProductCategoryViewModel : ModelGuidIdEntity
     {
-        public Guid Id { get; internal set; }
         public string Name { get; internal set; }
-        public string CreatedBy { get; internal set; }
-        public string UpdatedBy { get; internal set; }
-        public DateTime? CreatedDate { get; internal set; }
-        public DateTime? UpdatedDate { get; internal set; }
     }
 }

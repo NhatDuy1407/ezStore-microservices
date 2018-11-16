@@ -1,6 +1,6 @@
 ﻿using MassTransit;
-using Microservice.SharedEvents;
-using Microservice.SharedEvents.Logging;
+using Microservice.DomainEvents;
+using Microservice.DomainEvents.Logging;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
@@ -21,7 +21,7 @@ namespace Microservice.Core.MessageQueue
 
         protected void WriteLog<T>(ConsumeContext<T> context, IConfiguration Configuration, LogLevel logLevel, string message, object data = null) where T : class
         {
-            var sendEndPoint = context.GetSendEndpoint(new System.Uri(Configuration.GetConnectionString(Constants.RabbitMQHost) + "/" + EventRouteConstants.LoggingService)).Result;
+            var sendEndPoint = context.GetSendEndpoint(new System.Uri(Configuration.GetConnectionString(MicroserviceConstants.RabbitMQHost) + "/" + EventRouteConstants.LoggingService)).Result;
             sendEndPoint.Send(new WriteLogEvent()
             {
                 Level = logLevel.ToString(),
