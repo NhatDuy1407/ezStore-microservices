@@ -16,10 +16,10 @@ namespace Microservice.Setting.API.Controllers
     [ApiController]
     public class LocationController : ControllerBase
     {
-        private readonly ICommandBus _commandBus;
+        private readonly ICommandProcessor _commandBus;
         private readonly ILocationQueries _queries;
 
-        public LocationController(ICommandBus commandBus, ILocationQueries queries)
+        public LocationController(ICommandProcessor commandBus, ILocationQueries queries)
         {
             _commandBus = commandBus;
             _queries = queries;

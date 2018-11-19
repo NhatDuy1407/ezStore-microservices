@@ -30,7 +30,7 @@ namespace Microservice.IdentityServer.Controllers
         private readonly ILogger _logger;
 
         private readonly IIdentityServerInteractionService _interaction;
-        private readonly ICommandBus _commandBus;
+        private readonly ICommandProcessor _commandBus;
         private readonly AccountService _account;
 
         public AccountController(
@@ -41,7 +41,7 @@ namespace Microservice.IdentityServer.Controllers
             IIdentityServerInteractionService interaction,
             IClientStore clientStore,
             IHttpContextAccessor httpContextAccessor,
-            IAuthenticationSchemeProvider schemeProvider, ICommandBus commandBus
+            IAuthenticationSchemeProvider schemeProvider, ICommandProcessor commandBus
         )
         {
             _userManager = userManager;

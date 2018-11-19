@@ -16,10 +16,10 @@ namespace ezStore.Product.API.Controllers
     [ApiController]
     public class ProductCategoryController : ControllerBase
     {
-        private readonly ICommandBus _commandBus;
+        private readonly ICommandProcessor _commandBus;
         private readonly IProductCategoryQueries _queries;
 
-        public ProductCategoryController(ICommandBus commandBus, IProductCategoryQueries queries)
+        public ProductCategoryController(ICommandProcessor commandBus, IProductCategoryQueries queries)
         {
             _commandBus = commandBus;
             _queries = queries;

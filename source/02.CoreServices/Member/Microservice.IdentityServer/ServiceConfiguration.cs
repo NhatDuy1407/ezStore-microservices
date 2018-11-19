@@ -47,7 +47,7 @@ namespace Microservice.IdentityServer
                 return _bus;
             });
 
-            services.AddTransient<ICommandBus, CommandBus>();
+            services.AddTransient<ICommandProcessor, CommandProcessor>();
 
             // Add application services.
             services.AddTransient<IDomainContext>(i => new DomainContext(i.GetService<IConfiguration>(), i.GetService<IBusControl>()));

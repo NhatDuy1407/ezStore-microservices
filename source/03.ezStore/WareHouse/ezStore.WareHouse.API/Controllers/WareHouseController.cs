@@ -16,10 +16,10 @@ namespace ezStore.WareHouse.API.Controllers
     [ApiController]
     public class WareHouseController : ControllerBase
     {
-        private readonly ICommandBus _commandBus;
+        private readonly ICommandProcessor _commandBus;
         private readonly IWareHouseQueries _queries;
 
-        public WareHouseController(ICommandBus commandBus, IWareHouseQueries queries)
+        public WareHouseController(ICommandProcessor commandBus, IWareHouseQueries queries)
         {
             _commandBus = commandBus;
             _queries = queries;

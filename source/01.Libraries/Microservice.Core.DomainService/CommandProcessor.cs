@@ -6,11 +6,11 @@ using Microservice.Core.Service;
 
 namespace Microservice.Core.DomainService
 {
-    public class CommandBus : ICommandBus
+    public class CommandProcessor : ICommandProcessor
     {
         private readonly IServiceProvider _provider;
 
-        public CommandBus(IServiceProvider provider)
+        public CommandProcessor(IServiceProvider provider)
         {
             _provider = provider;
         }

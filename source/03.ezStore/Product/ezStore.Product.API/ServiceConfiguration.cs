@@ -49,7 +49,7 @@ namespace ezStore.Product.API
                 return _bus;
             });
 
-            services.AddTransient<ICommandBus, CommandBus>();
+            services.AddTransient<ICommandProcessor, CommandProcessor>();
 
             // Add application services.
             services.AddTransient<IProductCategoryQueries, ProductCategoryQueries>();

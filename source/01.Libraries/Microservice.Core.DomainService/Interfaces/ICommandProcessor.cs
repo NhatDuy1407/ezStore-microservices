@@ -2,7 +2,7 @@
 
 namespace Microservice.Core.DomainService.Interfaces
 {
-    public interface ICommandBus
+    public interface ICommandProcessor
     {
         Task ExecuteAsync<TCommand>(TCommand command) where TCommand : ICommand;
     }
