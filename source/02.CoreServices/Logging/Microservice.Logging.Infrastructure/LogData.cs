@@ -1,8 +1,8 @@
-﻿using Microservice.Core.Models;
-using MongoDB.Bson;
+﻿using MongoDB.Bson;
 using System;
+using Ws4vn.Core.Models;
 
-namespace Microservice.Logging.Persistence.Model
+namespace Microservice.Logging.Infrastructure
 {
     public class LogData : ModelEntity<ObjectId>
     {

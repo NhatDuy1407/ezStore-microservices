@@ -1,5 +1,5 @@
-﻿using Microservice.Core.DataAccess.Interfaces;
-using Microservice.Core.DomainService.Models;
+﻿using Microservice.Core.DomainService.Models;
+using Ws4vn.DataAccess.Core.Interfaces;
 
 namespace ezStore.Order.Domain.ProductAggregate
 {

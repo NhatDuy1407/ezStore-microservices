@@ -5,8 +5,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\01.Libraries\Microservice.Core.DataAccess\Microservice.Core.DataAccess.csproj" />
-    <ProjectReference Include="..\Microservice.Logging.Persistence.Model\Microservice.Logging.Persistence.Model.csproj" />
+    <PackageReference Include="Ws4vn.DataAccess.Core" Version="1.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Microservice.Logging.Infrastructure\Microservice.Logging.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

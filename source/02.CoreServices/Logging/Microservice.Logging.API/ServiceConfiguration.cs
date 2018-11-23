@@ -1,9 +1,9 @@
 ﻿using Microservice.Core;
-using Microservice.Core.DataAccess.Interfaces;
-using Microservice.Core.DataAccess.MongoDB;
 using Microservice.Logging.Domain.Application.Queries;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Ws4vn.DataAccess.Core.Interfaces;
+using Ws4vn.DataAccess.MongoDB;
 
 namespace Microservice.Logging.API
 {

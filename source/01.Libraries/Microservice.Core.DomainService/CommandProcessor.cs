@@ -1,8 +1,8 @@
-﻿using System;
-using System.Threading.Tasks;
-using Microservice.Core.DomainService.Interfaces;
+﻿using Microservice.Core.DomainService.Interfaces;
 using Microservice.Core.DomainService.Service;
-using Microservice.Core.Service;
+using System;
+using System.Threading.Tasks;
+using Ws4vn.Core.Service;
 
 namespace Microservice.Core.DomainService
 {

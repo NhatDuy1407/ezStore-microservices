@@ -1,4 +1,4 @@
-﻿using Microservice.Core.Models;
+﻿using Ws4vn.Core.Models;
 using System;
 namespace ezStore.WareHouse.API.ViewModels
 {

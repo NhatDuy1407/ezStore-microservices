@@ -1,6 +1,6 @@
-﻿using Microservice.Core.Models;
-using MongoDB.Bson;
+﻿using MongoDB.Bson;
 using System.ComponentModel.DataAnnotations.Schema;
+using Ws4vn.Core.Models;
 
 namespace Microservice.Setting.Infrastructure.Entities
 {

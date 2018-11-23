@@ -21,6 +21,7 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.All" Version="2.1.5" />
+    <PackageReference Include="Ws4vn.DataAccess.MongoDB" Version="1.0.0" />
   </ItemGroup>
 
   <ItemGroup>
@@ -28,10 +29,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\01.Libraries\Microservice.Core.DataAccess.MongoDB\Microservice.Core.DataAccess.MongoDB.csproj" />
     <ProjectReference Include="..\..\..\01.Libraries\Microservice.Core.MessageQueue\Microservice.Core.MessageQueue.csproj" />
     <ProjectReference Include="..\..\DomainEvents\Microservice.DomainEvents.csproj" />
-    <ProjectReference Include="..\Microservice.Logging.Persistence.Model\Microservice.Logging.Persistence.Model.csproj" />
+    <ProjectReference Include="..\Microservice.Logging.Infrastructure\Microservice.Logging.Infrastructure.csproj" />
   </ItemGroup>
 
   <ItemGroup>

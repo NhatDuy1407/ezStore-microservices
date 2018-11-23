@@ -1,7 +1,7 @@
-﻿using Microservice.Core.DataAccess.Interfaces;
-using Microservice.Core.DomainService.Models;
+﻿using Microservice.Core.DomainService.Models;
 using Microservice.Setting.Infrastructure.Entities;
 using System.Linq;
+using Ws4vn.DataAccess.Core.Interfaces;
 
 namespace Microservice.Setting.Domain.SettingAggregate
 {

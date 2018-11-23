@@ -1,11 +1,11 @@
-﻿using System;
-using Microservice.Logging.Persistence.Model;
+﻿using Microservice.Logging.Infrastructure;
+using System;
 
-namespace Microservice.Logging.Domain.Application.ViewModels
+namespace Microservice.Logging.Domain.Dtos
 {
-    public class LogViewModel
+    public class LogDto
     {
-        public LogViewModel(LogData i)
+        public LogDto(LogData i)
         {
             Date = i.Date;
             Level = i.Level;

@@ -1,5 +1,5 @@
 ﻿using Microservice.Core;
-using Microservice.Core.Models;
+using Ws4vn.Core.Models;
 using System;
 
 namespace ezStore.DomainEvents.WareHouse

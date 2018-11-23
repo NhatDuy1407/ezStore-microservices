@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using System.Linq;
 using System.Reflection;
+using Ws4vn.Core;
 
 namespace Microservice.Core.DomainService
 {

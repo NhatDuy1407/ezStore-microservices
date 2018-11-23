@@ -1,5 +1,5 @@
-﻿using Microservice.Core.Models;
-using MongoDB.Bson;
+﻿using MongoDB.Bson;
+using Ws4vn.Core.Models;
 
 namespace Microservice.Setting.Infrastructure.Entities
 {

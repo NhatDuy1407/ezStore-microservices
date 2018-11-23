@@ -1,9 +1,9 @@
 ﻿using ezStore.Product.Domain.Application.Commands;
 using ezStore.Product.Domain.ProductAggregate;
-using Microservice.Core.DataAccess.Interfaces;
 using Microservice.Core.DomainService;
 using Microservice.Core.DomainService.Interfaces;
 using System.Threading.Tasks;
+using Ws4vn.DataAccess.Core.Interfaces;
 
 namespace ezStore.Product.Domain.Application.CommandHandlers
 {

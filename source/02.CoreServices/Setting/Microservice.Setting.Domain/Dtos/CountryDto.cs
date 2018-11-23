@@ -1,6 +1,4 @@
-﻿using Microservice.Core.DataAccess.Entities;
-using Microservice.Core.Models;
-using System;
+﻿using Ws4vn.Core.Models;
 
 namespace Microservice.Setting.Domain.Dtos
 {

@@ -1,11 +1,11 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using MassTransit;
+﻿using MassTransit;
 using Microservice.Core.DomainService.Interfaces;
 using Microservice.Core.DomainService.Models;
-using Microservice.Core.Interfaces;
 using Microsoft.Extensions.Configuration;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Ws4vn.Core.Interfaces;
 
 namespace Microservice.Core.DomainService
 {

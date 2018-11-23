@@ -1,11 +1,11 @@
 ﻿using ezStore.WareHouse.Domain.Dtos;
 using ezStore.WareHouse.Domain.Mapper;
-using Microservice.Core.DataAccess.Entities;
-using Microservice.Core.DataAccess.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Ws4vn.DataAccess.Core.Entities;
+using Ws4vn.DataAccess.Core.Interfaces;
 
 namespace ezStore.WareHouse.Domain.Application.Queries
 {

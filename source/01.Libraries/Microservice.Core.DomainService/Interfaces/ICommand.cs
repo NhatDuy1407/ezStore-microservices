@@ -1,4 +1,4 @@
-﻿using Microservice.Core.Interfaces;
+﻿using Ws4vn.Core.Interfaces;
 
 namespace Microservice.Core.DomainService.Interfaces
 {

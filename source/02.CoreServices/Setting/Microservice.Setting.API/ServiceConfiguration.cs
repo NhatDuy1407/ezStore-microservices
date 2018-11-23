@@ -1,13 +1,13 @@
 ﻿using MassTransit;
 using MassTransit.Util;
 using Microservice.Core;
-using Microservice.Core.DataAccess.Interfaces;
-using Microservice.Core.DataAccess.MongoDB;
 using Microservice.Core.DomainService;
 using Microservice.Core.DomainService.Interfaces;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System;
+using Ws4vn.DataAccess.Core.Interfaces;
+using Ws4vn.DataAccess.MongoDB;
 
 namespace Microservice.Setting.API
 {

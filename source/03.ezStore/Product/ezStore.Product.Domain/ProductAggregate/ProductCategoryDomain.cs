@@ -2,10 +2,10 @@
 using ezStore.Product.Domain.Dtos;
 using ezStore.Product.Domain.Mapper;
 using ezStore.Product.Infrastructure.Entities;
-using Microservice.Core.DataAccess.Interfaces;
 using Microservice.Core.DomainService.Models;
 using System;
 using System.Linq;
+using Ws4vn.DataAccess.Core.Interfaces;
 
 namespace ezStore.Product.Domain.ProductAggregate
 {
