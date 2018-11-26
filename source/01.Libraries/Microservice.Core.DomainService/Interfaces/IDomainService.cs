@@ -1,5 +1,5 @@
 ﻿using Microservice.Core.DomainService.Models;
-using Ws4vn.DataAccess.Core.Interfaces;
+using Microservice.DataAccess.Core.Interfaces;
 
 namespace Microservice.Core.DomainService.Interfaces
 {

@@ -6,7 +6,7 @@ using Microservice.DomainEvents;
 using Microservice.Logging.BackgroundProcess.Consumers;
 using Microsoft.Extensions.Configuration;
 using System;
-using Ws4vn.DataAccess.MongoDB;
+using Microservice.DataAccess.MongoDB;
 
 namespace Microservice.Logging.BackgroundProcess
 {

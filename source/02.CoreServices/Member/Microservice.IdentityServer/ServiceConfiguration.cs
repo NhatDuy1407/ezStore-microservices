@@ -6,8 +6,8 @@ using Microservice.Core.DomainService.Interfaces;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System;
-using Ws4vn.DataAccess.Core.Interfaces;
-using Ws4vn.DataAccess.MongoDB;
+using Microservice.DataAccess.Core.Interfaces;
+using Microservice.DataAccess.MongoDB;
 
 namespace Microservice.IdentityServer
 {
@@ -47,6 +47,7 @@ namespace Microservice.IdentityServer
                 return _bus;
             });
 
+            services.AddScoped<IValidationContext, ValidationContext>();
             services.AddTransient<ICommandProcessor, CommandProcessor>();
 
             // Add application services.

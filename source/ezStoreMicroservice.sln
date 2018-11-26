@@ -117,6 +117,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microservice.Setting.API", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microservice.Logging.Infrastructure", "02.CoreServices\Logging\Microservice.Logging.Infrastructure\Microservice.Logging.Infrastructure.csproj", "{93C613C6-01CC-4079-956A-3FF53D87F4E2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microservice.DataAccess.Core", "01.Libraries\Microservice.DataAccess.Core\Microservice.DataAccess.Core.csproj", "{FF9F53D2-4692-49B8-A5D5-61510BB597AC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microservice.DataAccess.Sql", "01.Libraries\Microservice.DataAccess.Sql\Microservice.DataAccess.Sql.csproj", "{FE2475A6-6CF7-400C-A31D-C20CA114CAD9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microservice.DataAccess.MongoDB", "01.Libraries\Microservice.DataAccess.MongoDB\Microservice.DataAccess.MongoDB.csproj", "{21ACAD1C-E565-4CFC-8AE2-98BF0F61E3C4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -373,6 +379,30 @@ Global
 		{93C613C6-01CC-4079-956A-3FF53D87F4E2}.Local|Any CPU.Build.0 = Local|Any CPU
 		{93C613C6-01CC-4079-956A-3FF53D87F4E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{93C613C6-01CC-4079-956A-3FF53D87F4E2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FF9F53D2-4692-49B8-A5D5-61510BB597AC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FF9F53D2-4692-49B8-A5D5-61510BB597AC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FF9F53D2-4692-49B8-A5D5-61510BB597AC}.Docker|Any CPU.ActiveCfg = Debug|Any CPU
+		{FF9F53D2-4692-49B8-A5D5-61510BB597AC}.Docker|Any CPU.Build.0 = Debug|Any CPU
+		{FF9F53D2-4692-49B8-A5D5-61510BB597AC}.Local|Any CPU.ActiveCfg = Debug|Any CPU
+		{FF9F53D2-4692-49B8-A5D5-61510BB597AC}.Local|Any CPU.Build.0 = Debug|Any CPU
+		{FF9F53D2-4692-49B8-A5D5-61510BB597AC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FF9F53D2-4692-49B8-A5D5-61510BB597AC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FE2475A6-6CF7-400C-A31D-C20CA114CAD9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FE2475A6-6CF7-400C-A31D-C20CA114CAD9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FE2475A6-6CF7-400C-A31D-C20CA114CAD9}.Docker|Any CPU.ActiveCfg = Debug|Any CPU
+		{FE2475A6-6CF7-400C-A31D-C20CA114CAD9}.Docker|Any CPU.Build.0 = Debug|Any CPU
+		{FE2475A6-6CF7-400C-A31D-C20CA114CAD9}.Local|Any CPU.ActiveCfg = Debug|Any CPU
+		{FE2475A6-6CF7-400C-A31D-C20CA114CAD9}.Local|Any CPU.Build.0 = Debug|Any CPU
+		{FE2475A6-6CF7-400C-A31D-C20CA114CAD9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FE2475A6-6CF7-400C-A31D-C20CA114CAD9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{21ACAD1C-E565-4CFC-8AE2-98BF0F61E3C4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{21ACAD1C-E565-4CFC-8AE2-98BF0F61E3C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{21ACAD1C-E565-4CFC-8AE2-98BF0F61E3C4}.Docker|Any CPU.ActiveCfg = Debug|Any CPU
+		{21ACAD1C-E565-4CFC-8AE2-98BF0F61E3C4}.Docker|Any CPU.Build.0 = Debug|Any CPU
+		{21ACAD1C-E565-4CFC-8AE2-98BF0F61E3C4}.Local|Any CPU.ActiveCfg = Debug|Any CPU
+		{21ACAD1C-E565-4CFC-8AE2-98BF0F61E3C4}.Local|Any CPU.Build.0 = Debug|Any CPU
+		{21ACAD1C-E565-4CFC-8AE2-98BF0F61E3C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{21ACAD1C-E565-4CFC-8AE2-98BF0F61E3C4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -416,6 +446,9 @@ Global
 		{9708E27F-E551-4DDD-B7EF-BCD521C26255} = {072F6B48-1A82-4B16-900E-E86B11EC7DEA}
 		{3673FA51-6205-4F84-B50F-E00821B3801C} = {072F6B48-1A82-4B16-900E-E86B11EC7DEA}
 		{93C613C6-01CC-4079-956A-3FF53D87F4E2} = {1E993341-DFAF-4959-BD2E-79989A24A3EB}
+		{FF9F53D2-4692-49B8-A5D5-61510BB597AC} = {A6613CAF-30A7-471B-A661-52D34D481943}
+		{FE2475A6-6CF7-400C-A31D-C20CA114CAD9} = {A6613CAF-30A7-471B-A661-52D34D481943}
+		{21ACAD1C-E565-4CFC-8AE2-98BF0F61E3C4} = {A6613CAF-30A7-471B-A661-52D34D481943}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {88D9F8A4-8F8A-4E03-A92F-34BCFF26A09D}

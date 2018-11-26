@@ -1,17 +1,20 @@
 ﻿using System;
+using System.Collections.Concurrent;
+using System.Linq;
+using System.Threading.Tasks;
 using Microservice.Core.DomainService.Interfaces;
 
 namespace Microservice.Core.DomainService.Commands
 {
     public abstract class ValidationDecoratorCommand : ICommand
     {
-        private ValidationDecoratorCommand _root { get; set; }
+        private ValidationDecoratorCommand[] _roots { get; set; }
 
         public Guid CommandId { get; set; }
 
-        protected ValidationDecoratorCommand(ValidationDecoratorCommand root)
+        protected ValidationDecoratorCommand(params ValidationDecoratorCommand[] roots)
         {
-            _root = root;
+            _roots = roots;
             CommandId = Guid.NewGuid();
         }
 
@@ -20,11 +23,32 @@ namespace Microservice.Core.DomainService.Commands
             CommandId = Guid.NewGuid();
         }
 
-        public virtual bool Validate()
+        public virtual bool Validate(IValidationContext validationContext)
         {
-            return (_root == null || _root.Validate()) && SelfValidate();
+            var selfValidationResult = SelfValidate();
+            if (!selfValidationResult)
+            {
+                validationContext.AddValidationError(ErrorMessage());
+            }
+
+            ConcurrentBag<bool> bag = new ConcurrentBag<bool>();
+            if (_roots != null)
+            {
+                Parallel.ForEach(_roots, (item) =>
+                {
+                    bag.Add(item.Validate(validationContext));
+                });
+            }
+
+
+            return (_roots == null || bag.All(i => i)) && selfValidationResult;
         }
 
         public abstract bool SelfValidate();
+
+        public virtual string ErrorMessage()
+        {
+            return string.Empty;
+        }
     }
 }

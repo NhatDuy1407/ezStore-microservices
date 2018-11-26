@@ -4,8 +4,8 @@ using Microservice.Setting.Infrastructure.Entities;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Ws4vn.DataAccess.Core.Entities;
-using Ws4vn.DataAccess.Core.Interfaces;
+using Microservice.DataAccess.Core.Entities;
+using Microservice.DataAccess.Core.Interfaces;
 
 namespace Microservice.Setting.Domain.Application.Queries
 {

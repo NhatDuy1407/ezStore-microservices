@@ -6,6 +6,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\01.Libraries\Microservice.Core.DomainService\Microservice.Core.DomainService.csproj" />
+    <ProjectReference Include="..\..\..\01.Libraries\Microservice.DataAccess.Core\Microservice.DataAccess.Core.csproj" />
     <ProjectReference Include="..\..\..\02.CoreServices\Member\Microservice.Member.Infrastructure\Microservice.Member.Infrastructure.csproj" />
     <ProjectReference Include="..\..\DomainEvents\ezStore.DomainEvents.csproj" />
     <ProjectReference Include="..\ezStore.WareHouse.Infrastructure\ezStore.WareHouse.Infrastructure.csproj" />

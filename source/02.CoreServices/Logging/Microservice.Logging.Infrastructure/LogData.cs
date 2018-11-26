@@ -1,6 +1,6 @@
 ﻿using MongoDB.Bson;
 using System;
-using Ws4vn.Core.Models;
+using Microservice.Core.Models;
 
 namespace Microservice.Logging.Infrastructure
 {

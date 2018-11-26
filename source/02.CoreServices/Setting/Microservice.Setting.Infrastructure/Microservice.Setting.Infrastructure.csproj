@@ -8,12 +8,11 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.1.4" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="2.1.4" />
     <PackageReference Include="MongoDB.Driver" Version="2.7.0" />
-    <PackageReference Include="Ws4vn.Core" Version="1.0.0" />
-    <PackageReference Include="Ws4vn.DataAccess.MongoDB" Version="1.0.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\01.Libraries\Microservice.Core\Microservice.Core.csproj" />
+    <ProjectReference Include="..\..\..\01.Libraries\Microservice.DataAccess.MongoDB\Microservice.DataAccess.MongoDB.csproj" />
   </ItemGroup>
 
 </Project>

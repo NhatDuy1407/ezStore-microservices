@@ -8,8 +8,8 @@ using Microservice.Core.DomainService.Interfaces;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System;
-using Ws4vn.DataAccess.Core.Interfaces;
-using Ws4vn.DataAccess.Sql;
+using Microservice.DataAccess.Core.Interfaces;
+using Microservice.DataAccess.Sql;
 
 namespace ezStore.Product.API
 {
@@ -49,6 +49,7 @@ namespace ezStore.Product.API
                 return _bus;
             });
 
+            services.AddScoped<IValidationContext, ValidationContext>();
             services.AddTransient<ICommandProcessor, CommandProcessor>();
 
             // Add application services.

@@ -1,9 +1,9 @@
-﻿using Microservice.Setting.Infrastructure.Entities;
+﻿using Microservice.DataAccess.MongoDB;
+using Microservice.Setting.Infrastructure.Entities;
 using Microsoft.Extensions.DependencyInjection;
 using MongoDB.Driver;
 using System;
 using System.Collections.Generic;
-using Ws4vn.DataAccess.MongoDB;
 
 namespace Microservice.Setting.Infrastructure.Migration
 {

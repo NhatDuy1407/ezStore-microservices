@@ -6,16 +6,13 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\01.Libraries\Microservice.Core.DomainService\Microservice.Core.DomainService.csproj" />
+    <ProjectReference Include="..\..\..\01.Libraries\Microservice.DataAccess.Core\Microservice.DataAccess.Core.csproj" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="Application\Commands\" />
     <Folder Include="Application\Queries\" />
     <Folder Include="Mapper\" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <PackageReference Include="Ws4vn.Core" Version="1.0.0" />
   </ItemGroup>
 
   <ItemGroup>

@@ -57,12 +57,14 @@ namespace Microservice.Core.Logging
                 Level = logLevel.ToString(),
                 Logger = CategoryName,
                 Thread = eventId.ToString(),
-                Message = logLevel != LogLevel.Error ? message : string.Format(Configuration.GetSection(MicroserviceConstants.Notification)[MicroserviceConstants.ErrorEmailSubject], exception.Message),
+                Message = logLevel != LogLevel.Error ?
+                    message :
+                    string.Format(Configuration.GetSection(MicroserviceConstants.Notification)[MicroserviceConstants.ErrorEmailSubject], exception?.Message),
                 Data = state.ToString(),
-                StackTrace = exception == null ? "" : exception.StackTrace,
+                StackTrace = exception?.StackTrace,
             });
 
-            if (logLevel == LogLevel.Error || exception != null)
+            if ((logLevel == LogLevel.Error || logLevel == LogLevel.Critical) && exception != null && !(exception is ValidationErrorException))
             {
                 var sendNotificationEndPoint = _busControl.GetSendEndpoint(new Uri(Configuration.GetConnectionString(MicroserviceConstants.RabbitMQHost) + $"/{EventRouteConstants.NotificationService}")).Result;
                 sendNotificationEndPoint.Send(new EmailContentCreated()

@@ -6,8 +6,8 @@ using Microservice.Core.DomainService.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
+using Microservice.DataAccess.Core.Entities;
 
 namespace ezStore.WareHouse.API.Controllers
 {
@@ -16,40 +16,48 @@ namespace ezStore.WareHouse.API.Controllers
     [ApiController]
     public class WareHouseController : ControllerBase
     {
-        private readonly ICommandProcessor _commandBus;
+        private readonly ICommandProcessor _commandProcessor;
         private readonly IWareHouseQueries _queries;
 
-        public WareHouseController(ICommandProcessor commandBus, IWareHouseQueries queries)
+        public WareHouseController(ICommandProcessor commandProcessor, IWareHouseQueries queries)
         {
-            _commandBus = commandBus;
+            _commandProcessor = commandProcessor;
             _queries = queries;
         }
 
         [HttpGet]
-        public IEnumerable<WareHouseViewModel> Get()
+        public Task<PagedResult<WareHouseViewModel>> GetPaged(string name, string orderBy = "", bool orderAsc = true, int page = 1, int pageSize = 20)
         {
-            return WareHouseViewMapper.DtoToViewModels(_queries.Get().Result);
+            var data = _queries.GetPaged(name, orderBy, orderAsc, page, pageSize).Result;
+            var result = new PagedResult<WareHouseViewModel>
+            {
+                CurrentPage = data.CurrentPage,
+                PageCount = data.PageCount,
+                PageSize = data.PageSize,
+                RowCount = data.RowCount,
+                Results = WareHouseViewMapper.DtoToViewModels(data.Results)
+            };
+            return Task.FromResult(result);
         }
 
         [HttpGet("{id}")]
-        public WareHouseViewModel Get(Guid id)
+        public Task<WareHouseViewModel> Get(Guid id)
         {
-            return WareHouseViewMapper.DtoToViewModel(_queries.Get(id).Result);
+            return Task.FromResult(WareHouseViewMapper.DtoToViewModel(_queries.Get(id).Result));
         }
 
         [HttpPut]
-        public Task Put([FromBody] string name)
+        public Task Put([FromBody] CreateWareHouseCommand command)
         {
-            var command = new CreateWareHouseCommand(name);
-            _commandBus.ExecuteAsync(command).Wait();
+            _commandProcessor.ExecuteAsync(command).Wait();
             return Task.CompletedTask;
         }
 
         [HttpPost("{id}")]
-        public Task Post(Guid id, [FromBody] string name)
+        public Task Post(Guid id, [FromBody] UpdateWareHouseCommand command)
         {
-            var command = new UpdateWareHouseCommand(id, name);
-            _commandBus.ExecuteAsync(command).Wait();
+            command.Id = id;
+            _commandProcessor.ExecuteAsync(command).Wait();
             return Task.CompletedTask;
         }
 
@@ -57,7 +65,7 @@ namespace ezStore.WareHouse.API.Controllers
         public Task Delete(Guid id)
         {
             var command = new DeleteWareHouseCommand(id);
-            _commandBus.ExecuteAsync(command).Wait();
+            _commandProcessor.ExecuteAsync(command).Wait();
             return Task.CompletedTask;
         }
     }

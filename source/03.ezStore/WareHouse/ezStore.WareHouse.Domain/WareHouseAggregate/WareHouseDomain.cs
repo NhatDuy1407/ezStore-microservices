@@ -2,7 +2,7 @@
 using Microservice.Core.DomainService.Models;
 using System;
 using System.Linq;
-using Ws4vn.DataAccess.Core.Interfaces;
+using Microservice.DataAccess.Core.Interfaces;
 
 namespace ezStore.WareHouse.Domain.ProductAggregate
 {

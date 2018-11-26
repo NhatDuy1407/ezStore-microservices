@@ -1,4 +1,4 @@
-﻿using Ws4vn.Core.Models;
+﻿using Microservice.Core.Models;
 using System;
 using System.ComponentModel.DataAnnotations.Schema;
 

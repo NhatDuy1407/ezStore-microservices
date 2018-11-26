@@ -1,4 +1,4 @@
-﻿using Ws4vn.Core.Models;
+﻿using Microservice.Core.Models;
 
 namespace ezStore.WareHouse.Domain.Dtos
 {

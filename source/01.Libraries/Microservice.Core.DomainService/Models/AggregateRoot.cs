@@ -1,6 +1,6 @@
-﻿using System.Collections.Generic;
-using Ws4vn.Core.Interfaces;
-using Ws4vn.Core.Models;
+﻿using Microservice.Core.DomainService.Interfaces;
+using Microservice.Core.Models;
+using System.Collections.Generic;
 
 namespace Microservice.Core.DomainService.Models
 {

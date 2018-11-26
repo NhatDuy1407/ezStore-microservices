@@ -1,5 +1,5 @@
 ﻿using MongoDB.Bson;
-using Ws4vn.Core.Models;
+using Microservice.Core.Models;
 
 namespace Microservice.Member.Infrastructure.Models
 {

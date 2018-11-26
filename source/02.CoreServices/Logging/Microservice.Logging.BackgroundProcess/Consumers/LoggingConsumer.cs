@@ -3,7 +3,7 @@ using Microservice.Core.MessageQueue;
 using Microservice.DomainEvents.Logging;
 using Microservice.Logging.Infrastructure;
 using System.Threading.Tasks;
-using Ws4vn.DataAccess.Core.Interfaces;
+using Microservice.DataAccess.Core.Interfaces;
 
 namespace Microservice.Logging.BackgroundProcess.Consumers
 {

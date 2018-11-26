@@ -5,7 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Ws4vn.DataAccess.Core.Interfaces;
+using Microservice.DataAccess.Core.Interfaces;
 
 namespace ezStore.Product.Domain.Application.Queries
 {

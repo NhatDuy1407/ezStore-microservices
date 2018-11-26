@@ -20,12 +20,11 @@
   <ItemGroup>
     <PackageReference Include="MassTransit.RabbitMQ" Version="5.1.5" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="2.1.1" />
-    <PackageReference Include="Ws4vn.Core" Version="1.0.0" />
-    <PackageReference Include="Ws4vn.DataAccess.Core" Version="1.0.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Microservice.Core\Microservice.Core.csproj" />
+    <ProjectReference Include="..\Microservice.DataAccess.Core\Microservice.DataAccess.Core.csproj" />
   </ItemGroup>
 
   <ItemGroup>

@@ -3,7 +3,7 @@ using Microservice.Logging.Infrastructure;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Ws4vn.DataAccess.Core.Interfaces;
+using Microservice.DataAccess.Core.Interfaces;
 
 namespace Microservice.Logging.Domain.Application.Queries
 {

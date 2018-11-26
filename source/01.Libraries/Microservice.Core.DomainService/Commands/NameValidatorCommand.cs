@@ -13,5 +13,10 @@
         {
             return !string.IsNullOrEmpty(Name);
         }
+
+        public override string ErrorMessage()
+        {
+            return "The Name field should not be empty";
+        }
     }
 }

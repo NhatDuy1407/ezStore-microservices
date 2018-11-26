@@ -5,7 +5,6 @@ using Microsoft.Extensions.Configuration;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Ws4vn.Core.Interfaces;
 
 namespace Microservice.Core.DomainService
 {
@@ -43,7 +42,6 @@ namespace Microservice.Core.DomainService
         public Task SaveChanges()
         {
             // everything was validated successfully
-
             // publish events
             foreach (var @event in Events)
             {

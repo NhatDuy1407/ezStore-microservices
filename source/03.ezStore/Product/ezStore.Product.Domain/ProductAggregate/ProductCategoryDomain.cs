@@ -3,9 +3,9 @@ using ezStore.Product.Domain.Dtos;
 using ezStore.Product.Domain.Mapper;
 using ezStore.Product.Infrastructure.Entities;
 using Microservice.Core.DomainService.Models;
+using Microservice.DataAccess.Core.Interfaces;
 using System;
 using System.Linq;
-using Ws4vn.DataAccess.Core.Interfaces;
 
 namespace ezStore.Product.Domain.ProductAggregate
 {

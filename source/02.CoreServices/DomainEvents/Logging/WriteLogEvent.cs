@@ -1,6 +1,6 @@
 ﻿using Microservice.Core;
+using Microservice.Core.DomainService.Events;
 using System;
-using Ws4vn.Core.Models;
 
 namespace Microservice.DomainEvents.Logging
 {

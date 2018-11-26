@@ -1,8 +1,6 @@
-﻿using Ws4vn.Core.Interfaces;
-
-namespace Microservice.Core.DomainService.Interfaces
+﻿namespace Microservice.Core.DomainService.Interfaces
 {
-    public interface ICommand: IValidation
+    public interface ICommand : IValidation
     {
     }
 }

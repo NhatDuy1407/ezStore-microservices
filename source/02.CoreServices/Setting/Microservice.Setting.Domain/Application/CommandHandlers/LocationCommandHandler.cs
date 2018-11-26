@@ -3,7 +3,7 @@ using Microservice.Core.DomainService.Interfaces;
 using Microservice.Setting.Domain.Application.Commands;
 using Microservice.Setting.Domain.SettingAggregate;
 using System.Threading.Tasks;
-using Ws4vn.DataAccess.Core.Interfaces;
+using Microservice.DataAccess.Core.Interfaces;
 
 namespace Microservice.Setting.Domain.Application.CommandHandlers
 {
