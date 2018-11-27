@@ -126,6 +126,9 @@ namespace Microservice.IdentityServer
 
             app.UseIdentityServer();
 
+            var logger = serviceProvider.GetService<ILogger<Startup>>();
+            app.UseErrorLogging(logger);
+
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
