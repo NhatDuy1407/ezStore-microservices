@@ -1,5 +1,5 @@
 ﻿using Microservice.Core;
-using Microservice.Core.Models;
+using Microservice.Core.DomainService.Events;
 using System;
 
 namespace Microservice.DomainEvents.Logging
@@ -14,5 +14,6 @@ namespace Microservice.DomainEvents.Logging
         public string Message { get; set; }
         public string Data { get; set; }
         public string StackTrace { get; set; }
+        public string ExceptionTypeName { get; set; }
     }
 }

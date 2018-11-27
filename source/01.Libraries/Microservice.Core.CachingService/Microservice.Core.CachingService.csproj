@@ -21,9 +21,4 @@
     <PackageReference Include="ServiceStack.Redis" Version="5.4.0" />
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\Microservice.Core.DataAccess.MongoDB\Microservice.Core.DataAccess.MongoDB.csproj" />
-    <ProjectReference Include="..\Microservice.Core.DataAccess\Microservice.Core.DataAccess.csproj" />
-  </ItemGroup>
-
 </Project>

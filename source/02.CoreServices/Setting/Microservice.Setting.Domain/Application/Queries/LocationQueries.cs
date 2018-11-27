@@ -1,12 +1,11 @@
 ﻿using Microservice.Setting.Domain.Dtos;
 using Microservice.Setting.Domain.Mapper;
-using Microservice.Core.DataAccess.Entities;
-using Microservice.Core.DataAccess.Interfaces;
-using System;
+using Microservice.Setting.Infrastructure.Entities;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microservice.Setting.Infrastructure.Entities;
+using Microservice.DataAccess.Core.Entities;
+using Microservice.DataAccess.Core.Interfaces;
 
 namespace Microservice.Setting.Domain.Application.Queries
 {

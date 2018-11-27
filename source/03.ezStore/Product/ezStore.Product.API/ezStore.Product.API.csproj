@@ -22,9 +22,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\01.Libraries\Microservice.Core.DataAccess.Sql\Microservice.Core.DataAccess.Sql.csproj" />
     <ProjectReference Include="..\..\..\01.Libraries\Microservice.Core.DomainService\Microservice.Core.DomainService.csproj" />
     <ProjectReference Include="..\..\..\01.Libraries\Microservice.Core.Logging\Microservice.Core.Logging.csproj" />
+    <ProjectReference Include="..\..\..\01.Libraries\Microservice.DataAccess.Sql\Microservice.DataAccess.Sql.csproj" />
     <ProjectReference Include="..\ezStore.Product.Domain\ezStore.Product.Domain.csproj" />
     <ProjectReference Include="..\ezStore.Product.Infrastructure\ezStore.Product.Infrastructure.csproj" />
   </ItemGroup>

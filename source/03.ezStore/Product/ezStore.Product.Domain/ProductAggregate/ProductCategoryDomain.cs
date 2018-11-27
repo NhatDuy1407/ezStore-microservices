@@ -2,8 +2,8 @@
 using ezStore.Product.Domain.Dtos;
 using ezStore.Product.Domain.Mapper;
 using ezStore.Product.Infrastructure.Entities;
-using Microservice.Core.DataAccess.Interfaces;
 using Microservice.Core.DomainService.Models;
+using Microservice.DataAccess.Core.Interfaces;
 using System;
 using System.Linq;
 

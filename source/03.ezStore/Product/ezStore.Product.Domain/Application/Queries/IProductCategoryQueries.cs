@@ -1,7 +1,7 @@
-﻿using System;
+﻿using ezStore.Product.Domain.Dtos;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using ezStore.Product.Domain.Dtos;
 
 namespace ezStore.Product.Domain.Application.Queries
 {

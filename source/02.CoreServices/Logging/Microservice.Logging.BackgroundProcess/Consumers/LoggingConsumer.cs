@@ -1,9 +1,9 @@
 ﻿using MassTransit;
-using Microservice.Core.DataAccess.Interfaces;
 using Microservice.Core.MessageQueue;
 using Microservice.DomainEvents.Logging;
-using Microservice.Logging.Persistence.Model;
+using Microservice.Logging.Infrastructure;
 using System.Threading.Tasks;
+using Microservice.DataAccess.Core.Interfaces;
 
 namespace Microservice.Logging.BackgroundProcess.Consumers
 {
@@ -26,7 +26,8 @@ namespace Microservice.Logging.BackgroundProcess.Consumers
                 Logger = context.Message.Logger,
                 Message = context.Message.Message,
                 Data = context.Message.Data,
-                StackTrace = context.Message.StackTrace
+                StackTrace = context.Message.StackTrace,
+                ExceptionTypeName = context.Message.ExceptionTypeName
             });
             context.Respond(new { Status = true });
 

@@ -1,4 +1,5 @@
 ﻿using Microservice.Core;
+using Microservice.Core.DomainService.Events;
 using Microservice.Core.Models;
 using System;
 

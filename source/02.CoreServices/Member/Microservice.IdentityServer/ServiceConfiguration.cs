@@ -1,13 +1,13 @@
 ﻿using MassTransit;
 using MassTransit.Util;
 using Microservice.Core;
-using Microservice.Core.DataAccess.Interfaces;
-using Microservice.Core.DataAccess.MongoDB;
 using Microservice.Core.DomainService;
 using Microservice.Core.DomainService.Interfaces;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System;
+using Microservice.DataAccess.Core.Interfaces;
+using Microservice.DataAccess.MongoDB;
 
 namespace Microservice.IdentityServer
 {
@@ -47,7 +47,8 @@ namespace Microservice.IdentityServer
                 return _bus;
             });
 
-            services.AddTransient<ICommandBus, CommandBus>();
+            services.AddScoped<IValidationContext, ValidationContext>();
+            services.AddTransient<ICommandProcessor, CommandProcessor>();
 
             // Add application services.
             services.AddTransient<IDomainContext>(i => new DomainContext(i.GetService<IConfiguration>(), i.GetService<IBusControl>()));

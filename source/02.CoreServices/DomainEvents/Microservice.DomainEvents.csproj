@@ -18,6 +18,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\01.Libraries\Microservice.Core.DomainService\Microservice.Core.DomainService.csproj" />
     <ProjectReference Include="..\..\01.Libraries\Microservice.Core\Microservice.Core.csproj" />
   </ItemGroup>
 

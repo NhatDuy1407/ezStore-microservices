@@ -1,6 +1,6 @@
-﻿using Microservice.Core.DataAccess.Interfaces;
-using Microservice.Core.DomainService.Interfaces;
+﻿using Microservice.Core.DomainService.Interfaces;
 using Microservice.Core.DomainService.Models;
+using Microservice.DataAccess.Core.Interfaces;
 
 namespace Microservice.Core.DomainService
 {

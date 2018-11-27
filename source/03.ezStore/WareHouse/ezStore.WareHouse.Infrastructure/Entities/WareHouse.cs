@@ -1,5 +1,4 @@
 ﻿using Microservice.Core.Models;
-using System;
 
 namespace ezStore.WareHouse.Infrastructure.Entities
 {

@@ -1,7 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using Microservice.Core.Interfaces;
+﻿using Microservice.Core.DomainService.Interfaces;
 using Microservice.Core.Models;
+using System.Collections.Generic;
 
 namespace Microservice.Core.DomainService.Models
 {

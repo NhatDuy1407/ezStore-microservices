@@ -1,6 +1,6 @@
-﻿using Microservice.Core.DataAccess.Interfaces;
-using Microservice.Core.DomainService.Models;
+﻿using Microservice.Core.DomainService.Models;
 using Microservice.Member.Infrastructure.Models;
+using Microservice.DataAccess.Core.Interfaces;
 
 namespace Microservice.Member.Domain.MemberAggregate
 {
