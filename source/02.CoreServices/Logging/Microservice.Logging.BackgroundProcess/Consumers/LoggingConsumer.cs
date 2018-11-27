@@ -26,7 +26,8 @@ namespace Microservice.Logging.BackgroundProcess.Consumers
                 Logger = context.Message.Logger,
                 Message = context.Message.Message,
                 Data = context.Message.Data,
-                StackTrace = context.Message.StackTrace
+                StackTrace = context.Message.StackTrace,
+                ExceptionTypeName = context.Message.ExceptionTypeName
             });
             context.Respond(new { Status = true });
 

@@ -62,6 +62,7 @@ namespace Microservice.Core.Logging
                     string.Format(Configuration.GetSection(MicroserviceConstants.Notification)[MicroserviceConstants.ErrorEmailSubject], exception?.Message),
                 Data = state.ToString(),
                 StackTrace = exception?.StackTrace,
+                ExceptionTypeName = exception?.GetType().Name
             });
 
             if ((logLevel == LogLevel.Error || logLevel == LogLevel.Critical) && exception != null && !(exception is ValidationErrorException))
