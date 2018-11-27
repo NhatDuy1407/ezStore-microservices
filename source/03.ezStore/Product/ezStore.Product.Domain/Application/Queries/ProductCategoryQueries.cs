@@ -1,11 +1,11 @@
-﻿using System;
+﻿using ezStore.Product.Domain.Dtos;
+using ezStore.Product.Domain.Mapper;
+using ezStore.Product.Infrastructure.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using ezStore.Product.Domain.Dtos;
-using ezStore.Product.Domain.Mapper;
-using ezStore.Product.Infrastructure.Entities;
-using Microservice.Core.DataAccess.Interfaces;
+using Microservice.DataAccess.Core.Interfaces;
 
 namespace ezStore.Product.Domain.Application.Queries
 {

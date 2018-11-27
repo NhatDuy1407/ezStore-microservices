@@ -3,13 +3,13 @@ using ezStore.Product.Infrastructure;
 using MassTransit;
 using MassTransit.Util;
 using Microservice.Core;
-using Microservice.Core.DataAccess.Interfaces;
-using Microservice.Core.DataAccess.Sql;
 using Microservice.Core.DomainService;
 using Microservice.Core.DomainService.Interfaces;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System;
+using Microservice.DataAccess.Core.Interfaces;
+using Microservice.DataAccess.Sql;
 
 namespace ezStore.Product.API
 {
@@ -49,7 +49,8 @@ namespace ezStore.Product.API
                 return _bus;
             });
 
-            services.AddTransient<ICommandBus, CommandBus>();
+            services.AddScoped<IValidationContext, ValidationContext>();
+            services.AddTransient<ICommandProcessor, CommandProcessor>();
 
             // Add application services.
             services.AddTransient<IProductCategoryQueries, ProductCategoryQueries>();

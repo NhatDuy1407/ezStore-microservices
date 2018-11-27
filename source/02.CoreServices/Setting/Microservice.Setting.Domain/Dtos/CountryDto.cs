@@ -1,6 +1,4 @@
-﻿using Microservice.Core.DataAccess.Entities;
-using Microservice.Core.Models;
-using System;
+﻿using Microservice.Core.Models;
 
 namespace Microservice.Setting.Domain.Dtos
 {

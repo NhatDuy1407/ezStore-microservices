@@ -12,6 +12,6 @@ namespace Microservice.Core.DomainService
             CommandId = Guid.NewGuid();
         }
 
-        public abstract bool Validate();
+        public abstract bool Validate(IValidationContext validationContext);
     }
 }

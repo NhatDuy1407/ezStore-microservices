@@ -16,12 +16,12 @@ namespace Microservice.Setting.API.Controllers
     [ApiController]
     public class LocationController : ControllerBase
     {
-        private readonly ICommandBus _commandBus;
+        private readonly ICommandProcessor _commandProcessor;
         private readonly ILocationQueries _queries;
 
-        public LocationController(ICommandBus commandBus, ILocationQueries queries)
+        public LocationController(ICommandProcessor commandProcessor, ILocationQueries queries)
         {
-            _commandBus = commandBus;
+            _commandProcessor = commandProcessor;
             _queries = queries;
         }
 
@@ -41,7 +41,7 @@ namespace Microservice.Setting.API.Controllers
         public Task Put([FromBody] string name)
         {
             var command = new CreateCountryCommand(name);
-            _commandBus.ExecuteAsync(command).Wait();
+            _commandProcessor.ExecuteAsync(command).Wait();
             return Task.CompletedTask;
         }
 
@@ -49,7 +49,7 @@ namespace Microservice.Setting.API.Controllers
         public Task Post(string id, [FromBody] string name)
         {
             var command = new UpdateCountryCommand(id, name);
-            _commandBus.ExecuteAsync(command).Wait();
+            _commandProcessor.ExecuteAsync(command).Wait();
             return Task.CompletedTask;
         }
 
@@ -57,7 +57,7 @@ namespace Microservice.Setting.API.Controllers
         public Task Delete(string id)
         {
             var command = new DeleteCountryCommand(id);
-            _commandBus.ExecuteAsync(command).Wait();
+            _commandProcessor.ExecuteAsync(command).Wait();
             return Task.CompletedTask;
         }
     }

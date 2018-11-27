@@ -5,8 +5,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\01.Libraries\Microservice.Core.DataAccess\Microservice.Core.DataAccess.csproj" />
     <ProjectReference Include="..\..\..\01.Libraries\Microservice.Core.DomainService\Microservice.Core.DomainService.csproj" />
+    <ProjectReference Include="..\..\..\01.Libraries\Microservice.DataAccess.Core\Microservice.DataAccess.Core.csproj" />
     <ProjectReference Include="..\..\DomainEvents\ezStore.DomainEvents.csproj" />
     <ProjectReference Include="..\ezStore.Product.Infrastructure\ezStore.Product.Infrastructure.csproj" />
   </ItemGroup>

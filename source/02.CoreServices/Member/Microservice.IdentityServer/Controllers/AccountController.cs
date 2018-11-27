@@ -30,7 +30,7 @@ namespace Microservice.IdentityServer.Controllers
         private readonly ILogger _logger;
 
         private readonly IIdentityServerInteractionService _interaction;
-        private readonly ICommandBus _commandBus;
+        private readonly ICommandProcessor _commandProcessor;
         private readonly AccountService _account;
 
         public AccountController(
@@ -41,7 +41,7 @@ namespace Microservice.IdentityServer.Controllers
             IIdentityServerInteractionService interaction,
             IClientStore clientStore,
             IHttpContextAccessor httpContextAccessor,
-            IAuthenticationSchemeProvider schemeProvider, ICommandBus commandBus
+            IAuthenticationSchemeProvider schemeProvider, ICommandProcessor commandProcessor
         )
         {
             _userManager = userManager;
@@ -50,7 +50,7 @@ namespace Microservice.IdentityServer.Controllers
             _logger = logger;
 
             _interaction = interaction;
-            _commandBus = commandBus;
+            _commandProcessor = commandProcessor;
             _account = new AccountService(interaction, httpContextAccessor, schemeProvider, clientStore);
         }
 
@@ -83,7 +83,7 @@ namespace Microservice.IdentityServer.Controllers
                 {
                     _logger.LogInformation($"Member {model.Email} logged in");
                     var command = new UpdateUserLoginCommand(model.Email);
-                    await _commandBus.ExecuteAsync(command);
+                    await _commandProcessor.ExecuteAsync(command);
                     return RedirectToLocal(returnUrl);
                 }
                 if (result.RequiresTwoFactor)

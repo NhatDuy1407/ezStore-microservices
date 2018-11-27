@@ -73,11 +73,14 @@ namespace Microservice.Setting.API
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+
+                app.UseSwaggerCommon();
             }
 
-            app.UseMvc();
+            var logger = serviceProvider.GetService<ILogger<Startup>>();
+            app.UseErrorLogging(logger);
 
-            app.UseSwaggerCommon();
+            app.UseMvc();
         }
     }
 }

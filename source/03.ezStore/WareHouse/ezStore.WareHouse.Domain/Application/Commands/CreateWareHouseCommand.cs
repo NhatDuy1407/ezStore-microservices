@@ -6,7 +6,7 @@ namespace ezStore.WareHouse.Domain.Application.Commands
     {
         public string Name { get; set; }
 
-        public CreateWareHouseCommand(string name) : base(new NameValidatorCommand(name))
+        public CreateWareHouseCommand(string name) : base(new NameValidatorCommand(name), new MinMaxLengthValidatorCommand(name, 50))
         {
             this.Name = name;
         }

@@ -1,11 +1,10 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using MassTransit;
+﻿using MassTransit;
 using Microservice.Core.DomainService.Interfaces;
 using Microservice.Core.DomainService.Models;
-using Microservice.Core.Interfaces;
 using Microsoft.Extensions.Configuration;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace Microservice.Core.DomainService
 {
@@ -43,7 +42,6 @@ namespace Microservice.Core.DomainService
         public Task SaveChanges()
         {
             // everything was validated successfully
-
             // publish events
             foreach (var @event in Events)
             {

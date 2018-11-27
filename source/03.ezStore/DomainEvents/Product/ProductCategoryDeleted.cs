@@ -1,5 +1,5 @@
 ﻿using Microservice.Core;
-using Microservice.Core.Models;
+using Microservice.Core.DomainService.Events;
 using System;
 
 namespace ezStore.DomainEvents.Product

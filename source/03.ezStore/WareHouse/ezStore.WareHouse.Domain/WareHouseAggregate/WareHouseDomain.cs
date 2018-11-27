@@ -1,8 +1,8 @@
 ﻿using ezStore.DomainEvents.WareHouse;
-using Microservice.Core.DataAccess.Interfaces;
 using Microservice.Core.DomainService.Models;
 using System;
 using System.Linq;
+using Microservice.DataAccess.Core.Interfaces;
 
 namespace ezStore.WareHouse.Domain.ProductAggregate
 {
