@@ -4,16 +4,12 @@ using MassTransit;
 using Microservice.Core;
 using Microservice.Core.Logging;
 using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using Newtonsoft.Json;
 using System;
-using System.Net;
 
 namespace ezStore.WareHouse.API
 {
@@ -80,33 +76,14 @@ namespace ezStore.WareHouse.API
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+
+                app.UseSwaggerCommon();
             }
 
             var logger = serviceProvider.GetService<ILogger<Startup>>();
-            app.UseExceptionHandler(appError =>
-            {
-                appError.Run(async context =>
-                {
-                    context.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
-                    context.Response.ContentType = "application/json";
-
-                    var contextFeature = context.Features.Get<IExceptionHandlerFeature>();
-                    if (contextFeature != null)
-                    {
-                        logger.LogError($"Something went wrong: {contextFeature.Error}", contextFeature.Error);
-
-                        await context.Response.WriteAsync(JsonConvert.SerializeObject(new
-                        {
-                            context.Response.StatusCode,
-                            contextFeature.Error.Message
-                        }));
-                    }
-                });
-            });
+            app.UseErrorLogging(logger);
 
             app.UseMvc();
-
-            app.UseSwaggerCommon();
         }
     }
 }
