@@ -117,11 +117,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microservice.Setting.API", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microservice.Logging.Infrastructure", "02.CoreServices\Logging\Microservice.Logging.Infrastructure\Microservice.Logging.Infrastructure.csproj", "{93C613C6-01CC-4079-956A-3FF53D87F4E2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microservice.DataAccess.Core", "01.Libraries\Microservice.DataAccess.Core\Microservice.DataAccess.Core.csproj", "{FF9F53D2-4692-49B8-A5D5-61510BB597AC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microservice.DataAccess.Core", "01.Libraries\Microservice.DataAccess.Core\Microservice.DataAccess.Core.csproj", "{FF9F53D2-4692-49B8-A5D5-61510BB597AC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microservice.DataAccess.Sql", "01.Libraries\Microservice.DataAccess.Sql\Microservice.DataAccess.Sql.csproj", "{FE2475A6-6CF7-400C-A31D-C20CA114CAD9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microservice.DataAccess.Sql", "01.Libraries\Microservice.DataAccess.Sql\Microservice.DataAccess.Sql.csproj", "{FE2475A6-6CF7-400C-A31D-C20CA114CAD9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microservice.DataAccess.MongoDB", "01.Libraries\Microservice.DataAccess.MongoDB\Microservice.DataAccess.MongoDB.csproj", "{21ACAD1C-E565-4CFC-8AE2-98BF0F61E3C4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microservice.DataAccess.MongoDB", "01.Libraries\Microservice.DataAccess.MongoDB\Microservice.DataAccess.MongoDB.csproj", "{21ACAD1C-E565-4CFC-8AE2-98BF0F61E3C4}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microservice.DataAccess.RedisCache", "01.Libraries\Microservice.DataAccess.RedisCache\Microservice.DataAccess.RedisCache.csproj", "{01F59C72-4091-49AA-B194-D3B25042EAFC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -403,6 +405,14 @@ Global
 		{21ACAD1C-E565-4CFC-8AE2-98BF0F61E3C4}.Local|Any CPU.Build.0 = Debug|Any CPU
 		{21ACAD1C-E565-4CFC-8AE2-98BF0F61E3C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{21ACAD1C-E565-4CFC-8AE2-98BF0F61E3C4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{01F59C72-4091-49AA-B194-D3B25042EAFC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{01F59C72-4091-49AA-B194-D3B25042EAFC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{01F59C72-4091-49AA-B194-D3B25042EAFC}.Docker|Any CPU.ActiveCfg = Debug|Any CPU
+		{01F59C72-4091-49AA-B194-D3B25042EAFC}.Docker|Any CPU.Build.0 = Debug|Any CPU
+		{01F59C72-4091-49AA-B194-D3B25042EAFC}.Local|Any CPU.ActiveCfg = Debug|Any CPU
+		{01F59C72-4091-49AA-B194-D3B25042EAFC}.Local|Any CPU.Build.0 = Debug|Any CPU
+		{01F59C72-4091-49AA-B194-D3B25042EAFC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{01F59C72-4091-49AA-B194-D3B25042EAFC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -449,6 +459,7 @@ Global
 		{FF9F53D2-4692-49B8-A5D5-61510BB597AC} = {A6613CAF-30A7-471B-A661-52D34D481943}
 		{FE2475A6-6CF7-400C-A31D-C20CA114CAD9} = {A6613CAF-30A7-471B-A661-52D34D481943}
 		{21ACAD1C-E565-4CFC-8AE2-98BF0F61E3C4} = {A6613CAF-30A7-471B-A661-52D34D481943}
+		{01F59C72-4091-49AA-B194-D3B25042EAFC} = {A6613CAF-30A7-471B-A661-52D34D481943}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {88D9F8A4-8F8A-4E03-A92F-34BCFF26A09D}

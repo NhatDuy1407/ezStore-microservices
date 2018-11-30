@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Microservice.Core.CachingService\Microservice.Core.CachingService.csproj" />
+    <ProjectReference Include="..\Microservice.DataAccess.Core\Microservice.DataAccess.Core.csproj" />
+  </ItemGroup>
+
+</Project>
