@@ -5,11 +5,8 @@ namespace ezStore.Product.Domain.ProductAggregate
 {
     public class ProductDomain : AggregateRoot
     {
-        private readonly IDataAccessWriteService writeService;
-
-        public ProductDomain(IDataAccessWriteService writeService)
+        public ProductDomain(IDataAccessService dataAccessService) : base(dataAccessService)
         {
-            this.writeService = writeService;
         }
     }
 }

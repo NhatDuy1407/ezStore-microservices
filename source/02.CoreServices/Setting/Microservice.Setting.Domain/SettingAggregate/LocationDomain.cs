@@ -7,40 +7,34 @@ namespace Microservice.Setting.Domain.SettingAggregate
 {
     public class LocationDomain : AggregateRoot
     {
-        private readonly IDataAccessWriteService writeService;
-
-        public LocationDomain(IDataAccessWriteService writeService)
+        public LocationDomain(IDataAccessService dataAccessService) : base(dataAccessService)
         {
-            this.writeService = writeService;
         }
 
         public void CreateCountry(string name, string isoCode, int displayOrder, bool published = false)
         {
             var newCountry = new Country() { Name = name, IsoCode = isoCode, DisplayOrder = displayOrder, Published = published };
-            writeService.Repository<Country>().Insert(newCountry);
-            writeService.SaveChanges();
+            dataAccessService.Repository<Country>().Insert(newCountry);
         }
 
         public void UpdateCountry(string id, string name, string isoCode, int displayOrder, bool published = false)
         {
-            var country = writeService.Repository<Country>().Get(i => i.CountryId == id).FirstOrDefault();
+            var country = dataAccessService.Repository<Country>().Get(i => i.CountryId == id).FirstOrDefault();
             if (country != null)
             {
                 country.Name = name;
                 country.IsoCode = isoCode;
                 country.DisplayOrder = displayOrder;
                 country.Published = published;
-                writeService.SaveChanges();
             }
         }
 
         public void DeleteCountry(string id)
         {
-            var country = writeService.Repository<Country>().Get(i => i.CountryId == id).FirstOrDefault();
+            var country = dataAccessService.Repository<Country>().Get(i => i.CountryId == id).FirstOrDefault();
             if (country != null)
             {
-                writeService.Repository<Country>().Delete(i => i.CountryId == id);
-                writeService.SaveChanges();
+                dataAccessService.Repository<Country>().Delete(i => i.CountryId == id);
             }
         }
     }

@@ -53,6 +53,7 @@ namespace Microservice.IdentityServer
             // Add application services.
             services.AddTransient<IDomainContext>(i => new DomainContext(i.GetService<IConfiguration>(), i.GetService<IBusControl>()));
             services.AddTransient(i => new MongoDbContext(configuration.GetConnectionString(MicroserviceConstants.MemberDbConnection), configuration.GetConnectionString(MicroserviceConstants.MemberDbName), false));
+            services.AddTransient<IDataAccessService>(i => new DataAccessWriteService(i.GetService<MongoDbContext>()));
             services.AddTransient<IDataAccessWriteService>(i => new DataAccessWriteService(i.GetService<MongoDbContext>()));
             services.AddTransient<IDomainService>(i => new DomainService(i.GetService<IDomainContext>(), i.GetService<IDataAccessWriteService>()));
 

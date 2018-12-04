@@ -37,7 +37,7 @@ namespace ezStore.Product.API.Controllers
             return ProductCategoryMapper.DtoToViewModel(_queries.Get(id).Result);
         }
 
-        [HttpPut]
+        [HttpPost]
         public Task Put([FromBody] string name)
         {
             var command = new CreateProductCategoryCommand(name);
@@ -45,7 +45,7 @@ namespace ezStore.Product.API.Controllers
             return Task.CompletedTask;
         }
 
-        [HttpPost("{id}")]
+        [HttpPut("{id}")]
         public Task Post(Guid id, [FromBody] string name)
         {
             var command = new UpdateProductCategoryCommand(id, name);

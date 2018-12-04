@@ -6,7 +6,7 @@ using System;
 namespace ezStore.DomainEvents.WareHouse
 {
     [MessageBusRoute(EventRouteConstants.WareHouseService)]
-    public class WareHouseDeleted : Event
+    public class WareHouseDeleted : DomainEvent
     {
         public Guid Id { get; }
 

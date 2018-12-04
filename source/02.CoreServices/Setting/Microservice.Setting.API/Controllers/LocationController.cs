@@ -37,7 +37,7 @@ namespace Microservice.Setting.API.Controllers
             return LocationViewMapper.DtoToViewModel(_queries.Get(id).Result);
         }
 
-        [HttpPut]
+        [HttpPost]
         public Task Put([FromBody] string name)
         {
             var command = new CreateCountryCommand(name);
@@ -45,7 +45,7 @@ namespace Microservice.Setting.API.Controllers
             return Task.CompletedTask;
         }
 
-        [HttpPost("{id}")]
+        [HttpPut("{id}")]
         public Task Post(string id, [FromBody] string name)
         {
             var command = new UpdateCountryCommand(id, name);

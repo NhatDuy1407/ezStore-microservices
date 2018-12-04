@@ -5,7 +5,7 @@ using System;
 namespace ezStore.DomainEvents.Product
 {
     [MessageBusRoute(EventRouteConstants.ProductService)]
-    public class ProductCategoryCreated : Event
+    public class ProductCategoryCreated : DomainEvent
     {
         public Guid Id { get; set; }
         public ProductCategoryCreated(Guid id)
