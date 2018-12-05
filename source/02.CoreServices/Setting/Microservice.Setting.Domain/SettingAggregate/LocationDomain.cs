@@ -2,6 +2,7 @@
 using Microservice.Setting.Infrastructure.Entities;
 using System.Linq;
 using Microservice.DataAccess.Core.Interfaces;
+using MongoDB.Bson;
 
 namespace Microservice.Setting.Domain.SettingAggregate
 {
@@ -19,7 +20,7 @@ namespace Microservice.Setting.Domain.SettingAggregate
 
         public void UpdateCountry(string id, string name, string isoCode, int displayOrder, bool published = false)
         {
-            var country = dataAccessService.Repository<Country>().Get(i => i.CountryId == id).FirstOrDefault();
+            var country = dataAccessService.Repository<Country>().Get(i => i.Id == ObjectId.Parse(id)).FirstOrDefault();
             if (country != null)
             {
                 country.Name = name;
@@ -31,10 +32,10 @@ namespace Microservice.Setting.Domain.SettingAggregate
 
         public void DeleteCountry(string id)
         {
-            var country = dataAccessService.Repository<Country>().Get(i => i.CountryId == id).FirstOrDefault();
+            var country = dataAccessService.Repository<Country>().Get(i => i.Id == ObjectId.Parse(id)).FirstOrDefault();
             if (country != null)
             {
-                dataAccessService.Repository<Country>().Delete(i => i.CountryId == id);
+                dataAccessService.Repository<Country>().Delete(i => i.Id == ObjectId.Parse(id));
             }
         }
     }

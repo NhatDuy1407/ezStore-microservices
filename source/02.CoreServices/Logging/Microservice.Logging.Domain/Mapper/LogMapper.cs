@@ -26,9 +26,9 @@ namespace Microservice.Logging.Domain.Mapper
             return new LogDto(dto);
         }
 
-        public static IEnumerable<LogDto> EntityToDtos(IEnumerable<LogData> dtos)
+        public static IEnumerable<LogDto> EntityToDtos(IEnumerable<LogData> entities)
         {
-            return dtos.Select(EntityToDto);
+            return entities == null ? null : entities.Select(EntityToDto);
         }
     }
 }

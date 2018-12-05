@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using Newtonsoft.Json;
 
 namespace Microservice.Logging.API
 {
@@ -41,7 +42,10 @@ namespace Microservice.Logging.API
             services.AddSwaggerCommon();
 
             // Add framework services.
-            services.AddMvc();
+            services.AddMvc().AddJsonOptions(options =>
+            {
+                options.SerializerSettings.NullValueHandling = NullValueHandling.Ignore;
+            });
 
             //// Add application services.
             ServiceConfiguration.ConfigureServices(services, Configuration);

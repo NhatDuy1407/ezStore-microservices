@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { DashboadModule } from './dashboard/dashboad.module';
 import { CatalogModule } from './catalog/catalog.module';
 import { CustomerModule } from './customer/customer.module';
+import { SettingModule } from './setting/setting.module';
 
 const routes: Routes = [
   {
@@ -23,6 +24,10 @@ const routes: Routes = [
         path: 'customer',
         loadChildren: () => CustomerModule
       },
+      {
+        path: 'setting',
+        loadChildren: () => SettingModule
+      }
     ]
   },
 ];

@@ -6,8 +6,8 @@ namespace Microservice.Setting.Domain.Application.Queries
 {
     public interface ILocationQueries 
     {
-        Task<CountryDto> Get(string id);
+        Task<CountryDto> GetCountry(string id);
 
-        Task<IEnumerable<CountryDto>> Get();
+        Task<IEnumerable<CountryDto>> GetCountries();
     }
 }

@@ -23,7 +23,7 @@ namespace Microservice.Setting.Domain.Mapper
         {
             return new CountryDto
             {
-                Id = dto.CountryId,
+                Id = dto.Id.ToString(),
                 Name = dto.Name,
                 CreatedBy = dto.CreatedBy,
                 UpdatedBy = dto.UpdatedBy,
@@ -32,9 +32,27 @@ namespace Microservice.Setting.Domain.Mapper
             };
         }
 
-        public static IEnumerable<CountryDto> EntityToDtos(IEnumerable<Country> dtos)
+        public static ProvinceDto EntityToDto(Province dto)
         {
-            return dtos.Select(EntityToDto);
+            return new ProvinceDto
+            {
+                Id = dto.CountryId.ToString(),
+                Name = dto.Name,
+                CreatedBy = dto.CreatedBy,
+                UpdatedBy = dto.UpdatedBy,
+                CreatedDate = dto.CreatedDate,
+                UpdatedDate = dto.UpdatedDate,
+            };
+        }
+
+        public static IEnumerable<CountryDto> EntityToDtos(IEnumerable<Country> entities)
+        {
+            return entities == null ? null : entities.Select(EntityToDto);
+        }
+
+        public static IEnumerable<ProvinceDto> EntityToDtos(IEnumerable<Province> entities)
+        {
+            return entities == null ? null : entities.Select(EntityToDto);
         }
     }
 }

@@ -13,28 +13,40 @@ namespace ezStore.WareHouse.Domain.Mapper
             {
                 Id = dto.Id,
                 Name = dto.Name,
+                Address = dto.Address,
+                City = dto.City,
+                CountryId = dto.CountryId,
+                ProvinceId = dto.ProvinceId,
+                PhoneNumber = dto.PhoneNumber,
+                PostalCode = dto.PostalCode,
                 CreatedBy = dto.CreatedBy,
                 UpdatedBy = dto.UpdatedBy,
                 UpdatedDate = DateTime.Now
             };
         }
 
-        public static WareHouseDto EntityToDto(Infrastructure.Entities.WareHouse dto)
+        public static WareHouseDto EntityToDto(Infrastructure.Entities.WareHouse entity)
         {
             return new WareHouseDto
             {
-                Id = dto.Id,
-                Name = dto.Name,
-                CreatedBy = dto.CreatedBy,
-                UpdatedBy = dto.UpdatedBy,
-                CreatedDate = dto.CreatedDate,
-                UpdatedDate = dto.UpdatedDate,
+                Id = entity.Id,
+                Name = entity.Name,
+                Address = entity.Address,
+                City = entity.City,
+                CountryId = entity.CountryId,
+                ProvinceId = entity.ProvinceId,
+                PhoneNumber = entity.PhoneNumber,
+                PostalCode = entity.PostalCode,
+                CreatedBy = entity.CreatedBy,
+                UpdatedBy = entity.UpdatedBy,
+                CreatedDate = entity.CreatedDate,
+                UpdatedDate = entity.UpdatedDate,
             };
         }
 
-        public static IEnumerable<WareHouseDto> EntityToDtos(IEnumerable<Infrastructure.Entities.WareHouse> dtos)
+        public static IEnumerable<WareHouseDto> EntityToDtos(IEnumerable<Infrastructure.Entities.WareHouse> entities)
         {
-            return dtos.Select(EntityToDto);
+            return entities == null ? null : entities.Select(EntityToDto);
         }
     }
 }

@@ -4,6 +4,7 @@ using Microsoft.Extensions.DependencyInjection;
 using MongoDB.Driver;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Microservice.Setting.Infrastructure.Migration
 {
@@ -20,11 +21,23 @@ namespace Microservice.Setting.Infrastructure.Migration
 
             if (!mongoDbContext.Set<Country>().Find(i => true).Any())
             {
-                var i = -1;
+                var i = 0;
                 foreach (Country item in GetCountries())
                 {
                     item.DisplayOrder = i++;
                     mongoDbContext.Set<Country>().InsertOne(item);
+                }
+            }
+
+            var vietNam = mongoDbContext.Set<Country>().Find(i => i.IsoCode == "VN").FirstOrDefault();
+            if (vietNam != null)
+            {
+                var i = 0;
+                foreach (Province item in GetVNProvinces())
+                {
+                    item.DisplayOrder = i++;
+                    item.CountryId = vietNam.Id;
+                    mongoDbContext.Set<Province>().InsertOne(item);
                 }
             }
         }
@@ -276,6 +289,75 @@ namespace Microservice.Setting.Infrastructure.Migration
                 new Country { Name =  "Yemen", IsoCode = "YE" },
                 new Country { Name =  "Zambia", IsoCode = "ZM" },
                 new Country { Name =  "Zimbabwe", IsoCode = "ZW"}
+            };
+        }
+
+        public static IEnumerable<Province> GetVNProvinces()
+        {
+            return new List<Province> {
+                new Province { Name = "Thành phố Hà Nội" },
+                new Province { Name = "Tỉnh Hà Giang" },
+                new Province { Name = "Tỉnh Cao Bằng" },
+                new Province { Name = "Tỉnh Bắc Kạn" },
+                new Province { Name = "Tỉnh Tuyên Quang" },
+                new Province { Name = "Tỉnh Lào Cai" },
+                new Province { Name = "Tỉnh Điện Biên" },
+                new Province { Name = "Tỉnh Lai Châu" },
+                new Province { Name = "Tỉnh Sơn La" },
+                new Province { Name = "Tỉnh Yên Bái" },
+                new Province { Name = "Tỉnh Hoà Bình" },
+                new Province { Name = "Tỉnh Thái Nguyên" },
+                new Province { Name = "Tỉnh Lạng Sơn" },
+                new Province { Name = "Tỉnh Quảng Ninh" },
+                new Province { Name = "Tỉnh Bắc Giang" },
+                new Province { Name = "Tỉnh Phú Thọ" },
+                new Province { Name = "Tỉnh Vĩnh Phúc" },
+                new Province { Name = "Tỉnh Bắc Ninh" },
+                new Province { Name = "Tỉnh Hải Dương" },
+                new Province { Name = "Thành phố Hải Phòng" },
+                new Province { Name = "Tỉnh Hưng Yên" },
+                new Province { Name = "Tỉnh Thái Bình" },
+                new Province { Name = "Tỉnh Hà Nam" },
+                new Province { Name = "Tỉnh Nam Định" },
+                new Province { Name = "Tỉnh Ninh Bình" },
+                new Province { Name = "Tỉnh Thanh Hóa" },
+                new Province { Name = "Tỉnh Nghệ An" },
+                new Province { Name = "Tỉnh Hà Tĩnh" },
+                new Province { Name = "Tỉnh Quảng Bình" },
+                new Province { Name = "Tỉnh Quảng Trị" },
+                new Province { Name = "Tỉnh Thừa Thiên Huế" },
+                new Province { Name = "Thành phố Đà Nẵng" },
+                new Province { Name = "Tỉnh Quảng Nam" },
+                new Province { Name = "Tỉnh Quảng Ngãi" },
+                new Province { Name = "Tỉnh Bình Định" },
+                new Province { Name = "Tỉnh Phú Yên" },
+                new Province { Name = "Tỉnh Khánh Hòa" },
+                new Province { Name = "Tỉnh Ninh Thuận" },
+                new Province { Name = "Tỉnh Bình Thuận" },
+                new Province { Name = "Tỉnh Kon Tum" },
+                new Province { Name = "Tỉnh Gia Lai" },
+                new Province { Name = "Tỉnh Đắk Lắk" },
+                new Province { Name = "Tỉnh Đắk Nông" },
+                new Province { Name = "Tỉnh Lâm Đồng" },
+                new Province { Name = "Tỉnh Bình Phước" },
+                new Province { Name = "Tỉnh Tây Ninh" },
+                new Province { Name = "Tỉnh Bình Dương" },
+                new Province { Name = "Tỉnh Đồng Nai" },
+                new Province { Name = "Tỉnh Bà Rịa - Vũng Tàu" },
+                new Province { Name = "Thành phố Hồ Chí Minh" },
+                new Province { Name = "Tỉnh Long An" },
+                new Province { Name = "Tỉnh Tiền Giang" },
+                new Province { Name = "Tỉnh Bến Tre" },
+                new Province { Name = "Tỉnh Trà Vinh" },
+                new Province { Name = "Tỉnh Vĩnh Long" },
+                new Province { Name = "Tỉnh Đồng Tháp" },
+                new Province { Name = "Tỉnh An Giang" },
+                new Province { Name = "Tỉnh Kiên Giang" },
+                new Province { Name = "Thành phố Cần Thơ" },
+                new Province { Name = "Tỉnh Hậu Giang" },
+                new Province { Name = "Tỉnh Sóc Trăng" },
+                new Province { Name = "Tỉnh Bạc Liêu" },
+                new Province { Name = "Tỉnh Cà Mau" },
             };
         }
     }

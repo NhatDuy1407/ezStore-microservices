@@ -13,16 +13,31 @@ namespace Microservice.Setting.API.Mappers
             {
                 Id = dto.Id,
                 Name = dto.Name,
-                CreatedBy = dto.CreatedBy,
+                Provinces = DtoToViewModels(dto.Provinces),
                 UpdatedBy = dto.UpdatedBy,
-                CreatedDate = dto.CreatedDate,
                 UpdatedDate = dto.UpdatedDate,
             };
         }
 
         public static IEnumerable<CountryViewModel> DtoToViewModels(IEnumerable<CountryDto> dtos)
         {
-            return dtos.Select(DtoToViewModel);
+            return dtos == null ? null : dtos.Select(DtoToViewModel);
+        }
+
+        public static ProvinceViewModel DtoToViewModel(ProvinceDto dto)
+        {
+            return new ProvinceViewModel
+            {
+                Id = dto.Id,
+                Name = dto.Name,
+                UpdatedBy = dto.UpdatedBy,
+                UpdatedDate = dto.UpdatedDate,
+            };
+        }
+
+        public static IEnumerable<ProvinceViewModel> DtoToViewModels(IEnumerable<ProvinceDto> dtos)
+        {
+            return dtos == null ? null : dtos.Select(DtoToViewModel);
         }
     }
 }
