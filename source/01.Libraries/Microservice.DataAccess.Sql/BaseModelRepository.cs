@@ -56,9 +56,13 @@ namespace Microservice.DataAccess.Sql
             {
                 methodName = "OrderByDescending";
             }
-            var orderQuery = DbSet.ApplyOrder(orderBy, methodName);
-            Func<IQueryable<TModel>, IOrderedQueryable<TModel>> orderByFunc = i => orderQuery;
-            return Get(filter, orderByFunc, includeProperties, isIncludedIsDeleted);
+            if (!string.IsNullOrEmpty(orderBy))
+            {
+                var orderQuery = DbSet.ApplyOrder(orderBy, methodName);
+                Func<IQueryable<TModel>, IOrderedQueryable<TModel>> orderByFunc = i => orderQuery;
+                return Get(filter, orderByFunc, includeProperties, isIncludedIsDeleted);
+            }
+            return Get(filter, null, includeProperties, isIncludedIsDeleted);
         }
 
         public PagedResult<TModel> GetPaged(Expression<Func<TModel, bool>> filter,
@@ -97,9 +101,14 @@ namespace Microservice.DataAccess.Sql
             {
                 methodName = "OrderByDescending";
             }
-            var orderQuery = DbSet.ApplyOrder(orderBy, methodName);
-            Func<IQueryable<TModel>, IOrderedQueryable<TModel>> orderByFunc = i => orderQuery;
-            return GetPaged(filter, orderByFunc, includeProperties, isIncludedIsDeleted);
+
+            if (!string.IsNullOrEmpty(orderBy))
+            {
+                var orderQuery = DbSet.ApplyOrder(orderBy, methodName);
+                Func<IQueryable<TModel>, IOrderedQueryable<TModel>> orderByFunc = i => orderQuery;
+                return GetPaged(filter, orderByFunc, includeProperties, isIncludedIsDeleted);
+            }
+            return GetPaged(filter, null, includeProperties, isIncludedIsDeleted);
         }
 
         public TModel FirstOrDefault(Expression<Func<TModel, bool>> filter = null,

@@ -6,19 +6,15 @@ namespace Microservice.Member.Domain.MemberAggregate
 {
     public class UserDomain : AggregateRoot
     {
-        private readonly IDataAccessWriteService writeService;
-
-        public UserDomain(IDataAccessWriteService writeService)
+        public UserDomain(IDataAccessService dataAccessService) : base(dataAccessService)
         {
-            this.writeService = writeService;
         }
 
         public string Username { get; set; }
 
         public void Login()
         {
-            writeService.Repository<UserLog>().Insert(new UserLog() { Content = Username + " loged in." });
-            writeService.SaveChanges();
+            dataAccessService.Repository<UserLog>().Insert(new UserLog() { Content = Username + " loged in." });
         }
     }
 }

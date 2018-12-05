@@ -9,7 +9,7 @@ using ezStore.WareHouse.Infrastructure;
 namespace ezStore.WareHouse.API.Migrations
 {
     [DbContext(typeof(WareHouseDbContext))]
-    [Migration("20181116025706_Initial")]
+    [Migration("20181205030042_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -26,6 +26,8 @@ namespace ezStore.WareHouse.API.Migrations
 
                     b.Property<string>("Address");
 
+                    b.Property<string>("City");
+
                     b.Property<int>("CountryId");
 
                     b.Property<string>("CreatedBy");
@@ -37,6 +39,8 @@ namespace ezStore.WareHouse.API.Migrations
                     b.Property<string>("Name");
 
                     b.Property<string>("PhoneNumber");
+
+                    b.Property<string>("PostalCode");
 
                     b.Property<int>("ProvinceId");
 

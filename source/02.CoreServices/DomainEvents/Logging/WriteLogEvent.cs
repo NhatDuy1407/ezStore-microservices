@@ -5,7 +5,7 @@ using System;
 namespace Microservice.DomainEvents.Logging
 {
     [MessageBusRoute(EventRouteConstants.LoggingService)]
-    public class WriteLogEvent : Event
+    public class WriteLogEvent : DomainEvent
     {
         public DateTime Date { get { return DateTime.Now; } }
         public string Level { get; set; }

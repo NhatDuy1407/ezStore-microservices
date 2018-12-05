@@ -9,6 +9,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using Newtonsoft.Json;
 using System;
 
 namespace ezStore.Product.API
@@ -46,7 +47,10 @@ namespace ezStore.Product.API
             // Add configuration for Swagger
             services.AddSwaggerCommon();
 
-            services.AddMvc();
+            services.AddMvc().AddJsonOptions(options =>
+            {
+                options.SerializerSettings.NullValueHandling = NullValueHandling.Ignore;
+            });
 
             services.AddAuthentication(IdentityServerAuthenticationDefaults.AuthenticationScheme)
                 .AddIdentityServerAuthentication(options =>

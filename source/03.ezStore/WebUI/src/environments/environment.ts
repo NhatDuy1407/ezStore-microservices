@@ -7,4 +7,6 @@ export const environment = {
   production: false,
   identityServiceUrl: 'http://localhost:5001/',
   productServiceUrl: 'http://localhost:6001/api/',
+  warehouseServiceUrl: 'http://localhost:6004/api/',
+  localtionServiceUrl: 'http://localhost:5003/api/',
 };

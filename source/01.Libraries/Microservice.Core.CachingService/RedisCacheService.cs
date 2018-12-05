@@ -13,23 +13,23 @@ namespace Microservice.Core.CachingService
             _connectionString = connectionString;
         }
 
-        public Task Set<T>(Guid key, T data)
+        public Task Set<T>(string key, T data)
         {
             var manager = new RedisManagerPool(_connectionString);
             using (var client = manager.GetClient())
             {
-                client.Set(key.ToString(), data);
+                client.Set(key, data);
             }
 
             return Task.CompletedTask;
         }
 
-        public Task<T> Get<T>(Guid key)
+        public Task<T> Get<T>(string key)
         {
             var manager = new RedisManagerPool(_connectionString);
             using (var client = manager.GetClient())
             {
-                return Task.FromResult(client.Get<T>(key.ToString()));
+                return Task.FromResult(client.Get<T>(key));
             }
         }
     }

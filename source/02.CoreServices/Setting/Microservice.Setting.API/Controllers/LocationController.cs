@@ -25,35 +25,35 @@ namespace Microservice.Setting.API.Controllers
             _queries = queries;
         }
 
-        [HttpGet]
-        public IEnumerable<CountryViewModel> Get()
+        [HttpGet("Country")]
+        public IEnumerable<CountryViewModel> GetCountries()
         {
-            return LocationViewMapper.DtoToViewModels(_queries.Get().Result);
+            return LocationViewMapper.DtoToViewModels(_queries.GetCountries().Result);
         }
 
-        [HttpGet("{id}")]
-        public CountryViewModel Get(string id)
+        [HttpGet("Country/{id}")]
+        public CountryViewModel GetCountry(string id)
         {
-            return LocationViewMapper.DtoToViewModel(_queries.Get(id).Result);
+            return LocationViewMapper.DtoToViewModel(_queries.GetCountry(id).Result);
         }
 
-        [HttpPut]
-        public Task Put([FromBody] string name)
+        [HttpPost("Country")]
+        public Task CreateCountry([FromBody] string name)
         {
             var command = new CreateCountryCommand(name);
             _commandProcessor.ExecuteAsync(command).Wait();
             return Task.CompletedTask;
         }
 
-        [HttpPost("{id}")]
-        public Task Post(string id, [FromBody] string name)
+        [HttpPut("Country/{id}")]
+        public Task UpdateCountry(string id, [FromBody] string name)
         {
             var command = new UpdateCountryCommand(id, name);
             _commandProcessor.ExecuteAsync(command).Wait();
             return Task.CompletedTask;
         }
 
-        [HttpDelete("{id}")]
+        [HttpDelete("Country/{id}")]
         public Task Delete(string id)
         {
             var command = new DeleteCountryCommand(id);

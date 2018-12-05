@@ -43,9 +43,13 @@ namespace Microservice.DataAccess.MongoDB
                 methodName = "OrderByDescending";
             }
             var query = GetQueryable(filter, includeProperties, isIncludedIsDeleted);
-            var orderQuery = query.ApplyOrder(orderBy, methodName);
-            IOrderedQueryable<TModel> orderByFunc(IQueryable<TModel> i) => orderQuery;
-            return Get(filter, orderByFunc, includeProperties, isIncludedIsDeleted);
+            if (!string.IsNullOrEmpty(orderBy))
+            {
+                var orderQuery = query.ApplyOrder(orderBy, methodName);
+                IOrderedQueryable<TModel> orderByFunc(IQueryable<TModel> i) => orderQuery;
+                return Get(filter, orderByFunc, includeProperties, isIncludedIsDeleted);
+            }
+            return Get(filter, null, includeProperties, isIncludedIsDeleted);
         }
 
         private IQueryable<TModel> GetQueryable(Expression<Func<TModel, bool>> filter = null,
@@ -107,9 +111,13 @@ namespace Microservice.DataAccess.MongoDB
                 methodName = "OrderByDescending";
             }
             var query = GetQueryable(filter, includeProperties, isIncludedIsDeleted);
-            var orderQuery = query.ApplyOrder(orderBy, methodName);
-            IOrderedQueryable<TModel> orderByFunc(IQueryable<TModel> i) => orderQuery;
-            return GetPaged(filter, orderByFunc, includeProperties, isIncludedIsDeleted);
+            if (!string.IsNullOrEmpty(orderBy))
+            {
+                var orderQuery = query.ApplyOrder(orderBy, methodName);
+                IOrderedQueryable<TModel> orderByFunc(IQueryable<TModel> i) => orderQuery;
+                return GetPaged(filter, orderByFunc, includeProperties, isIncludedIsDeleted);
+            }
+            return GetPaged(filter, null, includeProperties, isIncludedIsDeleted);
         }
 
         public TModel FirstOrDefault(Expression<Func<TModel, bool>> filter = null, Func<IQueryable<TModel>, IOrderedQueryable<TModel>> orderBy = null,

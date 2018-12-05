@@ -5,7 +5,7 @@ using System;
 namespace ezStore.DomainEvents.WareHouse
 {
     [MessageBusRoute(EventRouteConstants.WareHouseService)]
-    public class WareHouseCreated : Event
+    public class WareHouseCreated : DomainEvent
     {
         public Guid Id { get; }
         public string Name { get; }

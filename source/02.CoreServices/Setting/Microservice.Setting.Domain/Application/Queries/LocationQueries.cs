@@ -6,6 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microservice.DataAccess.Core.Entities;
 using Microservice.DataAccess.Core.Interfaces;
+using MongoDB.Bson;
 
 namespace Microservice.Setting.Domain.Application.Queries
 {
@@ -18,7 +19,7 @@ namespace Microservice.Setting.Domain.Application.Queries
             _readOnlyService = readOnlyService;
         }
 
-        public Task<IEnumerable<CountryDto>> Get()
+        public Task<IEnumerable<CountryDto>> GetCountries()
         {
             return Task.FromResult(LocationMapper.EntityToDtos(_readOnlyService.Repository<Country>().Get(i => !i.Deleted).ToList()));
         }
@@ -40,9 +41,13 @@ namespace Microservice.Setting.Domain.Application.Queries
             return Task.FromResult(result);
         }
 
-        public Task<CountryDto> Get(string id)
+        public Task<CountryDto> GetCountry(string id)
         {
-            return Task.FromResult(LocationMapper.EntityToDto(_readOnlyService.Repository<Country>().Get(i => i.CountryId == id).FirstOrDefault()));
+            var country = _readOnlyService.Repository<Country>().Get(i => i.Id == ObjectId.Parse(id)).FirstOrDefault();
+            var countryDto = LocationMapper.EntityToDto(country);
+            var provinces = _readOnlyService.Repository<Province>().Get(i => i.CountryId == ObjectId.Parse(id)).ToList();
+            countryDto.Provinces = LocationMapper.EntityToDtos(provinces).ToList();
+            return Task.FromResult(countryDto);
         }
     }
 }

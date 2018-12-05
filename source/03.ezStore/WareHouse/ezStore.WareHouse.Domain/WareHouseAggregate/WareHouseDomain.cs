@@ -8,29 +8,24 @@ namespace ezStore.WareHouse.Domain.ProductAggregate
 {
     public class WareHouseDomain : AggregateRoot
     {
-        private readonly IDataAccessWriteService writeService;
-
-        public WareHouseDomain(IDataAccessWriteService writeService)
+        public WareHouseDomain(IDataAccessService dataAccessService) : base(dataAccessService)
         {
-            this.writeService = writeService;
         }
 
         public void CreateWareHouse(string name)
         {
             var newWareHouse = new Infrastructure.Entities.WareHouse() { Name = name };
-            writeService.Repository<Infrastructure.Entities.WareHouse>().Insert(newWareHouse);
-            writeService.SaveChanges();
+            dataAccessService.Repository<Infrastructure.Entities.WareHouse>().Insert(newWareHouse);
 
             ApplyEvent(new WareHouseCreated(newWareHouse.Id, newWareHouse.Name));
         }
 
         public void UpdateWareHouse(Guid id, string name)
         {
-            var warehouse = writeService.Repository<Infrastructure.Entities.WareHouse>().Get(i => i.Id == id).FirstOrDefault();
+            var warehouse = dataAccessService.Repository<Infrastructure.Entities.WareHouse>().Get(i => i.Id == id).FirstOrDefault();
             if (warehouse != null)
             {
                 warehouse.Name = name;
-                writeService.SaveChanges();
 
                 ApplyEvent(new WareHouseUpdated(warehouse.Id));
             }
@@ -38,12 +33,10 @@ namespace ezStore.WareHouse.Domain.ProductAggregate
 
         public void DeleteWareHouse(Guid id)
         {
-            var warehouse = writeService.Repository<Infrastructure.Entities.WareHouse>().Get(i => i.Id == id).FirstOrDefault();
+            var warehouse = dataAccessService.Repository<Infrastructure.Entities.WareHouse>().Get(i => i.Id == id).FirstOrDefault();
             if (warehouse != null)
             {
-                writeService.Repository<Infrastructure.Entities.WareHouse>().Delete(i => i.Id == id);
-                writeService.SaveChanges();
-
+                dataAccessService.Repository<Infrastructure.Entities.WareHouse>().Delete(i => i.Id == id);
                 ApplyEvent(new WareHouseDeleted(warehouse.Id));
             }
         }
