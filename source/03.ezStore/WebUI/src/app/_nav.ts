@@ -28,32 +28,6 @@ export const navItems = [
         url: '/admin/catalog/manufacture',
         icon: 'icon-puzzle'
       },
-      // {
-      //   name: 'Manufacturers',
-      //   url: '/admin/manufacturer',
-      //   icon: 'icon-puzzle'
-      // },
-      // {
-      //   name: 'Product tags',
-      //   url: '/admin/product-tag',
-      //   icon: 'icon-puzzle'
-      // },
-      // {
-      //   name: 'Attributes',
-      //   icon: 'icon-puzzle',
-      //   children: [
-      //     {
-      //       name: 'Product Attributes',
-      //       url: '/admin/product-attribute',
-      //       icon: 'icon-puzzle'
-      //     },
-      //     {
-      //       name: 'Specification Attributes',
-      //       url: '/admin/specification-attribute',
-      //       icon: 'icon-puzzle'
-      //     },
-      //   ]
-      // },
     ]
   },
   {
@@ -72,5 +46,17 @@ export const navItems = [
         icon: 'icon-puzzle'
       },
     ]
-  }
+  },
+  {
+    name: 'Setting',
+    url: '/admin/setting',
+    icon: 'icon-puzzle',
+    children: [
+      {
+        name: 'Warehouses',
+        url: '/admin/setting/warehouse',
+        icon: 'icon-puzzle'
+      },
+    ]
+  },
 ];

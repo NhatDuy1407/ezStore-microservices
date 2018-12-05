@@ -19,13 +19,13 @@ namespace Microservice.Core.DomainService
             Configuration = configuration;
         }
 
-        public List<IEvent> Events { get; private set; }
+        public List<IDomainEvent> Events { get; private set; }
 
         public void AddEvents(AggregateRoot entity)
         {
             if (Events == null)
             {
-                Events = new List<IEvent>();
+                Events = new List<IDomainEvent>();
             }
             if (entity.Events != null)
             {

@@ -20,7 +20,9 @@ namespace ezStore.WareHouse.API.Migrations
                     Name = table.Column<string>(nullable: true),
                     CountryId = table.Column<int>(nullable: false),
                     ProvinceId = table.Column<int>(nullable: false),
+                    City = table.Column<string>(nullable: true),
                     Address = table.Column<string>(nullable: true),
+                    PostalCode = table.Column<string>(nullable: true),
                     PhoneNumber = table.Column<string>(nullable: true)
                 },
                 constraints: table =>

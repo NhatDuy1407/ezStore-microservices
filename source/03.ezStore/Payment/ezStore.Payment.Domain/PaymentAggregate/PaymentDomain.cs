@@ -5,11 +5,8 @@ namespace ezStore.Payment.Domain.ProductAggregate
 {
     public class PaymentDomain : AggregateRoot
     {
-        private readonly IDataAccessWriteService writeService;
-
-        public PaymentDomain(IDataAccessWriteService writeService)
+        public PaymentDomain(IDataAccessWriteService dataAccessService) : base(dataAccessService)
         {
-            this.writeService = writeService;
         }
     }
 }

@@ -1,0 +1,47 @@
+<div class="animated fadeIn">
+  <div class="row">
+    <div class="col-sm-12 col-md-12">
+      <div class="card">
+        <div class="card-header">
+          Warehouse
+          <div class="float-right">
+            <button class="btn btn-sm btn-primary" type="button">
+              <i class="fa fa-plus"></i>&nbsp;Add new
+            </button>
+          </div>
+        </div>
+        <div class="card-body">
+          <form [formGroup]="warehouseForm" (ngSubmit)="searchItem()" class="form-horizontal">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="row form-group">
+                  <label class="col-md-4 col-form-label text-right" for="text-input">Warehouse name :</label>
+                  <div class="col-md-8">
+                    <input class="form-control" formControlName="name" placeholder="Warehouse name" type="text">
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <button class="btn btn-sm btn-primary float-right" type="submit"><i class="fa fa-search"></i>&nbsp;Search
+                  </button>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-body">
+          Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet
+          dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper
+          suscipit lobortis nisl ut aliquip ex ea commodo consequat.
+        </div>
+      </div>
+    </div>
+    <!--/.col-->
+  </div>
+  <!--/.row-->
+</div>

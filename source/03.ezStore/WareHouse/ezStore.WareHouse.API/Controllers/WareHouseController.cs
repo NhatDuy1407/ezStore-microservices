@@ -46,14 +46,14 @@ namespace ezStore.WareHouse.API.Controllers
             return Task.FromResult(WareHouseViewMapper.DtoToViewModel(_queries.Get(id).Result));
         }
 
-        [HttpPut]
+        [HttpPost]
         public Task Put([FromBody] CreateWareHouseCommand command)
         {
             _commandProcessor.ExecuteAsync(command).Wait();
             return Task.CompletedTask;
         }
 
-        [HttpPost("{id}")]
+        [HttpPut("{id}")]
         public Task Post(Guid id, [FromBody] UpdateWareHouseCommand command)
         {
             command.Id = id;

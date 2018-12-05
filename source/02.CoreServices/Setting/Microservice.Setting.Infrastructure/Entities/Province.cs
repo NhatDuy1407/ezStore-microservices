@@ -8,7 +8,7 @@ namespace Microservice.Setting.Infrastructure.Entities
     {
         public string Name { get; set; }
 
-        public int CountryId { get; set; }
+        public ObjectId CountryId { get; set; }
 
         public string IsoCode { get; set; }
 

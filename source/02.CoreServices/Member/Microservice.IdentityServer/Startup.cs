@@ -15,6 +15,7 @@ using MassTransit;
 using Microservice.IdentityServer.Services;
 using Microservice.IdentityServer.Swagger;
 using IdentityServer4.AccessTokenValidation;
+using Newtonsoft.Json;
 
 namespace Microservice.IdentityServer
 {
@@ -55,7 +56,10 @@ namespace Microservice.IdentityServer
                 //    .AllowCredentials());
             });
 
-            services.AddMvc();
+            services.AddMvc().AddJsonOptions(options =>
+            {
+                options.SerializerSettings.NullValueHandling = NullValueHandling.Ignore;
+            });
 
             // Add configuration for Swagger
             services.AddSwaggerCommon();
@@ -125,6 +129,9 @@ namespace Microservice.IdentityServer
             app.UseStaticFiles();
 
             app.UseIdentityServer();
+
+            var logger = serviceProvider.GetService<ILogger<Startup>>();
+            app.UseErrorLogging(logger);
 
             app.UseMvc(routes =>
             {

@@ -3,9 +3,9 @@ using System;
 
 namespace Microservice.Core.DomainService.Events
 {
-    public class Event : IEvent
+    public class DomainEvent : IDomainEvent
     {
-        public Event()
+        public DomainEvent()
         {
             AggregateRootId = Guid.NewGuid();
         }

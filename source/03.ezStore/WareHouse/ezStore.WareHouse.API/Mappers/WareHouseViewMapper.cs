@@ -13,6 +13,12 @@ namespace ezStore.WareHouse.API.Mappers
             {
                 Id = dto.Id,
                 Name = dto.Name,
+                Address = dto.Address,
+                City = dto.City,
+                CountryId = dto.CountryId,
+                ProvinceId = dto.ProvinceId,
+                PhoneNumber = dto.PhoneNumber,
+                PostalCode = dto.PostalCode,
                 CreatedBy = dto.CreatedBy,
                 UpdatedBy = dto.UpdatedBy,
                 CreatedDate = dto.CreatedDate,
@@ -22,7 +28,7 @@ namespace ezStore.WareHouse.API.Mappers
 
         public static IEnumerable<WareHouseViewModel> DtoToViewModels(IEnumerable<WareHouseDto> dtos)
         {
-            return dtos.Select(DtoToViewModel);
+            return dtos == null ? null : dtos.Select(DtoToViewModel);
         }
     }
 }

@@ -33,9 +33,9 @@ namespace ezStore.Product.Domain.Mapper
             };
         }
 
-        public static IEnumerable<ProductCategoryDto> EntityToDtos(IEnumerable<ProductCategory> dtos)
+        public static IEnumerable<ProductCategoryDto> EntityToDtos(IEnumerable<ProductCategory> entities)
         {
-            return dtos.Select(EntityToDto);
+            return entities == null ? null : entities.Select(EntityToDto);
         }
     }
 }
