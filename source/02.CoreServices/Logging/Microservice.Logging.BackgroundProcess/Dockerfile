@@ -1,8 +1,8 @@
-FROM microsoft/dotnet:2.1-aspnetcore-runtime AS base
+FROM microsoft/dotnet:2.2-aspnetcore-runtime AS base
 WORKDIR /app
 EXPOSE 80
 
-FROM microsoft/dotnet:2.1-sdk AS build
+FROM microsoft/dotnet:2.2-sdk AS build
 WORKDIR /src
 COPY 02.CoreServices/Logging/Microservice.Logging.BackgroundProcess/Microservice.Logging.BackgroundProcess.csproj 02.CoreServices/Logging/Microservice.Logging.BackgroundProcess/
 COPY 02.CoreServices/Logging/Microservice.Logging.Persistence.Model/Microservice.Logging.Persistence.Model.csproj 02.CoreServices/Logging/Microservice.Logging.Persistence.Model/
