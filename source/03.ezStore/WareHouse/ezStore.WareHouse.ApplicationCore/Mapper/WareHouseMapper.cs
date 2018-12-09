@@ -1,9 +1,9 @@
-﻿using ezStore.WareHouse.Domain.Dtos;
+﻿using ezStore.WareHouse.ApplicationCore.Dtos;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace ezStore.WareHouse.Domain.Mapper
+namespace ezStore.WareHouse.ApplicationCore.Mapper
 {
     public static class WareHouseMapper
     {

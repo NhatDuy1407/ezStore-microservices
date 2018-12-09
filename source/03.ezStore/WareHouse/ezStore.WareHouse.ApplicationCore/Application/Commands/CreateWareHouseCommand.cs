@@ -1,6 +1,6 @@
 ﻿using Microservice.Core.DomainService.Commands;
 
-namespace ezStore.WareHouse.Domain.Application.Commands
+namespace ezStore.WareHouse.ApplicationCore.Application.Commands
 {
     public class CreateWareHouseCommand : ValidationDecoratorCommand
     {

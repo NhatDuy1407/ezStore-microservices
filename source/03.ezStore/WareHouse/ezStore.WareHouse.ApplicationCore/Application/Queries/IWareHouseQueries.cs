@@ -1,9 +1,9 @@
-﻿using ezStore.WareHouse.Domain.Dtos;
+﻿using ezStore.WareHouse.ApplicationCore.Dtos;
 using Microservice.DataAccess.Core.Entities;
 using System;
 using System.Threading.Tasks;
 
-namespace ezStore.WareHouse.Domain.Application.Queries
+namespace ezStore.WareHouse.ApplicationCore.Application.Queries
 {
     public interface IWareHouseQueries
     {

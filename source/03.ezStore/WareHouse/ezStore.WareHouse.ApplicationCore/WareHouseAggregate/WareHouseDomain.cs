@@ -4,7 +4,7 @@ using System;
 using System.Linq;
 using Microservice.DataAccess.Core.Interfaces;
 
-namespace ezStore.WareHouse.Domain.ProductAggregate
+namespace ezStore.WareHouse.ApplicationCore.WareHouseAggregate
 {
     public class WareHouseDomain : AggregateRoot
     {

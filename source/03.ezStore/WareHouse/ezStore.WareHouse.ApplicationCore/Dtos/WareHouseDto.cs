@@ -1,6 +1,6 @@
 ﻿using Microservice.Core.Models;
 
-namespace ezStore.WareHouse.Domain.Dtos
+namespace ezStore.WareHouse.ApplicationCore.Dtos
 {
     public class WareHouseDto : ModelGuidIdEntity
     {

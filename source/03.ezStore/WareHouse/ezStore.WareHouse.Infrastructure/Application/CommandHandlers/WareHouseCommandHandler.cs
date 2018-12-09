@@ -1,11 +1,11 @@
-﻿using ezStore.WareHouse.Domain.Application.Commands;
-using ezStore.WareHouse.Domain.ProductAggregate;
+﻿using ezStore.WareHouse.ApplicationCore.Application.Commands;
+using ezStore.WareHouse.ApplicationCore.WareHouseAggregate;
 using Microservice.Core.DomainService;
 using Microservice.Core.DomainService.Interfaces;
-using System.Threading.Tasks;
 using Microservice.DataAccess.Core.Interfaces;
+using System.Threading.Tasks;
 
-namespace ezStore.WareHouse.Domain.Application.CommandHandlers
+namespace ezStore.WareHouse.Infrastructure.Application.CommandHandlers
 {
     public class WareHouseCommandHandler : ICommandHandler<CreateWareHouseCommand>,
         ICommandHandler<UpdateWareHouseCommand>,
