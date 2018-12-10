@@ -111,8 +111,6 @@ namespace Microservice.IdentityServer
 
             app.UseSwaggerCommon();
 
-            loggerFactory.AddConsole(Configuration.GetSection("Logging"));
-            loggerFactory.AddDebug();
             loggerFactory.AddProvider(new MicroserviceLoggerProvider(serviceProvider.GetService<IBusControl>(), Configuration));
 
             if (env.IsDevelopment())

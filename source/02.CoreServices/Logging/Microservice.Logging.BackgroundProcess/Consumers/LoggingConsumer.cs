@@ -1,9 +1,9 @@
 ﻿using MassTransit;
 using Microservice.Core.MessageQueue;
-using Microservice.DomainEvents.Logging;
-using Microservice.Logging.Infrastructure;
-using System.Threading.Tasks;
 using Microservice.DataAccess.Core.Interfaces;
+using Microservice.DomainEvents.Logging;
+using Microservice.Logging.ApplicationCore.Entities;
+using System.Threading.Tasks;
 
 namespace Microservice.Logging.BackgroundProcess.Consumers
 {

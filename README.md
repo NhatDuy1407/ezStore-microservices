@@ -13,6 +13,7 @@
 - Docker-ce (version 18.06.1-ce, build e68fc7a)
 - Kubenetes (1.10.3)
 - DDD
+- CLEAN architecture
 
 ## IDE
 - Visual Studio Community 2017

@@ -1,5 +1,5 @@
 ﻿using Microservice.Setting.API.ViewModels;
-using Microservice.Setting.Domain.Dtos;
+using Microservice.Setting.ApplicationCore.Dtos;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -21,7 +21,7 @@ namespace Microservice.Setting.API.Mappers
 
         public static IEnumerable<CountryViewModel> DtoToViewModels(IEnumerable<CountryDto> dtos)
         {
-            return dtos == null ? null : dtos.Select(DtoToViewModel);
+            return dtos?.Select(DtoToViewModel);
         }
 
         public static ProvinceViewModel DtoToViewModel(ProvinceDto dto)
@@ -37,7 +37,7 @@ namespace Microservice.Setting.API.Mappers
 
         public static IEnumerable<ProvinceViewModel> DtoToViewModels(IEnumerable<ProvinceDto> dtos)
         {
-            return dtos == null ? null : dtos.Select(DtoToViewModel);
+            return dtos?.Select(DtoToViewModel);
         }
     }
 }

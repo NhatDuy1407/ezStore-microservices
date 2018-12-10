@@ -1,5 +1,5 @@
 ﻿using Microservice.Logging.API.ViewModels;
-using Microservice.Logging.Domain.Dtos;
+using Microservice.Logging.ApplicationCore.Dtos;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -14,7 +14,7 @@ namespace Microservice.Logging.API.Mappers
 
         public static IEnumerable<LogViewModel> DtoToViewModels(IEnumerable<LogDto> dtos)
         {
-            return dtos == null ? null : dtos.Select(DtoToViewModel);
+            return dtos?.Select(DtoToViewModel);
         }
     }
 }

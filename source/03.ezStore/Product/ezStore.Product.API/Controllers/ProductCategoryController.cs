@@ -1,13 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using ezStore.Product.API.Mappers;
+﻿using ezStore.Product.API.Mappers;
 using ezStore.Product.API.ViewModels;
-using ezStore.Product.Domain.Application.Commands;
-using ezStore.Product.Domain.Application.Queries;
+using ezStore.Product.ApplicationCore.Application.Commands;
+using ezStore.Product.ApplicationCore.Application.Queries;
 using Microservice.Core.DomainService.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace ezStore.Product.API.Controllers
 {

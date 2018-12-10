@@ -1,13 +1,13 @@
 ﻿using ezStore.WareHouse.API.Mappers;
 using ezStore.WareHouse.API.ViewModels;
-using ezStore.WareHouse.Domain.Application.Commands;
-using ezStore.WareHouse.Domain.Application.Queries;
+using ezStore.WareHouse.ApplicationCore.Application.Commands;
+using ezStore.WareHouse.ApplicationCore.Application.Queries;
 using Microservice.Core.DomainService.Interfaces;
+using Microservice.DataAccess.Core.Entities;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Threading.Tasks;
-using Microservice.DataAccess.Core.Entities;
 
 namespace ezStore.WareHouse.API.Controllers
 {

@@ -1,5 +1,4 @@
-﻿using ezStore.Payment.Infrastructure.Entities;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
@@ -13,7 +12,7 @@ namespace ezStore.Payment.Infrastructure
 
         }
 
-        public DbSet<Entities.Payment> WareHouses { get; set; }
+        public DbSet<ApplicationCore.Entities.Payment> WareHouses { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

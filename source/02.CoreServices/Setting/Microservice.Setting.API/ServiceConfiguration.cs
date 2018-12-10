@@ -58,7 +58,7 @@ namespace Microservice.Setting.API
             services.AddTransient<IDomainService>(i => new DomainService(i.GetService<IDomainContext>(), i.GetService<IDataAccessWriteService>()));
             services.AddTransient<IDataAccessReadOnlyService>(i => new ReadOnlyService(i.GetService<MongoDbContext>()));
 
-            Domain.HandlerRegister.Register(services);
+            ApplicationCore.HandlerRegister.Register(services);
         }
     }
 }

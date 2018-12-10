@@ -1,9 +1,8 @@
 ﻿using Microservice.Core;
-using Microservice.Logging.Domain.Application.Queries;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
 using Microservice.DataAccess.Core.Interfaces;
 using Microservice.DataAccess.MongoDB;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace Microservice.Logging.API
 {
@@ -15,7 +14,7 @@ namespace Microservice.Logging.API
             services.AddTransient(i => new MongoDbContext(configuration.GetConnectionString(MicroserviceConstants.DefaultConnection), configuration.GetConnectionString(MicroserviceConstants.DefaultDatabaseName), false));
             services.AddTransient<IDataAccessReadOnlyService>(i => new ReadOnlyService(i.GetService<MongoDbContext>()));
 
-            Domain.HandlerRegister.Register(services);
+            ApplicationCore.HandlerRegister.Register(services);
         }
     }
 }

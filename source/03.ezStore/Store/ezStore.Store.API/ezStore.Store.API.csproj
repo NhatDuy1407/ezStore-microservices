@@ -2,6 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.1</TargetFramework>
+    <Authors>Khai Nguyen (khainx127@gmail.com)</Authors>
+    <Product>ezStore</Product>
     <DockerTargetOS>Linux</DockerTargetOS>
     <DockerComposeProjectPath>..\..\..\docker-compose.dcproj</DockerComposeProjectPath>
   </PropertyGroup>

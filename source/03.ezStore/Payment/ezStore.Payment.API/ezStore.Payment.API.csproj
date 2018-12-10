@@ -1,7 +1,9 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <Authors>Khai Nguyen (khainx127@gmail.com)</Authors>
+    <Product>ezStore</Product>
     <DockerTargetOS>Linux</DockerTargetOS>
     <DockerComposeProjectPath>..\..\..\docker-compose.dcproj</DockerComposeProjectPath>
   </PropertyGroup>
@@ -11,7 +13,7 @@
     <PackageReference Include="MassTransit" Version="5.1.5" />
     <PackageReference Include="MassTransit.RabbitMQ" Version="5.1.5" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
-    <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="2.1.2" />
+    <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="2.1.4" />
     <PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="4.0.1" />
     <PackageReference Include="Swashbuckle.AspNetCore.SwaggerGen" Version="4.0.1" />
     <PackageReference Include="Swashbuckle.AspNetCore.SwaggerUI" Version="4.0.1" />
@@ -28,7 +30,6 @@
     <ProjectReference Include="..\..\..\01.Libraries\Microservice.Core.Logging\Microservice.Core.Logging.csproj" />
     <ProjectReference Include="..\..\..\01.Libraries\Microservice.DataAccess.Core\Microservice.DataAccess.Core.csproj" />
     <ProjectReference Include="..\..\..\01.Libraries\Microservice.DataAccess.Sql\Microservice.DataAccess.Sql.csproj" />
-    <ProjectReference Include="..\ezStore.Payment.Domain\ezStore.Payment.Domain.csproj" />
     <ProjectReference Include="..\ezStore.Payment.Infrastructure\ezStore.Payment.Infrastructure.csproj" />
   </ItemGroup>
 

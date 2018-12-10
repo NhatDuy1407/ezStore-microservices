@@ -1,5 +1,5 @@
 ﻿using ezStore.Product.API.ViewModels;
-using ezStore.Product.Domain.Dtos;
+using ezStore.Product.ApplicationCore.Dtos;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -22,7 +22,7 @@ namespace ezStore.Product.API.Mappers
 
         public static IEnumerable<ProductCategoryViewModel> DtoToViewModels(IEnumerable<ProductCategoryDto> dtos)
         {
-            return dtos == null ? null : dtos.Select(DtoToViewModel);
+            return dtos?.Select(DtoToViewModel);
         }
     }
 }

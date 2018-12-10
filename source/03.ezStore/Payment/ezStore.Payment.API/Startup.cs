@@ -73,8 +73,6 @@ namespace ezStore.Payment.API
             app.UseCors("AllowAllOrigins");
             app.UseAuthentication();
 
-            loggerFactory.AddConsole(Configuration.GetSection("Logging"));
-            loggerFactory.AddDebug();
             loggerFactory.AddProvider(new MicroserviceLoggerProvider(serviceProvider.GetService<IBusControl>(), Configuration));
 
             if (env.IsDevelopment())

@@ -58,7 +58,7 @@ namespace ezStore.Payment.API
             services.AddTransient<IDomainService>(i => new DomainService(i.GetService<IDomainContext>(), i.GetService<IDataAccessWriteService>()));
             services.AddTransient<IDataAccessReadOnlyService>(i => new DataAccessReadOnlyService(i.GetService<PaymentDbContext>()));
 
-            Domain.HandlerRegister.Register(services);
+            ApplicationCore.HandlerRegister.Register(services);
         }
     }
 }
