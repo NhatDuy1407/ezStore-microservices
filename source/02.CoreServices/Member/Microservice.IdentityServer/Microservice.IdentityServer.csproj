@@ -47,7 +47,7 @@
     <ProjectReference Include="..\..\..\01.Libraries\Microservice.Core.Logging\Microservice.Core.Logging.csproj" />
     <ProjectReference Include="..\..\..\01.Libraries\Microservice.DataAccess.Core\Microservice.DataAccess.Core.csproj" />
     <ProjectReference Include="..\..\..\01.Libraries\Microservice.DataAccess.MongoDB\Microservice.DataAccess.MongoDB.csproj" />
-    <ProjectReference Include="..\Microservice.Member.Domain\Microservice.Member.Domain.csproj" />
+    <ProjectReference Include="..\Microservice.Member.ApplicationCore\Microservice.Member.ApplicationCore.csproj" />
   </ItemGroup>
 
 </Project>

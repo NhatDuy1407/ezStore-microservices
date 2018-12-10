@@ -58,7 +58,7 @@ namespace ezStore.Order.API
             services.AddTransient<IDomainService>(i => new DomainService(i.GetService<IDomainContext>(), i.GetService<IDataAccessWriteService>()));
             services.AddTransient<IDataAccessReadOnlyService>(i => new DataAccessReadOnlyService(i.GetService<OrderDbContext>()));
 
-            Domain.HandlerRegister.Register(services);
+            ApplicationCore.HandlerRegister.Register(services);
         }
     }
 }

@@ -1,5 +1,5 @@
 ﻿using ezStore.Product.API.ViewModels;
-using ezStore.Product.Domain.Dtos;
+using ezStore.Product.ApplicationCore.Dtos;
 using System.Collections.Generic;
 using System.Linq;
 

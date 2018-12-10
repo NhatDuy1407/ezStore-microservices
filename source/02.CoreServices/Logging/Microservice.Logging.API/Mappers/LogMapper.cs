@@ -1,5 +1,5 @@
 ﻿using Microservice.Logging.API.ViewModels;
-using Microservice.Logging.Domain.Dtos;
+using Microservice.Logging.ApplicationCore.Dtos;
 using System.Collections.Generic;
 using System.Linq;
 

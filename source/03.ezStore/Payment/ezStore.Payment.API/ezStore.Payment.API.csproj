@@ -30,7 +30,6 @@
     <ProjectReference Include="..\..\..\01.Libraries\Microservice.Core.Logging\Microservice.Core.Logging.csproj" />
     <ProjectReference Include="..\..\..\01.Libraries\Microservice.DataAccess.Core\Microservice.DataAccess.Core.csproj" />
     <ProjectReference Include="..\..\..\01.Libraries\Microservice.DataAccess.Sql\Microservice.DataAccess.Sql.csproj" />
-    <ProjectReference Include="..\ezStore.Payment.Domain\ezStore.Payment.Domain.csproj" />
     <ProjectReference Include="..\ezStore.Payment.Infrastructure\ezStore.Payment.Infrastructure.csproj" />
   </ItemGroup>
 
