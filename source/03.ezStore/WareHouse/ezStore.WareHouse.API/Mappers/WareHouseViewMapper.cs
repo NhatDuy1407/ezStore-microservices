@@ -1,5 +1,5 @@
 ﻿using ezStore.WareHouse.API.ViewModels;
-using ezStore.WareHouse.Domain.Dtos;
+using ezStore.WareHouse.ApplicationCore.Dtos;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -19,16 +19,14 @@ namespace ezStore.WareHouse.API.Mappers
                 ProvinceId = dto.ProvinceId,
                 PhoneNumber = dto.PhoneNumber,
                 PostalCode = dto.PostalCode,
-                CreatedBy = dto.CreatedBy,
                 UpdatedBy = dto.UpdatedBy,
-                CreatedDate = dto.CreatedDate,
                 UpdatedDate = dto.UpdatedDate,
             };
         }
 
         public static IEnumerable<WareHouseViewModel> DtoToViewModels(IEnumerable<WareHouseDto> dtos)
         {
-            return dtos == null ? null : dtos.Select(DtoToViewModel);
+            return dtos?.Select(DtoToViewModel);
         }
     }
 }

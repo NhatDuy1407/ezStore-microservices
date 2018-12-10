@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <Authors>Khai Nguyen (khainx127@gmail.com)</Authors>
+    <Product>ezStore</Product>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\01.Libraries\Microservice.Core.DomainService\Microservice.Core.DomainService.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Application\Commands\" />
+    <Folder Include="Application\Queries\" />
+    <Folder Include="Mapper\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Microsoft.Extensions.DependencyInjection.Abstractions">
+      <HintPath>C:\Program Files\dotnet\sdk\NuGetFallbackFolder\microsoft.extensions.dependencyinjection.abstractions\2.1.1\lib\netstandard2.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>

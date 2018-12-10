@@ -56,9 +56,6 @@ namespace Microservice.Logging.API
         {
             app.UseCors("AllowAllOrigins");
 
-            loggerFactory.AddConsole(Configuration.GetSection("Logging"));
-            loggerFactory.AddDebug();
-
             app.UseMvc();
 
             if (env.IsDevelopment())

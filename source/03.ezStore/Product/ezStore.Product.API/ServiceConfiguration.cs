@@ -1,15 +1,15 @@
-﻿using ezStore.Product.Domain.Application.Queries;
+﻿using ezStore.Product.ApplicationCore.Application.Queries;
 using ezStore.Product.Infrastructure;
 using MassTransit;
 using MassTransit.Util;
 using Microservice.Core;
 using Microservice.Core.DomainService;
 using Microservice.Core.DomainService.Interfaces;
+using Microservice.DataAccess.Core.Interfaces;
+using Microservice.DataAccess.Sql;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System;
-using Microservice.DataAccess.Core.Interfaces;
-using Microservice.DataAccess.Sql;
 
 namespace ezStore.Product.API
 {
@@ -60,7 +60,7 @@ namespace ezStore.Product.API
             services.AddTransient<IDomainService>(i => new DomainService(i.GetService<IDomainContext>(), i.GetService<IDataAccessWriteService>()));
             services.AddTransient<IDataAccessReadOnlyService>(i => new DataAccessReadOnlyService(i.GetService<ProductDbContext>()));
 
-            Domain.HandlerRegister.Register(services);
+            ApplicationCore.HandlerRegister.Register(services);
         }
     }
 }

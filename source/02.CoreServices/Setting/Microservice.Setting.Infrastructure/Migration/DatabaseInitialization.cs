@@ -1,5 +1,5 @@
 ﻿using Microservice.DataAccess.MongoDB;
-using Microservice.Setting.Infrastructure.Entities;
+using Microservice.Setting.ApplicationCore.Entities;
 using Microsoft.Extensions.DependencyInjection;
 using MongoDB.Driver;
 using System;

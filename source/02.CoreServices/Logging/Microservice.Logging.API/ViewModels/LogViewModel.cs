@@ -1,4 +1,4 @@
-﻿using Microservice.Logging.Domain.Dtos;
+﻿using Microservice.Logging.ApplicationCore.Dtos;
 using System;
 
 namespace Microservice.Logging.API.ViewModels

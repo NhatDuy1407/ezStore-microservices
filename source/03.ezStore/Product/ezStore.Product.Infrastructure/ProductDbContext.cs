@@ -1,4 +1,4 @@
-﻿using ezStore.Product.Infrastructure.Entities;
+﻿using ezStore.Product.ApplicationCore.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
@@ -13,7 +13,7 @@ namespace ezStore.Product.Infrastructure
 
         }
 
-        public DbSet<Entities.Product> Products { get; set; }
+        public DbSet<ApplicationCore.Entities.Product> Products { get; set; }
         public DbSet<ProductAttribute> ProductAttributes { get; set; }
         public DbSet<ProductCategory> ProductCategories { get; set; }
         public DbSet<ProductCategoryMapping> ProductCategoryMappings { get; set; }

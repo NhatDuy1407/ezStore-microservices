@@ -1,22 +1,21 @@
-﻿using System;
-using System.Security.Claims;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authentication;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
+﻿using IdentityServer4.Quickstart.UI;
+using IdentityServer4.Services;
+using IdentityServer4.Stores;
+using Microservice.Core.DomainService.Interfaces;
 using Microservice.IdentityServer.Models;
 using Microservice.IdentityServer.Models.AccountViewModels;
 using Microservice.IdentityServer.Services;
-using IdentityServer4.Quickstart.UI;
-using IdentityServer4.Services;
-using IdentityServer4.Stores;
-using Microsoft.AspNetCore.Http;
-using Microservice.Core.DomainService.Interfaces;
 using Microservice.Member.Domain.Application.Commands;
-using Newtonsoft.Json;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
+using System;
 using System.Linq;
+using System.Security.Claims;
+using System.Threading.Tasks;
 
 namespace Microservice.IdentityServer.Controllers
 {
