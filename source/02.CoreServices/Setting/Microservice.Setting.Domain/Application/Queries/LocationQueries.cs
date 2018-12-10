@@ -1,14 +1,14 @@
-﻿using Microservice.Setting.Domain.Dtos;
-using Microservice.Setting.Domain.Mapper;
-using Microservice.Setting.Infrastructure.Entities;
+﻿using Microservice.DataAccess.Core.Entities;
+using Microservice.DataAccess.Core.Interfaces;
+using Microservice.Setting.ApplicationCore.Dtos;
+using Microservice.Setting.ApplicationCore.Entities;
+using Microservice.Setting.ApplicationCore.Mapper;
+using MongoDB.Bson;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microservice.DataAccess.Core.Entities;
-using Microservice.DataAccess.Core.Interfaces;
-using MongoDB.Bson;
 
-namespace Microservice.Setting.Domain.Application.Queries
+namespace Microservice.Setting.ApplicationCore.Application.Queries
 {
     public class LocationQueries : ILocationQueries
     {

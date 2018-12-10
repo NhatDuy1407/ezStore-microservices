@@ -1,10 +1,10 @@
-﻿using Microservice.Setting.Domain.Dtos;
-using Microservice.Setting.Infrastructure.Entities;
+﻿using Microservice.Setting.ApplicationCore.Dtos;
+using Microservice.Setting.ApplicationCore.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Microservice.Setting.Domain.Mapper
+namespace Microservice.Setting.ApplicationCore.Mapper
 {
     public static class LocationMapper
     {

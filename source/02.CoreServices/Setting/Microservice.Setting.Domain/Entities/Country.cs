@@ -1,7 +1,7 @@
 ﻿using Microservice.Core.Models;
 using MongoDB.Bson;
 
-namespace Microservice.Setting.Infrastructure.Entities
+namespace Microservice.Setting.ApplicationCore.Entities
 {
     public class Country : ModelEntity<ObjectId>
     {

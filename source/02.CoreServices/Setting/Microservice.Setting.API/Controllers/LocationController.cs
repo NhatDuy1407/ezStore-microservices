@@ -1,11 +1,10 @@
 ﻿using Microservice.Core.DomainService.Interfaces;
 using Microservice.Setting.API.Mappers;
 using Microservice.Setting.API.ViewModels;
-using Microservice.Setting.Domain.Application.Commands;
-using Microservice.Setting.Domain.Application.Queries;
+using Microservice.Setting.ApplicationCore.Application.Commands;
+using Microservice.Setting.ApplicationCore.Application.Queries;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 

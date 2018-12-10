@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations.Schema;
 using Microservice.Core.Models;
 
-namespace Microservice.Setting.Infrastructure.Entities
+namespace Microservice.Setting.ApplicationCore.Entities
 {
     public class Province : ModelEntity<ObjectId>
     {

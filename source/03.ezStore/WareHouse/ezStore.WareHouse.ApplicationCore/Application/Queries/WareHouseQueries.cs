@@ -20,8 +20,8 @@ namespace ezStore.WareHouse.Domain.Application.Queries
 
         public Task<PagedResult<WareHouseDto>> GetPaged(string name, string orderBy = "", bool orderAsc = true, int page = 1, int pageSize = 20)
         {
-            var data = _readOnlyService.Repository<Infrastructure.Entities.WareHouse>().GetPaged(i =>
-                i.Name.ToString().Contains(name.ToString()) && !i.Deleted, orderBy, orderAsc,
+            var data = _readOnlyService.Repository<ApplicationCore.Entities.WareHouse>().GetPaged(i =>
+                string.IsNullOrEmpty(name) || i.Name.ToLower().Contains(name.ToLower()), orderBy, orderAsc,
                 page: page,
                 pageSize: pageSize);
             var result = new PagedResult<WareHouseDto>
@@ -37,7 +37,7 @@ namespace ezStore.WareHouse.Domain.Application.Queries
 
         public Task<WareHouseDto> Get(Guid id)
         {
-            return Task.FromResult(WareHouseMapper.EntityToDto(_readOnlyService.Repository<Infrastructure.Entities.WareHouse>().Get(i => i.Id == id).FirstOrDefault()));
+            return Task.FromResult(WareHouseMapper.EntityToDto(_readOnlyService.Repository<ApplicationCore.Entities.WareHouse>().Get(i => i.Id == id).FirstOrDefault()));
         }
     }
 }

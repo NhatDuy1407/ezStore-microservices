@@ -1,6 +1,6 @@
 ﻿using Microservice.Core.DomainService.Commands;
 
-namespace Microservice.Setting.Domain.Application.Commands
+namespace Microservice.Setting.ApplicationCore.Application.Commands
 {
     public class CreateCountryCommand : ValidationDecoratorCommand
     {

@@ -15,6 +15,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\..\01.Libraries\Microservice.Core\Microservice.Core.csproj" />
     <ProjectReference Include="..\..\..\01.Libraries\Microservice.DataAccess.MongoDB\Microservice.DataAccess.MongoDB.csproj" />
+    <ProjectReference Include="..\Microservice.Setting.Domain\Microservice.Setting.ApplicationCore.csproj" />
   </ItemGroup>
 
 </Project>

@@ -22,7 +22,7 @@ namespace ezStore.Product.API.Mappers
 
         public static IEnumerable<ProductCategoryViewModel> DtoToViewModels(IEnumerable<ProductCategoryDto> dtos)
         {
-            return dtos == null ? null : dtos.Select(DtoToViewModel);
+            return dtos?.Select(DtoToViewModel);
         }
     }
 }

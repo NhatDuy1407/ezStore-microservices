@@ -1,6 +1,6 @@
 ﻿using Microservice.Core.Models;
 
-namespace ezStore.WareHouse.Infrastructure.Entities
+namespace ezStore.WareHouse.ApplicationCore.Entities
 {
     public class WareHouse : ModelGuidIdEntity
     {

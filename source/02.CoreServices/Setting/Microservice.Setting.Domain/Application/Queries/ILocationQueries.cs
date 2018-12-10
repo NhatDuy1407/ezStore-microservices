@@ -1,8 +1,8 @@
-﻿using Microservice.Setting.Domain.Dtos;
+﻿using Microservice.Setting.ApplicationCore.Dtos;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace Microservice.Setting.Domain.Application.Queries
+namespace Microservice.Setting.ApplicationCore.Application.Queries
 {
     public interface ILocationQueries 
     {

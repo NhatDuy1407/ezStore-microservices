@@ -7,9 +7,9 @@ namespace ezStore.WareHouse.ApplicationCore.Mapper
 {
     public static class WareHouseMapper
     {
-        public static Infrastructure.Entities.WareHouse DtoToEntity(WareHouseDto dto)
+        public static Entities.WareHouse DtoToEntity(WareHouseDto dto)
         {
-            return new Infrastructure.Entities.WareHouse
+            return new Entities.WareHouse
             {
                 Id = dto.Id,
                 Name = dto.Name,
@@ -25,7 +25,7 @@ namespace ezStore.WareHouse.ApplicationCore.Mapper
             };
         }
 
-        public static WareHouseDto EntityToDto(Infrastructure.Entities.WareHouse entity)
+        public static WareHouseDto EntityToDto(Entities.WareHouse entity)
         {
             return new WareHouseDto
             {
@@ -44,9 +44,9 @@ namespace ezStore.WareHouse.ApplicationCore.Mapper
             };
         }
 
-        public static IEnumerable<WareHouseDto> EntityToDtos(IEnumerable<Infrastructure.Entities.WareHouse> entities)
+        public static IEnumerable<WareHouseDto> EntityToDtos(IEnumerable<Entities.WareHouse> entities)
         {
-            return entities == null ? null : entities.Select(EntityToDto);
+            return entities?.Select(EntityToDto);
         }
     }
 }

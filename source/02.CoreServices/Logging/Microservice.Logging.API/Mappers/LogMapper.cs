@@ -14,7 +14,7 @@ namespace Microservice.Logging.API.Mappers
 
         public static IEnumerable<LogViewModel> DtoToViewModels(IEnumerable<LogDto> dtos)
         {
-            return dtos == null ? null : dtos.Select(DtoToViewModel);
+            return dtos?.Select(DtoToViewModel);
         }
     }
 }

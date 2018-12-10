@@ -7,9 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="MongoDB.Driver" Version="2.7.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\..\..\01.Libraries\Microservice.Core.DomainService\Microservice.Core.DomainService.csproj" />
-    <ProjectReference Include="..\..\..\02.CoreServices\Member\Microservice.Member.Infrastructure\Microservice.Member.Infrastructure.csproj" />
-    <ProjectReference Include="..\Microservice.Setting.Infrastructure\Microservice.Setting.Infrastructure.csproj" />
   </ItemGroup>
 
   <ItemGroup>

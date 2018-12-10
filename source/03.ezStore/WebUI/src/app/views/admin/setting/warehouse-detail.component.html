@@ -1,0 +1,30 @@
+<div class="animated fadeIn">
+  <div class="row">
+    <div class="col-sm-12">
+      <form [formGroup]="warehouseForm" (ngSubmit)="addEditItem()">
+        <div class="card card-accent-primary">
+          <div class="card-header">
+            <strong>Warehouse Detail</strong>
+            <button class="btn btn-sm btn-primary float-right" type="submit" [disabled]="!warehouseForm.valid"><i class="fa fa-pencil"></i>&nbsp;Save
+            </button>&nbsp;
+            <button class="btn btn-sm btn-success float-right mr-1" type="button" (click)="back()"><i class="fa fa-arrow-left"></i>&nbsp;Back
+            </button>
+          </div>
+          <div class="card-body">
+            <div class="row">
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label for="name">Name:</label><label class="required">*</label>
+                  <input class="form-control" formControlName="name" placeholder="Skill name" type="text" [ngClass]="{'is-invalid': warehouseForm?.controls.name?.dirty && warehouseForm?.controls.name?.errors?.required}">
+                  <div *ngIf="warehouseForm?.controls.name?.dirty && warehouseForm?.controls.name?.errors?.required"
+                    class="invalid-feedback">Please provide name.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <ngx-loading [show]="loading"> </ngx-loading>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

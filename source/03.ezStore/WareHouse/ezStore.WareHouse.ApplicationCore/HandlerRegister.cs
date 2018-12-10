@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
 
-namespace ezStore.WareHouse.Domain
+namespace ezStore.WareHouse.ApplicationCore
 {
     public static class HandlerRegister
     {

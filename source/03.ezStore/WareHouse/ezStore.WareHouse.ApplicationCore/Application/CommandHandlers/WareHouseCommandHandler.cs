@@ -5,7 +5,7 @@ using Microservice.Core.DomainService.Interfaces;
 using Microservice.DataAccess.Core.Interfaces;
 using System.Threading.Tasks;
 
-namespace ezStore.WareHouse.Infrastructure.Application.CommandHandlers
+namespace ezStore.WareHouse.ApplicationCore.Application.CommandHandlers
 {
     public class WareHouseCommandHandler : ICommandHandler<CreateWareHouseCommand>,
         ICommandHandler<UpdateWareHouseCommand>,

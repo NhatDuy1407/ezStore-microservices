@@ -1,10 +1,10 @@
 ﻿using Microservice.Core.DomainService.Models;
-using Microservice.Setting.Infrastructure.Entities;
+using Microservice.Setting.ApplicationCore.Entities;
 using System.Linq;
 using Microservice.DataAccess.Core.Interfaces;
 using MongoDB.Bson;
 
-namespace Microservice.Setting.Domain.SettingAggregate
+namespace Microservice.Setting.ApplicationCore.SettingAggregate
 {
     public class LocationDomain : AggregateRoot
     {

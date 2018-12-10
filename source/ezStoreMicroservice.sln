@@ -109,7 +109,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ezStore.DomainEvents", "03.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microservice.Setting.Infrastructure", "02.CoreServices\Setting\Microservice.Setting.Infrastructure\Microservice.Setting.Infrastructure.csproj", "{4E03F142-517D-4EF4-A868-CB89A87F6C2F}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microservice.Setting.Domain", "02.CoreServices\Setting\Microservice.Setting.Domain\Microservice.Setting.Domain.csproj", "{9708E27F-E551-4DDD-B7EF-BCD521C26255}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microservice.Setting.ApplicationCore", "02.CoreServices\Setting\Microservice.Setting.Domain\Microservice.Setting.ApplicationCore.csproj", "{9708E27F-E551-4DDD-B7EF-BCD521C26255}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microservice.Setting.API", "02.CoreServices\Setting\Microservice.Setting.API\Microservice.Setting.API.csproj", "{3673FA51-6205-4F84-B50F-E00821B3801C}"
 EndProject

@@ -1,11 +1,11 @@
 ﻿using Microservice.Core.DomainService;
 using Microservice.Core.DomainService.Interfaces;
-using Microservice.Setting.Domain.Application.Commands;
-using Microservice.Setting.Domain.SettingAggregate;
-using System.Threading.Tasks;
 using Microservice.DataAccess.Core.Interfaces;
+using Microservice.Setting.ApplicationCore.Application.Commands;
+using Microservice.Setting.ApplicationCore.SettingAggregate;
+using System.Threading.Tasks;
 
-namespace Microservice.Setting.Domain.Application.CommandHandlers
+namespace Microservice.Setting.ApplicationCore.Application.CommandHandlers
 {
     public class LocationCommandHandler : ICommandHandler<CreateCountryCommand>,
         ICommandHandler<UpdateCountryCommand>,

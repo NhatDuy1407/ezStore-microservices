@@ -1,7 +1,9 @@
 ﻿using Microservice.Core.Models;
+using System;
+
 namespace ezStore.WareHouse.API.ViewModels
 {
-    public class WareHouseViewModel : ModelGuidIdEntity
+    public class WareHouseViewModel : ViewModelEntity<Guid>
     {
         public string Name { get; internal set; }
         public string Address { get; internal set; }
