@@ -1,7 +1,6 @@
-﻿using System;
-using System.Threading.Tasks;
-using Microservice.Core.CachingService.Interfaces;
+﻿using Microservice.Core.CachingService.Interfaces;
 using ServiceStack.Redis;
+using System.Threading.Tasks;
 
 namespace Microservice.Core.CachingService
 {

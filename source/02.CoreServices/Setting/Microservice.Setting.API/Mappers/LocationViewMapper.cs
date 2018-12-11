@@ -1,6 +1,5 @@
 ﻿using Microservice.Setting.API.ViewModels;
 using Microservice.Setting.ApplicationCore.Dtos;
-using Microservice.Setting.Domain.Dtos;
 using System.Collections.Generic;
 using System.Linq;
 

@@ -1,4 +1,4 @@
-﻿using ezStore.ApplicationEvents.WareHouse;
+﻿using ezStore.WareHouse.ApplicationCore.DomainEvents;
 using Microservice.Core.DomainService.Models;
 using Microservice.DataAccess.Core.Interfaces;
 using System;

@@ -30,7 +30,6 @@ namespace ezStore.Product.ApplicationCore.Application.CommandHandlers
             });
 
             _domainService.ApplyChanges(productCategoryDomain);
-            _domainService.SaveChanges();
             return Task.CompletedTask;
         }
 
@@ -44,7 +43,6 @@ namespace ezStore.Product.ApplicationCore.Application.CommandHandlers
             });
 
             _domainService.ApplyChanges(productCategoryDomain);
-            _domainService.SaveChanges();
             return Task.CompletedTask;
         }
 
@@ -54,7 +52,6 @@ namespace ezStore.Product.ApplicationCore.Application.CommandHandlers
             productCategoryDomain.Delete(command.Id);
 
             _domainService.ApplyChanges(productCategoryDomain);
-            _domainService.SaveChanges();
             return Task.CompletedTask;
         }
     }

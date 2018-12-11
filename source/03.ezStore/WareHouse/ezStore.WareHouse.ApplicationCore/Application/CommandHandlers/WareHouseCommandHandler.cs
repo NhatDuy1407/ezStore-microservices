@@ -25,7 +25,7 @@ namespace ezStore.WareHouse.ApplicationCore.Application.CommandHandlers
             wareHouseDomain.CreateWareHouse(command.Name);
 
             domainService.ApplyChanges(wareHouseDomain);
-            domainService.SaveChanges();
+
             return Task.CompletedTask;
         }
 
@@ -35,7 +35,6 @@ namespace ezStore.WareHouse.ApplicationCore.Application.CommandHandlers
             wareHouseDomain.UpdateWareHouse(command.Id, command.Name);
 
             domainService.ApplyChanges(wareHouseDomain);
-            domainService.SaveChanges();
             return Task.CompletedTask;
         }
 
@@ -45,7 +44,6 @@ namespace ezStore.WareHouse.ApplicationCore.Application.CommandHandlers
             wareHouseDomain.DeleteWareHouse(command.Id);
 
             domainService.ApplyChanges(wareHouseDomain);
-            domainService.SaveChanges();
             return Task.CompletedTask;
         }
     }

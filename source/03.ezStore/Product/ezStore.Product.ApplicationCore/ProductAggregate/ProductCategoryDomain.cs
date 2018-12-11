@@ -1,4 +1,4 @@
-﻿using ezStore.ApplicationEvents.Product;
+﻿using ezStore.Product.ApplicationCore.DomainEvents;
 using ezStore.Product.ApplicationCore.Dtos;
 using ezStore.Product.ApplicationCore.Entities;
 using ezStore.Product.ApplicationCore.Mapper;

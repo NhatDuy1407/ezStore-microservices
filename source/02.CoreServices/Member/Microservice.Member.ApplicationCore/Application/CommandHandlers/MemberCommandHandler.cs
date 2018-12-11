@@ -19,7 +19,6 @@ namespace Microservice.Member.Domain.Application.Commands
             var user = new UserDomain(_domainService.WriteService) { Username = command.Email };
             user.Login();
             _domainService.ApplyChanges(user);
-            _domainService.SaveChanges();
             return Task.CompletedTask;
         }
     }

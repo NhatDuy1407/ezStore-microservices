@@ -1,6 +1,5 @@
 ﻿using Microservice.Setting.ApplicationCore.Dtos;
 using Microservice.Setting.ApplicationCore.Entities;
-using Microservice.Setting.Domain.Dtos;
 using System;
 using System.Collections.Generic;
 using System.Linq;

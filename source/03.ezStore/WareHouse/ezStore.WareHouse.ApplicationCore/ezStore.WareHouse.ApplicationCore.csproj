@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\..\01.Libraries\Microservice.Core.CachingService\Microservice.Core.CachingService.csproj" />
     <ProjectReference Include="..\..\..\01.Libraries\Microservice.Core.DomainService\Microservice.Core.DomainService.csproj" />
     <ProjectReference Include="..\..\ApplicationEvents\ezStore.ApplicationEvents.csproj" />
   </ItemGroup>
@@ -18,9 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Application\EventHandlers\" />
     <Folder Include="Exceptions\" />
-    <Folder Include="DomainEvents\" />
   </ItemGroup>
 
 </Project>

@@ -23,6 +23,20 @@ namespace Microservice.Core.DomainService
                 }
             }
 
+            var allEventHandlers = assembly.GetTypes().Where(t =>
+               t.IsClass &&
+               !t.IsAbstract &&
+               t.IsAssignableToGenericType(typeof(IEventHandler<>)));
+            foreach (var type in allEventHandlers)
+            {
+                var allInterfaces = type.GetInterfaces();
+                var mainInterfaces = allInterfaces.Where(t => t.IsAssignableToGenericType(typeof(IEventHandler<>)));
+                foreach (var itype in mainInterfaces)
+                {
+                    services.AddTransient(itype, type);
+                }
+            }
+
             var allIQuery = assembly.GetTypes().Where(t =>
                 t.IsClass &&
                 !t.IsAbstract && t.FullName.EndsWith("Queries")).ToList();

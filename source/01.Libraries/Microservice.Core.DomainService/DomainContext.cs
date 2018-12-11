@@ -3,9 +3,7 @@ using Microservice.Core.DomainService.Events;
 using Microservice.Core.DomainService.Interfaces;
 using Microservice.Core.DomainService.Models;
 using Microsoft.Extensions.Configuration;
-using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace Microservice.Core.DomainService
 {
@@ -15,54 +13,22 @@ namespace Microservice.Core.DomainService
         private readonly IEventBus _eventBus;
         private readonly IConfiguration Configuration;
 
-        public DomainContext(IConfiguration configuration, IBusControl busControl,  IEventBus eventBus)
+        public DomainContext(IConfiguration configuration, IBusControl busControl, IEventBus eventBus)
         {
             _busControl = busControl;
             _eventBus = eventBus;
             Configuration = configuration;
         }
 
-        public List<IEvent> ApplicationEvents { get; private set; }
-
-        public List<IEvent> DomainEvents { get; private set; }
-
-        public void AddEvents(AggregateRoot entity)
+        public void SaveEvents(AggregateRoot entity)
         {
-            if (ApplicationEvents == null)
+            foreach (var @event in entity.Events.OfType<DomainEvent>())
             {
-                ApplicationEvents = new List<IEvent>();
+                // excute event & update ReadModel
+                _eventBus.ExecuteAsync(@event);
             }
-            if (entity.Events != null)
-            {
-                foreach (var item in entity.Events.OfType<ApplicationEvent>())
-                {
-                    if (!ApplicationEvents.Any(i => i.AggregateRootId == item.AggregateRootId))
-                    {
-                        ApplicationEvents.Add(item);
-                    }
-                }
 
-                foreach (var item in entity.Events.OfType<DomainEvent>())
-                {
-                    if (!DomainEvents.Any(i => i.AggregateRootId == item.AggregateRootId))
-                    {
-                        DomainEvents.Add(item);
-                    }
-                }
-            }
-        }
-
-        public Task SaveChanges()
-        {
-            foreach (var @event in DomainEvents)
-            {
-                _eventBus.ExecuteAsync(@event).Wait();
-            }
-            DomainEvents.Clear();
-
-            // everything was validated successfully
-            // publish events
-            foreach (var @event in ApplicationEvents)
+            foreach (var @event in entity.Events.OfType<ApplicationEvent>())
             {
                 var attr = @event.GetType().GetCustomAttributes(true).FirstOrDefault(i => i is MessageBusRouteAttribute);
                 if (attr != null)
@@ -78,8 +44,6 @@ namespace Microservice.Core.DomainService
                     _busControl.Publish(@event, @event.GetType());
                 }
             }
-            ApplicationEvents.Clear();
-            return Task.CompletedTask;
         }
     }
 }

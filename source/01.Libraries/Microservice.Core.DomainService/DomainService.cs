@@ -18,13 +18,8 @@ namespace Microservice.Core.DomainService
 
         public void ApplyChanges<TEntity>(TEntity entity) where TEntity : AggregateRoot
         {
-            _context.AddEvents(entity);
-        }
-
-        public void SaveChanges()
-        {
-            _context.SaveChanges();
             WriteService.SaveChanges();
+            _context.SaveEvents(entity);
         }
     }
 }

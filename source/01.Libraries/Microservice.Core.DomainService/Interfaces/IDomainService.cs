@@ -8,7 +8,5 @@ namespace Microservice.Core.DomainService.Interfaces
         IDataAccessWriteService WriteService { get; }
 
         void ApplyChanges<TEntity>(TEntity entity) where TEntity : AggregateRoot;
-
-        void SaveChanges();
     }
 }

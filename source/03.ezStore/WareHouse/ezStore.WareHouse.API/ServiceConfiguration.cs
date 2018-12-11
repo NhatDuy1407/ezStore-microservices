@@ -9,6 +9,8 @@ using Microsoft.Extensions.DependencyInjection;
 using System;
 using Microservice.DataAccess.Core.Interfaces;
 using Microservice.DataAccess.Sql;
+using Microservice.Core.CachingService.Interfaces;
+using Microservice.Core.CachingService;
 
 namespace ezStore.WareHouse.API
 {
@@ -58,7 +60,8 @@ namespace ezStore.WareHouse.API
             services.AddTransient<IDataAccessWriteService>(i => new DataAccessWriteService(i.GetService<WareHouseDbContext>()));
             services.AddTransient<IDomainService>(i => new DomainService(i.GetService<IDomainContext>(), i.GetService<IDataAccessWriteService>()));
             services.AddTransient<IDataAccessReadOnlyService>(i => new DataAccessReadOnlyService(i.GetService<WareHouseDbContext>()));
-
+            services.AddTransient<ICacheService>(i => new RedisCacheService(configuration.GetConnectionString(MicroserviceConstants.RedisAddress)));
+            
             ApplicationCore.HandlerRegister.Register(services);
         }
     }

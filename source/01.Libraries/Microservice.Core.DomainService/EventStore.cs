@@ -10,7 +10,7 @@ namespace Microservice.Core.DomainService
 {
     public class EventStore : IEventStore
     {
-        private readonly IBusControl _publisher;
+        private readonly IBusControl _bus;
         private readonly IConfiguration Configuration;
 
         private struct EventDescriptor
@@ -27,9 +27,9 @@ namespace Microservice.Core.DomainService
             }
         }
 
-        public EventStore(IConfiguration configuration, IBusControl publisher)
+        public EventStore(IConfiguration configuration, IBusControl bus)
         {
-            _publisher = publisher;
+            _bus = bus;
             Configuration = configuration;
         }
 
@@ -64,19 +64,18 @@ namespace Microservice.Core.DomainService
                 eventDescriptors.Add(new EventDescriptor(aggregateId, @event, i));
 
                 // publish current event to the bus for further processing by subscribers
-
                 var attr = @event.GetType().GetCustomAttributes(true).FirstOrDefault(j => j is MessageBusRouteAttribute);
                 if (attr != null)
                 {
                     foreach (var key in (attr as MessageBusRouteAttribute).RouteKeys)
                     {
-                        var sendEndPoint = _publisher.GetSendEndpoint(new System.Uri($"{Configuration.GetConnectionString(MicroserviceConstants.RabbitMQHost)}/{key}")).Result;
+                        var sendEndPoint = _bus.GetSendEndpoint(new Uri($"{Configuration.GetConnectionString(MicroserviceConstants.RabbitMQHost)}/{key}")).Result;
                         sendEndPoint.Send(@event, @event.GetType());
                     }
                 }
                 else
                 {
-                    _publisher.Publish(@event, @event.GetType());
+                    _bus.Publish(@event, @event.GetType());
                 }
             }
         }

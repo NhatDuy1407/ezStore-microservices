@@ -26,7 +26,6 @@ namespace Microservice.Setting.ApplicationCore.Application.CommandHandlers
             locationDomain.CreateCountry(command.Name, command.IsoCode, command.DisplayOrder, command.Published);
 
             domainService.ApplyChanges(locationDomain);
-            domainService.SaveChanges();
             return Task.CompletedTask;
         }
 
@@ -36,7 +35,6 @@ namespace Microservice.Setting.ApplicationCore.Application.CommandHandlers
             locationDomain.UpdateCountry(command.Id, command.Name, command.IsoCode, command.DisplayOrder, command.Published);
 
             domainService.ApplyChanges(locationDomain);
-            domainService.SaveChanges();
             return Task.CompletedTask;
         }
 
@@ -46,7 +44,6 @@ namespace Microservice.Setting.ApplicationCore.Application.CommandHandlers
             locationDomain.DeleteCountry(command.Id);
 
             domainService.ApplyChanges(locationDomain);
-            domainService.SaveChanges();
             return Task.CompletedTask;
         }
     }
