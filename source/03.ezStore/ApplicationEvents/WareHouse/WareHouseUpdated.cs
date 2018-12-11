@@ -2,10 +2,10 @@
 using Microservice.Core.DomainService.Events;
 using System;
 
-namespace ezStore.DomainEvents.WareHouse
+namespace ezStore.ApplicationEvents.WareHouse
 {
     [MessageBusRoute(EventRouteConstants.WareHouseService)]
-    public class WareHouseUpdated : DomainEvent
+    public class WareHouseUpdated : ApplicationEvent
     {
         public Guid Id { get; }
 

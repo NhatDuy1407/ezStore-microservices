@@ -1,4 +1,5 @@
 ﻿using MassTransit;
+using Microservice.Core.DomainService.Events;
 using Microservice.Core.DomainService.Interfaces;
 using Microservice.Core.DomainService.Models;
 using Microsoft.Extensions.Configuration;
@@ -11,29 +12,41 @@ namespace Microservice.Core.DomainService
     public class DomainContext : IDomainContext
     {
         private readonly IBusControl _busControl;
+        private readonly IEventBus _eventBus;
         private readonly IConfiguration Configuration;
 
-        public DomainContext(IConfiguration configuration, IBusControl busControl)
+        public DomainContext(IConfiguration configuration, IBusControl busControl,  IEventBus eventBus)
         {
             _busControl = busControl;
+            _eventBus = eventBus;
             Configuration = configuration;
         }
 
-        public List<IDomainEvent> Events { get; private set; }
+        public List<IEvent> ApplicationEvents { get; private set; }
+
+        public List<IEvent> DomainEvents { get; private set; }
 
         public void AddEvents(AggregateRoot entity)
         {
-            if (Events == null)
+            if (ApplicationEvents == null)
             {
-                Events = new List<IDomainEvent>();
+                ApplicationEvents = new List<IEvent>();
             }
             if (entity.Events != null)
             {
-                foreach (var item in entity.Events)
+                foreach (var item in entity.Events.OfType<ApplicationEvent>())
                 {
-                    if (!Events.Any(i => i.AggregateRootId == item.AggregateRootId))
+                    if (!ApplicationEvents.Any(i => i.AggregateRootId == item.AggregateRootId))
                     {
-                        Events.Add(item);
+                        ApplicationEvents.Add(item);
+                    }
+                }
+
+                foreach (var item in entity.Events.OfType<DomainEvent>())
+                {
+                    if (!DomainEvents.Any(i => i.AggregateRootId == item.AggregateRootId))
+                    {
+                        DomainEvents.Add(item);
                     }
                 }
             }
@@ -41,9 +54,15 @@ namespace Microservice.Core.DomainService
 
         public Task SaveChanges()
         {
+            foreach (var @event in DomainEvents)
+            {
+                _eventBus.ExecuteAsync(@event).Wait();
+            }
+            DomainEvents.Clear();
+
             // everything was validated successfully
             // publish events
-            foreach (var @event in Events)
+            foreach (var @event in ApplicationEvents)
             {
                 var attr = @event.GetType().GetCustomAttributes(true).FirstOrDefault(i => i is MessageBusRouteAttribute);
                 if (attr != null)
@@ -59,7 +78,7 @@ namespace Microservice.Core.DomainService
                     _busControl.Publish(@event, @event.GetType());
                 }
             }
-            Events.Clear();
+            ApplicationEvents.Clear();
             return Task.CompletedTask;
         }
     }

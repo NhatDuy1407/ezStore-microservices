@@ -12,14 +12,13 @@ namespace Microservice.Core.DomainService.Commands
 
         public Guid CommandId { get; set; }
 
+        protected ValidationDecoratorCommand() : this(null)
+        {
+        }
+
         protected ValidationDecoratorCommand(params ValidationDecoratorCommand[] roots)
         {
             _roots = roots;
-            CommandId = Guid.NewGuid();
-        }
-
-        protected ValidationDecoratorCommand()
-        {
             CommandId = Guid.NewGuid();
         }
 

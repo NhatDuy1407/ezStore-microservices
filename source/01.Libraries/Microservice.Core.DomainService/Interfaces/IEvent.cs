@@ -2,8 +2,9 @@
 
 namespace Microservice.Core.DomainService.Interfaces
 {
-    public interface IDomainEvent
+    public interface IEvent
     {
         Guid AggregateRootId { get; }
+        int Version { get; set; }
     }
 }

@@ -16,12 +16,12 @@ namespace ezStore.Product.API.Controllers
     [ApiController]
     public class ProductCategoryController : ControllerBase
     {
-        private readonly ICommandProcessor _commandProcessor;
+        private readonly ICommandBus _commandBus;
         private readonly IProductCategoryQueries _queries;
 
-        public ProductCategoryController(ICommandProcessor commandProcessor, IProductCategoryQueries queries)
+        public ProductCategoryController(ICommandBus commandBus, IProductCategoryQueries queries)
         {
-            _commandProcessor = commandProcessor;
+            _commandBus = commandBus;
             _queries = queries;
         }
 
@@ -41,7 +41,7 @@ namespace ezStore.Product.API.Controllers
         public Task Put([FromBody] string name)
         {
             var command = new CreateProductCategoryCommand(name);
-            _commandProcessor.ExecuteAsync(command).Wait();
+            _commandBus.ExecuteAsync(command).Wait();
             return Task.CompletedTask;
         }
 
@@ -49,7 +49,7 @@ namespace ezStore.Product.API.Controllers
         public Task Post(Guid id, [FromBody] string name)
         {
             var command = new UpdateProductCategoryCommand(id, name);
-            _commandProcessor.ExecuteAsync(command).Wait();
+            _commandBus.ExecuteAsync(command).Wait();
             return Task.CompletedTask;
         }
 
@@ -57,7 +57,7 @@ namespace ezStore.Product.API.Controllers
         public Task Delete(Guid id)
         {
             var command = new DeleteProductCategoryCommand(id);
-            _commandProcessor.ExecuteAsync(command).Wait();
+            _commandBus.ExecuteAsync(command).Wait();
             return Task.CompletedTask;
         }
     }

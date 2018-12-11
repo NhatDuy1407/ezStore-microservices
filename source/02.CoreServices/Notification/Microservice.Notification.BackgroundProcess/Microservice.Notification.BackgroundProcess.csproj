@@ -19,7 +19,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\..\01.Libraries\Microservice.Core.MessageQueue\Microservice.Core.MessageQueue.csproj" />
     <ProjectReference Include="..\..\..\01.Libraries\Microservice.Core\Microservice.Core.csproj" />
-    <ProjectReference Include="..\..\DomainEvents\Microservice.DomainEvents.csproj" />
+    <ProjectReference Include="..\..\ApplicationEvents\Microservice.ApplicationEvents.csproj" />
   </ItemGroup>
 
   <ItemGroup>

@@ -1,4 +1,4 @@
-﻿namespace Microservice.DomainEvents.Notification
+﻿namespace Microservice.ApplicationEvents.Notification
 {
     public class PushNotificationContentCreated
     {

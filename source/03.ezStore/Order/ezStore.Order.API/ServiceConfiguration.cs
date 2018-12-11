@@ -49,10 +49,11 @@ namespace ezStore.Order.API
             });
 
             services.AddScoped<IValidationContext, ValidationContext>();
-            services.AddTransient<ICommandProcessor, CommandProcessor>();
+            services.AddTransient<ICommandBus, CommandBus>();
+            services.AddTransient<IEventBus, EventBus>();
 
             // Add application services.
-            services.AddTransient<IDomainContext>(i => new DomainContext(i.GetService<IConfiguration>(), i.GetService<IBusControl>()));
+            services.AddTransient<IDomainContext>(i => new DomainContext(i.GetService<IConfiguration>(), i.GetService<IBusControl>(), i.GetService<IEventBus>()));
             services.AddTransient<IDataAccessService>(i => new DataAccessWriteService(i.GetService<OrderDbContext>()));
             services.AddTransient<IDataAccessWriteService>(i => new DataAccessWriteService(i.GetService<OrderDbContext>()));
             services.AddTransient<IDomainService>(i => new DomainService(i.GetService<IDomainContext>(), i.GetService<IDataAccessWriteService>()));

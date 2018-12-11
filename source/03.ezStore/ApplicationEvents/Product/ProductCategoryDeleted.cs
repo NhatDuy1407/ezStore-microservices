@@ -2,10 +2,10 @@
 using Microservice.Core.DomainService.Events;
 using System;
 
-namespace ezStore.DomainEvents.Product
+namespace ezStore.ApplicationEvents.Product
 {
     [MessageBusRoute(EventRouteConstants.ProductService)]
-    public class ProductCategoryDeleted : DomainEvent
+    public class ProductCategoryDeleted : ApplicationEvent
     {
         public Guid Id { get; set; }
         public ProductCategoryDeleted(Guid id)

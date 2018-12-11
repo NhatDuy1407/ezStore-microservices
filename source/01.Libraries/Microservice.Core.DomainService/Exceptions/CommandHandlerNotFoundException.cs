@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Microservice.Core.DomainService.Service
+namespace Microservice.Core.DomainService.Exceptions
 {
     public class CommandHandlerNotFoundException : Exception
     {

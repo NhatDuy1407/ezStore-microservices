@@ -1,7 +1,7 @@
 ﻿using MassTransit;
-using Microservice.DomainEvents;
-using Microservice.DomainEvents.Logging;
-using Microservice.DomainEvents.Notification;
+using Microservice.ApplicationEvents;
+using Microservice.ApplicationEvents.Logging;
+using Microservice.ApplicationEvents.Notification;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using System;

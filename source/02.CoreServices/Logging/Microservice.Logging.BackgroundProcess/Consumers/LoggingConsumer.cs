@@ -1,7 +1,7 @@
 ﻿using MassTransit;
+using Microservice.ApplicationEvents.Logging;
 using Microservice.Core.MessageQueue;
 using Microservice.DataAccess.Core.Interfaces;
-using Microservice.DomainEvents.Logging;
 using Microservice.Logging.ApplicationCore.Entities;
 using System.Threading.Tasks;
 

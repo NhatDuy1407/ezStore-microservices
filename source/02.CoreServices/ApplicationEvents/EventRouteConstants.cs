@@ -1,4 +1,4 @@
-﻿namespace Microservice.DomainEvents
+﻿namespace Microservice.ApplicationEvents
 {
     public static class EventRouteConstants
     {

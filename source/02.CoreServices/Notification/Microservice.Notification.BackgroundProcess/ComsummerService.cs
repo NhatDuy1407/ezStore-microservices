@@ -1,7 +1,7 @@
 ﻿using MassTransit;
 using MassTransit.RabbitMqTransport;
+using Microservice.ApplicationEvents;
 using Microservice.Core.MessageQueue.Request;
-using Microservice.DomainEvents;
 using Microservice.Notification.BackgroundProcess.Consumers;
 using Microsoft.Extensions.Configuration;
 using System;

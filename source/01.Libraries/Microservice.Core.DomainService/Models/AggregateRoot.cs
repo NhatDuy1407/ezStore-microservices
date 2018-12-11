@@ -14,13 +14,13 @@ namespace Microservice.Core.DomainService.Models
             this.dataAccessService = dataAccessService;
         }
 
-        public List<IDomainEvent> Events { get; private set; }
+        public List<IEvent> Events { get; private set; }
 
-        protected void ApplyEvent(IDomainEvent @event)
+        protected void AddEvent(IEvent @event)
         {
             if (Events == null)
             {
-                Events = new List<IDomainEvent>();
+                Events = new List<IEvent>();
             }
             Events.Add(@event);
         }

@@ -2,13 +2,13 @@
 using Microservice.Core.DomainService.Events;
 using System;
 
-namespace ezStore.DomainEvents.Product
+namespace ezStore.ApplicationEvents.Product
 {
     [MessageBusRoute(EventRouteConstants.ProductService)]
-    public class ProductCategoryCreated : DomainEvent
+    public class ProductCategoryUpdated : ApplicationEvent
     {
         public Guid Id { get; set; }
-        public ProductCategoryCreated(Guid id)
+        public ProductCategoryUpdated(Guid id)
         {
             Id = id;
         }

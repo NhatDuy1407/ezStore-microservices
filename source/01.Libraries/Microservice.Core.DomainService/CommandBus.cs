@@ -1,16 +1,16 @@
-﻿using Microservice.Core.DomainService.Interfaces;
-using Microservice.Core.DomainService.Service;
+﻿using Microservice.Core.DomainService.Exceptions;
+using Microservice.Core.DomainService.Interfaces;
 using System;
 using System.Threading.Tasks;
 
 namespace Microservice.Core.DomainService
 {
-    public class CommandProcessor : ICommandProcessor
+    public class CommandBus : ICommandBus
     {
         private readonly IServiceProvider _provider;
         private readonly IValidationContext _validationContext;
 
-        public CommandProcessor(IServiceProvider provider, IValidationContext validationContext)
+        public CommandBus(IServiceProvider provider, IValidationContext validationContext)
         {
             _provider = provider;
             _validationContext = validationContext;

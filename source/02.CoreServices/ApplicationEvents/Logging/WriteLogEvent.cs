@@ -2,10 +2,10 @@
 using Microservice.Core.DomainService.Events;
 using System;
 
-namespace Microservice.DomainEvents.Logging
+namespace Microservice.ApplicationEvents.Logging
 {
     [MessageBusRoute(EventRouteConstants.LoggingService)]
-    public class WriteLogEvent : DomainEvent
+    public class WriteLogEvent : ApplicationEvent
     {
         public DateTime Date { get { return DateTime.Now; } }
         public string Level { get; set; }

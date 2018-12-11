@@ -9,7 +9,7 @@ namespace Microservice.DataAccess.MongoDB
 {
     public class MongoDbContext
     {
-        public List<IDomainEvent> Events { get; private set; }
+        public List<IEvent> Events { get; private set; }
 
         private readonly Hashtable _hashRepository;
 

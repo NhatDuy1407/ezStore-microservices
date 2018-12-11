@@ -1,6 +1,6 @@
 ﻿using MassTransit;
-using Microservice.DomainEvents;
-using Microservice.DomainEvents.Logging;
+using Microservice.ApplicationEvents;
+using Microservice.ApplicationEvents.Logging;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;

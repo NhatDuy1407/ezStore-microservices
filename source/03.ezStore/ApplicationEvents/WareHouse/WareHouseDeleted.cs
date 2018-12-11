@@ -3,10 +3,10 @@ using Microservice.Core.DomainService.Events;
 using Microservice.Core.Models;
 using System;
 
-namespace ezStore.DomainEvents.WareHouse
+namespace ezStore.ApplicationEvents.WareHouse
 {
     [MessageBusRoute(EventRouteConstants.WareHouseService)]
-    public class WareHouseDeleted : DomainEvent
+    public class WareHouseDeleted : ApplicationEvent
     {
         public Guid Id { get; }
 

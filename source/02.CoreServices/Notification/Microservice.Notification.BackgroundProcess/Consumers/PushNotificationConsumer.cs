@@ -1,6 +1,6 @@
 ﻿using MassTransit;
+using Microservice.ApplicationEvents.Notification;
 using Microservice.Core.MessageQueue;
-using Microservice.DomainEvents.Notification;
 using Microsoft.Extensions.Configuration;
 using System.Threading.Tasks;
 
