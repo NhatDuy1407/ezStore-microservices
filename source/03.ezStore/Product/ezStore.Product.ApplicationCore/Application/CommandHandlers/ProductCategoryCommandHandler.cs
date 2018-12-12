@@ -1,9 +1,7 @@
 ﻿using ezStore.Product.ApplicationCore.Application.Commands;
 using ezStore.Product.ApplicationCore.ProductAggregate;
-using Microservice.Core.DomainService;
-using Microservice.Core.DomainService.Interfaces;
+using Microservices.ApplicationCore.Interfaces;
 using System.Threading.Tasks;
-using Microservice.DataAccess.Core.Interfaces;
 
 namespace ezStore.Product.ApplicationCore.Application.CommandHandlers
 {
@@ -30,7 +28,6 @@ namespace ezStore.Product.ApplicationCore.Application.CommandHandlers
             });
 
             _domainService.ApplyChanges(productCategoryDomain);
-            _domainService.SaveChanges();
             return Task.CompletedTask;
         }
 
@@ -44,7 +41,6 @@ namespace ezStore.Product.ApplicationCore.Application.CommandHandlers
             });
 
             _domainService.ApplyChanges(productCategoryDomain);
-            _domainService.SaveChanges();
             return Task.CompletedTask;
         }
 
@@ -54,7 +50,6 @@ namespace ezStore.Product.ApplicationCore.Application.CommandHandlers
             productCategoryDomain.Delete(command.Id);
 
             _domainService.ApplyChanges(productCategoryDomain);
-            _domainService.SaveChanges();
             return Task.CompletedTask;
         }
     }

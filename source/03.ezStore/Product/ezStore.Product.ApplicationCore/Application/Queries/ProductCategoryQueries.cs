@@ -1,11 +1,11 @@
 ﻿using ezStore.Product.ApplicationCore.Dtos;
-using ezStore.Product.ApplicationCore.Mapper;
 using ezStore.Product.ApplicationCore.Entities;
+using ezStore.Product.ApplicationCore.Mapper;
+using Microservices.ApplicationCore.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microservice.DataAccess.Core.Interfaces;
 
 namespace ezStore.Product.ApplicationCore.Application.Queries
 {

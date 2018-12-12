@@ -1,6 +1,6 @@
 ﻿using MongoDB.Bson;
 using System.ComponentModel.DataAnnotations.Schema;
-using Microservice.Core.Models;
+using Microservices.ApplicationCore.Entities;
 
 namespace Microservice.Setting.ApplicationCore.Entities
 {

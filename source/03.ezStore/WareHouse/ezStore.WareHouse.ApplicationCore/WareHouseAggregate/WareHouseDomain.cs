@@ -1,8 +1,8 @@
-﻿using ezStore.DomainEvents.WareHouse;
-using Microservice.Core.DomainService.Models;
+﻿using ezStore.WareHouse.ApplicationCore.DomainEvents;
+using Microservices.ApplicationCore.Entities;
+using Microservices.ApplicationCore.Interfaces;
 using System;
 using System.Linq;
-using Microservice.DataAccess.Core.Interfaces;
 
 namespace ezStore.WareHouse.ApplicationCore.WareHouseAggregate
 {
@@ -17,7 +17,7 @@ namespace ezStore.WareHouse.ApplicationCore.WareHouseAggregate
             var newWareHouse = new Entities.WareHouse() { Name = name };
             dataAccessService.Repository<Entities.WareHouse>().Insert(newWareHouse);
 
-            ApplyEvent(new WareHouseCreated(newWareHouse.Id, newWareHouse.Name));
+            AddEvent(new WareHouseCreated(newWareHouse.Id, newWareHouse.Name));
         }
 
         public void UpdateWareHouse(Guid id, string name)
@@ -27,7 +27,7 @@ namespace ezStore.WareHouse.ApplicationCore.WareHouseAggregate
             {
                 warehouse.Name = name;
 
-                ApplyEvent(new WareHouseUpdated(warehouse.Id));
+                AddEvent(new WareHouseUpdated(warehouse.Id));
             }
         }
 
@@ -37,7 +37,7 @@ namespace ezStore.WareHouse.ApplicationCore.WareHouseAggregate
             if (warehouse != null)
             {
                 dataAccessService.Repository<Entities.WareHouse>().Delete(i => i.Id == id);
-                ApplyEvent(new WareHouseDeleted(warehouse.Id));
+                AddEvent(new WareHouseDeleted(warehouse.Id));
             }
         }
     }

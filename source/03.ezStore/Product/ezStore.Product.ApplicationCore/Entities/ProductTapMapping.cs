@@ -1,4 +1,4 @@
-﻿using Microservice.Core.Models;
+﻿using Microservices.ApplicationCore.Entities;
 using System;
 using System.ComponentModel.DataAnnotations.Schema;
 

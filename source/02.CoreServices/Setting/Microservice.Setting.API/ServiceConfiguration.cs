@@ -1,13 +1,14 @@
 ﻿using MassTransit;
 using MassTransit.Util;
-using Microservice.Core;
-using Microservice.Core.DomainService;
-using Microservice.Core.DomainService.Interfaces;
+using Microservices.ApplicationCore.Interfaces;
+using Microservices.ApplicationCore.Services;
+using Microservices.ApplicationCore.SharedKernel;
+using Microservices.ApplicationCore.Validations;
+using Microservices.Infrastructure;
+using Microservices.Infrastructure.MongoDB;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System;
-using Microservice.DataAccess.Core.Interfaces;
-using Microservice.DataAccess.MongoDB;
 
 namespace Microservice.Setting.API
 {
@@ -48,10 +49,11 @@ namespace Microservice.Setting.API
             });
 
             services.AddScoped<IValidationContext, ValidationContext>();
-            services.AddTransient<ICommandProcessor, CommandProcessor>();
+            services.AddTransient<ICommandBus, CommandBus>();
+            services.AddTransient<IEventBus, EventBus>();
 
             // Add application services.
-            services.AddTransient<IDomainContext>(i => new DomainContext(i.GetService<IConfiguration>(), i.GetService<IBusControl>()));
+            services.AddTransient<IDomainContext>(i => new DomainContext(i.GetService<IConfiguration>(), i.GetService<IBusControl>(), i.GetService<IEventBus>()));
             services.AddTransient(i => new MongoDbContext(configuration.GetConnectionString(MicroserviceConstants.SettingDbConnection), configuration.GetConnectionString(MicroserviceConstants.SettingDbName), false));
             services.AddTransient<IDataAccessService>(i => new DataAccessWriteService(i.GetService<MongoDbContext>()));
             services.AddTransient<IDataAccessWriteService>(i => new DataAccessWriteService(i.GetService<MongoDbContext>()));

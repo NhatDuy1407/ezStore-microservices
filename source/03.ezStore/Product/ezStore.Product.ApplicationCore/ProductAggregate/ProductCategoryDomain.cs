@@ -1,9 +1,9 @@
-﻿using ezStore.DomainEvents.Product;
+﻿using ezStore.Product.ApplicationCore.DomainEvents;
 using ezStore.Product.ApplicationCore.Dtos;
-using ezStore.Product.ApplicationCore.Mapper;
 using ezStore.Product.ApplicationCore.Entities;
-using Microservice.Core.DomainService.Models;
-using Microservice.DataAccess.Core.Interfaces;
+using ezStore.Product.ApplicationCore.Mapper;
+using Microservices.ApplicationCore.Entities;
+using Microservices.ApplicationCore.Interfaces;
 using System;
 using System.Linq;
 
@@ -20,7 +20,7 @@ namespace ezStore.Product.ApplicationCore.ProductAggregate
             var newCategory = ProductCategoryMapper.DtoToEntity(productCategory);
             dataAccessService.Repository<ProductCategory>().Insert(newCategory);
 
-            ApplyEvent(new ProductCategoryCreated(newCategory.Id));
+            AddEvent(new ProductCategoryCreated(newCategory.Id));
         }
 
         public void Update(ProductCategoryDto productCategory)
@@ -29,14 +29,14 @@ namespace ezStore.Product.ApplicationCore.ProductAggregate
             productCategory2Save.Name = productCategory.Name;
             productCategory2Save.UpdatedDate = DateTime.Now;
 
-            ApplyEvent(new ProductCategoryUpdated(productCategory.Id));
+            AddEvent(new ProductCategoryUpdated(productCategory.Id));
         }
 
         public void Delete(Guid id)
         {
             dataAccessService.Repository<ProductCategory>().Delete(i => i.Id == id);
 
-            ApplyEvent(new ProductCategoryDeleted(id));
+            AddEvent(new ProductCategoryDeleted(id));
         }
     }
 }

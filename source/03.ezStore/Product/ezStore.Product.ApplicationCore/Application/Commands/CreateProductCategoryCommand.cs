@@ -1,4 +1,4 @@
-﻿using Microservice.Core.DomainService.Commands;
+﻿using Microservices.ApplicationCore.Commands;
 
 namespace ezStore.Product.ApplicationCore.Application.Commands
 {

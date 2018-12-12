@@ -2,11 +2,12 @@
 using ezStore.Product.Infrastructure;
 using MassTransit;
 using MassTransit.Util;
-using Microservice.Core;
-using Microservice.Core.DomainService;
-using Microservice.Core.DomainService.Interfaces;
-using Microservice.DataAccess.Core.Interfaces;
-using Microservice.DataAccess.Sql;
+using Microservices.ApplicationCore.Interfaces;
+using Microservices.ApplicationCore.Services;
+using Microservices.ApplicationCore.SharedKernel;
+using Microservices.ApplicationCore.Validations;
+using Microservices.Infrastructure;
+using Microservices.Infrastructure.Sql;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System;
@@ -50,11 +51,12 @@ namespace ezStore.Product.API
             });
 
             services.AddScoped<IValidationContext, ValidationContext>();
-            services.AddTransient<ICommandProcessor, CommandProcessor>();
+            services.AddTransient<ICommandBus, CommandBus>();
+            services.AddTransient<IEventBus, EventBus>();
 
             // Add application services.
             services.AddTransient<IProductCategoryQueries, ProductCategoryQueries>();
-            services.AddTransient<IDomainContext>(i => new DomainContext(i.GetService<IConfiguration>(), i.GetService<IBusControl>()));
+            services.AddTransient<IDomainContext>(i => new DomainContext(i.GetService<IConfiguration>(), i.GetService<IBusControl>(), i.GetService<IEventBus>()));
             services.AddTransient<IDataAccessService>(i => new DataAccessWriteService(i.GetService<ProductDbContext>()));
             services.AddTransient<IDataAccessWriteService>(i => new DataAccessWriteService(i.GetService<ProductDbContext>()));
             services.AddTransient<IDomainService>(i => new DomainService(i.GetService<IDomainContext>(), i.GetService<IDataAccessWriteService>()));

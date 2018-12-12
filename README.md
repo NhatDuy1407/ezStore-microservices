@@ -23,7 +23,7 @@
 - First run `docker-compose -f docker-compose.init.yml up` to start databases and queues
 - Wait for databases and queues ready
 - Run application from Visual Studio.
-- Run Angular6 project from `source\03.ezStore\WebUI`. Note: I am using port 7001
+- Run Angular6 project from `source\03.ezStoreWebUI`. Note: I am using port 7001
 - If you want to deploy Angular project to docker, build project `ng build --prod` then run `docker-compose -f docker-compose-webui.yml up`
 
 ## Local Kubenetes Deployment 

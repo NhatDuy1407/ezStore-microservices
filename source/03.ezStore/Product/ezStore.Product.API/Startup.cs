@@ -1,8 +1,8 @@
 ﻿using ezStore.Product.Infrastructure;
 using IdentityServer4.AccessTokenValidation;
 using MassTransit;
-using Microservice.Core;
-using Microservice.Core.Logging;
+using Microservices.ApplicationCore.SharedKernel;
+using Microservices.Infrastructure.Loggings;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;

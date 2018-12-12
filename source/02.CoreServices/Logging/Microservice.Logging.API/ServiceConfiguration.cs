@@ -1,6 +1,6 @@
-﻿using Microservice.Core;
-using Microservice.DataAccess.Core.Interfaces;
-using Microservice.DataAccess.MongoDB;
+﻿using Microservices.ApplicationCore.Interfaces;
+using Microservices.ApplicationCore.SharedKernel;
+using Microservices.Infrastructure.MongoDB;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 

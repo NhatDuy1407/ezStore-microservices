@@ -1,4 +1,4 @@
-﻿using Microservice.Core.Models;
+﻿using Microservices.ApplicationCore.Entities;
 using System.Collections.Generic;
 
 namespace Microservice.Setting.ApplicationCore.Dtos

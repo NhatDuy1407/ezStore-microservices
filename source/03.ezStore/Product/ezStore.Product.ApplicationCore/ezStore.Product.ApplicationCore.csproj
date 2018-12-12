@@ -11,9 +11,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\01.Libraries\Microservice.Core.DomainService\Microservice.Core.DomainService.csproj" />
-    <ProjectReference Include="..\..\..\01.Libraries\Microservice.DataAccess.Core\Microservice.DataAccess.Core.csproj" />
-    <ProjectReference Include="..\..\DomainEvents\ezStore.DomainEvents.csproj" />
+    <ProjectReference Include="..\..\..\01.Libraries\Microservices.ApplicationCore\Microservices.ApplicationCore.csproj" />
+    <ProjectReference Include="..\..\ApplicationEvents\ezStore.ApplicationEvents.csproj" />
   </ItemGroup>
 
 </Project>

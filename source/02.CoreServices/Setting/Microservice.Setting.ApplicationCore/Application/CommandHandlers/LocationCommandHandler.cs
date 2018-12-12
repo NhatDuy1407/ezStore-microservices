@@ -1,8 +1,6 @@
-﻿using Microservice.Core.DomainService;
-using Microservice.Core.DomainService.Interfaces;
-using Microservice.DataAccess.Core.Interfaces;
-using Microservice.Setting.ApplicationCore.Application.Commands;
+﻿using Microservice.Setting.ApplicationCore.Application.Commands;
 using Microservice.Setting.ApplicationCore.SettingAggregate;
+using Microservices.ApplicationCore.Interfaces;
 using System.Threading.Tasks;
 
 namespace Microservice.Setting.ApplicationCore.Application.CommandHandlers
@@ -26,7 +24,6 @@ namespace Microservice.Setting.ApplicationCore.Application.CommandHandlers
             locationDomain.CreateCountry(command.Name, command.IsoCode, command.DisplayOrder, command.Published);
 
             domainService.ApplyChanges(locationDomain);
-            domainService.SaveChanges();
             return Task.CompletedTask;
         }
 
@@ -36,7 +33,6 @@ namespace Microservice.Setting.ApplicationCore.Application.CommandHandlers
             locationDomain.UpdateCountry(command.Id, command.Name, command.IsoCode, command.DisplayOrder, command.Published);
 
             domainService.ApplyChanges(locationDomain);
-            domainService.SaveChanges();
             return Task.CompletedTask;
         }
 
@@ -46,7 +42,6 @@ namespace Microservice.Setting.ApplicationCore.Application.CommandHandlers
             locationDomain.DeleteCountry(command.Id);
 
             domainService.ApplyChanges(locationDomain);
-            domainService.SaveChanges();
             return Task.CompletedTask;
         }
     }

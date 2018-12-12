@@ -1,21 +1,21 @@
-﻿using System.Reflection;
-using Microservice.Core;
+﻿using IdentityServer4.AccessTokenValidation;
+using MassTransit;
+using Microservice.IdentityServer.Data;
+using Microservice.IdentityServer.Models;
+using Microservice.IdentityServer.Services;
+using Microservice.IdentityServer.Swagger;
+using Microservices.ApplicationCore.SharedKernel;
+using Microservices.Infrastructure.Loggings;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using Microservice.IdentityServer.Data;
-using Microservice.IdentityServer.Models;
-using Microsoft.AspNetCore.Identity;
-using Microservice.Core.Logging;
-using System;
-using MassTransit;
-using Microservice.IdentityServer.Services;
-using Microservice.IdentityServer.Swagger;
-using IdentityServer4.AccessTokenValidation;
 using Newtonsoft.Json;
+using System;
+using System.Reflection;
 
 namespace Microservice.IdentityServer
 {
@@ -117,7 +117,7 @@ namespace Microservice.IdentityServer
             {
                 app.UseDeveloperExceptionPage();
                 app.UseDatabaseErrorPage();
-                app.UseBrowserLink();
+                //app.UseBrowserLink();
             }
             else
             {

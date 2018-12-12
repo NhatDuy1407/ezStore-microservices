@@ -1,8 +1,8 @@
-﻿using System.Collections.Generic;
-using IdentityServer4;
+﻿using IdentityServer4;
 using IdentityServer4.Models;
-using Microservice.Core;
+using Microservices.ApplicationCore.SharedKernel;
 using Microsoft.Extensions.Configuration;
+using System.Collections.Generic;
 
 namespace Microservice.IdentityServer
 {
