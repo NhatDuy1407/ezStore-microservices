@@ -2,7 +2,7 @@
 using ezStore.Product.API.ViewModels;
 using ezStore.Product.ApplicationCore.Application.Commands;
 using ezStore.Product.ApplicationCore.Application.Queries;
-using Microservice.Core.DomainService.Interfaces;
+using Microservices.ApplicationCore.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;

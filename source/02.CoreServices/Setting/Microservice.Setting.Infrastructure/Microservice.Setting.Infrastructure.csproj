@@ -10,11 +10,11 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.2.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="2.2.0" />
     <PackageReference Include="MongoDB.Driver" Version="2.7.0" />
+    <PackageReference Include="System.Reflection.Emit.Lightweight" Version="4.3.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\01.Libraries\Microservice.Core\Microservice.Core.csproj" />
-    <ProjectReference Include="..\..\..\01.Libraries\Microservice.DataAccess.MongoDB\Microservice.DataAccess.MongoDB.csproj" />
+    <ProjectReference Include="..\..\..\01.Libraries\Microservices.Infrastructure.MongoDB\Microservices.Infrastructure.MongoDB.csproj" />
     <ProjectReference Include="..\Microservice.Setting.ApplicationCore\Microservice.Setting.ApplicationCore.csproj" />
   </ItemGroup>
 

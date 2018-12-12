@@ -1,6 +1,5 @@
 ﻿using ezStore.WareHouse.ApplicationCore.DomainEvents;
-using Microservice.Core.CachingService.Interfaces;
-using Microservice.Core.DomainService.Interfaces;
+using Microservices.ApplicationCore.Interfaces;
 using System.Threading.Tasks;
 
 namespace ezStore.WareHouse.ApplicationCore.Application.EventHandlers

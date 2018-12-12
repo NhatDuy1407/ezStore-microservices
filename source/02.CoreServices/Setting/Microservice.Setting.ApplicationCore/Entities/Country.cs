@@ -1,4 +1,4 @@
-﻿using Microservice.Core.Models;
+﻿using Microservices.ApplicationCore.Entities;
 using MongoDB.Bson;
 
 namespace Microservice.Setting.ApplicationCore.Entities

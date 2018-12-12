@@ -1,7 +1,6 @@
-﻿using System.Threading.Tasks;
-using Microservice.Core.DomainService;
-using Microservice.Core.DomainService.Interfaces;
-using Microservice.Member.Domain.MemberAggregate;
+﻿using Microservice.Member.Domain.MemberAggregate;
+using Microservices.ApplicationCore.Interfaces;
+using System.Threading.Tasks;
 
 namespace Microservice.Member.Domain.Application.Commands
 {

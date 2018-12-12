@@ -2,11 +2,12 @@
 using ezStore.Product.Infrastructure;
 using MassTransit;
 using MassTransit.Util;
-using Microservice.Core;
-using Microservice.Core.DomainService;
-using Microservice.Core.DomainService.Interfaces;
-using Microservice.DataAccess.Core.Interfaces;
-using Microservice.DataAccess.Sql;
+using Microservices.ApplicationCore.Interfaces;
+using Microservices.ApplicationCore.Services;
+using Microservices.ApplicationCore.SharedKernel;
+using Microservices.ApplicationCore.Validations;
+using Microservices.Infrastructure;
+using Microservices.Infrastructure.Sql;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System;

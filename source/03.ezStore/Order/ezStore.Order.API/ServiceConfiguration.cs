@@ -1,14 +1,15 @@
 ﻿using ezStore.Order.Infrastructure;
 using MassTransit;
 using MassTransit.Util;
-using Microservice.Core;
-using Microservice.Core.DomainService;
-using Microservice.Core.DomainService.Interfaces;
+using Microservices.ApplicationCore.Interfaces;
+using Microservices.ApplicationCore.Services;
+using Microservices.ApplicationCore.SharedKernel;
+using Microservices.ApplicationCore.Validations;
+using Microservices.Infrastructure;
+using Microservices.Infrastructure.Sql;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System;
-using Microservice.DataAccess.Core.Interfaces;
-using Microservice.DataAccess.Sql;
 
 namespace ezStore.Order.API
 {

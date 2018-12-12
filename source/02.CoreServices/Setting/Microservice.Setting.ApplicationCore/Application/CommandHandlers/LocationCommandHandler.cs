@@ -1,8 +1,6 @@
-﻿using Microservice.Core.DomainService;
-using Microservice.Core.DomainService.Interfaces;
-using Microservice.DataAccess.Core.Interfaces;
-using Microservice.Setting.ApplicationCore.Application.Commands;
+﻿using Microservice.Setting.ApplicationCore.Application.Commands;
 using Microservice.Setting.ApplicationCore.SettingAggregate;
+using Microservices.ApplicationCore.Interfaces;
 using System.Threading.Tasks;
 
 namespace Microservice.Setting.ApplicationCore.Application.CommandHandlers

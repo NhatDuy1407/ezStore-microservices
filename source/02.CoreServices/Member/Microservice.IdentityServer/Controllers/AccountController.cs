@@ -1,11 +1,11 @@
 ﻿using IdentityServer4.Quickstart.UI;
 using IdentityServer4.Services;
 using IdentityServer4.Stores;
-using Microservice.Core.DomainService.Interfaces;
 using Microservice.IdentityServer.Models;
 using Microservice.IdentityServer.Models.AccountViewModels;
 using Microservice.IdentityServer.Services;
 using Microservice.Member.Domain.Application.Commands;
+using Microservices.ApplicationCore.Interfaces;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;

@@ -2,7 +2,7 @@
 using ezStore.WareHouse.ApplicationCore.Dtos;
 using ezStore.WareHouse.ApplicationCore.Mapper;
 using Microservice.DataAccess.Core.Entities;
-using Microservice.DataAccess.Core.Interfaces;
+using Microservices.ApplicationCore.Interfaces;
 using System;
 using System.Linq;
 using System.Threading.Tasks;

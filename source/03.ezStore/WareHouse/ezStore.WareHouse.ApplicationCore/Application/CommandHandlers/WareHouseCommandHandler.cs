@@ -1,7 +1,6 @@
 ﻿using ezStore.WareHouse.ApplicationCore.Application.Commands;
 using ezStore.WareHouse.ApplicationCore.WareHouseAggregate;
-using Microservice.Core.DomainService.Interfaces;
-using Microservice.DataAccess.Core.Interfaces;
+using Microservices.ApplicationCore.Interfaces;
 using System.Threading.Tasks;
 
 namespace ezStore.WareHouse.ApplicationCore.Application.CommandHandlers
