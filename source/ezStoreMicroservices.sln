@@ -105,9 +105,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microservices.ApplicationCo
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microservices.Infrastructure", "01.Libraries\Microservices.Infrastructure\Microservices.Infrastructure.csproj", "{D62EE7EE-55D1-459B-8447-D643A8B696D2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microservices.Infrastructure.Sql", "01.Libraries\Microservices.Infrastructure.Sql\Microservices.Infrastructure.Sql.csproj", "{FAA56B43-311B-41F1-8151-BE8763382519}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microservices.Infrastructure.Sql", "01.Libraries\Microservices.Infrastructure.Sql\Microservices.Infrastructure.Sql.csproj", "{FAA56B43-311B-41F1-8151-BE8763382519}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microservices.Infrastructure.MongoDB", "01.Libraries\Microservices.Infrastructure.MongoDB\Microservices.Infrastructure.MongoDB.csproj", "{5214A225-4040-4D8A-957D-912164DEFC30}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microservices.Infrastructure.MongoDB", "01.Libraries\Microservices.Infrastructure.MongoDB\Microservices.Infrastructure.MongoDB.csproj", "{5214A225-4040-4D8A-957D-912164DEFC30}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microservices.Infrastructure.Caching", "01.Libraries\Microservices.Infrastructure.Caching\Microservices.Infrastructure.Caching.csproj", "{2F6CC127-5633-4476-85BA-799E17AD9BE5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -333,6 +335,14 @@ Global
 		{5214A225-4040-4D8A-957D-912164DEFC30}.Local|Any CPU.Build.0 = Debug|Any CPU
 		{5214A225-4040-4D8A-957D-912164DEFC30}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5214A225-4040-4D8A-957D-912164DEFC30}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2F6CC127-5633-4476-85BA-799E17AD9BE5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2F6CC127-5633-4476-85BA-799E17AD9BE5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2F6CC127-5633-4476-85BA-799E17AD9BE5}.Docker|Any CPU.ActiveCfg = Debug|Any CPU
+		{2F6CC127-5633-4476-85BA-799E17AD9BE5}.Docker|Any CPU.Build.0 = Debug|Any CPU
+		{2F6CC127-5633-4476-85BA-799E17AD9BE5}.Local|Any CPU.ActiveCfg = Debug|Any CPU
+		{2F6CC127-5633-4476-85BA-799E17AD9BE5}.Local|Any CPU.Build.0 = Debug|Any CPU
+		{2F6CC127-5633-4476-85BA-799E17AD9BE5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2F6CC127-5633-4476-85BA-799E17AD9BE5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -372,6 +382,7 @@ Global
 		{D62EE7EE-55D1-459B-8447-D643A8B696D2} = {A6613CAF-30A7-471B-A661-52D34D481943}
 		{FAA56B43-311B-41F1-8151-BE8763382519} = {A6613CAF-30A7-471B-A661-52D34D481943}
 		{5214A225-4040-4D8A-957D-912164DEFC30} = {A6613CAF-30A7-471B-A661-52D34D481943}
+		{2F6CC127-5633-4476-85BA-799E17AD9BE5} = {A6613CAF-30A7-471B-A661-52D34D481943}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {88D9F8A4-8F8A-4E03-A92F-34BCFF26A09D}

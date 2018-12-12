@@ -72,7 +72,7 @@ namespace Microservices.Infrastructure.Loggings
                 {
                     From = Configuration.GetSection(MicroserviceConstants.Notification)[MicroserviceConstants.SystemEmail],
                     To = Configuration.GetSection(MicroserviceConstants.Notification)[MicroserviceConstants.AdminEmail],
-                    Subject = string.Format(Configuration.GetSection(MicroserviceConstants.Notification)[MicroserviceConstants.ErrorEmailSubject], exception?.Message),
+                    Subject = string.Format(Configuration.GetSection(MicroserviceConstants.Notification)[MicroserviceConstants.ErrorEmailSubject], exception?.Message.Replace("\n"," ")),
                     Body = $"Data:{message}, Trace:{exception?.StackTrace}",
                 });
             }

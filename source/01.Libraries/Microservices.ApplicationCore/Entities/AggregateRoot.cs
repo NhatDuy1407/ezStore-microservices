@@ -10,16 +10,13 @@ namespace Microservices.ApplicationCore.Entities
         public AggregateRoot(IDataAccessService dataAccessService)
         {
             this.dataAccessService = dataAccessService;
+            Events = new List<IEvent>();
         }
 
         public List<IEvent> Events { get; private set; }
 
         protected void AddEvent(IEvent @event)
         {
-            if (Events == null)
-            {
-                Events = new List<IEvent>();
-            }
             Events.Add(@event);
         }
     }

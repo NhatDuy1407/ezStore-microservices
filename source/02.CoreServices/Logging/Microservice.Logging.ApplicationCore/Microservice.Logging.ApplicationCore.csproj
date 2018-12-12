@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp2.2</TargetFramework>
     <Authors>Khai Nguyen (khainx127@gmail.com)</Authors>
-    <Product>Microservice</Product>
+    <Product>Microservices</Product>
   </PropertyGroup>
 
   <ItemGroup>

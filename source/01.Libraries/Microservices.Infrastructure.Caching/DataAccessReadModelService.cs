@@ -1,5 +1,4 @@
 ﻿using Microservices.ApplicationCore.Interfaces;
-using Microservices.ApplicationCore.Interfaces;
 
 namespace Microservices.Infrastructure.Caching
 {
