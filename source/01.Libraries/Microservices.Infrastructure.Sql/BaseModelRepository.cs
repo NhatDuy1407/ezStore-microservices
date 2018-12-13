@@ -109,7 +109,7 @@ namespace Microservices.Infrastructure.Sql
                 Func<IQueryable<TModel>, IOrderedQueryable<TModel>> orderByFunc = i => orderQuery;
                 return GetPaged(filter, orderByFunc, includeProperties, isIncludedIsDeleted);
             }
-            return GetPaged(filter, null, includeProperties, isIncludedIsDeleted);
+            return GetPaged(filter, null, includeProperties, isIncludedIsDeleted, page, pageSize);
         }
 
         public TModel FirstOrDefault(Expression<Func<TModel, bool>> filter = null,
