@@ -118,7 +118,7 @@ namespace Microservices.Infrastructure.MongoDB
                 IOrderedQueryable<TModel> orderByFunc(IQueryable<TModel> i) => orderQuery;
                 return GetPaged(filter, orderByFunc, includeProperties, isIncludedIsDeleted);
             }
-            return GetPaged(filter, null, includeProperties, isIncludedIsDeleted);
+            return GetPaged(filter, null, includeProperties, isIncludedIsDeleted, page, pageSize);
         }
 
         public TModel FirstOrDefault(Expression<Func<TModel, bool>> filter = null, Func<IQueryable<TModel>, IOrderedQueryable<TModel>> orderBy = null,

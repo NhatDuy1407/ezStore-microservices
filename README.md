@@ -1,9 +1,8 @@
-# A microservices system built on .NET Core
+# A microservices system built on .NET Core (in-progress)
 
 ## Technologies and frameworks used:
-- ASP.NET MVC Core 2.1.1
-- Microsoft.EntityFrameworkCore (2.1.1)
-- Microsoft.AspNetCore.Identity (2.1.2)
+- ASP.NET MVC Core 2.2
+- Microsoft.EntityFrameworkCore (2.2)
 - IdentityServer4 (2.1.1)
 - Angular6
 - CoreUI
@@ -62,3 +61,12 @@
     - From Visual Studio run command: `Add-Migration Initial`
     - Or, run command line: `dotnet ef migrations add Initial`
 - Call DatabaseInitialize from Program.cs
+
+## Contributing
+- Fork the repo on GitHub
+- Clone the project to your own machine
+- Commit changes to your own branch
+- Push your work back up to your fork
+- Submit a Pull request so that we can review your changes
+
+NOTE: Be sure to merge the latest from "upstream" before making a pull request!

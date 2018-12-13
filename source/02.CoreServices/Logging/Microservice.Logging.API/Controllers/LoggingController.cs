@@ -1,6 +1,6 @@
 ﻿using Microservice.Logging.API.Mappers;
 using Microservice.Logging.API.ViewModels;
-using Microservice.Logging.ApplicationCore.Application.Queries;
+using Microservice.Logging.ApplicationCore.Services.Queries;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Linq;

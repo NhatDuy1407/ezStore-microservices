@@ -1,7 +1,7 @@
 ﻿using ezStore.WareHouse.API.Mappers;
 using ezStore.WareHouse.API.ViewModels;
-using ezStore.WareHouse.ApplicationCore.Application.Commands;
-using ezStore.WareHouse.ApplicationCore.Application.Queries;
+using ezStore.WareHouse.ApplicationCore.Services.Commands;
+using ezStore.WareHouse.ApplicationCore.Services.Queries;
 using Microservice.DataAccess.Core.Entities;
 using Microservices.ApplicationCore.Interfaces;
 using Microsoft.AspNetCore.Authorization;
