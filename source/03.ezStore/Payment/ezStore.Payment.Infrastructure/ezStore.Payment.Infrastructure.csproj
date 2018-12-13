@@ -12,7 +12,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\01.Libraries\Microservice.Core\Microservice.Core.csproj" />
     <ProjectReference Include="..\ezStore.Payment.ApplicationCore\ezStore.Payment.ApplicationCore.csproj" />
   </ItemGroup>
 

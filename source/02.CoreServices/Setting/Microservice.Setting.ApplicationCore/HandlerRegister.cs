@@ -7,7 +7,7 @@ namespace Microservice.Setting.ApplicationCore
     {
         public static void Register(IServiceCollection services)
         {
-            Core.DomainService.HandlerRegister.Register(Assembly.GetExecutingAssembly(), services);
+            Microservices.ApplicationCore.SharedKernel.HandlerRegister.Register(Assembly.GetExecutingAssembly(), services);
         }
     }
 }

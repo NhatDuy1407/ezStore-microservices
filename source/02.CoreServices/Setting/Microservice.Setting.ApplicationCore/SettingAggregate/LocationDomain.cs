@@ -1,8 +1,8 @@
-﻿using Microservice.Core.DomainService.Models;
-using Microservice.Setting.ApplicationCore.Entities;
-using System.Linq;
-using Microservice.DataAccess.Core.Interfaces;
+﻿using Microservice.Setting.ApplicationCore.Entities;
+using Microservices.ApplicationCore.Entities;
+using Microservices.ApplicationCore.Interfaces;
 using MongoDB.Bson;
+using System.Linq;
 
 namespace Microservice.Setting.ApplicationCore.SettingAggregate
 {

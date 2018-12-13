@@ -7,7 +7,7 @@ namespace ezStore.Product.ApplicationCore
     {
         public static void Register(IServiceCollection services)
         {
-            Microservice.Core.DomainService.HandlerRegister.Register(Assembly.GetExecutingAssembly(), services);
+            Microservices.ApplicationCore.SharedKernel.HandlerRegister.Register(Assembly.GetExecutingAssembly(), services);
         }
     }
 }

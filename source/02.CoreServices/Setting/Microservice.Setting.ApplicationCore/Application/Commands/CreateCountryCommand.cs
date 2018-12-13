@@ -1,4 +1,4 @@
-﻿using Microservice.Core.DomainService.Commands;
+﻿using Microservices.ApplicationCore.Commands;
 
 namespace Microservice.Setting.ApplicationCore.Application.Commands
 {

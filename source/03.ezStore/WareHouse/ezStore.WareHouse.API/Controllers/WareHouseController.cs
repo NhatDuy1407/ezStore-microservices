@@ -2,8 +2,8 @@
 using ezStore.WareHouse.API.ViewModels;
 using ezStore.WareHouse.ApplicationCore.Application.Commands;
 using ezStore.WareHouse.ApplicationCore.Application.Queries;
-using Microservice.Core.DomainService.Interfaces;
 using Microservice.DataAccess.Core.Entities;
+using Microservices.ApplicationCore.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -16,12 +16,12 @@ namespace ezStore.WareHouse.API.Controllers
     [ApiController]
     public class WareHouseController : ControllerBase
     {
-        private readonly ICommandProcessor _commandProcessor;
+        private readonly ICommandBus _commandBus;
         private readonly IWareHouseQueries _queries;
 
-        public WareHouseController(ICommandProcessor commandProcessor, IWareHouseQueries queries)
+        public WareHouseController(ICommandBus commandBus, IWareHouseQueries queries)
         {
-            _commandProcessor = commandProcessor;
+            _commandBus = commandBus;
             _queries = queries;
         }
 
@@ -49,7 +49,7 @@ namespace ezStore.WareHouse.API.Controllers
         [HttpPost]
         public Task Put([FromBody] CreateWareHouseCommand command)
         {
-            _commandProcessor.ExecuteAsync(command).Wait();
+            _commandBus.ExecuteAsync(command).Wait();
             return Task.CompletedTask;
         }
 
@@ -57,7 +57,7 @@ namespace ezStore.WareHouse.API.Controllers
         public Task Post(Guid id, [FromBody] UpdateWareHouseCommand command)
         {
             command.Id = id;
-            _commandProcessor.ExecuteAsync(command).Wait();
+            _commandBus.ExecuteAsync(command).Wait();
             return Task.CompletedTask;
         }
 
@@ -65,7 +65,7 @@ namespace ezStore.WareHouse.API.Controllers
         public Task Delete(Guid id)
         {
             var command = new DeleteWareHouseCommand(id);
-            _commandProcessor.ExecuteAsync(command).Wait();
+            _commandBus.ExecuteAsync(command).Wait();
             return Task.CompletedTask;
         }
     }

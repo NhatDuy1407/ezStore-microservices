@@ -1,8 +1,8 @@
-﻿using Microservice.Core.DomainService.Interfaces;
-using Microservice.Setting.API.Mappers;
+﻿using Microservice.Setting.API.Mappers;
 using Microservice.Setting.API.ViewModels;
 using Microservice.Setting.ApplicationCore.Application.Commands;
 using Microservice.Setting.ApplicationCore.Application.Queries;
+using Microservices.ApplicationCore.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
@@ -15,12 +15,12 @@ namespace Microservice.Setting.API.Controllers
     [ApiController]
     public class LocationController : ControllerBase
     {
-        private readonly ICommandProcessor _commandProcessor;
+        private readonly ICommandBus _commandBus;
         private readonly ILocationQueries _queries;
 
-        public LocationController(ICommandProcessor commandProcessor, ILocationQueries queries)
+        public LocationController(ICommandBus commandBus, ILocationQueries queries)
         {
-            _commandProcessor = commandProcessor;
+            _commandBus = commandBus;
             _queries = queries;
         }
 
@@ -40,7 +40,7 @@ namespace Microservice.Setting.API.Controllers
         public Task CreateCountry([FromBody] string name)
         {
             var command = new CreateCountryCommand(name);
-            _commandProcessor.ExecuteAsync(command).Wait();
+            _commandBus.ExecuteAsync(command).Wait();
             return Task.CompletedTask;
         }
 
@@ -48,7 +48,7 @@ namespace Microservice.Setting.API.Controllers
         public Task UpdateCountry(string id, [FromBody] string name)
         {
             var command = new UpdateCountryCommand(id, name);
-            _commandProcessor.ExecuteAsync(command).Wait();
+            _commandBus.ExecuteAsync(command).Wait();
             return Task.CompletedTask;
         }
 
@@ -56,7 +56,7 @@ namespace Microservice.Setting.API.Controllers
         public Task Delete(string id)
         {
             var command = new DeleteCountryCommand(id);
-            _commandProcessor.ExecuteAsync(command).Wait();
+            _commandBus.ExecuteAsync(command).Wait();
             return Task.CompletedTask;
         }
     }

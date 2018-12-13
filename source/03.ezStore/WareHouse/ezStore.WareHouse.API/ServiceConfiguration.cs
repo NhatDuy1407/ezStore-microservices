@@ -1,14 +1,16 @@
 ﻿using ezStore.WareHouse.Infrastructure;
 using MassTransit;
 using MassTransit.Util;
-using Microservice.Core;
-using Microservice.Core.DomainService;
-using Microservice.Core.DomainService.Interfaces;
+using Microservices.ApplicationCore.Interfaces;
+using Microservices.ApplicationCore.Services;
+using Microservices.ApplicationCore.SharedKernel;
+using Microservices.ApplicationCore.Validations;
+using Microservices.Infrastructure;
+using Microservices.Infrastructure.Caching;
+using Microservices.Infrastructure.Sql;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System;
-using Microservice.DataAccess.Core.Interfaces;
-using Microservice.DataAccess.Sql;
 
 namespace ezStore.WareHouse.API
 {
@@ -49,15 +51,17 @@ namespace ezStore.WareHouse.API
             });
 
             services.AddScoped<IValidationContext, ValidationContext>();
-            services.AddTransient<ICommandProcessor, CommandProcessor>();
+            services.AddTransient<ICommandBus, CommandBus>();
+            services.AddTransient<IEventBus, EventBus>();
 
             // Add application services.
-            services.AddTransient<IDomainContext>(i => new DomainContext(i.GetService<IConfiguration>(), i.GetService<IBusControl>()));
+            services.AddTransient<IDomainContext>(i => new DomainContext(i.GetService<IConfiguration>(), i.GetService<IBusControl>(), i.GetService<IEventBus>()));
             services.AddTransient<IDataAccessService>(i => new DataAccessWriteService(i.GetService<WareHouseDbContext>()));
             services.AddTransient<IDataAccessWriteService>(i => new DataAccessWriteService(i.GetService<WareHouseDbContext>()));
             services.AddTransient<IDomainService>(i => new DomainService(i.GetService<IDomainContext>(), i.GetService<IDataAccessWriteService>()));
             services.AddTransient<IDataAccessReadOnlyService>(i => new DataAccessReadOnlyService(i.GetService<WareHouseDbContext>()));
-
+            services.AddTransient<ICacheService>(i => new RedisCacheService(configuration.GetConnectionString(MicroserviceConstants.RedisAddress)));
+            
             ApplicationCore.HandlerRegister.Register(services);
         }
     }

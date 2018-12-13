@@ -1,8 +1,6 @@
 ﻿using ezStore.WareHouse.ApplicationCore.Application.Commands;
 using ezStore.WareHouse.ApplicationCore.WareHouseAggregate;
-using Microservice.Core.DomainService;
-using Microservice.Core.DomainService.Interfaces;
-using Microservice.DataAccess.Core.Interfaces;
+using Microservices.ApplicationCore.Interfaces;
 using System.Threading.Tasks;
 
 namespace ezStore.WareHouse.ApplicationCore.Application.CommandHandlers
@@ -26,7 +24,7 @@ namespace ezStore.WareHouse.ApplicationCore.Application.CommandHandlers
             wareHouseDomain.CreateWareHouse(command.Name);
 
             domainService.ApplyChanges(wareHouseDomain);
-            domainService.SaveChanges();
+
             return Task.CompletedTask;
         }
 
@@ -36,7 +34,6 @@ namespace ezStore.WareHouse.ApplicationCore.Application.CommandHandlers
             wareHouseDomain.UpdateWareHouse(command.Id, command.Name);
 
             domainService.ApplyChanges(wareHouseDomain);
-            domainService.SaveChanges();
             return Task.CompletedTask;
         }
 
@@ -46,7 +43,6 @@ namespace ezStore.WareHouse.ApplicationCore.Application.CommandHandlers
             wareHouseDomain.DeleteWareHouse(command.Id);
 
             domainService.ApplyChanges(wareHouseDomain);
-            domainService.SaveChanges();
             return Task.CompletedTask;
         }
     }

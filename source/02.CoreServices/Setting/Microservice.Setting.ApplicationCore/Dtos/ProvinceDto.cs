@@ -1,6 +1,6 @@
-﻿using Microservice.Core.Models;
+﻿using Microservices.ApplicationCore.Entities;
 
-namespace Microservice.Setting.Domain.Dtos
+namespace Microservice.Setting.ApplicationCore.Dtos
 {
     public class ProvinceDto : ModelStringIdEntity
     {

@@ -25,10 +25,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\01.Libraries\Microservice.Core.DomainService\Microservice.Core.DomainService.csproj" />
-    <ProjectReference Include="..\..\..\01.Libraries\Microservice.Core.Logging\Microservice.Core.Logging.csproj" />
-    <ProjectReference Include="..\..\..\01.Libraries\Microservice.DataAccess.Core\Microservice.DataAccess.Core.csproj" />
-    <ProjectReference Include="..\..\..\01.Libraries\Microservice.DataAccess.MongoDB\Microservice.DataAccess.MongoDB.csproj" />
+    <ProjectReference Include="..\..\..\01.Libraries\Microservices.Infrastructure\Microservices.Infrastructure.csproj" />
     <ProjectReference Include="..\Microservice.Setting.Infrastructure\Microservice.Setting.Infrastructure.csproj" />
   </ItemGroup>
 
