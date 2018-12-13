@@ -1,5 +1,5 @@
 ﻿using ezStore.WareHouse.ApplicationCore.DomainEvents;
-using Microservices.ApplicationCore.Interfaces;
+using Ws4vn.Microservices.ApplicationCore.Interfaces;
 using System.Threading.Tasks;
 
 namespace ezStore.WareHouse.ApplicationCore.Application.EventHandlers

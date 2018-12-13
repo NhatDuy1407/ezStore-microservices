@@ -1,6 +1,6 @@
-﻿using Microservices.ApplicationCore.Entities;
+﻿using Ws4vn.Microservices.ApplicationCore.Entities;
 
-namespace Microservices.ApplicationCore.Interfaces
+namespace Ws4vn.Microservices.ApplicationCore.Interfaces
 {
     public interface IDomainService
     {

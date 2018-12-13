@@ -1,5 +1,5 @@
-﻿using Microservices.ApplicationCore.Entities;
-using Microservices.ApplicationCore.Interfaces;
+﻿using Ws4vn.Microservices.ApplicationCore.Entities;
+using Ws4vn.Microservices.ApplicationCore.Interfaces;
 
 namespace ezStore.Order.ApplicationCore.ProductAggregate
 {

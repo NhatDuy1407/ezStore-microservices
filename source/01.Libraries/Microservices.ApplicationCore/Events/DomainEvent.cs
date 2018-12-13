@@ -1,7 +1,7 @@
-﻿using Microservices.ApplicationCore.Interfaces;
+﻿using Ws4vn.Microservices.ApplicationCore.Interfaces;
 using System;
 
-namespace Microservices.ApplicationCore.Events
+namespace Ws4vn.Microservices.ApplicationCore.Events
 {
     public class DomainEvent : IEvent
     {

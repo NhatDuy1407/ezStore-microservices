@@ -1,4 +1,4 @@
-﻿namespace Microservices.ApplicationCore.Commands
+﻿namespace Ws4vn.Microservices.ApplicationCore.Commands
 {
     public class MinMaxLengthValidatorCommand : ValidationDecoratorCommand
     {

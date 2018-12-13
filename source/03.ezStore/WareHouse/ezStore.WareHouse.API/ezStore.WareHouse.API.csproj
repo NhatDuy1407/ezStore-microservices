@@ -20,9 +20,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\01.Libraries\Microservices.Infrastructure.Caching\Microservices.Infrastructure.Caching.csproj" />
-    <ProjectReference Include="..\..\..\01.Libraries\Microservices.Infrastructure.Sql\Microservices.Infrastructure.Sql.csproj" />
-    <ProjectReference Include="..\..\..\01.Libraries\Microservices.Infrastructure\Microservices.Infrastructure.csproj" />
+    <ProjectReference Include="..\..\..\01.Libraries\Microservices.Infrastructure.Caching\Ws4vn.Microservices.Infrastructure.Caching.csproj" />
+    <ProjectReference Include="..\..\..\01.Libraries\Microservices.Infrastructure.Sql\Ws4vn.Microservices.Infrastructure.Sql.csproj" />
+    <ProjectReference Include="..\..\..\01.Libraries\Microservices.Infrastructure\Ws4vn.Microservices.Infrastructure.csproj" />
     <ProjectReference Include="..\ezStore.WareHouse.Infrastructure\ezStore.WareHouse.Infrastructure.csproj" />
   </ItemGroup>
 

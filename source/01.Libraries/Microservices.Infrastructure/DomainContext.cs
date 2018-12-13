@@ -1,12 +1,12 @@
 ﻿using MassTransit;
-using Microservices.ApplicationCore.Entities;
-using Microservices.ApplicationCore.Events;
-using Microservices.ApplicationCore.Interfaces;
-using Microservices.ApplicationCore.SharedKernel;
+using Ws4vn.Microservices.ApplicationCore.Entities;
+using Ws4vn.Microservices.ApplicationCore.Events;
+using Ws4vn.Microservices.ApplicationCore.Interfaces;
+using Ws4vn.Microservices.ApplicationCore.SharedKernel;
 using Microsoft.Extensions.Configuration;
 using System.Linq;
 
-namespace Microservices.Infrastructure
+namespace Ws4vn.Microservices.Infrastructure
 {
     public class DomainContext : IDomainContext
     {

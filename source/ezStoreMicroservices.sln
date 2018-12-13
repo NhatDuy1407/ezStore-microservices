@@ -101,15 +101,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ezStore.Product.Application
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ezStore.ApplicationEvents", "03.ezStore\ApplicationEvents\ezStore.ApplicationEvents.csproj", "{7E21FAD1-32A1-4793-9932-7FFDD4255FCD}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microservices.ApplicationCore", "01.Libraries\Microservices.ApplicationCore\Microservices.ApplicationCore.csproj", "{052E65AC-58BE-49D2-AEB6-EE1869AD618D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ws4vn.Microservices.ApplicationCore", "01.Libraries\Microservices.ApplicationCore\Ws4vn.Microservices.ApplicationCore.csproj", "{052E65AC-58BE-49D2-AEB6-EE1869AD618D}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microservices.Infrastructure", "01.Libraries\Microservices.Infrastructure\Microservices.Infrastructure.csproj", "{D62EE7EE-55D1-459B-8447-D643A8B696D2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ws4vn.Microservices.Infrastructure", "01.Libraries\Microservices.Infrastructure\Ws4vn.Microservices.Infrastructure.csproj", "{D62EE7EE-55D1-459B-8447-D643A8B696D2}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microservices.Infrastructure.Sql", "01.Libraries\Microservices.Infrastructure.Sql\Microservices.Infrastructure.Sql.csproj", "{FAA56B43-311B-41F1-8151-BE8763382519}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ws4vn.Microservices.Infrastructure.Sql", "01.Libraries\Microservices.Infrastructure.Sql\Ws4vn.Microservices.Infrastructure.Sql.csproj", "{FAA56B43-311B-41F1-8151-BE8763382519}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microservices.Infrastructure.MongoDB", "01.Libraries\Microservices.Infrastructure.MongoDB\Microservices.Infrastructure.MongoDB.csproj", "{5214A225-4040-4D8A-957D-912164DEFC30}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ws4vn.Microservices.Infrastructure.MongoDB", "01.Libraries\Microservices.Infrastructure.MongoDB\Ws4vn.Microservices.Infrastructure.MongoDB.csproj", "{5214A225-4040-4D8A-957D-912164DEFC30}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microservices.Infrastructure.Caching", "01.Libraries\Microservices.Infrastructure.Caching\Microservices.Infrastructure.Caching.csproj", "{2F6CC127-5633-4476-85BA-799E17AD9BE5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ws4vn.Microservices.Infrastructure.Caching", "01.Libraries\Microservices.Infrastructure.Caching\Ws4vn.Microservices.Infrastructure.Caching.csproj", "{2F6CC127-5633-4476-85BA-799E17AD9BE5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -303,40 +303,40 @@ Global
 		{7E21FAD1-32A1-4793-9932-7FFDD4255FCD}.Local|Any CPU.Build.0 = Debug|Any CPU
 		{7E21FAD1-32A1-4793-9932-7FFDD4255FCD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7E21FAD1-32A1-4793-9932-7FFDD4255FCD}.Release|Any CPU.Build.0 = Release|Any CPU
-		{052E65AC-58BE-49D2-AEB6-EE1869AD618D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{052E65AC-58BE-49D2-AEB6-EE1869AD618D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{052E65AC-58BE-49D2-AEB6-EE1869AD618D}.Debug|Any CPU.ActiveCfg = Release|Any CPU
+		{052E65AC-58BE-49D2-AEB6-EE1869AD618D}.Debug|Any CPU.Build.0 = Release|Any CPU
 		{052E65AC-58BE-49D2-AEB6-EE1869AD618D}.Docker|Any CPU.ActiveCfg = Debug|Any CPU
 		{052E65AC-58BE-49D2-AEB6-EE1869AD618D}.Docker|Any CPU.Build.0 = Debug|Any CPU
 		{052E65AC-58BE-49D2-AEB6-EE1869AD618D}.Local|Any CPU.ActiveCfg = Debug|Any CPU
 		{052E65AC-58BE-49D2-AEB6-EE1869AD618D}.Local|Any CPU.Build.0 = Debug|Any CPU
 		{052E65AC-58BE-49D2-AEB6-EE1869AD618D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{052E65AC-58BE-49D2-AEB6-EE1869AD618D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D62EE7EE-55D1-459B-8447-D643A8B696D2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D62EE7EE-55D1-459B-8447-D643A8B696D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D62EE7EE-55D1-459B-8447-D643A8B696D2}.Debug|Any CPU.ActiveCfg = Release|Any CPU
+		{D62EE7EE-55D1-459B-8447-D643A8B696D2}.Debug|Any CPU.Build.0 = Release|Any CPU
 		{D62EE7EE-55D1-459B-8447-D643A8B696D2}.Docker|Any CPU.ActiveCfg = Debug|Any CPU
 		{D62EE7EE-55D1-459B-8447-D643A8B696D2}.Docker|Any CPU.Build.0 = Debug|Any CPU
 		{D62EE7EE-55D1-459B-8447-D643A8B696D2}.Local|Any CPU.ActiveCfg = Debug|Any CPU
 		{D62EE7EE-55D1-459B-8447-D643A8B696D2}.Local|Any CPU.Build.0 = Debug|Any CPU
 		{D62EE7EE-55D1-459B-8447-D643A8B696D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D62EE7EE-55D1-459B-8447-D643A8B696D2}.Release|Any CPU.Build.0 = Release|Any CPU
-		{FAA56B43-311B-41F1-8151-BE8763382519}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FAA56B43-311B-41F1-8151-BE8763382519}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FAA56B43-311B-41F1-8151-BE8763382519}.Debug|Any CPU.ActiveCfg = Release|Any CPU
+		{FAA56B43-311B-41F1-8151-BE8763382519}.Debug|Any CPU.Build.0 = Release|Any CPU
 		{FAA56B43-311B-41F1-8151-BE8763382519}.Docker|Any CPU.ActiveCfg = Debug|Any CPU
 		{FAA56B43-311B-41F1-8151-BE8763382519}.Docker|Any CPU.Build.0 = Debug|Any CPU
 		{FAA56B43-311B-41F1-8151-BE8763382519}.Local|Any CPU.ActiveCfg = Debug|Any CPU
 		{FAA56B43-311B-41F1-8151-BE8763382519}.Local|Any CPU.Build.0 = Debug|Any CPU
 		{FAA56B43-311B-41F1-8151-BE8763382519}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FAA56B43-311B-41F1-8151-BE8763382519}.Release|Any CPU.Build.0 = Release|Any CPU
-		{5214A225-4040-4D8A-957D-912164DEFC30}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5214A225-4040-4D8A-957D-912164DEFC30}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5214A225-4040-4D8A-957D-912164DEFC30}.Debug|Any CPU.ActiveCfg = Release|Any CPU
+		{5214A225-4040-4D8A-957D-912164DEFC30}.Debug|Any CPU.Build.0 = Release|Any CPU
 		{5214A225-4040-4D8A-957D-912164DEFC30}.Docker|Any CPU.ActiveCfg = Debug|Any CPU
 		{5214A225-4040-4D8A-957D-912164DEFC30}.Docker|Any CPU.Build.0 = Debug|Any CPU
 		{5214A225-4040-4D8A-957D-912164DEFC30}.Local|Any CPU.ActiveCfg = Debug|Any CPU
 		{5214A225-4040-4D8A-957D-912164DEFC30}.Local|Any CPU.Build.0 = Debug|Any CPU
 		{5214A225-4040-4D8A-957D-912164DEFC30}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5214A225-4040-4D8A-957D-912164DEFC30}.Release|Any CPU.Build.0 = Release|Any CPU
-		{2F6CC127-5633-4476-85BA-799E17AD9BE5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2F6CC127-5633-4476-85BA-799E17AD9BE5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2F6CC127-5633-4476-85BA-799E17AD9BE5}.Debug|Any CPU.ActiveCfg = Release|Any CPU
+		{2F6CC127-5633-4476-85BA-799E17AD9BE5}.Debug|Any CPU.Build.0 = Release|Any CPU
 		{2F6CC127-5633-4476-85BA-799E17AD9BE5}.Docker|Any CPU.ActiveCfg = Debug|Any CPU
 		{2F6CC127-5633-4476-85BA-799E17AD9BE5}.Docker|Any CPU.Build.0 = Debug|Any CPU
 		{2F6CC127-5633-4476-85BA-799E17AD9BE5}.Local|Any CPU.ActiveCfg = Debug|Any CPU

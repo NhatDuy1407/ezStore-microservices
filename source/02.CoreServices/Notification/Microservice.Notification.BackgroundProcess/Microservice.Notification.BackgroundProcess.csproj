@@ -11,10 +11,10 @@
     <PackageReference Include="Microsoft.AspNetCore.App" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\01.Libraries\Microservices.Infrastructure\Microservices.Infrastructure.csproj" />
+    <Folder Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Properties\" />
+    <ProjectReference Include="..\..\..\01.Libraries\Microservices.Infrastructure\Ws4vn.Microservices.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

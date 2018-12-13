@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Microservices.ApplicationCore.Exceptions
+namespace Ws4vn.Microservices.ApplicationCore.Exceptions
 {
     public class EventHandlerNotFoundException : Exception
     {

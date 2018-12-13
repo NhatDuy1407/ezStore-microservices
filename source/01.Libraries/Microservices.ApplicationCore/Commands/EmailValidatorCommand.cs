@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Net.Mail;
 
-namespace Microservices.ApplicationCore.Commands
+namespace Ws4vn.Microservices.ApplicationCore.Commands
 {
     public class EmailValidatorCommand : ValidationDecoratorCommand
     {

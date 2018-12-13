@@ -2,7 +2,7 @@
 using ezStore.Product.API.ViewModels;
 using ezStore.Product.ApplicationCore.Services.Commands;
 using ezStore.Product.ApplicationCore.Services.Queries;
-using Microservices.ApplicationCore.Interfaces;
+using Ws4vn.Microservices.ApplicationCore.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;

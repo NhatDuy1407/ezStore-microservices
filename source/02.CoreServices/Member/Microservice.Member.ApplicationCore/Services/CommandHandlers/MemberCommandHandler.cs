@@ -1,5 +1,5 @@
 ﻿using Microservice.Member.Domain.MemberAggregate;
-using Microservices.ApplicationCore.Interfaces;
+using Ws4vn.Microservices.ApplicationCore.Interfaces;
 using System.Threading.Tasks;
 
 namespace Microservice.Member.Domain.Application.Commands

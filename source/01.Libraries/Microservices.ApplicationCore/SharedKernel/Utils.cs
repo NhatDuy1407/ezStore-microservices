@@ -3,7 +3,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
 
-namespace Microservices.ApplicationCore.SharedKernel
+namespace Ws4vn.Microservices.ApplicationCore.SharedKernel
 {
     public static class Utils
     {

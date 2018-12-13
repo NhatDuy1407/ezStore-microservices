@@ -1,9 +1,9 @@
-﻿using Microservices.ApplicationCore.Interfaces;
+﻿using Ws4vn.Microservices.ApplicationCore.Interfaces;
 using Microsoft.Extensions.DependencyInjection;
 using System.Linq;
 using System.Reflection;
 
-namespace Microservices.ApplicationCore.SharedKernel
+namespace Ws4vn.Microservices.ApplicationCore.SharedKernel
 {
     public static class HandlerRegister
     {

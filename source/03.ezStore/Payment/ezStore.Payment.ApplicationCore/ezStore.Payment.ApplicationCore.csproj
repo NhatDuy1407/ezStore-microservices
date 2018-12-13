@@ -13,7 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\01.Libraries\Microservices.ApplicationCore\Microservices.ApplicationCore.csproj" />
+    <ProjectReference Include="..\..\..\01.Libraries\Microservices.ApplicationCore\Ws4vn.Microservices.ApplicationCore.csproj" />
   </ItemGroup>
 
   <ItemGroup>
