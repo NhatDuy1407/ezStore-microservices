@@ -25,4 +25,8 @@
     <ProjectReference Include="..\ezStore.Product.Infrastructure\ezStore.Product.Infrastructure.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Properties\" />
+  </ItemGroup>
+
 </Project>

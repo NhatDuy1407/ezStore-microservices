@@ -9,8 +9,6 @@ namespace Microservices.Infrastructure.MongoDB
 {
     public class MongoDbContext
     {
-        public List<IEvent> Events { get; private set; }
-
         private readonly Hashtable _hashRepository;
 
         public MongoDbContext(string connectionString, string databaseName, bool isSsl)

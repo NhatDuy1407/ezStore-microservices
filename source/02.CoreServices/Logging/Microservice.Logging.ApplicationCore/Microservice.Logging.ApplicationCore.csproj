@@ -13,6 +13,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\01.Libraries\Microservices.ApplicationCore\Microservices.ApplicationCore.csproj" />
-  </ItemGroup>  
+  </ItemGroup>
 
 </Project>
