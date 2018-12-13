@@ -1,4 +1,4 @@
-﻿using ezStore.Product.ApplicationCore.Application.Queries;
+﻿using ezStore.Product.ApplicationCore.Services.Queries;
 using ezStore.Product.Infrastructure;
 using MassTransit;
 using MassTransit.Util;

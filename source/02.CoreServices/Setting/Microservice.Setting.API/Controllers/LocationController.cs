@@ -1,7 +1,7 @@
 ﻿using Microservice.Setting.API.Mappers;
 using Microservice.Setting.API.ViewModels;
-using Microservice.Setting.ApplicationCore.Application.Commands;
-using Microservice.Setting.ApplicationCore.Application.Queries;
+using Microservice.Setting.ApplicationCore.Services.Commands;
+using Microservice.Setting.ApplicationCore.Services.Queries;
 using Microservices.ApplicationCore.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;

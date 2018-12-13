@@ -1,5 +1,4 @@
 ﻿using Microservices.ApplicationCore.Events;
-using Microservices.ApplicationCore.Exceptions;
 using Microservices.ApplicationCore.Interfaces;
 using System;
 using System.Reflection;
@@ -25,13 +24,15 @@ namespace Microservices.ApplicationCore.Services
             Type repositoryType = typeof(IEventHandler<>).MakeGenericType(elementType);
             var handler = _provider.GetService(repositoryType);
 
-            if (handler == null)
-                throw new EventHandlerNotFoundException();
+            if (handler != null)
+            {
+                MethodInfo method = repositoryType.GetMethod("ExecuteAsync");
+                MethodInfo genericMethod = method.MakeGenericMethod(elementType);
 
-            MethodInfo method = repositoryType.GetMethod("ExecuteAsync");
-            MethodInfo genericMethod = method.MakeGenericMethod(elementType);
+                return (Task)genericMethod.Invoke(handler, new[] { Convert.ChangeType(@event, elementType) });
+            }
 
-            return (Task)genericMethod.Invoke(handler, new[] { Convert.ChangeType(@event, elementType) });
+            return Task.CompletedTask;
         }
     }
 }

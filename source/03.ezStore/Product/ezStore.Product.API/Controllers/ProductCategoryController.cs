@@ -1,7 +1,7 @@
 ﻿using ezStore.Product.API.Mappers;
 using ezStore.Product.API.ViewModels;
-using ezStore.Product.ApplicationCore.Application.Commands;
-using ezStore.Product.ApplicationCore.Application.Queries;
+using ezStore.Product.ApplicationCore.Services.Commands;
+using ezStore.Product.ApplicationCore.Services.Queries;
 using Microservices.ApplicationCore.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
