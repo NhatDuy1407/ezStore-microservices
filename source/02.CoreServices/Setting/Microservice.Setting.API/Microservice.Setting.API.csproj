@@ -25,7 +25,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\01.Libraries\Microservices.Infrastructure\Microservices.Infrastructure.csproj" />
+    <ProjectReference Include="..\..\..\01.Libraries\Microservices.Infrastructure\Ws4vn.Microservices.Infrastructure.csproj" />
     <ProjectReference Include="..\Microservice.Setting.Infrastructure\Microservice.Setting.Infrastructure.csproj" />
   </ItemGroup>
 

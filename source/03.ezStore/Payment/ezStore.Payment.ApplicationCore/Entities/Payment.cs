@@ -1,4 +1,4 @@
-﻿using Microservices.ApplicationCore.Entities;
+﻿using Ws4vn.Microservices.ApplicationCore.Entities;
 
 namespace ezStore.Payment.ApplicationCore.Entities
 {

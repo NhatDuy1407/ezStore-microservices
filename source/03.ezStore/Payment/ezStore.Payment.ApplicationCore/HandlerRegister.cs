@@ -7,7 +7,7 @@ namespace ezStore.Payment.ApplicationCore
     {
         public static void Register(IServiceCollection services)
         {
-            Microservices.ApplicationCore.SharedKernel.HandlerRegister.Register(Assembly.GetExecutingAssembly(), services);
+            Ws4vn.Microservices.ApplicationCore.SharedKernel.HandlerRegister.Register(Assembly.GetExecutingAssembly(), services);
         }
     }
 }

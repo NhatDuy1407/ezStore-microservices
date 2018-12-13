@@ -12,9 +12,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\01.Libraries\Microservices.ApplicationCore\Microservices.ApplicationCore.csproj" />
-    <ProjectReference Include="..\..\..\01.Libraries\Microservices.Infrastructure.MongoDB\Microservices.Infrastructure.MongoDB.csproj" />
-    <ProjectReference Include="..\..\..\01.Libraries\Microservices.Infrastructure\Microservices.Infrastructure.csproj" />
+    <ProjectReference Include="..\..\..\01.Libraries\Microservices.ApplicationCore\Ws4vn.Microservices.ApplicationCore.csproj" />
+    <ProjectReference Include="..\..\..\01.Libraries\Microservices.Infrastructure.MongoDB\Ws4vn.Microservices.Infrastructure.MongoDB.csproj" />
+    <ProjectReference Include="..\..\..\01.Libraries\Microservices.Infrastructure\Ws4vn.Microservices.Infrastructure.csproj" />
     <ProjectReference Include="..\Microservice.Logging.ApplicationCore\Microservice.Logging.ApplicationCore.csproj" />
   </ItemGroup>
 

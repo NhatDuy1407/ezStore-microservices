@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections;
-using Microservices.ApplicationCore.Interfaces;
+using Ws4vn.Microservices.ApplicationCore.Interfaces;
 
-namespace Microservices.Infrastructure.MongoDB
+namespace Ws4vn.Microservices.Infrastructure.MongoDB
 {
     public class DataAccessWriteService : IDataAccessWriteService
     {

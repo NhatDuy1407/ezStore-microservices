@@ -1,7 +1,7 @@
 ﻿using MassTransit;
-using Microservices.ApplicationCore.Events;
-using Microservices.ApplicationCore.SharedKernel;
-using Microservices.Infrastructure.Events;
+using Ws4vn.Microservices.ApplicationCore.Events;
+using Ws4vn.Microservices.ApplicationCore.SharedKernel;
+using Ws4vn.Microservices.Infrastructure.Events;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;

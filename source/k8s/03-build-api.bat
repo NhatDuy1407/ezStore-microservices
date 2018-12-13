@@ -1,4 +1,4 @@
-dotnet publish ezStoreMicroservice.sln
+dotnet publish ezStoreMicroservices.sln
 docker-compose -f docker-compose.k8s.yml build 
 
 docker tag microservice.identityserver khainx127/microservice.identityserver

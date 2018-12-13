@@ -1,7 +1,7 @@
 ﻿using ezStore.Product.ApplicationCore.Dtos;
 using ezStore.Product.ApplicationCore.Entities;
 using ezStore.Product.ApplicationCore.Mapper;
-using Microservices.ApplicationCore.Interfaces;
+using Ws4vn.Microservices.ApplicationCore.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;

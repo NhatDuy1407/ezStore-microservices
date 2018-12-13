@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Microservices.ApplicationCore.Events
+namespace Ws4vn.Microservices.ApplicationCore.Events
 {
     [MessageBusRoute(EventRouteConstants.LoggingService)]
     public class WriteLogEvent : ApplicationEvent

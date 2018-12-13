@@ -1,6 +1,6 @@
-﻿using Microservices.ApplicationCore.Interfaces;
+﻿using Ws4vn.Microservices.ApplicationCore.Interfaces;
 
-namespace Microservices.Infrastructure.Caching
+namespace Ws4vn.Microservices.Infrastructure.Caching
 {
     public class DataAccessReadModelService : IReadModelRepository
     {

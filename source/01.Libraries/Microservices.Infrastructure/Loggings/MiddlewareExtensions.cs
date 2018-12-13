@@ -5,7 +5,7 @@ using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using System.Net;
 
-namespace Microservices.Infrastructure.Loggings
+namespace Ws4vn.Microservices.Infrastructure.Loggings
 {
     public static class MiddlewareExtensions
     {

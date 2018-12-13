@@ -1,10 +1,10 @@
-﻿using Microservices.ApplicationCore.Events;
-using Microservices.ApplicationCore.Interfaces;
+﻿using Ws4vn.Microservices.ApplicationCore.Events;
+using Ws4vn.Microservices.ApplicationCore.Interfaces;
 using System;
 using System.Reflection;
 using System.Threading.Tasks;
 
-namespace Microservices.ApplicationCore.Services
+namespace Ws4vn.Microservices.ApplicationCore.Services
 {
     public class EventBus : IEventBus
     {

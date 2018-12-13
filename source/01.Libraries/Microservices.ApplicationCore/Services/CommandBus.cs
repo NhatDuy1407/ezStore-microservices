@@ -1,9 +1,9 @@
-﻿using Microservices.ApplicationCore.Exceptions;
-using Microservices.ApplicationCore.Interfaces;
+﻿using Ws4vn.Microservices.ApplicationCore.Exceptions;
+using Ws4vn.Microservices.ApplicationCore.Interfaces;
 using System;
 using System.Threading.Tasks;
 
-namespace Microservices.ApplicationCore.Services
+namespace Ws4vn.Microservices.ApplicationCore.Services
 {
     public class CommandBus : ICommandBus
     {

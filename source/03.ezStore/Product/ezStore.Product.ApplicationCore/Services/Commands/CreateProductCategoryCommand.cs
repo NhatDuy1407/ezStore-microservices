@@ -1,4 +1,4 @@
-﻿using Microservices.ApplicationCore.Commands;
+﻿using Ws4vn.Microservices.ApplicationCore.Commands;
 
 namespace ezStore.Product.ApplicationCore.Services.Commands
 {

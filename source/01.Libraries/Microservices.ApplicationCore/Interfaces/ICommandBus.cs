@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 
-namespace Microservices.ApplicationCore.Interfaces
+namespace Ws4vn.Microservices.ApplicationCore.Interfaces
 {
     public interface ICommandBus
     {

@@ -1,6 +1,6 @@
 ﻿using Microservice.Setting.ApplicationCore.Services.Commands;
 using Microservice.Setting.ApplicationCore.SettingAggregate;
-using Microservices.ApplicationCore.Interfaces;
+using Ws4vn.Microservices.ApplicationCore.Interfaces;
 using System.Threading.Tasks;
 
 namespace Microservice.Setting.ApplicationCore.Services.CommandHandlers

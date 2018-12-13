@@ -1,7 +1,7 @@
-﻿using Microservices.ApplicationCore.Events;
+﻿using Ws4vn.Microservices.ApplicationCore.Events;
 using System.Threading.Tasks;
 
-namespace Microservices.ApplicationCore.Interfaces
+namespace Ws4vn.Microservices.ApplicationCore.Interfaces
 {
     public interface IEventBus
     {

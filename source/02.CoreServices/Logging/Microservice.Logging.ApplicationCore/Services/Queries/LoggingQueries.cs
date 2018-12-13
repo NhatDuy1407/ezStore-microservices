@@ -1,6 +1,6 @@
 ﻿using Microservice.Logging.ApplicationCore.Dtos;
 using Microservice.Logging.ApplicationCore.Entities;
-using Microservices.ApplicationCore.Interfaces;
+using Ws4vn.Microservices.ApplicationCore.Interfaces;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;

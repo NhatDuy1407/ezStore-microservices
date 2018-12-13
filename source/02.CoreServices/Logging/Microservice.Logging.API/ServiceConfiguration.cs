@@ -1,6 +1,6 @@
-﻿using Microservices.ApplicationCore.Interfaces;
-using Microservices.ApplicationCore.SharedKernel;
-using Microservices.Infrastructure.MongoDB;
+﻿using Ws4vn.Microservices.ApplicationCore.Interfaces;
+using Ws4vn.Microservices.ApplicationCore.SharedKernel;
+using Ws4vn.Microservices.Infrastructure.MongoDB;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 

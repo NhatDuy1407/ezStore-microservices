@@ -1,5 +1,5 @@
 ﻿using MongoDB.Bson;
-using Microservices.ApplicationCore.Entities;
+using Ws4vn.Microservices.ApplicationCore.Entities;
 
 namespace Microservice.Member.ApplicationCore.Entities
 {

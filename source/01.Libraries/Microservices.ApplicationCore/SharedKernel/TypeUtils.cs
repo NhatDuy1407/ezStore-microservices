@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Microservices.ApplicationCore.SharedKernel
+namespace Ws4vn.Microservices.ApplicationCore.SharedKernel
 {
     public static class TypeUtils
     {

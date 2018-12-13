@@ -1,9 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections;
-using Microservices.ApplicationCore.Interfaces;
+using Ws4vn.Microservices.ApplicationCore.Interfaces;
 
-namespace Microservices.Infrastructure.Sql
+namespace Ws4vn.Microservices.Infrastructure.Sql
 {
     public class DataAccessWriteService : IDataAccessWriteService
     {

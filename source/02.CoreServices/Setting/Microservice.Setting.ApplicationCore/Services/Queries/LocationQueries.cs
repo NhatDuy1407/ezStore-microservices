@@ -1,5 +1,5 @@
 ﻿using Microservice.DataAccess.Core.Entities;
-using Microservices.ApplicationCore.Interfaces;
+using Ws4vn.Microservices.ApplicationCore.Interfaces;
 using Microservice.Setting.ApplicationCore.Dtos;
 using Microservice.Setting.ApplicationCore.Entities;
 using Microservice.Setting.ApplicationCore.Mapper;

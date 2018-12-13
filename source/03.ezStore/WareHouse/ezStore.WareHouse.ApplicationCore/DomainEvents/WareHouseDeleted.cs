@@ -1,4 +1,4 @@
-﻿using Microservices.ApplicationCore.Events;
+﻿using Ws4vn.Microservices.ApplicationCore.Events;
 using System;
 
 namespace ezStore.WareHouse.ApplicationCore.DomainEvents
