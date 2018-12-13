@@ -25,4 +25,8 @@
     <ProjectReference Include="..\Microservice.Member.ApplicationCore\Microservice.Member.ApplicationCore.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Properties\" />
+  </ItemGroup>
+
 </Project>
