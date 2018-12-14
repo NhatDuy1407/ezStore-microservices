@@ -2,10 +2,10 @@
 using MassTransit;
 using MassTransit.RabbitMqTransport;
 using MassTransit.Util;
-using Ws4vn.Microservices.ApplicationCore.SharedKernel;
+using Ws4vn.Microservicess.ApplicationCore.SharedKernel;
 using Microsoft.Extensions.Configuration;
 
-namespace Ws4vn.Microservices.Infrastructure.Events
+namespace Ws4vn.Microservicess.Infrastructure.Events
 {
     public abstract class ComsumerService
     {
@@ -24,17 +24,17 @@ namespace Ws4vn.Microservices.Infrastructure.Events
         {
             _busControl = Bus.Factory.CreateUsingRabbitMq(x =>
             {
-                var username = _configuration.GetConnectionString(MicroserviceConstants.RabbitMQUsername);
-                var password = _configuration.GetConnectionString(MicroserviceConstants.RabbitMQPassword);
-                IRabbitMqHost host = x.Host(new Uri(_configuration.GetConnectionString(MicroserviceConstants.RabbitMQHost)), h =>
+                var username = _configuration.GetConnectionString(MicroservicesConstants.RabbitMQUsername);
+                var password = _configuration.GetConnectionString(MicroservicesConstants.RabbitMQPassword);
+                IRabbitMqHost host = x.Host(new Uri(_configuration.GetConnectionString(MicroservicesConstants.RabbitMQHost)), h =>
                 {
                     if (!string.IsNullOrEmpty(username))
                     {
-                        h.Username(_configuration.GetConnectionString(MicroserviceConstants.RabbitMQUsername));
+                        h.Username(_configuration.GetConnectionString(MicroservicesConstants.RabbitMQUsername));
                     }
                     if (!string.IsNullOrEmpty(password))
                     {
-                        h.Password(_configuration.GetConnectionString(MicroserviceConstants.RabbitMQPassword));
+                        h.Password(_configuration.GetConnectionString(MicroservicesConstants.RabbitMQPassword));
                     }
                 });
 

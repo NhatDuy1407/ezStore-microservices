@@ -1,14 +1,14 @@
 version: '3.5'
 
 networks:
-  microservice-network:
-    name: microservice-network
+  microservices-network:
+    name: microservices-network
     driver: bridge
     
 services:
   identity.db:
-    image: microservice.identity.db
-    container_name: microservice-identity-db
+    image: microservices.identity.db
+    container_name: microservices-identity-db
     build:
       context: .
       dockerfile: Dockerfile.identity.db
@@ -16,51 +16,51 @@ services:
       - 3306:3306
     entrypoint: ['/entrypoint.sh', '--default-authentication-plugin=mysql_native_password']
     networks:
-      - microservice-network
+      - microservices-network
 
   services.queue:
-    image: microservice.services.queue
-    container_name: microservice-services-queue
+    image: microservices.services.queue
+    container_name: microservices-services-queue
     build:
       context: .
       dockerfile: Dockerfile.services.queue
     ports:
       - 15672:15672
     networks:
-      - microservice-network
+      - microservices-network
 
   services.db:
-    image: microservice.services.db
-    container_name: microservice-services-db
+    image: microservices.services.db
+    container_name: microservices-services-db
     build:
       context: .
       dockerfile: Dockerfile.services.db
     ports:
       - 27017:27017
     networks:
-      - microservice-network
+      - microservices-network
 
   settings.db:
-    image: microservice.settings.db
-    container_name: microservice-settings-db
+    image: microservices.settings.db
+    container_name: microservices-settings-db
     build:
       context: .
       dockerfile: Dockerfile.settings.db
     ports:
       - 27018:27017
     networks:
-      - microservice-network
+      - microservices-network
 
   services.redis:
-    image: microservice.services.redis
-    container_name: microservice-services-redis
+    image: microservices.services.redis
+    container_name: microservices-services-redis
     build:
       context: .
       dockerfile: Dockerfile.services.redis
     ports:
       - 6379:6379
     networks:
-      - microservice-network
+      - microservices-network
 
   ezStore.order.db:
     image: ezstore.order.db
@@ -72,7 +72,7 @@ services:
       - 3307:3306
     entrypoint: ['/entrypoint.sh', '--default-authentication-plugin=mysql_native_password']
     networks:
-      - microservice-network
+      - microservices-network
 
   ezStore.payment.db:
     image: ezstore.payment.db
@@ -84,7 +84,7 @@ services:
       - 3308:3306
     entrypoint: ['/entrypoint.sh', '--default-authentication-plugin=mysql_native_password']
     networks:
-      - microservice-network
+      - microservices-network
 
   ezStore.order.db:
     image: ezstore.order.db
@@ -96,7 +96,7 @@ services:
       - 3307:3306
     entrypoint: ['/entrypoint.sh', '--default-authentication-plugin=mysql_native_password']
     networks:
-      - microservice-network
+      - microservices-network
 
   ezStore.payment.db:
     image: ezstore.payment.db
@@ -108,7 +108,7 @@ services:
       - 3308:3306
     entrypoint: ['/entrypoint.sh', '--default-authentication-plugin=mysql_native_password']
     networks:
-      - microservice-network
+      - microservices-network
 
   ezStore.product.db:
     image: ezstore.product.db
@@ -120,7 +120,7 @@ services:
       - 3309:3306
     entrypoint: ['/entrypoint.sh', '--default-authentication-plugin=mysql_native_password']
     networks:
-      - microservice-network
+      - microservices-network
 
   ezStore.warehouse.db:
     image: ezstore.warehouse.db
@@ -132,4 +132,4 @@ services:
       - 3310:3306
     entrypoint: ['/entrypoint.sh', '--default-authentication-plugin=mysql_native_password']
     networks:
-      - microservice-network
+      - microservices-network

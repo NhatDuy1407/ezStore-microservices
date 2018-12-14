@@ -1,44 +1,44 @@
 version: '3.4'
 
 services:
-  microservice.identityserver:
-    image: microservice.identityserver
-    container_name: microservice-identityserver
+  microservices.identityserver:
+    image: microservices.identityserver
+    container_name: microservices-identityserver
     build:
       target: deploy
-      context: 02.CoreServices/Member/Microservice.IdentityServer
+      context: 02.CoreServices/Member/Microservices.IdentityServer
       dockerfile: Dockerfile.deploy
 
-  microservice.logging.api:
-    image: microservice.logging.api
-    container_name: microservice-logging-api
+  microservices.logging.api:
+    image: microservices.logging.api
+    container_name: microservices-logging-api
     build:
       target: deploy
-      context: 02.CoreServices/Logging/Microservice.Logging.API
+      context: 02.CoreServices/Logging/Microservices.Logging.API
       dockerfile: Dockerfile.deploy
 
-  microservice.setting.api:
-    image: microservice.setting.api
-    container_name: microservice-setting-api
+  microservices.setting.api:
+    image: microservices.setting.api
+    container_name: microservices-setting-api
     build:
       target: deploy
-      context: 02.CoreServices/Setting/Microservice.Setting.API
+      context: 02.CoreServices/Setting/Microservices.Setting.API
       dockerfile: Dockerfile.deploy
 
-  microservice.logging.backgroundprocess:
-    image: microservice.logging.background
-    container_name: microservice-logging-background
+  microservices.logging.backgroundprocess:
+    image: microservices.logging.background
+    container_name: microservices-logging-background
     build:
       target: deploy
-      context: 02.CoreServices/Logging/Microservice.Logging.BackgroundProcess
+      context: 02.CoreServices/Logging/Microservices.Logging.BackgroundProcess
       dockerfile: Dockerfile.deploy
 
-  microservice.notification.backgroundprocess:
-    image: microservice.notification.background
-    container_name: microservice-notification-background
+  microservices.notification.backgroundprocess:
+    image: microservices.notification.background
+    container_name: microservices-notification-background
     build:
       target: deploy
-      context: 02.CoreServices/Notification/Microservice.Notification.BackgroundProcess
+      context: 02.CoreServices/Notification/Microservices.Notification.BackgroundProcess
       dockerfile: Dockerfile.deploy
     dns:
       - 8.8.8.8

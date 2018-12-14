@@ -1,4 +1,4 @@
-# A microservices system built on .NET Core (in-progress)
+# A microservicess system built on .NET Core (in-progress)
 
 ## Technologies and frameworks used:
 - ASP.NET MVC Core 2.2
@@ -39,12 +39,12 @@
 - From Istio folder, run `kubectl apply -f install/kubernetes/istio-demo.yaml`
 - Waiting for Istio ready, run Istio Dashboard: `kubectl -n istio-system port-forward $(kubectl -n istio-system get pod -l app=grafana -o jsonpath='{.items[0].metadata.name}') 3000:3000 &` and open http://localhost:3000
 - Run `k8s\istio-03-rules.bat` to allow Istio Service to connect database from outside 
-- Run 'k8s\istio-04-gateway.bat' to allow run API from domain name http://microservice.identityserver:30001/
+- Run 'k8s\istio-04-gateway.bat' to allow run API from domain name http://microservices.identityserver:30001/
 - Run `k8s\istio-05-setup-api.bat` to set up API with injected Istio sidecar
 - Run `kubectl -n istio-system port-forward istio-egressgateway-56bdd5fcfb-rxbzs 30001` to forward port 30001. (`istio-egressgateway-56bdd5fcfb-rxbzs` is istio-egressgateway)
-- Open site http://microservice.identityserver:30001/ and check activity from http://localhost:3000 
+- Open site http://microservices.identityserver:30001/ and check activity from http://localhost:3000 
 
-## Microservices
+## Microservicess
 - Identity Server
 - Logging Service
 - Notification Service
@@ -56,7 +56,7 @@
 - From `ezStore.Product.API`, register service:
 
 `services.AddDbContext<ApplicationDbContext>(options => 
-                options.UseMySql(Configuration.GetConnectionString(MicroserviceConstants.DefaultConnection), b => b.MigrationsAssembly("ezStore.Product.API")));`
+                options.UseMySql(Configuration.GetConnectionString(MicroservicesConstants.DefaultConnection), b => b.MigrationsAssembly("ezStore.Product.API")));`
 - Add migration:
     - From Visual Studio run command: `Add-Migration Initial`
     - Or, run command line: `dotnet ef migrations add Initial`

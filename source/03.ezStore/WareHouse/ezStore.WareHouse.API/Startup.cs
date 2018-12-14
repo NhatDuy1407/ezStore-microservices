@@ -1,8 +1,8 @@
 ﻿using ezStore.WareHouse.Infrastructure;
 using IdentityServer4.AccessTokenValidation;
 using MassTransit;
-using Ws4vn.Microservices.ApplicationCore.SharedKernel;
-using Ws4vn.Microservices.Infrastructure.Loggings;
+using Ws4vn.Microservicess.ApplicationCore.SharedKernel;
+using Ws4vn.Microservicess.Infrastructure.Loggings;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -55,14 +55,14 @@ namespace ezStore.WareHouse.API
             services.AddAuthentication(IdentityServerAuthenticationDefaults.AuthenticationScheme)
                 .AddIdentityServerAuthentication(options =>
                 {
-                    options.Authority = Configuration.GetConnectionString(MicroserviceConstants.IdentityServerIssuerUri);
+                    options.Authority = Configuration.GetConnectionString(MicroservicesConstants.IdentityServerIssuerUri);
                     options.RequireHttpsMetadata = false;
-                    options.ApiName = MicroserviceConstants.IdentityServerAPIName;
-                    options.ApiSecret = MicroserviceConstants.IdentityServerSecret;
+                    options.ApiName = MicroservicesConstants.IdentityServerAPIName;
+                    options.ApiSecret = MicroservicesConstants.IdentityServerSecret;
                 });
 
             services.AddDbContext<WareHouseDbContext>(options =>
-                options.UseMySql(Configuration.GetConnectionString(MicroserviceConstants.DefaultConnection), b => b.MigrationsAssembly("ezStore.WareHouse.API")));
+                options.UseMySql(Configuration.GetConnectionString(MicroservicesConstants.DefaultConnection), b => b.MigrationsAssembly("ezStore.WareHouse.API")));
 
             ServiceConfiguration.ConfigureServices(services, Configuration);
         }
@@ -73,7 +73,7 @@ namespace ezStore.WareHouse.API
             app.UseCors("AllowAllOrigins");
             app.UseAuthentication();
 
-            loggerFactory.AddProvider(new MicroserviceLoggerProvider(serviceProvider.GetService<IBusControl>(), Configuration));
+            loggerFactory.AddProvider(new MicroservicesLoggerProvider(serviceProvider.GetService<IBusControl>(), Configuration));
 
             if (env.IsDevelopment())
             {

@@ -1,7 +1,7 @@
-﻿using Ws4vn.Microservices.ApplicationCore.Interfaces;
+﻿using Ws4vn.Microservicess.ApplicationCore.Interfaces;
 using System.Collections.Generic;
 
-namespace Ws4vn.Microservices.ApplicationCore.Entities
+namespace Ws4vn.Microservicess.ApplicationCore.Entities
 {
     public class AggregateRoot : ModelGuidIdEntity
     {

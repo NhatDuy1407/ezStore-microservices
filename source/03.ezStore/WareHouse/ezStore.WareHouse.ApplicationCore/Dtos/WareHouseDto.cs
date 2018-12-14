@@ -1,4 +1,4 @@
-﻿using Ws4vn.Microservices.ApplicationCore.Entities;
+﻿using Ws4vn.Microservicess.ApplicationCore.Entities;
 
 namespace ezStore.WareHouse.ApplicationCore.Dtos
 {
@@ -11,5 +11,7 @@ namespace ezStore.WareHouse.ApplicationCore.Dtos
         public int ProvinceId { get; internal set; }
         public string PhoneNumber { get; internal set; }
         public string PostalCode { get; internal set; }
+        public string CountryName { get; set; }
+        public string ProvinceName { get; set; }
     }
 }

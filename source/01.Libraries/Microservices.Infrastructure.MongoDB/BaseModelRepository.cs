@@ -1,15 +1,15 @@
-﻿using Ws4vn.Microservices.ApplicationCore.Entities;
-using Microservice.DataAccess.Core;
-using Microservice.DataAccess.Core.Entities;
-using Ws4vn.Microservices.ApplicationCore.Interfaces;
+﻿using Ws4vn.Microservicess.ApplicationCore.Entities;
+using Microservices.DataAccess.Core;
+using Microservices.DataAccess.Core.Entities;
+using Ws4vn.Microservicess.ApplicationCore.Interfaces;
 using MongoDB.Bson;
 using MongoDB.Driver;
 using System;
 using System.Linq;
 using System.Linq.Expressions;
-using Ws4vn.Microservices.ApplicationCore.SharedKernel;
+using Ws4vn.Microservicess.ApplicationCore.SharedKernel;
 
-namespace Ws4vn.Microservices.Infrastructure.MongoDB
+namespace Ws4vn.Microservicess.Infrastructure.MongoDB
 {
     public class BaseModelRepository<TModel> : IDataAccessWriteRepository<TModel> where TModel : ModelEntity<ObjectId>
     {

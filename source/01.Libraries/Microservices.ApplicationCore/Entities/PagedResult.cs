@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Microservice.DataAccess.Core.Entities
+namespace Microservices.DataAccess.Core.Entities
 {
     public class PagedResult<T> : PagedResultBase where T : class
     {

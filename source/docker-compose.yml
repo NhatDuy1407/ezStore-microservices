@@ -1,36 +1,37 @@
 version: '3.5'
 
 services:
-  microservice.identityserver:
-    image: microservice.identityserver
-    container_name: microservice-identityserver
+  microservices.identityserver:
+    image: microservices.identityserver
+    container_name: microservices-identityserver
     build:
       context: .
-      dockerfile: 02.CoreServices/Member/Microservice.IdentityServer/Dockerfile
+      dockerfile: 02.CoreServices/Member/Microservices.IdentityServer/Dockerfile
 
-  microservice.logging.api:
-    image: microservice.logging.api
+  microservices.logging.api:
+    image: microservices.logging.api
     build:
       context: .
-      dockerfile: 02.CoreServices/Logging/Microservice.Logging.API/Dockerfile
+      dockerfile: 02.CoreServices/Logging/Microservices.Logging.API/Dockerfile
 
-  microservice.setting.api:
-    image: microservice.setting.api
+  microservices.setting.api:
+    image: microservices.setting.api
+    container_name: microservices-setting-api
     build:
       context: .
-      dockerfile: 02.CoreServices/Setting/Microservice.Setting.API/Dockerfile
+      dockerfile: 02.CoreServices/Setting/Microservices.Setting.API/Dockerfile
 
-  microservice.logging.backgroundprocess:
-    image: microservice.logging.backgroundprocess
+  microservices.logging.backgroundprocess:
+    image: microservices.logging.backgroundprocess
     build:
       context: .
-      dockerfile: 02.CoreServices/Logging/Microservice.Logging.BackgroundProcess/Dockerfile
+      dockerfile: 02.CoreServices/Logging/Microservices.Logging.BackgroundProcess/Dockerfile
 
-  microservice.notification.backgroundprocess:
-    image: microservice.notification.backgroundprocess
+  microservices.notification.backgroundprocess:
+    image: microservices.notification.backgroundprocess
     build:
       context: .
-      dockerfile: 02.CoreServices/Notification/Microservice.Notification.BackgroundProcess/Dockerfile
+      dockerfile: 02.CoreServices/Notification/Microservices.Notification.BackgroundProcess/Dockerfile
 
   ezStore.order.api:
     image: ezstore.order.api

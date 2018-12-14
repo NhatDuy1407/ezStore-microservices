@@ -1,12 +1,12 @@
 ﻿using ezStore.Order.Infrastructure;
 using MassTransit;
 using MassTransit.Util;
-using Ws4vn.Microservices.ApplicationCore.Interfaces;
-using Ws4vn.Microservices.ApplicationCore.Services;
-using Ws4vn.Microservices.ApplicationCore.SharedKernel;
-using Ws4vn.Microservices.ApplicationCore.Validations;
-using Ws4vn.Microservices.Infrastructure;
-using Ws4vn.Microservices.Infrastructure.Sql;
+using Ws4vn.Microservicess.ApplicationCore.Interfaces;
+using Ws4vn.Microservicess.ApplicationCore.Services;
+using Ws4vn.Microservicess.ApplicationCore.SharedKernel;
+using Ws4vn.Microservicess.ApplicationCore.Validations;
+using Ws4vn.Microservicess.Infrastructure;
+using Ws4vn.Microservicess.Infrastructure.Sql;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System;
@@ -25,20 +25,20 @@ namespace ezStore.Order.API
                 {
                     _bus = Bus.Factory.CreateUsingRabbitMq(x =>
                     {
-                        var username = configuration.GetConnectionString(MicroserviceConstants.RabbitMQUsername);
-                        var password = configuration.GetConnectionString(MicroserviceConstants.RabbitMQPassword);
-                        var host = configuration.GetConnectionString(MicroserviceConstants.RabbitMQHost);
+                        var username = configuration.GetConnectionString(MicroservicesConstants.RabbitMQUsername);
+                        var password = configuration.GetConnectionString(MicroservicesConstants.RabbitMQPassword);
+                        var host = configuration.GetConnectionString(MicroservicesConstants.RabbitMQHost);
                         if (!string.IsNullOrEmpty(host))
                         {
                             x.Host(new Uri(host), h =>
                             {
                                 if (!string.IsNullOrEmpty(username))
                                 {
-                                    h.Username(configuration.GetConnectionString(MicroserviceConstants.RabbitMQUsername));
+                                    h.Username(configuration.GetConnectionString(MicroservicesConstants.RabbitMQUsername));
                                 }
                                 if (!string.IsNullOrEmpty(password))
                                 {
-                                    h.Password(configuration.GetConnectionString(MicroserviceConstants.RabbitMQPassword));
+                                    h.Password(configuration.GetConnectionString(MicroservicesConstants.RabbitMQPassword));
                                 }
 
                             });
@@ -49,15 +49,9 @@ namespace ezStore.Order.API
                 return _bus;
             });
 
-            services.AddScoped<IValidationContext, ValidationContext>();
-            services.AddTransient<ICommandBus, CommandBus>();
-            services.AddTransient<IEventBus, EventBus>();
-
             // Add application services.
-            services.AddTransient<IDomainContext>(i => new DomainContext(i.GetService<IConfiguration>(), i.GetService<IBusControl>(), i.GetService<IEventBus>()));
             services.AddTransient<IDataAccessService>(i => new DataAccessWriteService(i.GetService<OrderDbContext>()));
             services.AddTransient<IDataAccessWriteService>(i => new DataAccessWriteService(i.GetService<OrderDbContext>()));
-            services.AddTransient<IDomainService>(i => new DomainService(i.GetService<IDomainContext>(), i.GetService<IDataAccessWriteService>()));
             services.AddTransient<IDataAccessReadOnlyService>(i => new DataAccessReadOnlyService(i.GetService<OrderDbContext>()));
 
             ApplicationCore.HandlerRegister.Register(services);
