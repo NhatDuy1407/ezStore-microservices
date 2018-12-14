@@ -2,8 +2,8 @@
 using ezStore.WareHouse.API.ViewModels;
 using ezStore.WareHouse.ApplicationCore.Services.Commands;
 using ezStore.WareHouse.ApplicationCore.Services.Queries;
-using Microservice.DataAccess.Core.Entities;
-using Ws4vn.Microservices.ApplicationCore.Interfaces;
+using Microservices.DataAccess.Core.Entities;
+using Ws4vn.Microservicess.ApplicationCore.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -46,14 +46,14 @@ namespace ezStore.WareHouse.API.Controllers
             return Task.FromResult(WareHouseViewMapper.DtoToViewModel(_queries.Get(id).Result));
         }
 
-        [HttpPost]
+        [HttpPut]
         public Task Put([FromBody] CreateWareHouseCommand command)
         {
             _commandBus.ExecuteAsync(command).Wait();
             return Task.CompletedTask;
         }
 
-        [HttpPut("{id}")]
+        [HttpPost("{id}")]
         public Task Post(Guid id, [FromBody] UpdateWareHouseCommand command)
         {
             command.Id = id;

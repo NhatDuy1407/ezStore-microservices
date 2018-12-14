@@ -12,7 +12,7 @@ namespace ezStore.WareHouse.Infrastructure
 
         }
 
-        public DbSet<ApplicationCore.Entities.WareHouse> WareHouses { get; set; }
+        public DbSet<ApplicationCore.Entities.Warehouse> WareHouses { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Microservice.DataAccess.Core.Entities
+namespace Microservices.DataAccess.Core.Entities
 {
     public abstract class PagedResultBase
     {

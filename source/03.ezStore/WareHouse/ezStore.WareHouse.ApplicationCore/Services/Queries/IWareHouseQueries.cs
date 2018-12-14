@@ -1,6 +1,6 @@
 ﻿using ezStore.WareHouse.ApplicationCore.Dtos;
 using ezStore.WareHouse.ApplicationCore.ReadModels;
-using Microservice.DataAccess.Core.Entities;
+using Microservices.DataAccess.Core.Entities;
 using System;
 using System.Threading.Tasks;
 

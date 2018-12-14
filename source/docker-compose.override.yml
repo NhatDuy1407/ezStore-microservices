@@ -1,12 +1,12 @@
 version: '3.5'
 
 networks:
-  microservice-network:
-    name: microservice-network
+  microservices-network:
+    name: microservices-network
     driver: bridge
 
 services:
-  microservice.identityserver:
+  microservices.identityserver:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
     ports:
@@ -14,9 +14,9 @@ services:
     ports:
       - 5001:80
     networks:
-      - microservice-network
+      - microservices-network
 
-  microservice.logging.api:
+  microservices.logging.api:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
     ports:
@@ -24,9 +24,9 @@ services:
     ports:
       - 5002:80
     networks:
-      - microservice-network
+      - microservices-network
 
-  microservice.setting.api:
+  microservices.setting.api:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
     ports:
@@ -34,17 +34,17 @@ services:
     ports:
       - 5003:80
     networks:
-      - microservice-network
+      - microservices-network
 
-  microservice.logging.backgroundprocess:
+  microservices.logging.backgroundprocess:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
     ports:
       - "80"
     networks:
-      - microservice-network
+      - microservices-network
 
-  microservice.notification.backgroundprocess:
+  microservices.notification.backgroundprocess:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
     ports:
@@ -52,7 +52,7 @@ services:
     dns:
       - 8.8.8.8
     networks:
-      - microservice-network
+      - microservices-network
 
   ezStore.order.api:
     environment:
@@ -62,7 +62,7 @@ services:
     ports:
       - 6001:80
     networks:
-      - microservice-network
+      - microservices-network
 
   ezStore.payment.api:
     environment:
@@ -72,7 +72,7 @@ services:
     ports:
       - 6002:80
     networks:
-      - microservice-network
+      - microservices-network
 
   ezStore.product.api:
     environment:
@@ -82,7 +82,7 @@ services:
     ports:
       - 6003:80
     networks:
-      - microservice-network
+      - microservices-network
 
   ezStore.warehouse.api:
     environment:
@@ -92,4 +92,4 @@ services:
     ports:
       - 6004:80
     networks:
-      - microservice-network
+      - microservices-network

@@ -2,12 +2,12 @@
 using System;
 using System.Linq;
 using System.Linq.Expressions;
-using Microservice.DataAccess.Core;
-using Microservice.DataAccess.Core.Entities;
-using Ws4vn.Microservices.ApplicationCore.Interfaces;
-using Ws4vn.Microservices.ApplicationCore.SharedKernel;
+using Microservices.DataAccess.Core;
+using Microservices.DataAccess.Core.Entities;
+using Ws4vn.Microservicess.ApplicationCore.Interfaces;
+using Ws4vn.Microservicess.ApplicationCore.SharedKernel;
 
-namespace Ws4vn.Microservices.Infrastructure.Sql
+namespace Ws4vn.Microservicess.Infrastructure.Sql
 {
     public class BaseModelRepository<TModel> : IDataAccessWriteRepository<TModel> where TModel : class
     {

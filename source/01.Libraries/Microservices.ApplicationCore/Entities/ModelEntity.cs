@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Ws4vn.Microservices.ApplicationCore.Entities
+namespace Ws4vn.Microservicess.ApplicationCore.Entities
 {
     public class ModelEntity<T> : ViewModelEntity<T>
     {

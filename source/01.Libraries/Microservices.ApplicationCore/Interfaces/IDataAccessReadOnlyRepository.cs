@@ -1,9 +1,9 @@
-using Microservice.DataAccess.Core.Entities;
+using Microservices.DataAccess.Core.Entities;
 using System;
 using System.Linq;
 using System.Linq.Expressions;
 
-namespace Ws4vn.Microservices.ApplicationCore.Interfaces
+namespace Ws4vn.Microservicess.ApplicationCore.Interfaces
 {
     public interface IDataAccessReadOnlyRepository<TModel> : IDisposable where TModel : class
     {

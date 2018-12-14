@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: microservice-identity-db
+  name: microservices-identity-db
 spec:
   type: ClusterIP
   ports:
@@ -10,25 +10,25 @@ spec:
     port: 3306
     targetPort: 3306
   selector:
-    app: microservice-identity-db
+    app: microservices-identity-db
 ---
 apiVersion: apps/v1 # for versions before 1.9.0 use apps/v1beta2
 kind: Deployment
 metadata:
-  name: microservice-identity-db
+  name: microservices-identity-db
 spec:
   minReadySeconds: 10
   selector:
     matchLabels:
-      app: microservice-identity-db
+      app: microservices-identity-db
   template:
     metadata:
       labels:
-        app: microservice-identity-db
+        app: microservices-identity-db
     spec:
       containers:
-      - image: khainx127/microservice.identity.db
-        name: microservice-identity-db
+      - image: khainx127/microservices.identity.db
+        name: microservices-identity-db
         ports:
         - containerPort: 3306
           name: mysql
@@ -36,7 +36,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: microservice-services-queue
+  name: microservices-services-queue
 spec:
   type: ClusterIP
   ports:
@@ -49,30 +49,30 @@ spec:
     port: 4369
     targetPort: epmd
   selector:
-    app: microservice-services-queue
+    app: microservices-services-queue
 ---
 apiVersion: apps/v1 # for versions before 1.9.0 use apps/v1beta2
 kind: Deployment
 metadata:
-  name: microservice-services-queue
+  name: microservices-services-queue
 spec:
   minReadySeconds: 10
   selector:
     matchLabels:
-      app: microservice-services-queue
+      app: microservices-services-queue
   template:
     metadata:
       labels:
-        app: microservice-services-queue
+        app: microservices-services-queue
     spec:
       containers:
-      - image: khainx127/microservice.services.queue
-        name: microservice-services-queue
+      - image: khainx127/microservices.services.queue
+        name: microservices-services-queue
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: microservice-services-db
+  name: microservices-services-db
 spec:
   type: ClusterIP
   ports:
@@ -81,25 +81,25 @@ spec:
     port: 27017
     targetPort: 27017
   selector:
-    app: microservice-services-db
+    app: microservices-services-db
 ---
 apiVersion: apps/v1 # for versions before 1.9.0 use apps/v1beta2
 kind: Deployment
 metadata:
-  name: microservice-services-db
+  name: microservices-services-db
 spec:
   minReadySeconds: 10
   selector:
     matchLabels:
-      app: microservice-services-db
+      app: microservices-services-db
   template:
     metadata:
       labels:
-        app: microservice-services-db
+        app: microservices-services-db
     spec:
       containers:
-      - image: khainx127/microservice.services.db
-        name: microservice-services-db
+      - image: khainx127/microservices.services.db
+        name: microservices-services-db
         ports:
         - containerPort: 27017
           name: mongodb

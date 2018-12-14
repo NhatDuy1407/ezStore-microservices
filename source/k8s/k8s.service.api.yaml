@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: microservice-identityserver
+  name: microservices-identityserver
 spec:
   type: NodePort
   ports:
@@ -9,12 +9,12 @@ spec:
     protocol: TCP
     port: 80
   selector:
-    app: microservice-identityserver
+    app: microservices-identityserver
 ---
 apiVersion: apps/v1beta1
 kind: Deployment
 metadata:
-  name: microservice-identityserver
+  name: microservices-identityserver
 spec:
   replicas: 2
   minReadySeconds: 10
@@ -23,24 +23,24 @@ spec:
   template:
     metadata:
       labels:
-        app: microservice-identityserver
+        app: microservices-identityserver
     spec:
       containers:
-      - name: microservice-identityserver
-        image: khainx127/microservice.identityserver
+      - name: microservices-identityserver
+        image: khainx127/microservices.identityserver
         ports:
         - containerPort: 80
         env:
           - name: ASPNETCORE_ENVIRONMENT
             value: "k8s"
         command: ["/bin/bash"]
-        args: ["-c", "dotnet /app/Microservice.IdentityServer.dll"]
+        args: ["-c", "dotnet /app/Microservices.IdentityServer.dll"]
 
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: microservice-logging-api
+  name: microservices-logging-api
 spec:
   type: ClusterIP
   ports:
@@ -49,12 +49,12 @@ spec:
     port: 80
     targetPort: 30002
   selector:
-    app: microservice-logging-api
+    app: microservices-logging-api
 ---
 apiVersion: apps/v1beta1
 kind: Deployment
 metadata:
-  name: microservice-logging-api
+  name: microservices-logging-api
 spec:
   replicas: 1
   minReadySeconds: 10
@@ -63,24 +63,24 @@ spec:
   template:
     metadata:
       labels:
-        app: microservice-logging-api
+        app: microservices-logging-api
     spec:
       containers:
-      - name: microservice-logging-api
-        image: khainx127/microservice.logging.api
+      - name: microservices-logging-api
+        image: khainx127/microservices.logging.api
         ports:
         - containerPort: 80
         env:
           - name: ASPNETCORE_ENVIRONMENT
             value: "k8s"
         command: ["/bin/bash"]
-        args: ["-c", "dotnet /app/Microservice.Logging.API.dll"]
+        args: ["-c", "dotnet /app/Microservices.Logging.API.dll"]
 
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: microservice-setting-api
+  name: microservices-setting-api
 spec:
   type: ClusterIP
   ports:
@@ -89,12 +89,12 @@ spec:
     port: 80
     targetPort: 30003
   selector:
-    app: microservice-setting-api
+    app: microservices-setting-api
 ---
 apiVersion: apps/v1beta1
 kind: Deployment
 metadata:
-  name: microservice-setting-api
+  name: microservices-setting-api
 spec:
   replicas: 1
   minReadySeconds: 10
@@ -103,24 +103,24 @@ spec:
   template:
     metadata:
       labels:
-        app: microservice-setting-api
+        app: microservices-setting-api
     spec:
       containers:
-      - name: microservice-setting-api
-        image: khainx127/microservice.setting.api
+      - name: microservices-setting-api
+        image: khainx127/microservices.setting.api
         ports:
         - containerPort: 80
         env:
           - name: ASPNETCORE_ENVIRONMENT
             value: "k8s"
         command: ["/bin/bash"]
-        args: ["-c", "dotnet /app/Microservice.Setting.API.dll"]
+        args: ["-c", "dotnet /app/Microservices.Setting.API.dll"]
 
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: microservice-logging-background
+  name: microservices-logging-background
 spec:
   type: ClusterIP
   ports:
@@ -128,12 +128,12 @@ spec:
     protocol: TCP
     port: 80
   selector:
-    app: microservice-logging-background
+    app: microservices-logging-background
 ---
 apiVersion: apps/v1beta1
 kind: Deployment
 metadata:
-  name: microservice-logging-background
+  name: microservices-logging-background
 spec:
   replicas: 2
   minReadySeconds: 10
@@ -142,24 +142,24 @@ spec:
   template:
     metadata:
       labels:
-        app: microservice-logging-background
+        app: microservices-logging-background
     spec:
       containers:
-      - name: microservice-logging-background
-        image: khainx127/microservice.logging.background
+      - name: microservices-logging-background
+        image: khainx127/microservices.logging.background
         ports:
         - containerPort: 80
         env:
           - name: ASPNETCORE_ENVIRONMENT
             value: "k8s"
         command: ["/bin/bash"]
-        args: ["-c", "dotnet /app/Microservice.Logging.BackgroundProcess.dll"]
+        args: ["-c", "dotnet /app/Microservices.Logging.BackgroundProcess.dll"]
 
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: microservice-notification-background
+  name: microservices-notification-background
 spec:
   type: ClusterIP
   ports:
@@ -167,12 +167,12 @@ spec:
     protocol: TCP
     port: 80
   selector:
-    app: microservice-notification-background
+    app: microservices-notification-background
 ---
 apiVersion: apps/v1beta1
 kind: Deployment
 metadata:
-  name: microservice-notification-background
+  name: microservices-notification-background
 spec:
   replicas: 2
   minReadySeconds: 10
@@ -181,18 +181,18 @@ spec:
   template:
     metadata:
       labels:
-        app: microservice-notification-background
+        app: microservices-notification-background
     spec:
       containers:
-      - name: microservice-notification-background
-        image: khainx127/microservice.notification.background
+      - name: microservices-notification-background
+        image: khainx127/microservices.notification.background
         ports:
         - containerPort: 80
         env:
           - name: ASPNETCORE_ENVIRONMENT
             value: "k8s"
         command: ["/bin/bash"]
-        args: ["-c", "dotnet /app/Microservice.Notification.BackgroundProcess.dll"]
+        args: ["-c", "dotnet /app/Microservices.Notification.BackgroundProcess.dll"]
       dnsConfig:
         nameservers:
         - 8.8.8.8

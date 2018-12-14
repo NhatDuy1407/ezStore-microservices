@@ -1,6 +1,6 @@
-﻿using Ws4vn.Microservices.ApplicationCore.Entities;
+﻿using Ws4vn.Microservicess.ApplicationCore.Entities;
 
-namespace Ws4vn.Microservices.ApplicationCore.Interfaces
+namespace Ws4vn.Microservicess.ApplicationCore.Interfaces
 {
     public interface IDomainContext
     {

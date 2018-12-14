@@ -1,11 +1,11 @@
-kubectl delete service microservice-identity-db
-kubectl delete deployment microservice-identity-db
+kubectl delete service microservices-identity-db
+kubectl delete deployment microservices-identity-db
 
-kubectl delete service microservice-services-queue
-kubectl delete deployment microservice-services-queue
+kubectl delete service microservices-services-queue
+kubectl delete deployment microservices-services-queue
 
-kubectl delete service microservice-services-db
-kubectl delete deployment microservice-services-db
+kubectl delete service microservices-services-db
+kubectl delete deployment microservices-services-db
 
 kubectl delete service ezstore-order-db
 kubectl delete deployment ezstore-order-db

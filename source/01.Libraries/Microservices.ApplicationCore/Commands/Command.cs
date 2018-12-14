@@ -1,7 +1,7 @@
-﻿using Ws4vn.Microservices.ApplicationCore.Interfaces;
+﻿using Ws4vn.Microservicess.ApplicationCore.Interfaces;
 using System;
 
-namespace Ws4vn.Microservices.ApplicationCore.Commands
+namespace Ws4vn.Microservicess.ApplicationCore.Commands
 {
     public abstract class Command : ICommand
     {

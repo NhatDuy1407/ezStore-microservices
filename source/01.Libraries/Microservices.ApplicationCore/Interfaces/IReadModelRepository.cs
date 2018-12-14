@@ -1,9 +1,9 @@
-﻿namespace Ws4vn.Microservices.ApplicationCore.Interfaces
+﻿namespace Ws4vn.Microservicess.ApplicationCore.Interfaces
 {
     public interface IReadModelRepository
     {
-        void Write<TEntity>(string key, TEntity data) where TEntity : class;
+        void Write<TEntity>(string key, TEntity data);
 
-        TEntity Read<TEntity>(string key) where TEntity : class;
+        TEntity Read<TEntity>(string key);
     }
 }

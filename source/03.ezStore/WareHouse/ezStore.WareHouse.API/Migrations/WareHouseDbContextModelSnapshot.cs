@@ -14,10 +14,10 @@ namespace ezStore.WareHouse.API.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "2.1.4-rtm-31024")
+                .HasAnnotation("ProductVersion", "2.2.0-rtm-35687")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
-            modelBuilder.Entity("ezStore.WareHouse.Infrastructure.Entities.WareHouse", b =>
+            modelBuilder.Entity("ezStore.WareHouse.ApplicationCore.Entities.Warehouse", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd();
@@ -48,7 +48,7 @@ namespace ezStore.WareHouse.API.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("WareHouse");
+                    b.ToTable("Warehouse");
                 });
 #pragma warning restore 612, 618
         }

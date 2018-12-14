@@ -1,4 +1,4 @@
-﻿namespace Ws4vn.Microservices.ApplicationCore.Events
+﻿namespace Ws4vn.Microservicess.ApplicationCore.Events
 {
     public class PushNotificationContentCreated
     {

@@ -1,4 +1,4 @@
-﻿using Ws4vn.Microservices.ApplicationCore.Entities;
+﻿using Ws4vn.Microservicess.ApplicationCore.Entities;
 using System;
 
 namespace ezStore.WareHouse.API.ViewModels
@@ -9,7 +9,7 @@ namespace ezStore.WareHouse.API.ViewModels
         public string Address { get; internal set; }
         public string City { get; internal set; }
         public int CountryId { get; internal set; }
-        public int CountryName { get; internal set; }
+        public string CountryName { get; internal set; }
         public int ProvinceId { get; internal set; }
         public string ProvinceName { get; internal set; }
         public string PhoneNumber { get; internal set; }

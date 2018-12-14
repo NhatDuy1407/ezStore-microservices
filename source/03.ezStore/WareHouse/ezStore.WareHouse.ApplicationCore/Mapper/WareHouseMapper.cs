@@ -2,14 +2,17 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Ws4vn.Microservices.ApplicationCore.ReadModels;
+using Ws4vn.Microservicess.ApplicationCore.Interfaces;
+using Ws4vn.Microservicess.ApplicationCore.SharedKernel;
 
 namespace ezStore.WareHouse.ApplicationCore.Mapper
 {
     public static class WareHouseMapper
     {
-        public static Entities.WareHouse DtoToEntity(WareHouseDto dto)
+        public static Entities.Warehouse DtoToEntity(WareHouseDto dto)
         {
-            return new Entities.WareHouse
+            return new Entities.Warehouse
             {
                 Id = dto.Id,
                 Name = dto.Name,
@@ -25,7 +28,7 @@ namespace ezStore.WareHouse.ApplicationCore.Mapper
             };
         }
 
-        public static WareHouseDto EntityToDto(Entities.WareHouse entity)
+        public static WareHouseDto EntityToDto(Entities.Warehouse entity, List<CountryReadModel> countries = null, List<ProvinceReadModel> provinces = null)
         {
             return new WareHouseDto
             {
@@ -34,7 +37,9 @@ namespace ezStore.WareHouse.ApplicationCore.Mapper
                 Address = entity.Address,
                 City = entity.City,
                 CountryId = entity.CountryId,
+                CountryName = countries?.FirstOrDefault(i => i.Id == entity.CountryId)?.Name,
                 ProvinceId = entity.ProvinceId,
+                ProvinceName = provinces?.FirstOrDefault(i => i.Id == entity.ProvinceId)?.Name,
                 PhoneNumber = entity.PhoneNumber,
                 PostalCode = entity.PostalCode,
                 CreatedBy = entity.CreatedBy,
@@ -44,9 +49,9 @@ namespace ezStore.WareHouse.ApplicationCore.Mapper
             };
         }
 
-        public static IEnumerable<WareHouseDto> EntityToDtos(IEnumerable<Entities.WareHouse> entities)
+        public static IEnumerable<WareHouseDto> EntityToDtos(IEnumerable<Entities.Warehouse> entities, List<CountryReadModel> countries, List<ProvinceReadModel> provinces)
         {
-            return entities?.Select(EntityToDto);
+            return entities?.Select(i => EntityToDto(i, countries, provinces));
         }
     }
 }

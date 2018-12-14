@@ -1,14 +1,14 @@
-kubectl delete service microservice-identityserver
-kubectl delete deployment microservice-identityserver
+kubectl delete service microservices-identityserver
+kubectl delete deployment microservices-identityserver
 
-kubectl delete service microservice-logging-api
-kubectl delete deployment microservice-logging-api
+kubectl delete service microservices-logging-api
+kubectl delete deployment microservices-logging-api
 
-kubectl delete service microservice-logging-background
-kubectl delete deployment microservice-logging-background
+kubectl delete service microservices-logging-background
+kubectl delete deployment microservices-logging-background
 
-kubectl delete service microservice-notification-background
-kubectl delete deployment microservice-notification-background
+kubectl delete service microservices-notification-background
+kubectl delete deployment microservices-notification-background
 
 kubectl delete service ezstore-product-api
 kubectl delete deployment ezstore-product-api

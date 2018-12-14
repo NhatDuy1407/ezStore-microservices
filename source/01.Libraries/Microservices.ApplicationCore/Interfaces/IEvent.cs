@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Ws4vn.Microservices.ApplicationCore.Interfaces
+namespace Ws4vn.Microservicess.ApplicationCore.Interfaces
 {
     public interface IEvent
     {

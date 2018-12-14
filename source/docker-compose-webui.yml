@@ -1,8 +1,8 @@
 version: '3.5'
 
 networks:
-  microservice-network:
-    name: microservice-network
+  microservices-network:
+    name: microservices-network
     driver: bridge
 
 services:
@@ -15,4 +15,4 @@ services:
     ports:
       - 8001:80
     networks:
-      - microservice-network
+      - microservices-network

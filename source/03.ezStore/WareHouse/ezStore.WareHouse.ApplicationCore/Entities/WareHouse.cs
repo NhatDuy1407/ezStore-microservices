@@ -1,8 +1,8 @@
-﻿using Ws4vn.Microservices.ApplicationCore.Entities;
+﻿using Ws4vn.Microservicess.ApplicationCore.Entities;
 
 namespace ezStore.WareHouse.ApplicationCore.Entities
 {
-    public class WareHouse : ModelGuidIdEntity
+    public class Warehouse : ModelGuidIdEntity
     {
         public string Name { get; set; }
 

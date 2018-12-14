@@ -1,20 +1,20 @@
-dotnet publish ezStoreMicroservices.sln
+dotnet publish ezStoreMicroservicess.sln
 docker-compose -f docker-compose.k8s.yml build 
 
-docker tag microservice.identityserver khainx127/microservice.identityserver
-docker push khainx127/microservice.identityserver
+docker tag microservices.identityserver khainx127/microservices.identityserver
+docker push khainx127/microservices.identityserver
 
-docker tag microservice.logging.api khainx127/microservice.logging.api
-docker push khainx127/microservice.logging.api
+docker tag microservices.logging.api khainx127/microservices.logging.api
+docker push khainx127/microservices.logging.api
 
-docker tag microservice.setting.api khainx127/microservice.setting.api
-docker push khainx127/microservice.setting.api
+docker tag microservices.setting.api khainx127/microservices.setting.api
+docker push khainx127/microservices.setting.api
 
-docker tag microservice.logging.background khainx127/microservice.logging.background
-docker push khainx127/microservice.logging.background
+docker tag microservices.logging.background khainx127/microservices.logging.background
+docker push khainx127/microservices.logging.background
 
-docker tag microservice.notification.background khainx127/microservice.notification.background
-docker push khainx127/microservice.notification.background
+docker tag microservices.notification.background khainx127/microservices.notification.background
+docker push khainx127/microservices.notification.background
 
 docker tag ezstore.order.api khainx127/ezstore.order.api
 docker push khainx127/ezstore.order.api

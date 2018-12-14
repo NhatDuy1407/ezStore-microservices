@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 
-namespace Ws4vn.Microservices.ApplicationCore.Interfaces
+namespace Ws4vn.Microservicess.ApplicationCore.Interfaces
 {
     public interface ICommandHandler<in TCommand> where TCommand : ICommand
     {

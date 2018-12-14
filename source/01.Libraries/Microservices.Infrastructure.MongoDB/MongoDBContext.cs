@@ -1,11 +1,11 @@
-﻿using Ws4vn.Microservices.ApplicationCore.Interfaces;
+﻿using Ws4vn.Microservicess.ApplicationCore.Interfaces;
 using MongoDB.Driver;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Security.Authentication;
 
-namespace Ws4vn.Microservices.Infrastructure.MongoDB
+namespace Ws4vn.Microservicess.Infrastructure.MongoDB
 {
     public class MongoDbContext
     {

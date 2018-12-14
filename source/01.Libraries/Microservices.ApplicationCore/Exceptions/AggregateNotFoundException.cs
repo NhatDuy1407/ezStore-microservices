@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Ws4vn.Microservices.ApplicationCore.Exceptions
+namespace Ws4vn.Microservicess.ApplicationCore.Exceptions
 {
     public class AggregateNotFoundException : Exception
     {

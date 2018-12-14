@@ -1,6 +1,6 @@
 ﻿using ezStore.WareHouse.ApplicationCore.Services.Commands;
 using ezStore.WareHouse.ApplicationCore.WareHouseAggregate;
-using Ws4vn.Microservices.ApplicationCore.Interfaces;
+using Ws4vn.Microservicess.ApplicationCore.Interfaces;
 using System.Threading.Tasks;
 
 namespace ezStore.WareHouse.ApplicationCore.Services.CommandHandlers
@@ -21,7 +21,7 @@ namespace ezStore.WareHouse.ApplicationCore.Services.CommandHandlers
         public Task ExecuteAsync(CreateWareHouseCommand command)
         {
             var wareHouseDomain = new WareHouseDomain(writeService);
-            wareHouseDomain.CreateWareHouse(command.Name);
+            wareHouseDomain.CreateWareHouse(command.Name, command.CountryId, command.ProvinceId, command.Address, command.City, command.PhoneNumber, command.PostalCode);
 
             domainService.ApplyChanges(wareHouseDomain);
 

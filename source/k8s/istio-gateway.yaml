@@ -1,7 +1,7 @@
 apiVersion: networking.istio.io/v1alpha3
 kind: Gateway
 metadata:
-  name: microservice-identityserver-gateway
+  name: microservices-identityserver-gateway
 spec:
   selector:
     istio: ingressgateway # use Istio default gateway implementation
@@ -11,24 +11,24 @@ spec:
       name: http
       protocol: HTTP
     hosts:
-    - "microservice.identityserver"
+    - "microservices.identityserver"
 ---
 apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
 metadata:
-  name: microservice-identityserver
+  name: microservices-identityserver
 spec:
   hosts:
-  - "microservice.identityserver"
+  - "microservices.identityserver"
   gateways:
-  - microservice-identityserver-gateway
+  - microservices-identityserver-gateway
   http:
   - match:
     - uri:
         prefix: /
     route:
     - destination:
-        host: microservice-identityserver
+        host: microservices-identityserver
         port:
           number: 80
 ---

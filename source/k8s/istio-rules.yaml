@@ -1,9 +1,9 @@
 apiVersion: networking.istio.io/v1alpha3
 kind: DestinationRule
 metadata:
- name: "microservice-identity-db"
+ name: "microservices-identity-db"
 spec:
- host: "microservice-identity-db.default.svc.cluster.local"
+ host: "microservices-identity-db.default.svc.cluster.local"
  trafficPolicy:
    tls:
      mode: DISABLE
@@ -11,9 +11,9 @@ spec:
 apiVersion: networking.istio.io/v1alpha3
 kind: DestinationRule
 metadata:
- name: "microservice-services-queue"
+ name: "microservices-services-queue"
 spec:
- host: "microservice-services-queue.default.svc.cluster.local"
+ host: "microservices-services-queue.default.svc.cluster.local"
  trafficPolicy:
    tls:
      mode: DISABLE
@@ -21,9 +21,9 @@ spec:
 apiVersion: networking.istio.io/v1alpha3
 kind: DestinationRule
 metadata:
- name: "microservice-services-db"
+ name: "microservices-services-db"
 spec:
- host: "microservice-services-db.default.svc.cluster.local"
+ host: "microservices-services-db.default.svc.cluster.local"
  trafficPolicy:
    tls:
      mode: DISABLE
