@@ -1,4 +1,4 @@
-# A microservicess system built on .NET Core (in-progress)
+# A microservices system built on .NET Core (in-progress)
 
 ## Technologies and frameworks used:
 - ASP.NET MVC Core 2.2
