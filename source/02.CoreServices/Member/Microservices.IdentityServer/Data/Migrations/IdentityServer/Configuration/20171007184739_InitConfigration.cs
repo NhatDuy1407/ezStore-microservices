@@ -15,7 +15,7 @@ namespace Microservices.IdentityServer.Data.Migrations.IdentityServer.Configurat
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGeneratedOnAdd", true),
-                    Description = table.Column<string>(type: "nvarchar(1000)", maxLength: 1000, nullable: true),
+                    Description = table.Column<string>(type: "nvarchar(500)", maxLength: 1000, nullable: true),
                     DisplayName = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: true),
                     Enabled = table.Column<bool>(type: "bit", nullable: false),
                     Name = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false)
@@ -48,7 +48,7 @@ namespace Microservices.IdentityServer.Data.Migrations.IdentityServer.Configurat
                     ClientName = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: true),
                     ClientUri = table.Column<string>(type: "nvarchar(2000)", maxLength: 2000, nullable: true),
                     ConsentLifetime = table.Column<int>(type: "int", nullable: true),
-                    Description = table.Column<string>(type: "nvarchar(1000)", maxLength: 1000, nullable: true),
+                    Description = table.Column<string>(type: "nvarchar(500)", maxLength: 1000, nullable: true),
                     EnableLocalLogin = table.Column<bool>(type: "bit", nullable: false),
                     Enabled = table.Column<bool>(type: "bit", nullable: false),
                     FrontChannelLogoutSessionRequired = table.Column<bool>(type: "bit", nullable: false),
@@ -77,7 +77,7 @@ namespace Microservices.IdentityServer.Data.Migrations.IdentityServer.Configurat
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGeneratedOnAdd", true),
-                    Description = table.Column<string>(type: "nvarchar(1000)", maxLength: 1000, nullable: true),
+                    Description = table.Column<string>(type: "nvarchar(500)", maxLength: 1000, nullable: true),
                     DisplayName = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: true),
                     Emphasize = table.Column<bool>(type: "bit", nullable: false),
                     Enabled = table.Column<bool>(type: "bit", nullable: false),
@@ -117,7 +117,7 @@ namespace Microservices.IdentityServer.Data.Migrations.IdentityServer.Configurat
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGeneratedOnAdd", true),
                     ApiResourceId = table.Column<int>(type: "int", nullable: false),
-                    Description = table.Column<string>(type: "nvarchar(1000)", maxLength: 1000, nullable: true),
+                    Description = table.Column<string>(type: "nvarchar(500)", maxLength: 1000, nullable: true),
                     DisplayName = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: true),
                     Emphasize = table.Column<bool>(type: "bit", nullable: false),
                     Name = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
@@ -142,7 +142,7 @@ namespace Microservices.IdentityServer.Data.Migrations.IdentityServer.Configurat
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGeneratedOnAdd", true),
                     ApiResourceId = table.Column<int>(type: "int", nullable: false),
-                    Description = table.Column<string>(type: "nvarchar(1000)", maxLength: 1000, nullable: true),
+                    Description = table.Column<string>(type: "nvarchar(500)", maxLength: 1000, nullable: true),
                     Expiration = table.Column<DateTime>(type: "datetime", nullable: true),
                     Type = table.Column<string>(type: "nvarchar(250)", maxLength: 250, nullable: true),
                     Value = table.Column<string>(type: "nvarchar(2000)", maxLength: 2000, nullable: true)

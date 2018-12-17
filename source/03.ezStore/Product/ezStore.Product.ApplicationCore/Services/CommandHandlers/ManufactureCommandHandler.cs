@@ -1,4 +1,5 @@
 ﻿using System.Threading.Tasks;
+using ezStore.Product.ApplicationCore.Dtos;
 using ezStore.Product.ApplicationCore.ProductAggregate;
 using ezStore.Product.ApplicationCore.Services.Commands;
 using Ws4vn.Microservicess.ApplicationCore.Interfaces;
@@ -20,7 +21,7 @@ namespace ezStore.Product.ApplicationCore.Services.CommandHandlers
         public Task ExecuteAsync(CreateManufactureCommand command)
         {
             var manufactureDomain = new ManufactureDomain(writeService);
-            manufactureDomain.Add(new Dtos.ManufactureDto
+            manufactureDomain.Add(new ManufactureDto
             {
                 Name = command.Name
             });
