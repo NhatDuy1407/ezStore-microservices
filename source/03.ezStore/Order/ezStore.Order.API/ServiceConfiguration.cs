@@ -1,15 +1,12 @@
 ﻿using ezStore.Order.Infrastructure;
 using MassTransit;
 using MassTransit.Util;
-using Ws4vn.Microservicess.ApplicationCore.Interfaces;
-using Ws4vn.Microservicess.ApplicationCore.Services;
-using Ws4vn.Microservicess.ApplicationCore.SharedKernel;
-using Ws4vn.Microservicess.ApplicationCore.Validations;
-using Ws4vn.Microservicess.Infrastructure;
-using Ws4vn.Microservicess.Infrastructure.Sql;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System;
+using Ws4vn.Microservicess.ApplicationCore.Interfaces;
+using Ws4vn.Microservicess.ApplicationCore.SharedKernel;
+using Ws4vn.Microservicess.Infrastructure.Sql;
 
 namespace ezStore.Order.API
 {
@@ -19,7 +16,7 @@ namespace ezStore.Order.API
 
         public static void ConfigureServices(IServiceCollection services, IConfiguration configuration)
         {
-            services.AddTransient(i =>
+            services.AddScoped(i =>
             {
                 if (_bus == null)
                 {

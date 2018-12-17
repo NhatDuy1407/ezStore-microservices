@@ -11,8 +11,8 @@ namespace Microservices.Logging.API
         public static void ConfigureServices(IServiceCollection services, IConfiguration configuration)
         {
             // Add application services.
-            services.AddTransient(i => new MongoDbContext(configuration.GetConnectionString(MicroservicesConstants.DefaultConnection), configuration.GetConnectionString(MicroservicesConstants.DefaultDatabaseName), false));
-            services.AddTransient<IDataAccessReadOnlyService>(i => new ReadOnlyService(i.GetService<MongoDbContext>()));
+            services.AddScoped(i => new MongoDbContext(configuration.GetConnectionString(MicroservicesConstants.DefaultConnection), configuration.GetConnectionString(MicroservicesConstants.DefaultDatabaseName), false));
+            services.AddScoped<IDataAccessReadOnlyService>(i => new ReadOnlyService(i.GetService<MongoDbContext>()));
 
             ApplicationCore.HandlerRegister.Register(services);
         }

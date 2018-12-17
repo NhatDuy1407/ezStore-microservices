@@ -1,16 +1,13 @@
 ﻿using ezStore.WareHouse.Infrastructure;
 using MassTransit;
 using MassTransit.Util;
-using Ws4vn.Microservicess.ApplicationCore.Interfaces;
-using Ws4vn.Microservicess.ApplicationCore.Services;
-using Ws4vn.Microservicess.ApplicationCore.SharedKernel;
-using Ws4vn.Microservicess.ApplicationCore.Validations;
-using Ws4vn.Microservicess.Infrastructure;
-using Ws4vn.Microservicess.Infrastructure.Caching;
-using Ws4vn.Microservicess.Infrastructure.Sql;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System;
+using Ws4vn.Microservicess.ApplicationCore.Interfaces;
+using Ws4vn.Microservicess.ApplicationCore.SharedKernel;
+using Ws4vn.Microservicess.Infrastructure.Caching;
+using Ws4vn.Microservicess.Infrastructure.Sql;
 
 namespace ezStore.WareHouse.API
 {
@@ -20,7 +17,7 @@ namespace ezStore.WareHouse.API
 
         public static void ConfigureServices(IServiceCollection services, IConfiguration configuration)
         {
-            services.AddTransient(i =>
+            services.AddScoped(i =>
             {
                 if (_bus == null)
                 {
@@ -55,7 +52,7 @@ namespace ezStore.WareHouse.API
             services.AddTransient<IDataAccessWriteService>(i => new DataAccessWriteService(i.GetService<WareHouseDbContext>()));
             services.AddTransient<IDataAccessReadOnlyService>(i => new DataAccessReadOnlyService(i.GetService<WareHouseDbContext>()));
             services.AddTransient<ICacheService>(i => new RedisCacheService(configuration.GetConnectionString(MicroservicesConstants.RedisAddress)));
-            services.AddTransient<IReadModelRepository>(i => new ReadModelService(i.GetService<ICacheService>()));
+            services.AddScoped<IReadModelRepository>(i => new ReadModelService(i.GetService<ICacheService>()));
 
             ApplicationCore.HandlerRegister.Register(services);
         }

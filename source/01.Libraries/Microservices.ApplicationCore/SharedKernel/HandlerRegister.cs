@@ -14,12 +14,12 @@ namespace Ws4vn.Microservicess.ApplicationCore.SharedKernel
     {
         public static void Register(Assembly assembly, IServiceCollection services)
         {
-            services.AddScoped<IValidationContext, ValidationContext>();
-            services.AddTransient<ICommandBus, CommandBus>();
-            services.AddTransient<IEventBus, EventBus>();
+            services.AddTransient<IValidationContext, ValidationContext>();
+            services.AddScoped<ICommandBus, CommandBus>();
+            services.AddScoped<IEventBus, EventBus>();
 
-            services.AddTransient<IDomainContext>(i => new DomainContext(i.GetService<IConfiguration>(), i.GetService<IBusControl>(), i.GetService<IEventBus>()));
-            services.AddTransient<IDomainService>(i => new DomainService(i.GetService<IDomainContext>(), i.GetService<IDataAccessWriteService>()));
+            services.AddScoped<IDomainContext>(i => new DomainContext(i.GetService<IConfiguration>(), i.GetService<IBusControl>(), i.GetService<IEventBus>()));
+            services.AddScoped<IDomainService>(i => new DomainService(i.GetService<IDomainContext>(), i.GetService<IDataAccessWriteService>()));
 
             var allCommandHandler = assembly.GetTypes().Where(t =>
                 t.IsClass &&
@@ -31,7 +31,7 @@ namespace Ws4vn.Microservicess.ApplicationCore.SharedKernel
                 var mainInterfaces = allInterfaces.Where(t => t.IsAssignableToGenericType(typeof(ICommandHandler<>)));
                 foreach (var itype in mainInterfaces)
                 {
-                    services.AddTransient(itype, type);
+                    services.AddScoped(itype, type);
                 }
             }
 
@@ -45,7 +45,7 @@ namespace Ws4vn.Microservicess.ApplicationCore.SharedKernel
                 var mainInterfaces = allInterfaces.Where(t => t.IsAssignableToGenericType(typeof(IEventHandler<>)));
                 foreach (var itype in mainInterfaces)
                 {
-                    services.AddTransient(itype, type);
+                    services.AddScoped(itype, type);
                 }
             }
 
@@ -57,7 +57,7 @@ namespace Ws4vn.Microservicess.ApplicationCore.SharedKernel
                 var allInterfaces = typeIQuery.GetInterfaces().ToList();
                 foreach (var itype in allInterfaces)
                 {
-                    services.AddTransient(itype, typeIQuery);
+                    services.AddScoped(itype, typeIQuery);
                 }
             }
         }
