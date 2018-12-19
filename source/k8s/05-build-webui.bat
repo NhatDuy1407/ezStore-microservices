@@ -1,2 +1,2 @@
-cd 03.ezStore\WebUI
+cd 03.ezStoreWebUI
 ng build --prod

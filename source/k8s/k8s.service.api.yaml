@@ -8,6 +8,7 @@ spec:
   - name: identityserver
     protocol: TCP
     port: 80
+    nodePort: 30001
   selector:
     app: microservices-identityserver
 ---
@@ -16,7 +17,7 @@ kind: Deployment
 metadata:
   name: microservices-identityserver
 spec:
-  replicas: 2
+  replicas: 1
   minReadySeconds: 10
   strategy:
     type: Recreate
@@ -27,7 +28,7 @@ spec:
     spec:
       containers:
       - name: microservices-identityserver
-        image: khainx127/microservices.identityserver
+        image: ezstoremicroservices/microservices.identityserver
         ports:
         - containerPort: 80
         env:
@@ -35,19 +36,19 @@ spec:
             value: "k8s"
         command: ["/bin/bash"]
         args: ["-c", "dotnet /app/Microservices.IdentityServer.dll"]
-
+---
 ---
 apiVersion: v1
 kind: Service
 metadata:
   name: microservices-logging-api
 spec:
-  type: ClusterIP
+  type: NodePort
   ports:
   - name: logging-api
     protocol: TCP
     port: 80
-    targetPort: 30002
+    nodePort: 30002
   selector:
     app: microservices-logging-api
 ---
@@ -67,7 +68,7 @@ spec:
     spec:
       containers:
       - name: microservices-logging-api
-        image: khainx127/microservices.logging.api
+        image: ezstoremicroservices/microservices.logging.api
         ports:
         - containerPort: 80
         env:
@@ -75,19 +76,19 @@ spec:
             value: "k8s"
         command: ["/bin/bash"]
         args: ["-c", "dotnet /app/Microservices.Logging.API.dll"]
-
+---
 ---
 apiVersion: v1
 kind: Service
 metadata:
   name: microservices-setting-api
 spec:
-  type: ClusterIP
+  type: NodePort
   ports:
   - name: setting-api
     protocol: TCP
     port: 80
-    targetPort: 30003
+    nodePort: 30003
   selector:
     app: microservices-setting-api
 ---
@@ -107,7 +108,7 @@ spec:
     spec:
       containers:
       - name: microservices-setting-api
-        image: khainx127/microservices.setting.api
+        image: ezstoremicroservices/microservices.setting.api
         ports:
         - containerPort: 80
         env:
@@ -115,7 +116,7 @@ spec:
             value: "k8s"
         command: ["/bin/bash"]
         args: ["-c", "dotnet /app/Microservices.Setting.API.dll"]
-
+---
 ---
 apiVersion: v1
 kind: Service
@@ -124,7 +125,7 @@ metadata:
 spec:
   type: ClusterIP
   ports:
-  - name: logging-api
+  - name: logging-background
     protocol: TCP
     port: 80
   selector:
@@ -146,7 +147,7 @@ spec:
     spec:
       containers:
       - name: microservices-logging-background
-        image: khainx127/microservices.logging.background
+        image: ezstoremicroservices/microservices.logging.background
         ports:
         - containerPort: 80
         env:
@@ -154,7 +155,7 @@ spec:
             value: "k8s"
         command: ["/bin/bash"]
         args: ["-c", "dotnet /app/Microservices.Logging.BackgroundProcess.dll"]
-
+---
 ---
 apiVersion: v1
 kind: Service
@@ -185,7 +186,7 @@ spec:
     spec:
       containers:
       - name: microservices-notification-background
-        image: khainx127/microservices.notification.background
+        image: ezstoremicroservices/microservices.notification.background
         ports:
         - containerPort: 80
         env:
@@ -196,7 +197,7 @@ spec:
       dnsConfig:
         nameservers:
         - 8.8.8.8
-
+---
 ---
 apiVersion: v1
 kind: Service
@@ -208,6 +209,7 @@ spec:
   - name: ezstore-order-api
     protocol: TCP
     port: 80
+    nodePort: 31001
   selector:
     app: ezstore-order-api
 ---
@@ -227,7 +229,7 @@ spec:
     spec:
       containers:
       - name: ezstore-order-api
-        image: khainx127/ezstore.order.api
+        image: ezstoremicroservices/ezstore.order.api
         ports:
         - containerPort: 80
         env:
@@ -235,7 +237,7 @@ spec:
             value: "k8s"
         command: ["/bin/bash"]
         args: ["-c", "dotnet /app/ezStore.Order.API.dll"]
-
+---
 ---
 apiVersion: v1
 kind: Service
@@ -247,6 +249,7 @@ spec:
   - name: ezstore-payment-api
     protocol: TCP
     port: 80
+    nodePort: 31002
   selector:
     app: ezstore-payment-api
 ---
@@ -266,7 +269,7 @@ spec:
     spec:
       containers:
       - name: ezstore-payment-api
-        image: khainx127/ezstore.payment.api
+        image: ezstoremicroservices/ezstore.payment.api
         ports:
         - containerPort: 80
         env:
@@ -274,7 +277,7 @@ spec:
             value: "k8s"
         command: ["/bin/bash"]
         args: ["-c", "dotnet /app/ezStore.Payment.API.dll"]
-
+---
 ---
 apiVersion: v1
 kind: Service
@@ -286,6 +289,7 @@ spec:
   - name: ezstore-product-api
     protocol: TCP
     port: 80
+    nodePort: 31003
   selector:
     app: ezstore-product-api
 ---
@@ -305,7 +309,7 @@ spec:
     spec:
       containers:
       - name: ezstore-product-api
-        image: khainx127/ezstore.product.api
+        image: ezstoremicroservices/ezstore.product.api
         ports:
         - containerPort: 80
         env:
@@ -313,7 +317,7 @@ spec:
             value: "k8s"
         command: ["/bin/bash"]
         args: ["-c", "dotnet /app/ezStore.Product.API.dll"]
-
+---
 ---
 apiVersion: v1
 kind: Service
@@ -325,6 +329,7 @@ spec:
   - name: ezstore-warehouse-api
     protocol: TCP
     port: 80
+    nodePort: 31004
   selector:
     app: ezstore-warehouse-api
 ---
@@ -344,7 +349,7 @@ spec:
     spec:
       containers:
       - name: ezstore-warehouse-api
-        image: khainx127/ezstore.warehouse.api
+        image: ezstoremicroservices/ezstore.warehouse.api
         ports:
         - containerPort: 80
         env:
@@ -352,3 +357,5 @@ spec:
             value: "k8s"
         command: ["/bin/bash"]
         args: ["-c", "dotnet /app/ezStore.WareHouse.API.dll"]
+---
+---

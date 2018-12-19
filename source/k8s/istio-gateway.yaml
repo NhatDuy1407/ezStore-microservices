@@ -32,6 +32,7 @@ spec:
         port:
           number: 80
 ---
+---
 
 apiVersion: networking.istio.io/v1alpha3
 kind: Gateway
@@ -42,7 +43,7 @@ spec:
     istio: ingressgateway # use Istio default gateway implementation
   servers:
   - port:
-      number: 30002
+      number: 31003
       name: http
       protocol: HTTP
     hosts:

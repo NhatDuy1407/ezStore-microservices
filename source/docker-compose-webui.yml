@@ -10,7 +10,7 @@ services:
     image: ezstore.webui
     container_name: ezstore-webui
     build:
-      context: 03.ezStore\WebUI
+      context: 03.ezStoreWebUI
       dockerfile: dockerfile
     ports:
       - 8001:80
