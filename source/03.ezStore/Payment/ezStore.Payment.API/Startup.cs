@@ -1,8 +1,6 @@
 ﻿using ezStore.Payment.Infrastructure;
 using IdentityServer4.AccessTokenValidation;
 using MassTransit;
-using Ws4vn.Microservicess.ApplicationCore.SharedKernel;
-using Ws4vn.Microservicess.Infrastructure.Loggings;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -11,6 +9,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using System;
+using Ws4vn.Microservices.ApplicationCore.SharedKernel;
+using Ws4vn.Microservices.Infrastructure.Loggings;
 
 namespace ezStore.Payment.API
 {

@@ -28,6 +28,6 @@ spec:
     spec:
       containers:
       - name: ezstore-webui
-        image: khainx127/ezstore.webui
+        image: ezstoremicroservices/ezstore.webui
         ports:
         - containerPort: 80

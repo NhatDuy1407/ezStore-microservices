@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using System;
-using Ws4vn.Microservicess.ApplicationCore.Interfaces;
+using Ws4vn.Microservices.ApplicationCore.Interfaces;
 
 namespace Microservices.Setting.API
 {

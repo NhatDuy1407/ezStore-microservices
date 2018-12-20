@@ -1,6 +1,6 @@
 ﻿using ezStore.WareHouse.ApplicationCore.Services.Commands;
 using ezStore.WareHouse.ApplicationCore.WareHouseAggregate;
-using Ws4vn.Microservicess.ApplicationCore.Interfaces;
+using Ws4vn.Microservices.ApplicationCore.Interfaces;
 using System.Threading.Tasks;
 
 namespace ezStore.WareHouse.ApplicationCore.Services.CommandHandlers

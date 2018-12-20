@@ -1,8 +1,8 @@
 ﻿using Microservices.Setting.ApplicationCore.Entities;
 using MongoDB.Bson;
 using System.Linq;
-using Ws4vn.Microservicess.ApplicationCore.Entities;
-using Ws4vn.Microservicess.ApplicationCore.Interfaces;
+using Ws4vn.Microservices.ApplicationCore.Entities;
+using Ws4vn.Microservices.ApplicationCore.Interfaces;
 
 namespace Microservices.Setting.ApplicationCore.SettingAggregate
 {

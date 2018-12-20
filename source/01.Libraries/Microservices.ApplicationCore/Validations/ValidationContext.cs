@@ -1,8 +1,8 @@
-﻿using Ws4vn.Microservicess.ApplicationCore.Interfaces;
+﻿using Ws4vn.Microservices.ApplicationCore.Interfaces;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 
-namespace Ws4vn.Microservicess.ApplicationCore.Validations
+namespace Ws4vn.Microservices.ApplicationCore.Validations
 {
     public class ValidationContext : IValidationContext
     {

@@ -1,13 +1,13 @@
 ﻿using MassTransit;
-using Ws4vn.Microservicess.ApplicationCore.Events;
-using Ws4vn.Microservicess.ApplicationCore.Exceptions;
-using Ws4vn.Microservicess.ApplicationCore.SharedKernel;
+using Ws4vn.Microservices.ApplicationCore.Events;
+using Ws4vn.Microservices.ApplicationCore.Exceptions;
+using Ws4vn.Microservices.ApplicationCore.SharedKernel;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Linq;
 
-namespace Ws4vn.Microservicess.Infrastructure.Loggings
+namespace Ws4vn.Microservices.Infrastructure.Loggings
 {
     public class MicroservicesLogging : ILogger
     {

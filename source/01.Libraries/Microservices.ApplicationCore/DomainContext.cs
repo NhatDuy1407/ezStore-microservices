@@ -1,8 +1,8 @@
 ﻿using MassTransit;
-using Ws4vn.Microservicess.ApplicationCore.Entities;
-using Ws4vn.Microservicess.ApplicationCore.Events;
-using Ws4vn.Microservicess.ApplicationCore.Interfaces;
-using Ws4vn.Microservicess.ApplicationCore.SharedKernel;
+using Ws4vn.Microservices.ApplicationCore.Entities;
+using Ws4vn.Microservices.ApplicationCore.Events;
+using Ws4vn.Microservices.ApplicationCore.Interfaces;
+using Ws4vn.Microservices.ApplicationCore.SharedKernel;
 using Microsoft.Extensions.Configuration;
 using System.Linq;
 

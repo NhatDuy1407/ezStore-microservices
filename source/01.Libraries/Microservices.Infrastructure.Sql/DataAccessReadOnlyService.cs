@@ -1,9 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections;
-using Ws4vn.Microservicess.ApplicationCore.Interfaces;
+using Ws4vn.Microservices.ApplicationCore.Interfaces;
 
-namespace Ws4vn.Microservicess.Infrastructure.Sql
+namespace Ws4vn.Microservices.Infrastructure.Sql
 {
     public class DataAccessReadOnlyService : IDataAccessReadOnlyService
     {

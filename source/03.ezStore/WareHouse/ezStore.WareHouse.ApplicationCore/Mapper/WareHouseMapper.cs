@@ -3,8 +3,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Ws4vn.Microservices.ApplicationCore.ReadModels;
-using Ws4vn.Microservicess.ApplicationCore.Interfaces;
-using Ws4vn.Microservicess.ApplicationCore.SharedKernel;
+using Ws4vn.Microservices.ApplicationCore.Interfaces;
+using Ws4vn.Microservices.ApplicationCore.SharedKernel;
 
 namespace ezStore.WareHouse.ApplicationCore.Mapper
 {

@@ -2,10 +2,10 @@
 using MassTransit;
 using MassTransit.RabbitMqTransport;
 using MassTransit.Util;
-using Ws4vn.Microservicess.ApplicationCore.SharedKernel;
+using Ws4vn.Microservices.ApplicationCore.SharedKernel;
 using Microsoft.Extensions.Configuration;
 
-namespace Ws4vn.Microservicess.Infrastructure.Events
+namespace Ws4vn.Microservices.Infrastructure.Events
 {
     public abstract class ComsumerService
     {

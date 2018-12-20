@@ -86,30 +86,6 @@ services:
     networks:
       - microservices-network
 
-  ezStore.order.db:
-    image: ezstore.order.db
-    container_name: ezstore-order-db
-    build:
-      context: .
-      dockerfile: Dockerfile.ezStore.order.db
-    ports:
-      - 3307:3306
-    entrypoint: ['/entrypoint.sh', '--default-authentication-plugin=mysql_native_password']
-    networks:
-      - microservices-network
-
-  ezStore.payment.db:
-    image: ezstore.payment.db
-    container_name: ezstore-payment-db
-    build:
-      context: .
-      dockerfile: Dockerfile.ezStore.payment.db
-    ports:
-      - 3308:3306
-    entrypoint: ['/entrypoint.sh', '--default-authentication-plugin=mysql_native_password']
-    networks:
-      - microservices-network
-
   ezStore.product.db:
     image: ezstore.product.db
     container_name: ezstore-product-db

@@ -1,4 +1,4 @@
-﻿using Ws4vn.Microservicess.ApplicationCore.Commands;
+﻿using Ws4vn.Microservices.ApplicationCore.Commands;
 
 namespace Microservices.Setting.ApplicationCore.Services.Commands
 {

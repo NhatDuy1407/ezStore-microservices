@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Ws4vn.Microservicess.ApplicationCore.Exceptions
+namespace Ws4vn.Microservices.ApplicationCore.Exceptions
 {
     public class ConcurrencyException : Exception
     {

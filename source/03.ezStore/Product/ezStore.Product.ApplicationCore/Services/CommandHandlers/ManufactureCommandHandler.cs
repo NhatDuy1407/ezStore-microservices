@@ -2,7 +2,7 @@
 using ezStore.Product.ApplicationCore.Dtos;
 using ezStore.Product.ApplicationCore.ProductAggregate;
 using ezStore.Product.ApplicationCore.Services.Commands;
-using Ws4vn.Microservicess.ApplicationCore.Interfaces;
+using Ws4vn.Microservices.ApplicationCore.Interfaces;
 
 namespace ezStore.Product.ApplicationCore.Services.CommandHandlers
 {

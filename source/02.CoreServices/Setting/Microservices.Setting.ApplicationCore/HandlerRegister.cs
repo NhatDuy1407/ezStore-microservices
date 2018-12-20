@@ -7,7 +7,7 @@ namespace Microservices.Setting.ApplicationCore
     {
         public static void Register(IServiceCollection services)
         {
-            Ws4vn.Microservicess.ApplicationCore.SharedKernel.HandlerRegister.Register(Assembly.GetExecutingAssembly(), services);
+            Ws4vn.Microservices.ApplicationCore.SharedKernel.HandlerRegister.Register(Assembly.GetExecutingAssembly(), services);
         }
     }
 }

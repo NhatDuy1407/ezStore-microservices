@@ -1,10 +1,10 @@
 ﻿using MassTransit;
 using MassTransit.RabbitMqTransport;
 using Microservices.Logging.BackgroundProcess.Consumers;
-using Ws4vn.Microservicess.ApplicationCore.Events;
-using Ws4vn.Microservicess.ApplicationCore.SharedKernel;
-using Ws4vn.Microservicess.Infrastructure.Events;
-using Ws4vn.Microservicess.Infrastructure.MongoDB;
+using Ws4vn.Microservices.ApplicationCore.Events;
+using Ws4vn.Microservices.ApplicationCore.SharedKernel;
+using Ws4vn.Microservices.Infrastructure.Events;
+using Ws4vn.Microservices.Infrastructure.MongoDB;
 using Microsoft.Extensions.Configuration;
 using System;
 

@@ -1,8 +1,8 @@
 ﻿using MassTransit;
 using MassTransit.RabbitMqTransport;
 using Microservices.Notification.BackgroundProcess.Consumers;
-using Ws4vn.Microservicess.ApplicationCore.Events;
-using Ws4vn.Microservicess.Infrastructure.Events;
+using Ws4vn.Microservices.ApplicationCore.Events;
+using Ws4vn.Microservices.Infrastructure.Events;
 using Microsoft.Extensions.Configuration;
 using System;
 

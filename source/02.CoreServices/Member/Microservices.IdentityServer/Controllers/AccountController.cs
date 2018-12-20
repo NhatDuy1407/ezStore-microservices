@@ -5,7 +5,7 @@ using Microservices.IdentityServer.Models;
 using Microservices.IdentityServer.Models.AccountViewModels;
 using Microservices.IdentityServer.Services;
 using Microservices.Member.Domain.Application.Commands;
-using Ws4vn.Microservicess.ApplicationCore.Interfaces;
+using Ws4vn.Microservices.ApplicationCore.Interfaces;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;

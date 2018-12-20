@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq.Expressions;
 
-namespace Ws4vn.Microservicess.ApplicationCore.Interfaces
+namespace Ws4vn.Microservices.ApplicationCore.Interfaces
 {
     public interface IDataAccessWriteRepository<TModel> : IDataAccessReadOnlyRepository<TModel> where TModel : class
     {

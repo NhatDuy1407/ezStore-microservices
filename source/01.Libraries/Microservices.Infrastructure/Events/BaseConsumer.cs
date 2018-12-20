@@ -1,11 +1,11 @@
 ﻿using MassTransit;
-using Ws4vn.Microservicess.ApplicationCore.Events;
-using Ws4vn.Microservicess.ApplicationCore.SharedKernel;
+using Ws4vn.Microservices.ApplicationCore.Events;
+using Ws4vn.Microservices.ApplicationCore.SharedKernel;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 
-namespace Ws4vn.Microservicess.Infrastructure.Events
+namespace Ws4vn.Microservices.Infrastructure.Events
 {
     public class BaseConsumer
     {

@@ -3,7 +3,7 @@ using ezStore.WareHouse.API.ViewModels;
 using ezStore.WareHouse.ApplicationCore.Services.Commands;
 using ezStore.WareHouse.ApplicationCore.Services.Queries;
 using Microservices.DataAccess.Core.Entities;
-using Ws4vn.Microservicess.ApplicationCore.Interfaces;
+using Ws4vn.Microservices.ApplicationCore.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;

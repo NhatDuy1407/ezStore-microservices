@@ -5,7 +5,7 @@ using Microservices.Setting.ApplicationCore.Mapper;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Ws4vn.Microservicess.ApplicationCore.Interfaces;
+using Ws4vn.Microservices.ApplicationCore.Interfaces;
 
 namespace Microservices.Setting.ApplicationCore.Services.Queries
 {

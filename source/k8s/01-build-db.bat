@@ -1,13 +1,28 @@
-docker-compose -f docker-compose.init.yml build 
+docker-compose -f docker-compose.init.yml build
 
-docker tag microservices.services.queue khainx127/microservices.services.queue
-docker push khainx127/microservices.services.queue
+docker tag microservices.identity.db ezstoremicroservices/microservices.identity.db
+docker push ezstoremicroservices/microservices.identity.db
 
-docker tag microservices.identity.db khainx127/microservices.identity.db
-docker push khainx127/microservices.identity.db
+docker tag microservices.services.queue ezstoremicroservices/microservices.services.queue
+docker push ezstoremicroservices/microservices.services.queue
 
-docker tag microservices.services.db khainx127/microservices.services.db
-docker push khainx127/microservices.services.db
+docker tag microservices.services.db ezstoremicroservices/microservices.services.db
+docker push ezstoremicroservices/microservices.services.db
 
-docker tag ezstore.product.db khainx127/ezstore.product.db
-docker push khainx127/ezstore.product.db
+docker tag microservices.settings.db ezstoremicroservices/microservices.settings.db
+docker push ezstoremicroservices/microservices.settings.db
+
+docker tag microservices.services.redis ezstoremicroservices/microservices.services.redis
+docker push ezstoremicroservices/microservices.services.redis
+
+docker tag ezstore.order.db ezstoremicroservices/ezstore.order.db
+docker push ezstoremicroservices/ezstore.order.db
+
+docker tag ezstore.payment.db ezstoremicroservices/ezstore.payment.db
+docker push ezstoremicroservices/ezstore.payment.db
+
+docker tag ezstore.product.db ezstoremicroservices/ezstore.product.db
+docker push ezstoremicroservices/ezstore.product.db
+
+docker tag ezstore.warehouse.db ezstoremicroservices/ezstore.warehouse.db
+docker push ezstoremicroservices/ezstore.warehouse.db

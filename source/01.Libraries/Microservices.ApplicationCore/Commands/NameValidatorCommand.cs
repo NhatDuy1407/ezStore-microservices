@@ -1,4 +1,4 @@
-﻿namespace Ws4vn.Microservicess.ApplicationCore.Commands
+﻿namespace Ws4vn.Microservices.ApplicationCore.Commands
 {
     public class NameValidatorCommand : ValidationDecoratorCommand
     {

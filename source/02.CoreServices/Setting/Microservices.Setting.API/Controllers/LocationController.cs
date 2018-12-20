@@ -2,7 +2,7 @@
 using Microservices.Setting.API.ViewModels;
 using Microservices.Setting.ApplicationCore.Services.Commands;
 using Microservices.Setting.ApplicationCore.Services.Queries;
-using Ws4vn.Microservicess.ApplicationCore.Interfaces;
+using Ws4vn.Microservices.ApplicationCore.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;

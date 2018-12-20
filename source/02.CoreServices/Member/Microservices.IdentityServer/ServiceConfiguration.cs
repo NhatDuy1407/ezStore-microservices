@@ -1,14 +1,11 @@
 ﻿using MassTransit;
 using MassTransit.Util;
-using Ws4vn.Microservicess.ApplicationCore.Interfaces;
-using Ws4vn.Microservicess.ApplicationCore.Services;
-using Ws4vn.Microservicess.ApplicationCore.SharedKernel;
-using Ws4vn.Microservicess.ApplicationCore.Validations;
-using Ws4vn.Microservicess.Infrastructure;
-using Ws4vn.Microservicess.Infrastructure.MongoDB;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System;
+using Ws4vn.Microservices.ApplicationCore.Interfaces;
+using Ws4vn.Microservices.ApplicationCore.SharedKernel;
+using Ws4vn.Microservices.Infrastructure.MongoDB;
 
 namespace Microservices.IdentityServer
 {
@@ -18,7 +15,7 @@ namespace Microservices.IdentityServer
 
         public static void ConfigureServices(IServiceCollection services, IConfiguration configuration)
         {
-            services.AddTransient(i =>
+            services.AddScoped(i =>
             {
                 if (_bus == null)
                 {
@@ -49,7 +46,7 @@ namespace Microservices.IdentityServer
             });
 
             // Add application services.
-            services.AddTransient(i => new MongoDbContext(configuration.GetConnectionString(MicroservicesConstants.MemberDbConnection), configuration.GetConnectionString(MicroservicesConstants.MemberDbName), false));
+            services.AddScoped(i => new MongoDbContext(configuration.GetConnectionString(MicroservicesConstants.MemberDbConnection), configuration.GetConnectionString(MicroservicesConstants.MemberDbName), false));
             services.AddTransient<IDataAccessService>(i => new DataAccessWriteService(i.GetService<MongoDbContext>()));
             services.AddTransient<IDataAccessWriteService>(i => new DataAccessWriteService(i.GetService<MongoDbContext>()));
 

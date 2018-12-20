@@ -3,8 +3,8 @@ using Microservices.Setting.ApplicationCore.Services.Commands;
 using System.Linq;
 using System.Threading.Tasks;
 using Ws4vn.Microservices.ApplicationCore.ReadModels;
-using Ws4vn.Microservicess.ApplicationCore.Interfaces;
-using Ws4vn.Microservicess.ApplicationCore.SharedKernel;
+using Ws4vn.Microservices.ApplicationCore.Interfaces;
+using Ws4vn.Microservices.ApplicationCore.SharedKernel;
 
 namespace Microservices.Setting.ApplicationCore.Services.EventHandlers
 {

@@ -27,7 +27,7 @@ spec:
         app: microservices-identity-db
     spec:
       containers:
-      - image: khainx127/microservices.identity.db
+      - image: ezstoremicroservices/microservices.identity.db
         name: microservices-identity-db
         ports:
         - containerPort: 3306
@@ -66,7 +66,7 @@ spec:
         app: microservices-services-queue
     spec:
       containers:
-      - image: khainx127/microservices.services.queue
+      - image: ezstoremicroservices/microservices.services.queue
         name: microservices-services-queue
 ---
 apiVersion: v1
@@ -98,12 +98,81 @@ spec:
         app: microservices-services-db
     spec:
       containers:
-      - image: khainx127/microservices.services.db
+      - image: ezstoremicroservices/microservices.services.db
         name: microservices-services-db
         ports:
         - containerPort: 27017
           name: mongodb
-
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: microservices-settings-db
+spec:
+  type: ClusterIP
+  ports:
+  - name: mongodb
+    protocol: TCP
+    port: 27017
+    targetPort: 27017
+  selector:
+    app: microservices-settings-db
+---
+apiVersion: apps/v1 # for versions before 1.9.0 use apps/v1beta2
+kind: Deployment
+metadata:
+  name: microservices-settings-db
+spec:
+  minReadySeconds: 10
+  selector:
+    matchLabels:
+      app: microservices-settings-db
+  template:
+    metadata:
+      labels:
+        app: microservices-settings-db
+    spec:
+      containers:
+      - image: ezstoremicroservices/microservices.settings.db
+        name: microservices-settings-db
+        ports:
+        - containerPort: 27017
+          name: mongodb
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: microservices-services-redis
+spec:
+  type: ClusterIP
+  ports:
+  - name: redis
+    protocol: TCP
+    port: 6379
+    targetPort: 6379
+  selector:
+    app: microservices-services-redis
+---
+apiVersion: apps/v1 # for versions before 1.9.0 use apps/v1beta2
+kind: Deployment
+metadata:
+  name: microservices-services-redis
+spec:
+  minReadySeconds: 10
+  selector:
+    matchLabels:
+      app: microservices-services-redis
+  template:
+    metadata:
+      labels:
+        app: microservices-services-redis
+    spec:
+      containers:
+      - image: ezstoremicroservices/microservices.services.redis
+        name: microservices-services-redis
+        ports:
+        - containerPort: 6379
+          name: redis
 ---
 apiVersion: v1
 kind: Service
@@ -134,7 +203,7 @@ spec:
         app: ezstore-order-db
     spec:
       containers:
-      - image: khainx127/ezstore.order.db
+      - image: ezstoremicroservices/ezstore.order.db
         name: ezstore-order-db
         ports:
         - containerPort: 3306
@@ -170,7 +239,7 @@ spec:
         app: ezstore-payment-db
     spec:
       containers:
-      - image: khainx127/ezstore.payment.db
+      - image: ezstoremicroservices/ezstore.payment.db
         name: ezstore-payment-db
         ports:
         - containerPort: 3306
@@ -206,7 +275,7 @@ spec:
         app: ezstore-product-db
     spec:
       containers:
-      - image: khainx127/ezstore.product.db
+      - image: ezstoremicroservices/ezstore.product.db
         name: ezstore-product-db
         ports:
         - containerPort: 3306
@@ -242,7 +311,7 @@ spec:
         app: ezstore-warehouse-db
     spec:
       containers:
-      - image: khainx127/ezstore.warehouse.db
+      - image: ezstoremicroservices/ezstore.warehouse.db
         name: ezstore-warehouse-db
         ports:
         - containerPort: 3306
