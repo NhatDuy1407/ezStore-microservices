@@ -8,7 +8,7 @@ spec:
   - name: identityserver
     protocol: TCP
     port: 80
-    nodePort: 30001
+    nodePort: 30101
   selector:
     app: microservices-identityserver
 ---
@@ -48,7 +48,7 @@ spec:
   - name: logging-api
     protocol: TCP
     port: 80
-    nodePort: 30002
+    nodePort: 30102
   selector:
     app: microservices-logging-api
 ---
@@ -88,7 +88,7 @@ spec:
   - name: setting-api
     protocol: TCP
     port: 80
-    nodePort: 30003
+    nodePort: 30103
   selector:
     app: microservices-setting-api
 ---
@@ -209,7 +209,7 @@ spec:
   - name: ezstore-order-api
     protocol: TCP
     port: 80
-    nodePort: 31001
+    nodePort: 30201
   selector:
     app: ezstore-order-api
 ---
@@ -249,7 +249,7 @@ spec:
   - name: ezstore-payment-api
     protocol: TCP
     port: 80
-    nodePort: 31002
+    nodePort: 30202
   selector:
     app: ezstore-payment-api
 ---
@@ -289,7 +289,7 @@ spec:
   - name: ezstore-product-api
     protocol: TCP
     port: 80
-    nodePort: 31003
+    nodePort: 30203
   selector:
     app: ezstore-product-api
 ---
@@ -329,7 +329,7 @@ spec:
   - name: ezstore-warehouse-api
     protocol: TCP
     port: 80
-    nodePort: 31004
+    nodePort: 30204
   selector:
     app: ezstore-warehouse-api
 ---

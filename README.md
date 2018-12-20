@@ -1,6 +1,8 @@
 # A microservices system built on .NET Core (in-progress)
 
 ## Technologies and frameworks used:
+- DDD
+- CLEAN architecture
 - ASP.NET MVC Core 2.2
 - Microsoft.EntityFrameworkCore (2.2)
 - IdentityServer4 (2.1.1)
@@ -11,8 +13,7 @@
 - rabbitmq (3.7)
 - Docker-ce (version 18.06.1-ce, build e68fc7a)
 - Kubenetes (1.10.3)
-- DDD
-- CLEAN architecture
+- Istio-1.0.5
 
 ## IDE
 - Visual Studio Community 2017
@@ -33,7 +34,7 @@
 - Open Warehouse Api: http://localhost:6004/swagger
 - Open WebUI: http://localhost:7001
 - Use IdentityServer: http://localhost:5001 to create a user, then login by WebUI: http://localhost:7001 to get `token` in `localstorage`
-- Use `token` as `Beare Authentication` for ``Swagger`
+- Use `token` as `Bearer Authentication` for ``Swagger`
 
 ## Local Kubenetes Deployment 
 - (If you want to update Docker Repository) Login Docker Repository by DockerId: ezstoremicroservices   Password: 8dh&^5D@@
@@ -44,23 +45,30 @@
 - (If you want to update Docker Repository) Run `k8s\05-build-webui.bat` to build WebUI image then run `k8s\06-publish-webui-image.bat` to publish WebUI image
 - Deploy WebUI to Kubenetes by running `k8s\07-deploy-webui.bat`
 - Run command: `kubectl get all` to determine runtime port of each services
-- Open IdentityServer: http://localhost:30001, http://localhost:30001/swagger
-- Open Logging Api: http://localhost:30002/swagger
-- Open Setting Api: http://localhost:30003/swagger
-- Open Order Api: http://localhost:31001/swagger
-- Open Payment Api: http://localhost:31002/swagger
-- Open Product Api: http://localhost:31003/swagger
-- Open Warehouse Api: http://localhost:31004/swagger
+- Open IdentityServer: http://localhost:30101, http://localhost:30101/swagger
+- Open Logging Api: http://localhost:30102/swagger
+- Open Setting Api: http://localhost:30103/swagger
+- Open Order Api: http://localhost:30201/swagger
+- Open Payment Api: http://localhost:30202/swagger
+- Open Product Api: http://localhost:30203/swagger
+- Open Warehouse Api: http://localhost:30204/swagger
 
 ## Istio Dashboard (Application metric & health check)
-- Download Istio from https://github.com/istio/istio/releases/
+- Download Istio from https://github.com/istio/istio/releases/. I am using version 1.0.5
 - From Istio folder, run `kubectl apply -f install/kubernetes/istio-demo.yaml`
-- Waiting for Istio ready, run Istio Dashboard: `kubectl -n istio-system port-forward $(kubectl -n istio-system get pod -l app=grafana -o jsonpath='{.items[0].metadata.name}') 3000:3000 &` and open http://localhost:3000
+- Waiting for Istio ready, run Istio Dashboard: `kubectl -n istio-system port-forward $(kubectl -n istio-system get pod -l app=grafana -o jsonpath='{.items[0].metadata.name}') 4001:3000 &` and open http://localhost:4001
 - Run `k8s\istio-03-rules.bat` to allow Istio Service to connect database from outside 
-- Run 'k8s\istio-04-gateway.bat' to allow run API from domain name http://microservices.identityserver:30001/
+- Open `hosts` file, add custom DNS:
+  - microservices.identityserver 127.0.0.1
+  - microservices.logging 127.0.0.1
+  - ezstore.orderapi 127.0.0.1
+  - ezstore.paymentapi 127.0.0.1
+  - ezstore.productapi 127.0.0.1
+  - kubectezstore.warehouseapi 127.0.0.1
+- Run 'k8s\istio-04-gateway.bat' to allow run API from domain name http://microservices.identityserver:30101/
 - Run `k8s\istio-05-setup-api.bat` to set up API with injected Istio sidecar
-- Run `kubectl -n istio-system port-forward istio-egressgateway-56bdd5fcfb-rxbzs 30001` to forward port 30001. (`istio-egressgateway-56bdd5fcfb-rxbzs` is istio-egressgateway, please replace from your machine)
-- Open site http://microservices.identityserver:30001/ and check activity from http://localhost:3000 
+- Run `kubectl -n istio-system port-forward istio-egressgateway-56bdd5fcfb-rxbzs 30101` to forward port 30101. (`istio-egressgateway-56bdd5fcfb-rxbzs` is istio-egressgateway, please replace from your machine)
+- Open site http://microservices.identityserver:30101/ and check activity from http://localhost:4001 
 - (updating...)
 
 ## Microservicess

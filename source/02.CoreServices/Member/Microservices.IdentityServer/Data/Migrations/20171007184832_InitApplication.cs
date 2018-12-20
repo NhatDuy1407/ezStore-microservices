@@ -139,8 +139,8 @@ namespace Microservices.IdentityServer.Data.Migrations
                 {
                     UserId = table.Column<string>(type: "varchar(100)", nullable: false),
                     LoginProvider = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    Name = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    Value = table.Column<string>(type: "nvarchar(500)", nullable: true)
+                    Name = table.Column<string>(type: "nvarchar(100)", nullable: false),
+                    Value = table.Column<string>(type: "nvarchar(250)", nullable: true)
                 },
                 constraints: table =>
                 {
