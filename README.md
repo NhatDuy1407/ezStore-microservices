@@ -67,7 +67,7 @@
   - 127.0.0.1 ezstore.productapi
   - 127.0.0.1 ezstore.warehouseapi
 - Run 'k8s\istio-04-gateway.bat' to allow run API from domain name http://microservices.identityserver:30101/
-- Run `k8s\istio-05-setup-api.bat` to set up API with injected Istio sidecar. (`istio-ingressgateway-7f4dd7d699-gf44v` is istio-egressgateway, please replace from your machine)
+- Run `k8s\istio-05-setup-api.bat` to set up API with injected Istio sidecar. (`istio-egressgateway-56bdd5fcfb-rnwbc` is istio-egressgateway, please replace from your machine)
 - Open site http://microservices.identityserver:30101/ and check activity from http://localhost:4001 
 - (updating...)
 
