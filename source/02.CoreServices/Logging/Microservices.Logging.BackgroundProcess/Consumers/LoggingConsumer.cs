@@ -1,8 +1,8 @@
 ﻿using MassTransit;
 using Microservices.Logging.ApplicationCore.Entities;
-using Ws4vn.Microservicess.ApplicationCore.Events;
-using Ws4vn.Microservicess.ApplicationCore.Interfaces;
-using Ws4vn.Microservicess.Infrastructure.Events;
+using Ws4vn.Microservices.ApplicationCore.Events;
+using Ws4vn.Microservices.ApplicationCore.Interfaces;
+using Ws4vn.Microservices.Infrastructure.Events;
 using System.Threading.Tasks;
 
 namespace Microservices.Logging.BackgroundProcess.Consumers

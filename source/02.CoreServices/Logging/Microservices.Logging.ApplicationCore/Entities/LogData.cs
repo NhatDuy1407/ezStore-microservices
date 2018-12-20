@@ -1,6 +1,6 @@
 ﻿using MongoDB.Bson;
 using System;
-using Ws4vn.Microservicess.ApplicationCore.Entities;
+using Ws4vn.Microservices.ApplicationCore.Entities;
 
 namespace Microservices.Logging.ApplicationCore.Entities
 {

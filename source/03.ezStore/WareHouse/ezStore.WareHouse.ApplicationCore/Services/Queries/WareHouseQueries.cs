@@ -2,12 +2,12 @@
 using ezStore.WareHouse.ApplicationCore.Dtos;
 using ezStore.WareHouse.ApplicationCore.Mapper;
 using Microservices.DataAccess.Core.Entities;
-using Ws4vn.Microservicess.ApplicationCore.Interfaces;
+using Ws4vn.Microservices.ApplicationCore.Interfaces;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
 using ezStore.WareHouse.ApplicationCore.ReadModels;
-using Ws4vn.Microservicess.ApplicationCore.SharedKernel;
+using Ws4vn.Microservices.ApplicationCore.SharedKernel;
 using Ws4vn.Microservices.ApplicationCore.ReadModels;
 using System.Collections.Generic;
 

@@ -3,7 +3,7 @@ using System;
 using System.Linq;
 using System.Linq.Expressions;
 
-namespace Ws4vn.Microservicess.ApplicationCore.Interfaces
+namespace Ws4vn.Microservices.ApplicationCore.Interfaces
 {
     public interface IDataAccessReadOnlyRepository<TModel> : IDisposable where TModel : class
     {

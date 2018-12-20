@@ -1,4 +1,4 @@
-﻿using Ws4vn.Microservicess.ApplicationCore.Entities;
+﻿using Ws4vn.Microservices.ApplicationCore.Entities;
 using MongoDB.Bson;
 
 namespace Microservices.Setting.ApplicationCore.Entities

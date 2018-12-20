@@ -71,11 +71,12 @@
 - Open site http://microservices.identityserver:30101/ and check activity from http://localhost:4001 
 - (updating...)
 
-## Microservicess
+## Microservices
 - Identity Server
 - Logging Service
 - Notification Service
-- Product
+- Setting Service
+- Product Service
 
 ## Entity Framework Migration
 - Implement database structure in ezStore.Product.Infrastructure: Entities and DbContext

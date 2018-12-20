@@ -1,8 +1,8 @@
-﻿using Ws4vn.Microservicess.ApplicationCore.Interfaces;
+﻿using Ws4vn.Microservices.ApplicationCore.Interfaces;
 using ServiceStack.Redis;
 using System.Threading.Tasks;
 
-namespace Ws4vn.Microservicess.Infrastructure.Caching
+namespace Ws4vn.Microservices.Infrastructure.Caching
 {
     public class RedisCacheService : ICacheService
     {

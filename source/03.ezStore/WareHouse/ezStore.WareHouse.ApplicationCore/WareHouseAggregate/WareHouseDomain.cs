@@ -1,6 +1,6 @@
 ﻿using ezStore.WareHouse.ApplicationCore.DomainEvents;
-using Ws4vn.Microservicess.ApplicationCore.Entities;
-using Ws4vn.Microservicess.ApplicationCore.Interfaces;
+using Ws4vn.Microservices.ApplicationCore.Entities;
+using Ws4vn.Microservices.ApplicationCore.Interfaces;
 using System;
 using System.Linq;
 

@@ -1,14 +1,14 @@
-﻿using Ws4vn.Microservicess.ApplicationCore.Interfaces;
+﻿using Ws4vn.Microservices.ApplicationCore.Interfaces;
 using Microsoft.Extensions.DependencyInjection;
 using System.Linq;
 using System.Reflection;
-using Ws4vn.Microservicess.ApplicationCore.Services;
+using Ws4vn.Microservices.ApplicationCore.Services;
 using Microsoft.Extensions.Configuration;
 using MassTransit;
 using Ws4vn.Microservices.ApplicationCore;
-using Ws4vn.Microservicess.ApplicationCore.Validations;
+using Ws4vn.Microservices.ApplicationCore.Validations;
 
-namespace Ws4vn.Microservicess.ApplicationCore.SharedKernel
+namespace Ws4vn.Microservices.ApplicationCore.SharedKernel
 {
     public static class HandlerRegister
     {

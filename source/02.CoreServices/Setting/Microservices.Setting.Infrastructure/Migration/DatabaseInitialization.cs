@@ -1,4 +1,4 @@
-﻿using Ws4vn.Microservicess.Infrastructure.MongoDB;
+﻿using Ws4vn.Microservices.Infrastructure.MongoDB;
 using Microservices.Setting.ApplicationCore.Entities;
 using Microsoft.Extensions.DependencyInjection;
 using MongoDB.Driver;

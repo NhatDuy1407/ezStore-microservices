@@ -2,8 +2,8 @@
 using ezStore.Product.ApplicationCore.Dtos;
 using ezStore.Product.ApplicationCore.Entities;
 using ezStore.Product.ApplicationCore.Mapper;
-using Ws4vn.Microservicess.ApplicationCore.Entities;
-using Ws4vn.Microservicess.ApplicationCore.Interfaces;
+using Ws4vn.Microservices.ApplicationCore.Entities;
+using Ws4vn.Microservices.ApplicationCore.Interfaces;
 using System;
 using System.Linq;
 

@@ -1,7 +1,7 @@
-﻿using Ws4vn.Microservicess.ApplicationCore.Events;
+﻿using Ws4vn.Microservices.ApplicationCore.Events;
 using System.Threading.Tasks;
 
-namespace Ws4vn.Microservicess.ApplicationCore.Interfaces
+namespace Ws4vn.Microservices.ApplicationCore.Interfaces
 {
     public interface IEventHandler<in TEvent> where TEvent : IEvent
     {

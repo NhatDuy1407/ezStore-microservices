@@ -1,4 +1,4 @@
-﻿namespace Ws4vn.Microservicess.ApplicationCore.SharedKernel
+﻿namespace Ws4vn.Microservices.ApplicationCore.SharedKernel
 {
     public static class MicroservicesConstants
     {

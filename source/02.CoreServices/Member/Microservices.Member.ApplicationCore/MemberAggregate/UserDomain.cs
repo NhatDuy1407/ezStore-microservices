@@ -1,5 +1,5 @@
-﻿using Ws4vn.Microservicess.ApplicationCore.Entities;
-using Ws4vn.Microservicess.ApplicationCore.Interfaces;
+﻿using Ws4vn.Microservices.ApplicationCore.Entities;
+using Ws4vn.Microservices.ApplicationCore.Interfaces;
 using Microservices.Member.ApplicationCore.Entities;
 
 namespace Microservices.Member.Domain.MemberAggregate

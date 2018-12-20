@@ -1,6 +1,6 @@
 ﻿using IdentityServer4;
 using IdentityServer4.Models;
-using Ws4vn.Microservicess.ApplicationCore.SharedKernel;
+using Ws4vn.Microservices.ApplicationCore.SharedKernel;
 using Microsoft.Extensions.Configuration;
 using System.Collections.Generic;
 

@@ -1,7 +1,7 @@
-﻿using Ws4vn.Microservicess.ApplicationCore.Entities;
-using Ws4vn.Microservicess.ApplicationCore.Interfaces;
+﻿using Ws4vn.Microservices.ApplicationCore.Entities;
+using Ws4vn.Microservices.ApplicationCore.Interfaces;
 
-namespace Ws4vn.Microservicess.ApplicationCore.Services
+namespace Ws4vn.Microservices.ApplicationCore.Services
 {
     public class DomainService : IDomainService
     {

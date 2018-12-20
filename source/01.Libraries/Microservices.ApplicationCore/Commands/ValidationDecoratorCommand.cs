@@ -1,10 +1,10 @@
-﻿using Ws4vn.Microservicess.ApplicationCore.Interfaces;
+﻿using Ws4vn.Microservices.ApplicationCore.Interfaces;
 using System;
 using System.Collections.Concurrent;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Ws4vn.Microservicess.ApplicationCore.Commands
+namespace Ws4vn.Microservices.ApplicationCore.Commands
 {
     public abstract class ValidationDecoratorCommand : ICommand
     {

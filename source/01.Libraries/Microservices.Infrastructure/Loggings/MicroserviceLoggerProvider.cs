@@ -2,7 +2,7 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 
-namespace Ws4vn.Microservicess.Infrastructure.Loggings
+namespace Ws4vn.Microservices.Infrastructure.Loggings
 {
     public class MicroservicesLoggerProvider : ILoggerProvider
     {
