@@ -56,18 +56,18 @@
 ## Istio Dashboard (Application metric & health check)
 - Download Istio from https://github.com/istio/istio/releases/. I am using version 1.0.5
 - From Istio folder, run `kubectl apply -f install/kubernetes/istio-demo.yaml`
+- Add `\istio-1.0.5\bin` absolute path into `PATH` in `Environment Variables`
 - Waiting for Istio ready, run Istio Dashboard: `kubectl -n istio-system port-forward $(kubectl -n istio-system get pod -l app=grafana -o jsonpath='{.items[0].metadata.name}') 4001:3000 &` and open http://localhost:4001
 - Run `k8s\istio-03-rules.bat` to allow Istio Service to connect database from outside 
 - Open `hosts` file, add custom DNS:
-  - microservices.identityserver 127.0.0.1
-  - microservices.logging 127.0.0.1
-  - ezstore.orderapi 127.0.0.1
-  - ezstore.paymentapi 127.0.0.1
-  - ezstore.productapi 127.0.0.1
-  - kubectezstore.warehouseapi 127.0.0.1
+  - 127.0.0.1 microservices.identityserver 
+  - 127.0.0.1 microservices.logging
+  - 127.0.0.1 ezstore.orderapi
+  - 127.0.0.1 ezstore.paymentapi
+  - 127.0.0.1 ezstore.productapi
+  - 127.0.0.1 ezstore.warehouseapi
 - Run 'k8s\istio-04-gateway.bat' to allow run API from domain name http://microservices.identityserver:30101/
-- Run `k8s\istio-05-setup-api.bat` to set up API with injected Istio sidecar
-- Run `kubectl -n istio-system port-forward istio-egressgateway-56bdd5fcfb-rxbzs 30101` to forward port 30101. (`istio-egressgateway-56bdd5fcfb-rxbzs` is istio-egressgateway, please replace from your machine)
+- Run `k8s\istio-05-setup-api.bat` to set up API with injected Istio sidecar. (`istio-ingressgateway-64cb7d5f6d-mntg6` is istio-egressgateway, please replace from your machine)
 - Open site http://microservices.identityserver:30101/ and check activity from http://localhost:4001 
 - (updating...)
 
