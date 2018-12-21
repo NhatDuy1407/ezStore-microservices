@@ -39,7 +39,7 @@
 - Open Warehouse Api: http://localhost:6004/swagger
 - Open WebUI: http://localhost:7001
 - Use IdentityServer: http://localhost:5001 to create a user, then login by WebUI: http://localhost:7001 to get `token` in `localstorage`
-- Use `token` as `Bearer Authentication` for ``Swagger`
+- Use `token` as `Bearer Authentication` for `Swagger`
 
 ## Local Kubenetes Deployment 
 - (If you want to update Docker Repository) Login Docker Repository by DockerId: ezstoremicroservices   Password: 8dh&^5D@@
@@ -97,7 +97,9 @@
 - Call DatabaseInitialize from Program.cs
 
 ## Reference
-
+- CLEAN Architecture: https://herbertograca.com/2017/11/16/explicit-architecture-01-ddd-hexagonal-onion-clean-cqrs-how-i-put-it-all-together/
+- Kubernetes: https://kubernetes.io/
+- Istio: https://istio.io/
 
 ## Contributing
 - Fork the repo on GitHub

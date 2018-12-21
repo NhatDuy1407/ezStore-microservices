@@ -1,13 +1,13 @@
 ﻿using MassTransit;
-using Ws4vn.Microservices.ApplicationCore.Events;
-using Ws4vn.Microservices.ApplicationCore.SharedKernel;
-using Ws4vn.Microservices.Infrastructure.Events;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using System.Net;
 using System.Net.Mail;
 using System.Threading.Tasks;
+using Ws4vn.Microservices.ApplicationCore.Events;
+using Ws4vn.Microservices.ApplicationCore.SharedKernel;
+using Ws4vn.Microservices.Infrastructure.RabbitMQ;
 
 namespace Microservices.Notification.BackgroundProcess.Consumers
 {
@@ -22,7 +22,7 @@ namespace Microservices.Notification.BackgroundProcess.Consumers
 
         public Task Consume(ConsumeContext<EmailContentCreated> context)
         {
-            var sendEndPoint = context.GetSendEndpoint(new System.Uri($"{Configuration.GetConnectionString(MicroservicesConstants.RabbitMQHost)}/{EventRouteConstants.LoggingService}")).Result;
+            var sendEndPoint = context.GetSendEndpoint(new System.Uri($"{Configuration.GetConnectionString(MicroservicesConstants.MessageBusHost)}/{EventRouteConstants.LoggingService}")).Result;
             try
             {
                 var userName = Configuration.GetSection(MicroservicesConstants.SmtpSettings)[MicroservicesConstants.SmtpUserName];

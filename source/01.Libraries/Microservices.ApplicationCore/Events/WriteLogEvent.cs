@@ -3,7 +3,7 @@
 namespace Ws4vn.Microservices.ApplicationCore.Events
 {
     [MessageBusRoute(EventRouteConstants.LoggingService)]
-    public class WriteLogEvent : ApplicationEvent
+    public class WriteLogEvent : IntegrationEvent
     {
         public DateTime Date { get { return DateTime.Now; } }
         public string Level { get; set; }

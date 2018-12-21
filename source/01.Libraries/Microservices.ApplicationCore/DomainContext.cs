@@ -1,24 +1,19 @@
-﻿using MassTransit;
+﻿using System.Linq;
 using Ws4vn.Microservices.ApplicationCore.Entities;
 using Ws4vn.Microservices.ApplicationCore.Events;
 using Ws4vn.Microservices.ApplicationCore.Interfaces;
-using Ws4vn.Microservices.ApplicationCore.SharedKernel;
-using Microsoft.Extensions.Configuration;
-using System.Linq;
 
 namespace Ws4vn.Microservices.ApplicationCore
 {
     public class DomainContext : IDomainContext
     {
-        private readonly IBusControl _busControl;
+        private readonly IMessageBus _messageBus;
         private readonly IEventBus _eventBus;
-        private readonly IConfiguration Configuration;
 
-        public DomainContext(IConfiguration configuration, IBusControl busControl, IEventBus eventBus)
+        public DomainContext(IMessageBus messageBus, IEventBus eventBus)
         {
-            _busControl = busControl;
+            _messageBus = messageBus;
             _eventBus = eventBus;
-            Configuration = configuration;
         }
 
         public void SaveEvents(AggregateRoot entity)
@@ -29,20 +24,19 @@ namespace Ws4vn.Microservices.ApplicationCore
                 _eventBus.ExecuteAsync(@event);
             }
 
-            foreach (var @event in entity.Events.OfType<ApplicationEvent>())
+            foreach (var @event in entity.Events.OfType<IntegrationEvent>())
             {
                 var attr = @event.GetType().GetCustomAttributes(true).FirstOrDefault(i => i is MessageBusRouteAttribute);
                 if (attr != null)
                 {
                     foreach (var key in (attr as MessageBusRouteAttribute).RouteKeys)
                     {
-                        var sendEndPoint = _busControl.GetSendEndpoint(new System.Uri($"{Configuration.GetConnectionString(MicroservicesConstants.RabbitMQHost)}/{key}")).Result;
-                        sendEndPoint.Send(@event, @event.GetType());
+                        _messageBus.Send(key, @event, @event.GetType());
                     }
                 }
                 else
                 {
-                    _busControl.Publish(@event, @event.GetType());
+                    _messageBus.Publish(@event, @event.GetType());
                 }
             }
         }

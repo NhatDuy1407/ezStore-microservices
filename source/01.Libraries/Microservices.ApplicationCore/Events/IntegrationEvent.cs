@@ -3,9 +3,9 @@ using System;
 
 namespace Ws4vn.Microservices.ApplicationCore.Events
 {
-    public class ApplicationEvent : IEvent
+    public class IntegrationEvent : IEvent
     {
-        public ApplicationEvent()
+        public IntegrationEvent()
         {
             AggregateRootId = Guid.NewGuid();
         }

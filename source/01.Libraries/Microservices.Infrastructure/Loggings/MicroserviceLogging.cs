@@ -1,24 +1,24 @@
-﻿using MassTransit;
-using Ws4vn.Microservices.ApplicationCore.Events;
-using Ws4vn.Microservices.ApplicationCore.Exceptions;
-using Ws4vn.Microservices.ApplicationCore.SharedKernel;
-using Microsoft.Extensions.Configuration;
+﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Linq;
+using Ws4vn.Microservices.ApplicationCore.Events;
+using Ws4vn.Microservices.ApplicationCore.Exceptions;
+using Ws4vn.Microservices.ApplicationCore.Interfaces;
+using Ws4vn.Microservices.ApplicationCore.SharedKernel;
 
 namespace Ws4vn.Microservices.Infrastructure.Loggings
 {
     public class MicroservicesLogging : ILogger
     {
-        private readonly IBusControl _busControl;
+        private readonly IMessageBus _messageBus;
         private readonly string CategoryName;
         private readonly IConfiguration Configuration;
 
-        public MicroservicesLogging(string categoryName, IConfiguration configuration, IBusControl busControl)
+        public MicroservicesLogging(string categoryName, IConfiguration configuration, IMessageBus messageBus)
         {
             CategoryName = categoryName;
-            _busControl = busControl;
+            _messageBus = messageBus;
             Configuration = configuration;
         }
 
@@ -51,8 +51,7 @@ namespace Ws4vn.Microservices.Infrastructure.Loggings
                 message = formatter(state, exception);
             }
 
-            var sendEndPoint = _busControl.GetSendEndpoint(new Uri(Configuration.GetConnectionString(MicroservicesConstants.RabbitMQHost) + $"/{EventRouteConstants.LoggingService}")).Result;
-            sendEndPoint.Send(new WriteLogEvent()
+            _messageBus.Send(EventRouteConstants.LoggingService, new WriteLogEvent()
             {
                 Level = logLevel.ToString(),
                 Logger = CategoryName,
@@ -67,8 +66,7 @@ namespace Ws4vn.Microservices.Infrastructure.Loggings
 
             if ((logLevel == LogLevel.Error || logLevel == LogLevel.Critical) && exception != null && !(exception is ValidationErrorException))
             {
-                var sendNotificationEndPoint = _busControl.GetSendEndpoint(new Uri(Configuration.GetConnectionString(MicroservicesConstants.RabbitMQHost) + $"/{EventRouteConstants.NotificationService}")).Result;
-                sendNotificationEndPoint.Send(new EmailContentCreated()
+                _messageBus.Send(EventRouteConstants.NotificationService, new EmailContentCreated()
                 {
                     From = Configuration.GetSection(MicroservicesConstants.Notification)[MicroservicesConstants.SystemEmail],
                     To = Configuration.GetSection(MicroservicesConstants.Notification)[MicroservicesConstants.AdminEmail],
