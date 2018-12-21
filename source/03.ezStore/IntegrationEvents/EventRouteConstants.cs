@@ -1,4 +1,4 @@
-﻿namespace ezStore.ApplicationEvents
+﻿namespace ezStore.IntegrationEvents
 {
     public static class EventRouteConstants
     {

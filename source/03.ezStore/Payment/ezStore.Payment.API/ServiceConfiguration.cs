@@ -6,6 +6,7 @@ using Microsoft.Extensions.DependencyInjection;
 using System;
 using Ws4vn.Microservices.ApplicationCore.Interfaces;
 using Ws4vn.Microservices.ApplicationCore.SharedKernel;
+using Ws4vn.Microservices.Infrastructure.RabbitMQ;
 using Ws4vn.Microservices.Infrastructure.Sql;
 
 namespace ezStore.Payment.API
@@ -22,20 +23,20 @@ namespace ezStore.Payment.API
                 {
                     _bus = Bus.Factory.CreateUsingRabbitMq(x =>
                     {
-                        var username = configuration.GetConnectionString(MicroservicesConstants.RabbitMQUsername);
-                        var password = configuration.GetConnectionString(MicroservicesConstants.RabbitMQPassword);
-                        var host = configuration.GetConnectionString(MicroservicesConstants.RabbitMQHost);
+                        var username = configuration.GetConnectionString(MicroservicesConstants.MessageBusUsername);
+                        var password = configuration.GetConnectionString(MicroservicesConstants.MessageBusPassword);
+                        var host = configuration.GetConnectionString(MicroservicesConstants.MessageBusHost);
                         if (!string.IsNullOrEmpty(host))
                         {
                             x.Host(new Uri(host), h =>
                             {
                                 if (!string.IsNullOrEmpty(username))
                                 {
-                                    h.Username(configuration.GetConnectionString(MicroservicesConstants.RabbitMQUsername));
+                                    h.Username(configuration.GetConnectionString(MicroservicesConstants.MessageBusUsername));
                                 }
                                 if (!string.IsNullOrEmpty(password))
                                 {
-                                    h.Password(configuration.GetConnectionString(MicroservicesConstants.RabbitMQPassword));
+                                    h.Password(configuration.GetConnectionString(MicroservicesConstants.MessageBusPassword));
                                 }
 
                             });
@@ -45,6 +46,7 @@ namespace ezStore.Payment.API
                 }
                 return _bus;
             });
+            services.AddScoped<IMessageBus, MessageBus>();
 
             // Add application services.
             services.AddTransient<IDataAccessService>(i => new DataAccessWriteService(i.GetService<PaymentDbContext>()));

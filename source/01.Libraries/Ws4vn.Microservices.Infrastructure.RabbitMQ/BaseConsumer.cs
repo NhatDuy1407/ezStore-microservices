@@ -4,8 +4,9 @@ using Ws4vn.Microservices.ApplicationCore.SharedKernel;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
+using System;
 
-namespace Ws4vn.Microservices.Infrastructure.Events
+namespace Ws4vn.Microservices.Infrastructure.RabbitMQ
 {
     public class BaseConsumer
     {
@@ -19,9 +20,9 @@ namespace Ws4vn.Microservices.Infrastructure.Events
             WriteLog(context, Configuration, LogLevel.Information, message);
         }
 
-        protected void WriteLog<T>(ConsumeContext<T> context, IConfiguration Configuration, LogLevel logLevel, string message, object data = null) where T : class
+        private void WriteLog<T>(ConsumeContext<T> context, IConfiguration Configuration, LogLevel logLevel, string message, object data = null) where T : class
         {
-            var sendEndPoint = context.GetSendEndpoint(new System.Uri(Configuration.GetConnectionString(MicroservicesConstants.RabbitMQHost) + "/" + EventRouteConstants.LoggingService)).Result;
+            var sendEndPoint = context.GetSendEndpoint(new Uri($"{Configuration.GetConnectionString(MicroservicesConstants.MessageBusHost)}/{EventRouteConstants.LoggingService}")).Result;
             sendEndPoint.Send(new WriteLogEvent()
             {
                 Level = logLevel.ToString(),

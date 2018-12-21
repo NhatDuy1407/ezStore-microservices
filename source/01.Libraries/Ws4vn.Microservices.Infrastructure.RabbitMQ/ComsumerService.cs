@@ -5,7 +5,7 @@ using MassTransit.Util;
 using Ws4vn.Microservices.ApplicationCore.SharedKernel;
 using Microsoft.Extensions.Configuration;
 
-namespace Ws4vn.Microservices.Infrastructure.Events
+namespace Ws4vn.Microservices.Infrastructure.RabbitMQ
 {
     public abstract class ComsumerService
     {
@@ -24,17 +24,17 @@ namespace Ws4vn.Microservices.Infrastructure.Events
         {
             _busControl = Bus.Factory.CreateUsingRabbitMq(x =>
             {
-                var username = _configuration.GetConnectionString(MicroservicesConstants.RabbitMQUsername);
-                var password = _configuration.GetConnectionString(MicroservicesConstants.RabbitMQPassword);
-                IRabbitMqHost host = x.Host(new Uri(_configuration.GetConnectionString(MicroservicesConstants.RabbitMQHost)), h =>
+                var username = _configuration.GetConnectionString(MicroservicesConstants.MessageBusUsername);
+                var password = _configuration.GetConnectionString(MicroservicesConstants.MessageBusPassword);
+                IRabbitMqHost host = x.Host(new Uri(_configuration.GetConnectionString(MicroservicesConstants.MessageBusHost)), h =>
                 {
                     if (!string.IsNullOrEmpty(username))
                     {
-                        h.Username(_configuration.GetConnectionString(MicroservicesConstants.RabbitMQUsername));
+                        h.Username(_configuration.GetConnectionString(MicroservicesConstants.MessageBusUsername));
                     }
                     if (!string.IsNullOrEmpty(password))
                     {
-                        h.Password(_configuration.GetConnectionString(MicroservicesConstants.RabbitMQPassword));
+                        h.Password(_configuration.GetConnectionString(MicroservicesConstants.MessageBusPassword));
                     }
                 });
 

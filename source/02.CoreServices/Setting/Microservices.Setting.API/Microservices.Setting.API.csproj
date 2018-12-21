@@ -27,6 +27,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\..\01.Libraries\Microservices.Infrastructure.Caching\Ws4vn.Microservices.Infrastructure.Caching.csproj" />
     <ProjectReference Include="..\..\..\01.Libraries\Microservices.Infrastructure\Ws4vn.Microservices.Infrastructure.csproj" />
+    <ProjectReference Include="..\..\..\01.Libraries\Ws4vn.Microservices.Infrastructure.RabbitMQ\Ws4vn.Microservices.Infrastructure.RabbitMQ.csproj" />
     <ProjectReference Include="..\Microservices.Setting.Infrastructure\Microservices.Setting.Infrastructure.csproj" />
   </ItemGroup>
 

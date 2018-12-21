@@ -2,9 +2,9 @@
 {
     public static class MicroservicesConstants
     {
-        public const string RabbitMQHost = "RabbitMQHost";
-        public const string RabbitMQUsername = "RabbitMQUsername";
-        public const string RabbitMQPassword = "RabbitMQPassword";
+        public const string MessageBusHost = "MessageBusHost";
+        public const string MessageBusUsername = "MessageBusUsername";
+        public const string MessageBusPassword = "MessageBusPassword";
 
         public const string DefaultConnection = "DefaultConnection";
         public const string DefaultDatabaseName = "DefaultDatabaseName";

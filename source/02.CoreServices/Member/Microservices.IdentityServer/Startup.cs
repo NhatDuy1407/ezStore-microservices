@@ -1,11 +1,8 @@
 ﻿using IdentityServer4.AccessTokenValidation;
-using MassTransit;
 using Microservices.IdentityServer.Data;
 using Microservices.IdentityServer.Models;
 using Microservices.IdentityServer.Services;
 using Microservices.IdentityServer.Swagger;
-using Ws4vn.Microservices.ApplicationCore.SharedKernel;
-using Ws4vn.Microservices.Infrastructure.Loggings;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
@@ -16,6 +13,9 @@ using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using System;
 using System.Reflection;
+using Ws4vn.Microservices.ApplicationCore.Interfaces;
+using Ws4vn.Microservices.ApplicationCore.SharedKernel;
+using Ws4vn.Microservices.Infrastructure.Loggings;
 
 namespace Microservices.IdentityServer
 {
@@ -111,7 +111,7 @@ namespace Microservices.IdentityServer
 
             app.UseSwaggerCommon();
 
-            loggerFactory.AddProvider(new MicroservicesLoggerProvider(serviceProvider.GetService<IBusControl>(), Configuration));
+            loggerFactory.AddProvider(new MicroservicesLoggerProvider(serviceProvider.GetService<IMessageBus>(), Configuration));
 
             if (env.IsDevelopment())
             {

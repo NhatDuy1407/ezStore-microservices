@@ -1,9 +1,9 @@
 ﻿using MassTransit;
 using Microservices.Logging.ApplicationCore.Entities;
+using System.Threading.Tasks;
 using Ws4vn.Microservices.ApplicationCore.Events;
 using Ws4vn.Microservices.ApplicationCore.Interfaces;
-using Ws4vn.Microservices.Infrastructure.Events;
-using System.Threading.Tasks;
+using Ws4vn.Microservices.Infrastructure.RabbitMQ;
 
 namespace Microservices.Logging.BackgroundProcess.Consumers
 {

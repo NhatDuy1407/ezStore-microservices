@@ -1,7 +1,4 @@
 ﻿using IdentityServer4.AccessTokenValidation;
-using MassTransit;
-using Ws4vn.Microservices.ApplicationCore.SharedKernel;
-using Ws4vn.Microservices.Infrastructure.Loggings;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -9,6 +6,9 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using System;
+using Ws4vn.Microservices.ApplicationCore.Interfaces;
+using Ws4vn.Microservices.ApplicationCore.SharedKernel;
+using Ws4vn.Microservices.Infrastructure.Loggings;
 
 namespace Microservices.Setting.API
 {
@@ -68,7 +68,7 @@ namespace Microservices.Setting.API
             app.UseCors("AllowAllOrigins");
             app.UseAuthentication();
 
-            loggerFactory.AddProvider(new MicroservicesLoggerProvider(serviceProvider.GetService<IBusControl>(), Configuration));
+            loggerFactory.AddProvider(new MicroservicesLoggerProvider(serviceProvider.GetService<IMessageBus>(), Configuration));
 
             if (env.IsDevelopment())
             {

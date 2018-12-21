@@ -9,6 +9,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using System;
+using Ws4vn.Microservices.ApplicationCore.Interfaces;
 using Ws4vn.Microservices.ApplicationCore.SharedKernel;
 using Ws4vn.Microservices.Infrastructure.Loggings;
 
@@ -73,7 +74,7 @@ namespace ezStore.WareHouse.API
             app.UseCors("AllowAllOrigins");
             app.UseAuthentication();
 
-            loggerFactory.AddProvider(new MicroservicesLoggerProvider(serviceProvider.GetService<IBusControl>(), Configuration));
+            loggerFactory.AddProvider(new MicroservicesLoggerProvider(serviceProvider.GetService<IMessageBus>(), Configuration));
 
             if (env.IsDevelopment())
             {
