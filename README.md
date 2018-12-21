@@ -75,6 +75,8 @@
 - Run 'k8s\istio-04-gateway.bat' to allow run API from domain name http://microservices.identityserver:40101/
 - Run `k8s\istio-05-setup-api.bat` to set up API with injected Istio sidecar.
 - Run command from GIT Bash `kubectl -n istio-system port-forward $(kubectl get pod -l istio=egressgateway -n istio-system -o jsonpath={.items[0].metadata.name}) 40101:40101`
+  - The problem here is if there are multiple egressgateway(e.g. `istio-egressgateway-56bdd5fcfb-tz2l2` and `istio-ingressgateway-7f4dd7d699-f725p`), command `kubectl get pod -l istio=egressgateway -n istio-system -o jsonpath={.items[0].metadata.name}` return the first gateway
+  - We need choose correct gateway: `kubectl -n istio-system port-forward istio-ingressgateway-7f4dd7d699-f725p 40101:40101`
 - Open site http://microservices.identityserver:40101/ and check activity from http://localhost:4001 
 - Get istio-ingressgateway: `kubectl get svc istio-ingressgateway -n istio-system`
 - (updating...)
