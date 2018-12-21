@@ -19,10 +19,10 @@
 - Visual Studio Community 2017
 - Visual Studio Code
 
-## Docker
+## Docker (recommend high RAM)
 - CPUs: 2
-- RAM: >= 6000MB
-- Swap: 4096 MB
+- RAM: >= 5000MB
+- Swap: >= 4096 MB
 
 ## Local Development
 - First run `docker-compose -f docker-compose.init.yml up` to start databases and queues
@@ -62,6 +62,7 @@
 - Download Istio from https://github.com/istio/istio/releases/. I am using version 1.0.2
 - From Istio folder, run `kubectl apply -f install/kubernetes/istio-demo.yaml`
 - Add `\istio-1.0.2\bin` absolute path into `PATH` in `Environment Variables`
+- Deploy databases and queue to Kubenetes by running `k8s\02-deploy-db.bat`
 - Waiting for Istio ready, run Istio Dashboard command from GIT Bash: `kubectl -n istio-system port-forward $(kubectl -n istio-system get pod -l app=grafana -o jsonpath='{.items[0].metadata.name}') 4001:3000 &` and open http://localhost:4001
 - Run `k8s\istio-03-rules.bat` to allow Istio Service to connect database from outside 
 - Open `hosts` file, add custom DNS:
@@ -72,10 +73,12 @@
   - 127.0.0.1 ezstore.productapi
   - 127.0.0.1 ezstore.warehouseapi
 - Run 'k8s\istio-04-gateway.bat' to allow run API from domain name http://microservices.identityserver:40101/
-- Deploy databases and queue to Kubenetes by running `k8s\02-deploy-db.bat`
 - Run `k8s\istio-05-setup-api.bat` to set up API with injected Istio sidecar.
-- Run command from GIT Bash `kubectl -n istio-system port-forward $(kubectl get pod -l istio=egressgateway -n istio-system -o jsonpath={.items[0].metadata.name}) 40101:30101`
+- Run command from GIT Bash `kubectl -n istio-system port-forward $(kubectl get pod -l istio=egressgateway -n istio-system -o jsonpath={.items[0].metadata.name}) 40101:40101`
+  - The problem here is if there are multiple egressgateway(e.g. `istio-egressgateway-56bdd5fcfb-tz2l2` and `istio-ingressgateway-7f4dd7d699-f725p`), command `kubectl get pod -l istio=egressgateway -n istio-system -o jsonpath={.items[0].metadata.name}` return the first gateway
+  - We need choose correct gateway: `kubectl -n istio-system port-forward istio-ingressgateway-7f4dd7d699-f725p 40101:40101`
 - Open site http://microservices.identityserver:40101/ and check activity from http://localhost:4001 
+- Get istio-ingressgateway: `kubectl get svc istio-ingressgateway -n istio-system`
 - (updating...)
 
 ## Microservices
@@ -98,9 +101,13 @@
 - Call DatabaseInitialize from Program.cs
 
 ## Reference
-- CLEAN Architecture: https://herbertograca.com/2017/11/16/explicit-architecture-01-ddd-hexagonal-onion-clean-cqrs-how-i-put-it-all-together/
-- Kubernetes: https://kubernetes.io/
-- Istio: https://istio.io/
+### CLEAN Architecture
+- https://herbertograca.com/2017/11/16/explicit-architecture-01-ddd-hexagonal-onion-clean-cqrs-how-i-put-it-all-together/
+### Kubernetes
+- https://kubernetes.io/
+### Istio
+- https://istio.io/
+- https://istio.io/docs/tasks/traffic-management/ingress/
 
 ## Contributing
 - Fork the repo on GitHub
