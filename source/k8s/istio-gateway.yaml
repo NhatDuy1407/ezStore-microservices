@@ -7,7 +7,7 @@ spec:
     istio: ingressgateway # use Istio default gateway implementation
   servers:
   - port:
-      number: 30101
+      number: 40101
       name: http
       protocol: HTTP
     hosts:

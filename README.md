@@ -19,6 +19,11 @@
 - Visual Studio Community 2017
 - Visual Studio Code
 
+## Docker
+- CPUs: 2
+- RAM: >= 6000MB
+- Swap: 4096 MB
+
 ## Local Development
 - First run `docker-compose -f docker-compose.init.yml up` to start databases and queues
 - Wait for databases and queues ready
@@ -57,7 +62,7 @@
 - Download Istio from https://github.com/istio/istio/releases/. I am using version 1.0.2
 - From Istio folder, run `kubectl apply -f install/kubernetes/istio-demo.yaml`
 - Add `\istio-1.0.2\bin` absolute path into `PATH` in `Environment Variables`
-- Waiting for Istio ready, run Istio Dashboard: `kubectl -n istio-system port-forward $(kubectl -n istio-system get pod -l app=grafana -o jsonpath='{.items[0].metadata.name}') 4001:3000 &` and open http://localhost:4001
+- Waiting for Istio ready, run Istio Dashboard command from GIT Bash: `kubectl -n istio-system port-forward $(kubectl -n istio-system get pod -l app=grafana -o jsonpath='{.items[0].metadata.name}') 4001:3000 &` and open http://localhost:4001
 - Run `k8s\istio-03-rules.bat` to allow Istio Service to connect database from outside 
 - Open `hosts` file, add custom DNS:
   - 127.0.0.1 microservices.identityserver 
@@ -66,9 +71,10 @@
   - 127.0.0.1 ezstore.paymentapi
   - 127.0.0.1 ezstore.productapi
   - 127.0.0.1 ezstore.warehouseapi
-- Run 'k8s\istio-04-gateway.bat' to allow run API from domain name http://microservices.identityserver:30101/
-- Run `k8s\istio-05-setup-api.bat` to set up API with injected Istio sidecar. (`istio-egressgateway-56bdd5fcfb-rnwbc` is istio-egressgateway, please replace from your machine)
-- Open site http://microservices.identityserver:30101/ and check activity from http://localhost:4001 
+- Run 'k8s\istio-04-gateway.bat' to allow run API from domain name http://microservices.identityserver:40101/
+- Run `k8s\istio-05-setup-api.bat` to set up API with injected Istio sidecar.
+- Run command from GIT Bash `kubectl -n istio-system port-forward $(kubectl get pod -l istio=egressgateway -n istio-system -o jsonpath={.items[0].metadata.name}) 40101:40101`
+- Open site http://microservices.identityserver:40101/ and check activity from http://localhost:4001 
 - (updating...)
 
 ## Microservices
@@ -89,6 +95,9 @@
     - From Visual Studio run command: `Add-Migration Initial`
     - Or, run command line: `dotnet ef migrations add Initial`
 - Call DatabaseInitialize from Program.cs
+
+## Reference
+
 
 ## Contributing
 - Fork the repo on GitHub
