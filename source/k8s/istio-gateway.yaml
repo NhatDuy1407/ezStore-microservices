@@ -42,7 +42,7 @@ spec:
     istio: ingressgateway # use Istio default gateway implementation
   servers:
   - port:
-      number: 30102
+      number: 40102
       name: http
       protocol: HTTP
     hosts:
@@ -77,7 +77,7 @@ spec:
     istio: ingressgateway # use Istio default gateway implementation
   servers:
   - port:
-      number: 30103
+      number: 40103
       name: http
       protocol: HTTP
     hosts:
@@ -112,7 +112,7 @@ spec:
     istio: ingressgateway # use Istio default gateway implementation
   servers:
   - port:
-      number: 30201
+      number: 40201
       name: http
       protocol: HTTP
     hosts:
@@ -147,7 +147,7 @@ spec:
     istio: ingressgateway # use Istio default gateway implementation
   servers:
   - port:
-      number: 30202
+      number: 40202
       name: http
       protocol: HTTP
     hosts:
@@ -182,7 +182,7 @@ spec:
     istio: ingressgateway # use Istio default gateway implementation
   servers:
   - port:
-      number: 30203
+      number: 40203
       name: http
       protocol: HTTP
     hosts:
@@ -217,7 +217,7 @@ spec:
     istio: ingressgateway # use Istio default gateway implementation
   servers:
   - port:
-      number: 30204
+      number: 40204
       name: http
       protocol: HTTP
     hosts:

@@ -1,3 +1,4 @@
+dotnet build ezStoreMicroservices.sln
 dotnet publish ezStoreMicroservices.sln
 docker-compose -f docker-compose.k8s.yml build 
 
