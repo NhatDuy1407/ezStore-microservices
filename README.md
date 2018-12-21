@@ -72,8 +72,9 @@
   - 127.0.0.1 ezstore.productapi
   - 127.0.0.1 ezstore.warehouseapi
 - Run 'k8s\istio-04-gateway.bat' to allow run API from domain name http://microservices.identityserver:40101/
+- Deploy databases and queue to Kubenetes by running `k8s\02-deploy-db.bat`
 - Run `k8s\istio-05-setup-api.bat` to set up API with injected Istio sidecar.
-- Run command from GIT Bash `kubectl -n istio-system port-forward $(kubectl get pod -l istio=egressgateway -n istio-system -o jsonpath={.items[0].metadata.name}) 40101:40101`
+- Run command from GIT Bash `kubectl -n istio-system port-forward $(kubectl get pod -l istio=egressgateway -n istio-system -o jsonpath={.items[0].metadata.name}) 40101:30101`
 - Open site http://microservices.identityserver:40101/ and check activity from http://localhost:4001 
 - (updating...)
 
