@@ -7,9 +7,6 @@ kubectl delete deployment microservices-services-queue
 kubectl delete service microservices-services-db
 kubectl delete deployment microservices-services-db
 
-kubectl delete service microservices-settings-db
-kubectl delete deployment microservices-settings-db
-
 kubectl delete service microservices-services-redis
 kubectl delete deployment microservices-services-redis
 

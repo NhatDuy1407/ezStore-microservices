@@ -40,17 +40,6 @@ services:
     networks:
       - microservices-network
 
-  settings.db:
-    image: microservices.settings.db
-    container_name: microservices-settings-db
-    build:
-      context: .
-      dockerfile: Dockerfile.settings.db
-    ports:
-      - 27018:27017
-    networks:
-      - microservices-network
-
   services.redis:
     image: microservices.services.redis
     container_name: microservices-services-redis

@@ -19,9 +19,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\..\01.Libraries\Microservices.Infrastructure.RabbitMQ\Ws4vn.Microservices.Infrastructure.RabbitMQ.csproj" />
     <ProjectReference Include="..\..\..\01.Libraries\Microservices.Infrastructure.Sql\Ws4vn.Microservices.Infrastructure.Sql.csproj" />
     <ProjectReference Include="..\..\..\01.Libraries\Microservices.Infrastructure\Ws4vn.Microservices.Infrastructure.csproj" />
-    <ProjectReference Include="..\..\..\01.Libraries\Ws4vn.Microservices.Infrastructure.RabbitMQ\Ws4vn.Microservices.Infrastructure.RabbitMQ.csproj" />
     <ProjectReference Include="..\ezStore.Payment.Infrastructure\ezStore.Payment.Infrastructure.csproj" />
   </ItemGroup>
 

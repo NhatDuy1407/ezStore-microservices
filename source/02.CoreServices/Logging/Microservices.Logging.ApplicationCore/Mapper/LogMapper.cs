@@ -6,7 +6,7 @@ using System.Linq;
 
 namespace Microservices.Logging.ApplicationCore.Mapper
 {
-    public static class ProductCategoryMapper
+    public static class LogMapper
     {
         public static LogData DtoToEntity(LogDto dto)
         {
