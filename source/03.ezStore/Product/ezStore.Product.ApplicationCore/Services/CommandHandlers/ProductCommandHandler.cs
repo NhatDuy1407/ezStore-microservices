@@ -6,22 +6,21 @@ using Ws4vn.Microservices.ApplicationCore.Interfaces;
 
 namespace ezStore.Product.ApplicationCore.Services.CommandHandlers
 {
-    public class ManufactureCommandHandler
-        : ICommandHandler<CreateManufactureCommand>
+    public class ProductCommandHandler
+        : ICommandHandler<CreateProductCommand>
     {
         private readonly IDomainService _domainService;
         private readonly IDataAccessWriteService _writeService;
 
-        public ManufactureCommandHandler(IDomainService domainService, IDataAccessWriteService writeService)
+        public ProductCommandHandler(IDomainService domainService, IDataAccessWriteService writeService)
         {
             _domainService = domainService;
             _writeService = writeService;
         }
-
-        public Task ExecuteAsync(CreateManufactureCommand command)
+        public Task ExecuteAsync(CreateProductCommand command)
         {
-            var productCategoryDomain = new ManufactureDomain(_writeService);
-            productCategoryDomain.Add(new ManufactureDto
+            var productCategoryDomain = new ProductDomain(_writeService);
+            productCategoryDomain.Add(new ProductDto
             {
                 Name = command.Name
             });
@@ -30,10 +29,10 @@ namespace ezStore.Product.ApplicationCore.Services.CommandHandlers
             return Task.CompletedTask;
         }
 
-        public Task ExecuteAsync(UpdateManufactureCommand command)
+        public Task ExecuteAsync(UpdateProductCommand command)
         {
-            var productCategoryDomain = new ManufactureDomain(_writeService);
-            productCategoryDomain.Update(new ManufactureDto
+            var productCategoryDomain = new ProductDomain(_writeService);
+            productCategoryDomain.Update(new ProductDto
             {
                 Id = command.Id,
                 Name = command.Name
@@ -43,9 +42,9 @@ namespace ezStore.Product.ApplicationCore.Services.CommandHandlers
             return Task.CompletedTask;
         }
 
-        public Task ExecuteAsync(DeleteManufactureCommand command)
+        public Task ExecuteAsync(DeleteProductCommand command)
         {
-            var productCategoryDomain = new ManufactureDomain(_writeService);
+            var productCategoryDomain = new ProductDomain(_writeService);
             productCategoryDomain.Delete(command.Id);
 
             _domainService.ApplyChanges(productCategoryDomain);

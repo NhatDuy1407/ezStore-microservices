@@ -5,11 +5,11 @@ namespace Ws4vn.Microservices.ApplicationCore.Entities
 {
     public class AggregateRoot : ModelGuidIdEntity
     {
-        protected readonly IDataAccessService dataAccessService;
+        protected readonly IDataAccessService _dataAccessService;
 
         public AggregateRoot(IDataAccessService dataAccessService)
         {
-            this.dataAccessService = dataAccessService;
+            _dataAccessService = dataAccessService;
             Events = new List<IEvent>();
         }
 

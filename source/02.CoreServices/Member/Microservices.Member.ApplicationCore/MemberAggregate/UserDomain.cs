@@ -14,7 +14,7 @@ namespace Microservices.Member.Domain.MemberAggregate
 
         public void Login()
         {
-            dataAccessService.Repository<UserLog>().Insert(new UserLog() { Content = Username + " loged in." });
+            _dataAccessService.Repository<UserLog>().Insert(new UserLog() { Content = Username + " loged in." });
         }
     }
 }

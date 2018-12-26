@@ -15,12 +15,12 @@ namespace Microservices.Setting.ApplicationCore.SettingAggregate
         public void CreateCountry(string name, string isoCode, int displayOrder, bool published = false)
         {
             var newCountry = new Country() { Name = name, IsoCode = isoCode, DisplayOrder = displayOrder, Published = published };
-            dataAccessService.Repository<Country>().Insert(newCountry);
+            _dataAccessService.Repository<Country>().Insert(newCountry);
         }
 
         public void UpdateCountry(string id, string name, string isoCode, int displayOrder, bool published = false)
         {
-            var country = dataAccessService.Repository<Country>().Get(i => i.Id == ObjectId.Parse(id)).FirstOrDefault();
+            var country = _dataAccessService.Repository<Country>().Get(i => i.Id == ObjectId.Parse(id)).FirstOrDefault();
             if (country != null)
             {
                 country.Name = name;
@@ -32,10 +32,10 @@ namespace Microservices.Setting.ApplicationCore.SettingAggregate
 
         public void DeleteCountry(string id)
         {
-            var country = dataAccessService.Repository<Country>().Get(i => i.Id == ObjectId.Parse(id)).FirstOrDefault();
+            var country = _dataAccessService.Repository<Country>().Get(i => i.Id == ObjectId.Parse(id)).FirstOrDefault();
             if (country != null)
             {
-                dataAccessService.Repository<Country>().Delete(i => i.Id == ObjectId.Parse(id));
+                _dataAccessService.Repository<Country>().Delete(i => i.Id == ObjectId.Parse(id));
             }
         }
     }

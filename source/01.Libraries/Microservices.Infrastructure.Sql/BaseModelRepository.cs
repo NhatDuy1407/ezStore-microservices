@@ -1,9 +1,8 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microservices.DataAccess.Core.Entities;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Linq;
 using System.Linq.Expressions;
-using Microservices.DataAccess.Core;
-using Microservices.DataAccess.Core.Entities;
 using Ws4vn.Microservices.ApplicationCore.Interfaces;
 using Ws4vn.Microservices.ApplicationCore.SharedKernel;
 
@@ -11,20 +10,20 @@ namespace Ws4vn.Microservices.Infrastructure.Sql
 {
     public class BaseModelRepository<TModel> : IDataAccessWriteRepository<TModel> where TModel : class
     {
-        protected readonly DbContext Context;
-        internal DbSet<TModel> DbSet;
+        protected readonly DbContext _context;
+        internal DbSet<TModel> _dbSet;
 
         public BaseModelRepository(DbContext context)
         {
-            Context = context;
-            DbSet = Context.Set<TModel>();
+            _context = context;
+            _dbSet = _context.Set<TModel>();
         }
 
         public virtual IQueryable<TModel> Get(Expression<Func<TModel, bool>> filter,
              Func<IQueryable<TModel>, IOrderedQueryable<TModel>> orderBy,
              string includeProperties = "", bool isIncludedIsDeleted = true)
         {
-            IQueryable<TModel> query = DbSet;
+            IQueryable<TModel> query = _dbSet;
 
             if (typeof(TModel).GetProperty("Deleted") != null && isIncludedIsDeleted)
             {
@@ -59,8 +58,8 @@ namespace Ws4vn.Microservices.Infrastructure.Sql
             }
             if (!string.IsNullOrEmpty(orderBy))
             {
-                var orderQuery = DbSet.ApplyOrder(orderBy, methodName);
-                Func<IQueryable<TModel>, IOrderedQueryable<TModel>> orderByFunc = i => orderQuery;
+                var orderQuery = _dbSet.ApplyOrder(orderBy, methodName);
+                IOrderedQueryable<TModel> orderByFunc(IQueryable<TModel> i) => orderQuery;
                 return Get(filter, orderByFunc, includeProperties, isIncludedIsDeleted);
             }
             return Get(filter, null, includeProperties, isIncludedIsDeleted);
@@ -105,8 +104,8 @@ namespace Ws4vn.Microservices.Infrastructure.Sql
 
             if (!string.IsNullOrEmpty(orderBy))
             {
-                var orderQuery = DbSet.ApplyOrder(orderBy, methodName);
-                Func<IQueryable<TModel>, IOrderedQueryable<TModel>> orderByFunc = i => orderQuery;
+                var orderQuery = _dbSet.ApplyOrder(orderBy, methodName);
+                IOrderedQueryable<TModel> orderByFunc(IQueryable<TModel> i) => orderQuery;
                 return GetPaged(filter, orderByFunc, includeProperties, isIncludedIsDeleted);
             }
             return GetPaged(filter, null, includeProperties, isIncludedIsDeleted, page, pageSize);
@@ -121,43 +120,43 @@ namespace Ws4vn.Microservices.Infrastructure.Sql
 
         public void Save(TModel entity)
         {
-            DbSet.Attach(entity);
-            Context.Entry(entity).State = EntityState.Modified;
+            _dbSet.Attach(entity);
+            _context.Entry(entity).State = EntityState.Modified;
         }
 
         public void Insert(TModel entity)
         {
-            DbSet.Add(entity);
+            _dbSet.Add(entity);
         }
 
         public void Delete(Expression<Func<TModel, bool>> filter = null)
         {
-            foreach (var entity in DbSet.Where(filter))
+            foreach (var entity in _dbSet.Where(filter))
             {
-                if (Context.Entry(entity).State == EntityState.Detached)
-                    DbSet.Attach(entity);
-                DbSet.Remove(entity);
+                if (_context.Entry(entity).State == EntityState.Detached)
+                    _dbSet.Attach(entity);
+                _dbSet.Remove(entity);
             }
         }
 
         public void SaveChange()
         {
-            Context.SaveChanges();
+            _context.SaveChanges();
         }
 
         public void Transaction()
         {
-            Context.Database.BeginTransaction();
+            _context.Database.BeginTransaction();
         }
 
         public void Commit()
         {
-            Context.Database.CurrentTransaction.Commit();
+            _context.Database.CurrentTransaction.Commit();
         }
 
         public void Rollback()
         {
-            Context.Database.CurrentTransaction.Rollback();
+            _context.Database.CurrentTransaction.Rollback();
         }
 
         #region disposed

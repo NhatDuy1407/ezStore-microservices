@@ -1,16 +1,15 @@
 ﻿using ezStore.Product.ApplicationCore.Dtos;
-using ezStore.Product.ApplicationCore.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace ezStore.Product.ApplicationCore.Mapper
 {
-    public static class ProductCategoryMapper
+    public static class ProductMapper
     {
-        public static ProductCategory DtoToEntity(ProductCategoryDto dto)
+        public static Entities.Product DtoToEntity(ProductDto dto)
         {
-            return new ProductCategory
+            return new Entities.Product
             {
                 Id = dto.Id,
                 Name = dto.Name,
@@ -20,9 +19,9 @@ namespace ezStore.Product.ApplicationCore.Mapper
             };
         }
 
-        public static ProductCategoryDto EntityToDto(ProductCategory dto)
+        public static ProductDto EntityToDto(Entities.Product dto)
         {
-            return new ProductCategoryDto
+            return new ProductDto
             {
                 Id = dto.Id,
                 Name = dto.Name,
@@ -33,7 +32,7 @@ namespace ezStore.Product.ApplicationCore.Mapper
             };
         }
 
-        public static IEnumerable<ProductCategoryDto> EntityToDtos(IEnumerable<ProductCategory> entities)
+        public static IEnumerable<ProductDto> EntityToDtos(IEnumerable<Entities.Product> entities)
         {
             return entities?.Select(EntityToDto);
         }

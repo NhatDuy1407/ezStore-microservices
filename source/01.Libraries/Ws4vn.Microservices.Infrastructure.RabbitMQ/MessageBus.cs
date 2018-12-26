@@ -11,17 +11,17 @@ namespace Ws4vn.Microservices.Infrastructure.RabbitMQ
     public class MessageBus : IMessageBus
     {
         private readonly IBusControl _busControl;
-        private readonly IConfiguration Configuration;
+        private readonly IConfiguration _configuration;
 
         public MessageBus(IConfiguration configuration, IBusControl busControl)
         {
             _busControl = busControl;
-            Configuration = configuration;
+            _configuration = configuration;
         }
 
         public Task Send<T>(string channel, T message, Type messageType, CancellationToken cancellationToken = default(CancellationToken)) where T : class
         {
-            var sendEndPoint = _busControl.GetSendEndpoint(new Uri($"{Configuration.GetConnectionString(MicroservicesConstants.MessageBusHost)}/{channel}")).Result;
+            var sendEndPoint = _busControl.GetSendEndpoint(new Uri($"{_configuration.GetConnectionString(MicroservicesConstants.MessageBusHost)}/{channel}")).Result;
             sendEndPoint.Send(message, messageType);
 
             return Task.CompletedTask;
@@ -29,7 +29,7 @@ namespace Ws4vn.Microservices.Infrastructure.RabbitMQ
 
         public Task Send<T>(string channel, T message, CancellationToken cancellationToken = default(CancellationToken)) where T : class
         {
-            var sendEndPoint = _busControl.GetSendEndpoint(new Uri($"{Configuration.GetConnectionString(MicroservicesConstants.MessageBusHost)}/{channel}")).Result;
+            var sendEndPoint = _busControl.GetSendEndpoint(new Uri($"{_configuration.GetConnectionString(MicroservicesConstants.MessageBusHost)}/{channel}")).Result;
             sendEndPoint.Send(message);
 
             return Task.CompletedTask;

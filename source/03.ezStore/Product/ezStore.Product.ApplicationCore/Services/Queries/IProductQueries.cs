@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace ezStore.Product.ApplicationCore.Services.Queries
 {
-    public interface IManufactureQueries
+    public interface IProductQueries
     {
-        Task<ManufactureDto> Get(Guid id);
+        Task<ProductDto> Get(Guid id);
 
-        Task<PagedResult<ManufactureDto>> GetPaged(string name, string orderBy, bool orderAsc, int page, int pageSize);
+        Task<PagedResult<ProductDto>> GetPaged(string name, string orderBy, bool orderAsc, int page, int pageSize);
     }
 }

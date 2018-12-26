@@ -5,15 +5,14 @@ namespace Ws4vn.Microservices.ApplicationCore.Services
 {
     public class DomainService : IDomainService
     {
+        private IDomainContext _context { get; }
+        public IDataAccessWriteService WriteService { get; }
+
         public DomainService(IDomainContext context, IDataAccessWriteService writeService)
         {
             _context = context;
             WriteService = writeService;
         }
-
-        public IDataAccessWriteService WriteService { get; }
-
-        private IDomainContext _context { get; }
 
         public void ApplyChanges<TEntity>(TEntity entity) where TEntity : AggregateRoot
         {

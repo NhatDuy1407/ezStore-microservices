@@ -23,7 +23,6 @@ namespace ezStore.Product.Infrastructure
         public DbSet<Manufacture> Manufactures { get; set; }
         public DbSet<ProductManufactureMapping> ProductManufactureMappings { get; set; }
 
-
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             // remove plural name of table

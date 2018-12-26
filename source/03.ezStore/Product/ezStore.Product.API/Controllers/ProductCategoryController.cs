@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Microservices.DataAccess.Core.Entities;
 
 namespace ezStore.Product.API.Controllers
 {
@@ -26,9 +27,18 @@ namespace ezStore.Product.API.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<ProductCategoryViewModel> Get()
+        public Task<PagedResult<ProductCategoryViewModel>> GetPaged(string name, string orderBy = "", bool orderAsc = true, int page = 1, int pageSize = 20)
         {
-            return ProductCategoryMapper.DtoToViewModels(_queries.Get().Result);
+            var data = _queries.GetPaged(name, orderBy, orderAsc, page, pageSize).Result;
+            var result = new PagedResult<ProductCategoryViewModel>
+            {
+                CurrentPage = data.CurrentPage,
+                PageCount = data.PageCount,
+                PageSize = data.PageSize,
+                RowCount = data.RowCount,
+                Results = ProductCategoryMapper.DtoToViewModels(data.Results)
+            };
+            return Task.FromResult(result);
         }
 
         [HttpGet("{id}")]
@@ -37,7 +47,7 @@ namespace ezStore.Product.API.Controllers
             return ProductCategoryMapper.DtoToViewModel(_queries.Get(id).Result);
         }
 
-        [HttpPost]
+        [HttpPut]
         public Task Put([FromBody] string name)
         {
             var command = new CreateProductCategoryCommand(name);
@@ -45,7 +55,7 @@ namespace ezStore.Product.API.Controllers
             return Task.CompletedTask;
         }
 
-        [HttpPut("{id}")]
+        [HttpPost("{id}")]
         public Task Post(Guid id, [FromBody] string name)
         {
             var command = new UpdateProductCategoryCommand(id, name);

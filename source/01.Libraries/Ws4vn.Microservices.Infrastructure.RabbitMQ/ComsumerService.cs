@@ -1,14 +1,15 @@
-﻿using System;
-using MassTransit;
+﻿using MassTransit;
 using MassTransit.RabbitMqTransport;
 using MassTransit.Util;
-using Ws4vn.Microservices.ApplicationCore.SharedKernel;
 using Microsoft.Extensions.Configuration;
+using System;
+using Ws4vn.Microservices.ApplicationCore.SharedKernel;
 
 namespace Ws4vn.Microservices.Infrastructure.RabbitMQ
 {
     public abstract class ComsumerService
     {
+        private IBusControl _busControl;
         private readonly string _serviceQueueName;
         private readonly IConfiguration _configuration;
 
@@ -17,8 +18,6 @@ namespace Ws4vn.Microservices.Infrastructure.RabbitMQ
             _serviceQueueName = serviceQueueName;
             _configuration = configuration;
         }
-
-        private IBusControl _busControl;
 
         public bool Start()
         {

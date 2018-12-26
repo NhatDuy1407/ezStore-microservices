@@ -28,7 +28,7 @@ namespace Microservices.Logging.ApplicationCore.Mapper
 
         public static IEnumerable<LogDto> EntityToDtos(IEnumerable<LogData> entities)
         {
-            return entities == null ? null : entities.Select(EntityToDto);
+            return entities?.Select(EntityToDto);
         }
     }
 }

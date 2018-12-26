@@ -7,14 +7,13 @@ namespace Ws4vn.Microservices.Infrastructure.MongoDB
     public class ReadOnlyService : IDataAccessReadOnlyService
     {
         private readonly Hashtable _hashRepository;
+        private MongoDbContext _context { get; }
 
         public ReadOnlyService(MongoDbContext dbContext)
         {
             _hashRepository = new Hashtable();
-            Context = dbContext;
+            _context = dbContext;
         }
-
-        private MongoDbContext Context { get; }
 
         public IDataAccessReadOnlyRepository<TEntity> Repository<TEntity>() where TEntity : class
         {
@@ -22,7 +21,7 @@ namespace Ws4vn.Microservices.Infrastructure.MongoDB
             if (!_hashRepository.Contains(key))
             {
                 var repositoryType = typeof(BaseModelRepository<>);
-                var repository = Activator.CreateInstance(repositoryType.MakeGenericType(typeof(TEntity)), Context);
+                var repository = Activator.CreateInstance(repositoryType.MakeGenericType(typeof(TEntity)), _context);
                 _hashRepository[key] = repository;
             }
 

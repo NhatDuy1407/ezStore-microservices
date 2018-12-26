@@ -9,16 +9,16 @@ namespace Microservices.Logging.BackgroundProcess.Consumers
 {
     public class LoggingConsumer : BaseConsumer, IConsumer<WriteLogEvent>
     {
-        private readonly IDataAccessWriteService writeService;
+        private readonly IDataAccessWriteService _writeService;
 
         public LoggingConsumer(IDataAccessWriteService writeService) : base()
         {
-            this.writeService = writeService;
+            _writeService = writeService;
         }
 
         public Task Consume(ConsumeContext<WriteLogEvent> context)
         {
-            writeService.Repository<LogData>().Insert(new LogData()
+            _writeService.Repository<LogData>().Insert(new LogData()
             {
                 Date = context.Message.Date,
                 Level = context.Message.Level,

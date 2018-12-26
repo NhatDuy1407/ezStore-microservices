@@ -4,21 +4,21 @@ namespace Ws4vn.Microservices.Infrastructure.Caching
 {
     public class ReadModelService : IReadModelRepository
     {
-        private readonly ICacheService CacheService;
+        private readonly ICacheService _cacheService;
 
         public ReadModelService(ICacheService cacheService)
         {
-            CacheService = cacheService;
+            _cacheService = cacheService;
         }
 
         public TEntity Read<TEntity>(string key)
         {
-            return CacheService.Get<TEntity>(key).Result;
+            return _cacheService.Get<TEntity>(key).Result;
         }
 
         public void Write<TEntity>(string key, TEntity data)
         {
-            CacheService.Set(key, data).Wait();
+            _cacheService.Set(key, data).Wait();
         }
     }
 }

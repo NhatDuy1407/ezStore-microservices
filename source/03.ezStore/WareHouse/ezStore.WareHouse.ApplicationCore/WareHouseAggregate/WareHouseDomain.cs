@@ -24,14 +24,14 @@ namespace ezStore.WareHouse.ApplicationCore.WareHouseAggregate
                 PhoneNumber = phoneNumber,
                 PostalCode = postalCode
             };
-            dataAccessService.Repository<Entities.Warehouse>().Insert(newWareHouse);
+            _dataAccessService.Repository<Entities.Warehouse>().Insert(newWareHouse);
 
             AddEvent(new WareHouseCreated(newWareHouse.Id, newWareHouse.Name));
         }
 
         public void UpdateWareHouse(Guid id, string name)
         {
-            var warehouse = dataAccessService.Repository<Entities.Warehouse>().Get(i => i.Id == id).FirstOrDefault();
+            var warehouse = _dataAccessService.Repository<Entities.Warehouse>().Get(i => i.Id == id).FirstOrDefault();
             if (warehouse != null)
             {
                 warehouse.Name = name;
@@ -42,10 +42,10 @@ namespace ezStore.WareHouse.ApplicationCore.WareHouseAggregate
 
         public void DeleteWareHouse(Guid id)
         {
-            var warehouse = dataAccessService.Repository<Entities.Warehouse>().Get(i => i.Id == id).FirstOrDefault();
+            var warehouse = _dataAccessService.Repository<Entities.Warehouse>().Get(i => i.Id == id).FirstOrDefault();
             if (warehouse != null)
             {
-                dataAccessService.Repository<Entities.Warehouse>().Delete(i => i.Id == id);
+                _dataAccessService.Repository<Entities.Warehouse>().Delete(i => i.Id == id);
                 AddEvent(new WareHouseDeleted(warehouse.Id));
             }
         }

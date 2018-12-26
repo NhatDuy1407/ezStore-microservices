@@ -4,7 +4,7 @@
 
 namespace IdentityServer4.Quickstart.UI
 {
-    public class ConsentOptions
+    public static class ConsentOptions
     {
         public const bool EnableOfflineAccess = true;
         public const string OfflineAccessDisplayName = "Offline Access";

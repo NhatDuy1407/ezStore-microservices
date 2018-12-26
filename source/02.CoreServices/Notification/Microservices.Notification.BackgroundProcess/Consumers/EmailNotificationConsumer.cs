@@ -13,23 +13,23 @@ namespace Microservices.Notification.BackgroundProcess.Consumers
 {
     public class EmailNotificationConsumer : BaseConsumer, IConsumer<EmailContentCreated>
     {
-        private readonly IConfiguration Configuration;
+        private readonly IConfiguration _configuration;
 
         public EmailNotificationConsumer(IConfiguration configuration) : base()
         {
-            Configuration = configuration;
+            _configuration = configuration;
         }
 
         public Task Consume(ConsumeContext<EmailContentCreated> context)
         {
-            var sendEndPoint = context.GetSendEndpoint(new System.Uri($"{Configuration.GetConnectionString(MicroservicesConstants.MessageBusHost)}/{EventRouteConstants.LoggingService}")).Result;
+            var sendEndPoint = context.GetSendEndpoint(new System.Uri($"{_configuration.GetConnectionString(MicroservicesConstants.MessageBusHost)}/{EventRouteConstants.LoggingService}")).Result;
             try
             {
-                var userName = Configuration.GetSection(MicroservicesConstants.SmtpSettings)[MicroservicesConstants.SmtpUserName];
-                var password = Configuration.GetSection(MicroservicesConstants.SmtpSettings)[MicroservicesConstants.SmtpPassword];
-                var address = Configuration.GetSection(MicroservicesConstants.SmtpSettings)[MicroservicesConstants.SmtpAddress];
-                var port = Configuration.GetSection(MicroservicesConstants.SmtpSettings)[MicroservicesConstants.SmtpPort];
-                var enableSsl = Configuration.GetSection(MicroservicesConstants.SmtpSettings)[MicroservicesConstants.SmtpEnableSsl];
+                var userName = _configuration.GetSection(MicroservicesConstants.SmtpSettings)[MicroservicesConstants.SmtpUserName];
+                var password = _configuration.GetSection(MicroservicesConstants.SmtpSettings)[MicroservicesConstants.SmtpPassword];
+                var address = _configuration.GetSection(MicroservicesConstants.SmtpSettings)[MicroservicesConstants.SmtpAddress];
+                var port = _configuration.GetSection(MicroservicesConstants.SmtpSettings)[MicroservicesConstants.SmtpPort];
+                var enableSsl = _configuration.GetSection(MicroservicesConstants.SmtpSettings)[MicroservicesConstants.SmtpEnableSsl];
 
                 var client = new SmtpClient(address, int.Parse(port))
                 {
