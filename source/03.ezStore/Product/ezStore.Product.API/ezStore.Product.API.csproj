@@ -9,20 +9,17 @@
 
   <ItemGroup>
     <PackageReference Include="IdentityServer4.AccessTokenValidation" Version="2.6.0" />
-    <PackageReference Include="MassTransit" Version="5.1.5" />
-    <PackageReference Include="MassTransit.RabbitMQ" Version="5.1.5" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
-    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.2.0" />
     <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="2.1.4" />
     <PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="4.0.1" />
     <PackageReference Include="Swashbuckle.AspNetCore.SwaggerGen" Version="4.0.1" />
     <PackageReference Include="Swashbuckle.AspNetCore.SwaggerUI" Version="4.0.1" />
+    <PackageReference Include="Ws4vn.Microservices.Infrastructure.RabbitMQ" Version="1.0.3" />
+    <PackageReference Include="Ws4vn.Microservices.Infrastructure.Sql" Version="1.0.3" />
+    <PackageReference Include="Ws4vn.Microservices.Infrastructure" Version="1.0.3" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\01.Libraries\Microservices.Infrastructure.RabbitMQ\Ws4vn.Microservices.Infrastructure.RabbitMQ.csproj" />
-    <ProjectReference Include="..\..\..\01.Libraries\Microservices.Infrastructure.Sql\Ws4vn.Microservices.Infrastructure.Sql.csproj" />
-    <ProjectReference Include="..\..\..\01.Libraries\Microservices.Infrastructure\Ws4vn.Microservices.Infrastructure.csproj" />
     <ProjectReference Include="..\ezStore.Product.ApplicationCore\ezStore.Product.ApplicationCore.csproj" />
     <ProjectReference Include="..\ezStore.Product.Infrastructure\ezStore.Product.Infrastructure.csproj" />
   </ItemGroup>

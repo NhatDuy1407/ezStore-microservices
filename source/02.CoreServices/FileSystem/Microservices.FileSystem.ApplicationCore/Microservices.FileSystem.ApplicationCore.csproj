@@ -9,10 +9,7 @@
   <ItemGroup>
     <PackageReference Include="MongoDB.Bson" Version="2.7.0" />
     <PackageReference Include="System.Reflection.Emit.Lightweight" Version="4.3.0" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\..\..\01.Libraries\Microservices.ApplicationCore\Ws4vn.Microservices.ApplicationCore.csproj" />
+    <PackageReference Include="Ws4vn.Microservices.ApplicationCore" Version="1.0.3" />
   </ItemGroup>
 
 </Project>

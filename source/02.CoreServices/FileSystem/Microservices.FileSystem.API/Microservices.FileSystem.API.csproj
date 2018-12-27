@@ -15,6 +15,7 @@
     <PackageReference Include="Swashbuckle.AspNetCore.SwaggerGen" Version="4.0.1" />
     <PackageReference Include="Swashbuckle.AspNetCore.SwaggerUi" Version="4.0.1" />
     <PackageReference Include="System.Reflection.Emit.Lightweight" Version="4.3.0" />
+    <PackageReference Include="Ws4vn.Microservices.Infrastructure.MongoDB" Version="1.0.3" />
   </ItemGroup>
 
   <ItemGroup>
@@ -22,7 +23,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\01.Libraries\Microservices.Infrastructure.MongoDB\Ws4vn.Microservices.Infrastructure.MongoDB.csproj" />
     <ProjectReference Include="..\Microservices.FileSystem.ApplicationCore\Microservices.FileSystem.ApplicationCore.csproj" />
     <ProjectReference Include="..\Microservices.FileSystem.Infrastructure\Microservices.FileSystem.Infrastructure.csproj" />
   </ItemGroup>
