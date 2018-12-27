@@ -17,6 +17,7 @@
     </None>
     <None Include="docker-compose.yml" />
     <None Include=".dockerignore" />
+    <None Include="Dockerfile.filesystem.db" />
     <None Include="mysqld_charset.cnf" />
     <None Include="Dockerfile.settings.db" />
     <None Include="Dockerfile.ezStore.order.db" />

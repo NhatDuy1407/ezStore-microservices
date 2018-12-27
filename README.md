@@ -11,7 +11,7 @@
 - mysql (5.7)
 - mongo (4.1.1)
 - rabbitmq (3.7)
-- Docker-ce (version 18.06.1-ce, build e68fc7a)
+- Docker-ce
 - Kubenetes (1.10.3)
 - Istio-1.0.2
 
@@ -33,6 +33,7 @@
 - Open IdentityServer: http://localhost:5001, http://localhost:5001/swagger
 - Open Logging Api: http://localhost:5002/swagger
 - Open Setting Api: http://localhost:5003/swagger
+- Open FileSystem Api: http://localhost:5004/swagger
 - Open Order Api: http://localhost:6001/swagger
 - Open Payment Api: http://localhost:6002/swagger
 - Open Product Api: http://localhost:6003/swagger

@@ -5,11 +5,10 @@ EXPOSE 80
 FROM microsoft/dotnet:2.2-sdk AS build
 WORKDIR /src
 COPY 02.CoreServices/FileSystem/Microservices.FileSystem.API/Microservices.FileSystem.API.csproj 02.CoreServices/FileSystem/Microservices.FileSystem.API/
-COPY 02.CoreServices/FileSystem/Microservices.FileSystem.Persistence.Model/Microservices.FileSystem.Persistence.Model.csproj 02.CoreServices/FileSystem/Microservices.FileSystem.Persistence.Model/
-COPY 01.Libraries/Microservices.Core/Microservices.Core.csproj 01.Libraries/Microservices.Core/
-COPY 01.Libraries/Microservices.Core.DataAccess.MongoDB/Microservices.Core.DataAccess.MongoDB.csproj 01.Libraries/Microservices.Core.DataAccess.MongoDB/
-COPY 01.Libraries/Microservices.Core.DataAccess/Microservices.Core.DataAccess.csproj 01.Libraries/Microservices.Core.DataAccess/
-COPY 02.CoreServices/FileSystem/Microservices.FileSystem.Domain/Microservices.FileSystem.Domain.csproj 02.CoreServices/FileSystem/Microservices.FileSystem.Domain/
+COPY 02.CoreServices/FileSystem/Microservices.FileSystem.ApplicationCore/Microservices.FileSystem.ApplicationCore.csproj 02.CoreServices/FileSystem/Microservices.FileSystem.ApplicationCore/
+COPY 01.Libraries/Microservices.ApplicationCore/Ws4vn.Microservices.ApplicationCore.csproj 01.Libraries/Microservices.ApplicationCore/
+COPY 02.CoreServices/FileSystem/Microservices.FileSystem.Infrastructure/Microservices.FileSystem.Infrastructure.csproj 02.CoreServices/FileSystem/Microservices.FileSystem.Infrastructure/
+COPY 01.Libraries/Microservices.Infrastructure.MongoDB/Ws4vn.Microservices.Infrastructure.MongoDB.csproj 01.Libraries/Microservices.Infrastructure.MongoDB/
 RUN dotnet restore 02.CoreServices/FileSystem/Microservices.FileSystem.API/Microservices.FileSystem.API.csproj
 COPY . .
 WORKDIR /src/02.CoreServices/FileSystem/Microservices.FileSystem.API

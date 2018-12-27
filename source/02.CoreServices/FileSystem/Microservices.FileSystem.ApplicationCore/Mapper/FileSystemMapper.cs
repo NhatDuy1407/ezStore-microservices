@@ -16,15 +16,5 @@ namespace Microservices.FileSystem.ApplicationCore.Mapper
                 UpdatedDate = DateTime.Now
             };
         }
-
-        public static FileMetadataDto EntityToDto(FileMetadata dto)
-        {
-            return new FileMetadataDto(dto);
-        }
-
-        public static IEnumerable<FileMetadataDto> EntityToDtos(IEnumerable<FileMetadata> entities)
-        {
-            return entities?.Select(EntityToDto);
-        }
     }
 }

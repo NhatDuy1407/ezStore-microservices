@@ -5,11 +5,11 @@ using System.Security.Authentication;
 
 namespace Microservices.FileSystem.Infrastructure
 {
-    public class MongoDbContext
+    public class MongoFsDbContext
     {
         private IMongoDatabase _database { get; }
 
-        public MongoDbContext(string connectionString, string databaseName, bool isSsl)
+        public MongoFsDbContext(string connectionString, string databaseName, bool isSsl)
         {
             try
             {

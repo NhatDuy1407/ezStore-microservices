@@ -6,9 +6,12 @@
           Product
         </div>
         <div class="card-body">
-          Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet
-          dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper
-          suscipit lobortis nisl ut aliquip ex ea commodo consequat.
+          <input type="file" (change)="drop($event)" />
+          <br>
+          <button class="btn btn-sm btn-primary float-right" type="button" (click)="save()"><i class="fa fa-search"></i>&nbsp;Save
+          </button>
+          <button class="btn btn-sm btn-primary float-right" type="button" (click)="download()"><i class="fa fa-search"></i>&nbsp;Download
+          </button>
         </div>
       </div>
     </div>

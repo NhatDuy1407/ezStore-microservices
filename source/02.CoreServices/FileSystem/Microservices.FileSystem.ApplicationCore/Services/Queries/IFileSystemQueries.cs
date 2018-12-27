@@ -6,6 +6,6 @@ namespace Microservices.FileSystem.ApplicationCore.Services.Queries
 {
     public interface IFileSystemQueries
     {
-        Task<List<FileMetadataDto>> GetLogs();
+        Task<FileMetadataDto> GetFileById(string id);
     }
 }

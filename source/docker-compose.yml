@@ -21,6 +21,13 @@ services:
       context: .
       dockerfile: 02.CoreServices/Setting/Microservices.Setting.API/Dockerfile
 
+  microservices.filesystem.api:
+    image: microservices.filesystem.api
+    container_name: microservices-filesystem-api
+    build:
+      context: .
+      dockerfile: 02.CoreServices/FileSystem/Microservices.FileSystem.API/Dockerfile
+
   microservices.logging.backgroundprocess:
     image: microservices.logging.backgroundprocess
     build:

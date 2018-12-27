@@ -5,10 +5,12 @@
     <Authors>Khai Nguyen (khainx127@gmail.com)</Authors>
     <Product>Microservices</Product>
     <DockerComposeProjectPath>..\docker-compose.dcproj</DockerComposeProjectPath>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.0.2105168" />
     <PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="4.0.1" />
     <PackageReference Include="Swashbuckle.AspNetCore.SwaggerGen" Version="4.0.1" />
     <PackageReference Include="Swashbuckle.AspNetCore.SwaggerUi" Version="4.0.1" />
@@ -22,6 +24,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\..\01.Libraries\Microservices.Infrastructure.MongoDB\Ws4vn.Microservices.Infrastructure.MongoDB.csproj" />
     <ProjectReference Include="..\Microservices.FileSystem.ApplicationCore\Microservices.FileSystem.ApplicationCore.csproj" />
+    <ProjectReference Include="..\Microservices.FileSystem.Infrastructure\Microservices.FileSystem.Infrastructure.csproj" />
   </ItemGroup>
 
   <ItemGroup>

@@ -3,13 +3,18 @@ using Microservices.FileSystem.ApplicationCore.Interfaces;
 
 namespace Microservices.FileSystem.Infrastructure
 {
-    public class FSRepository: IFSRepository
+    public class FSRepository : IFSRepository
     {
-        protected readonly MongoDbContext _context;
+        protected readonly MongoFsDbContext _context;
 
-        public FSRepository(MongoDbContext context)
+        public FSRepository(MongoFsDbContext context)
         {
             _context = context;
+        }
+
+        public Task<byte[]> GetFile(string id)
+        {
+            return Task.FromResult(_context.GetFS().DownloadAsBytesAsync(new MongoDB.Bson.ObjectId(id)).Result);
         }
 
         public Task<string> UploadFile(string filename, byte[] source)

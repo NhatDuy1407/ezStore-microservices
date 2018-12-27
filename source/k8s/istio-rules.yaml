@@ -31,6 +31,16 @@ spec:
 apiVersion: networking.istio.io/v1alpha3
 kind: DestinationRule
 metadata:
+ name: "microservices-settings-db"
+spec:
+ host: "microservices-settings-db.default.svc.cluster.local"
+ trafficPolicy:
+   tls:
+     mode: DISABLE
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: DestinationRule
+metadata:
  name: "ezstore-order-db"
 spec:
  host: "ezstore-order-db.default.svc.cluster.local"
