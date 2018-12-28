@@ -6,18 +6,18 @@ namespace ezStore.WareHouse.ApplicationCore.Services.EventHandlers
 {
     public class WareHouseEventHandler : IEventHandler<WareHouseCreated>
     {
-        readonly ICacheService CacheService;
+        readonly ICacheService _cacheService;
 
         public WareHouseEventHandler(ICacheService cacheService)
         {
-            CacheService = cacheService;
+            _cacheService = cacheService;
         }
 
         public Task ExecuteAsync<WareHouseCreated>(WareHouseCreated @event)
         {
             // update read model
-            var totalWarehouses = CacheService.Get<int>("TotalWarehouses").Result;
-            CacheService.Set("TotalWarehouses", totalWarehouses + 1);
+            var totalWarehouses = _cacheService.Get<int>("TotalWarehouses").Result;
+            _cacheService.Set("TotalWarehouses", totalWarehouses + 1);
 
             // todo: raise Event to SignalR
 

@@ -14,6 +14,7 @@ namespace Ws4vn.Microservices.Infrastructure.Sql
         {
             _hashRepository = new Hashtable();
             _context = dbContext;
+            _context.ChangeTracker.QueryTrackingBehavior = QueryTrackingBehavior.TrackAll;
         }
 
         public IDataAccessWriteRepository<TEntity> Repository<TEntity>() where TEntity : class
@@ -28,8 +29,7 @@ namespace Ws4vn.Microservices.Infrastructure.Sql
 
             return (IDataAccessWriteRepository<TEntity>)_hashRepository[key];
         }
-
-
+        
         public void SaveChanges()
         {
             _context.SaveChanges();

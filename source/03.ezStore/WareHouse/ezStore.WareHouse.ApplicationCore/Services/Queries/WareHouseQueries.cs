@@ -16,12 +16,12 @@ namespace ezStore.WareHouse.Domain.Application.Queries
     public class WareHouseQueries : IWareHouseQueries
     {
         readonly IDataAccessReadOnlyService _readOnlyService;
-        readonly IReadModelRepository ReadModelService;
+        readonly IReadModelRepository _readModelService;
 
         public WareHouseQueries(IDataAccessReadOnlyService readOnlyService, IReadModelRepository readModelService)
         {
             _readOnlyService = readOnlyService;
-            ReadModelService = readModelService;
+            _readModelService = readModelService;
         }
 
         public Task<PagedResult<WareHouseDto>> GetPaged(string name, string orderBy = "", bool orderAsc = true, int page = 1, int pageSize = 20)
@@ -30,8 +30,8 @@ namespace ezStore.WareHouse.Domain.Application.Queries
                 string.IsNullOrEmpty(name) || i.Name.ToLower().Contains(name.ToLower()), orderBy, orderAsc,
                 page: page,
                 pageSize: pageSize);
-            var countries = ReadModelService.Read<List<CountryReadModel>>(MicroservicesConstants.CachingCountries);
-            var provinces = ReadModelService.Read<List<ProvinceReadModel>>(MicroservicesConstants.CachingProvinces);
+            var countries = _readModelService.Read<List<CountryReadModel>>(MicroservicesConstants.CachingCountries);
+            var provinces = _readModelService.Read<List<ProvinceReadModel>>(MicroservicesConstants.CachingProvinces);
             var result = new PagedResult<WareHouseDto>
             {
                 CurrentPage = data.CurrentPage,
@@ -50,7 +50,7 @@ namespace ezStore.WareHouse.Domain.Application.Queries
 
         public Task<TotalWarehouseReadModel> Get()
         {
-            var result = new TotalWarehouseReadModel { TotalWarehouse = ReadModelService.Read<int>("TotalWarehouses") };
+            var result = new TotalWarehouseReadModel { TotalWarehouse = _readModelService.Read<int>("TotalWarehouses") };
             return Task.FromResult(result);
         }
     }

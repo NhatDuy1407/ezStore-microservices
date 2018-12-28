@@ -14,6 +14,7 @@ namespace Ws4vn.Microservices.Infrastructure.Sql
         {
             _hashRepository = new Hashtable();
             _context = dbContext;
+            _context.ChangeTracker.QueryTrackingBehavior = QueryTrackingBehavior.NoTracking;
         }
 
         public IDataAccessReadOnlyRepository<TEntity> Repository<TEntity>() where TEntity : class
