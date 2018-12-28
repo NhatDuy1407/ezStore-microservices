@@ -1,0 +1,47 @@
+version: '3.5'
+
+networks:
+  microservices-network:
+    name: microservices-network
+    driver: bridge
+
+services:
+  ezStore.order.api:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    ports:
+      - "80"
+    ports:
+      - 6001:80
+    networks:
+      - microservices-network
+
+  ezStore.payment.api:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    ports:
+      - "80"
+    ports:
+      - 6002:80
+    networks:
+      - microservices-network
+
+  ezStore.product.api:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    ports:
+      - "80"
+    ports:
+      - 6003:80
+    networks:
+      - microservices-network
+
+  ezStore.warehouse.api:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    ports:
+      - "80"
+    ports:
+      - 6004:80
+    networks:
+      - microservices-network

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" Sdk="Microsoft.Docker.Sdk">
+  <PropertyGroup Label="Globals">
+    <ProjectVersion>2.1</ProjectVersion>
+    <DockerTargetOS>Linux</DockerTargetOS>
+    <ProjectGuid>9d62e8b8-5b03-44ff-bf78-5fb60aafe514</ProjectGuid>
+    <DockerLaunchAction>LaunchBrowser</DockerLaunchAction>
+    <DockerServiceUrl>{Scheme}://localhost:{ServicePort}</DockerServiceUrl>
+    <DockerServiceName>microservice.identityserver</DockerServiceName>
+    <DockerComposeBaseFilePath>docker-compose-ezStore</DockerComposeBaseFilePath>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Include="docker-compose-ezStore.override.yml">
+      <DependentUpon>docker-compose-ezStore.yml</DependentUpon>
+    </None>
+    <None Include="docker-compose-ezStore.yml" />
+    <None Include=".dockerignore" />
+    <None Include="Dockerfile.ezStore.order.db" />
+    <None Include="Dockerfile.ezStore.payment.db" />
+    <None Include="Dockerfile.ezStore.warehouse.db" />
+    <None Include="Dockerfile.ezStore.product.db" />
+  </ItemGroup>
+</Project>

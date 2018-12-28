@@ -31,6 +31,6 @@ export class ProductComponent implements OnInit {
   }
 
   download() {
-    this.fileSystemService.downloadFile(`5c24a7e59adb9503264e61f2`);
+    this.fileSystemService.downloadFile(`5c25c2155068540c5c3914aa`);
   }
 }

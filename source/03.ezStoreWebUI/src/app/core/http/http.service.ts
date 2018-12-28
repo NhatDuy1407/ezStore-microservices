@@ -15,6 +15,11 @@ export abstract class HttpService {
         return this.http.get<T>(url);
     }
 
+    protected getFile(resource: string) {
+        const url = this.api + resource;
+        return this.http.get(url, { responseType: 'blob', observe: 'response' });
+    }
+
     protected put(resource: string, body: any) {
         const url = this.api + resource;
         return this.http.put(url, body);

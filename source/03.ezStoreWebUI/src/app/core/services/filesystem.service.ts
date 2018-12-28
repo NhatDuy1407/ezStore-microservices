@@ -21,11 +21,18 @@ export class FileSystemService extends HttpService {
     }
 
     downloadFile(id: string) {
-        window.location.href = this.api + `/file/${id}`;
-        return;
-        // this.get(`file\\${id}`).subscribe(result => {
-        //     this.downloadDocument(result, `filename`);
-        // });
+        this.getFile(`file\\${id}`).subscribe(resp => {
+            let filename = '';
+            const disposition = resp.headers.get('Content-Disposition');
+            if (disposition && disposition.indexOf('attachment') !== -1) {
+                const filenameRegex = /filename[^;=\n]*=((['"]).*?\2|[^;\n]*)/;
+                const matches = filenameRegex.exec(disposition);
+                if (matches != null && matches[1]) {
+                    filename = matches[1].replace(/['"]/g, '');
+                }
+            }
+            this.downloadDocument(resp.body, filename);
+        });
     }
 
     private downloadDocument(result: any, fileName: string, fileType: string = 'application/octet-stream') {

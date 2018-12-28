@@ -26,11 +26,20 @@ namespace Microservices.FileSystem.API.Controllers
         // GET api/values
         [HttpGet]
         [Route("{id}")]
-        [ResponseCache(Duration = 18000)]
+        //[ResponseCache(Duration = 18000)]
         public FileResult GetFileById(string id)
         {
             var document = _fileQueries.GetFileById(id).Result;
-            return File(document.Data, MediaTypeNames.Application.Octet, document.Name);
+
+            ContentDisposition cd = new ContentDisposition
+            {
+                FileName = document.Name,
+                Inline = false  // false = prompt the user for downloading;  true = browser to try to show the file inline
+            };
+            Response.Headers.Add("Content-Disposition", cd.ToString());
+            Response.Headers.Add("Access-Control-Expose-Headers", "Content-Disposition");
+
+            return File(document.Data, MediaTypeNames.Application.Octet);
         }
 
         [HttpPut]
