@@ -80,6 +80,7 @@ namespace Ws4vn.Microservices.Infrastructure.Loggings
         {
             public void Dispose()
             {
+                // do nothing now
             }
         }
     }

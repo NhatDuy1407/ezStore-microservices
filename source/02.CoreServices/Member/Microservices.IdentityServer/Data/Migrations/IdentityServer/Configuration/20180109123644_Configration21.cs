@@ -13,7 +13,7 @@ namespace Microservices.IdentityServer.Data.Migrations.IdentityServer.Configurat
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-
+            // do nothing now
         }
     }
 }

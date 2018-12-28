@@ -35,7 +35,7 @@ namespace ezStore.Product.ApplicationCore.Mapper
 
         public static IEnumerable<ProductCategoryDto> EntityToDtos(IEnumerable<ProductCategory> entities)
         {
-            return entities == null ? null : entities.Select(EntityToDto);
+            return entities?.Select(EntityToDto);
         }
     }
 }

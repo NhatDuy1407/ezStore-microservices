@@ -47,12 +47,12 @@ namespace Microservices.Setting.ApplicationCore.Mapper
 
         public static IEnumerable<CountryDto> EntityToDtos(IEnumerable<Country> entities)
         {
-            return entities == null ? null : entities.Select(EntityToDto);
+            return entities?.Select(EntityToDto);
         }
 
         public static IEnumerable<ProvinceDto> EntityToDtos(IEnumerable<Province> entities)
         {
-            return entities == null ? null : entities.Select(EntityToDto);
+            return entities?.Select(EntityToDto);
         }
     }
 }

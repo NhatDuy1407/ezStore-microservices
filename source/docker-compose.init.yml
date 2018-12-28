@@ -51,6 +51,17 @@ services:
     networks:
       - microservices-network
 
+  filesystem.db:
+    image: microservices.filesystem.db
+    container_name: microservices-filesystem-db
+    build:
+      context: .
+      dockerfile: Dockerfile.filesystem.db
+    ports:
+      - 27019:27017
+    networks:
+      - microservices-network
+
   services.redis:
     image: microservices.services.redis
     container_name: microservices-services-redis

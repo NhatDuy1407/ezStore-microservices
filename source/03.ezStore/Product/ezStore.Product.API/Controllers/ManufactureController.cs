@@ -2,6 +2,7 @@
 using ezStore.Product.API.ViewModels;
 using ezStore.Product.ApplicationCore.Services.Commands;
 using ezStore.Product.ApplicationCore.Services.Queries;
+using Microservices.DataAccess.Core.Entities;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -26,9 +27,18 @@ namespace ezStore.Product.API.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<ManufactureViewModel> Get()
+        public Task<PagedResult<ManufactureViewModel>> GetPaged(string name, string orderBy = "", bool orderAsc = true, int page = 1, int pageSize = 20)
         {
-            return ManufactureMapper.DtoToViewModels(_queries.Get().Result);
+            var data = _queries.GetPaged(name, orderBy, orderAsc, page, pageSize).Result;
+            var result = new PagedResult<ManufactureViewModel>
+            {
+                CurrentPage = data.CurrentPage,
+                PageCount = data.PageCount,
+                PageSize = data.PageSize,
+                RowCount = data.RowCount,
+                Results = ManufactureMapper.DtoToViewModels(data.Results)
+            };
+            return Task.FromResult(result);
         }
 
         [HttpGet("{id}")]
@@ -37,7 +47,7 @@ namespace ezStore.Product.API.Controllers
             return ManufactureMapper.DtoToViewModel(_queries.Get(id).Result);
         }
 
-        [HttpPost]
+        [HttpPut]
         public Task Put([FromBody] string name)
         {
             var command = new CreateManufactureCommand(name);
@@ -45,7 +55,7 @@ namespace ezStore.Product.API.Controllers
             return Task.CompletedTask;
         }
 
-        [HttpPut("{id}")]
+        [HttpPost("{id}")]
         public Task Post(Guid id, [FromBody] string name)
         {
             var command = new UpdateManufactureCommand(id, name);

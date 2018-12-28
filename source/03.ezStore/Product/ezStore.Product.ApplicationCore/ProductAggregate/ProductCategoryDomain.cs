@@ -18,14 +18,14 @@ namespace ezStore.Product.ApplicationCore.ProductAggregate
         public void Add(ProductCategoryDto productCategory)
         {
             var newCategory = ProductCategoryMapper.DtoToEntity(productCategory);
-            dataAccessService.Repository<ProductCategory>().Insert(newCategory);
+            _dataAccessService.Repository<ProductCategory>().Insert(newCategory);
 
             AddEvent(new ProductCategoryCreated(newCategory.Id));
         }
 
         public void Update(ProductCategoryDto productCategory)
         {
-            var productCategory2Save = dataAccessService.Repository<ProductCategory>().Get(i => i.Id == productCategory.Id).FirstOrDefault();
+            var productCategory2Save = _dataAccessService.Repository<ProductCategory>().Get(i => i.Id == productCategory.Id).FirstOrDefault();
             productCategory2Save.Name = productCategory.Name;
             productCategory2Save.UpdatedDate = DateTime.Now;
 
@@ -34,7 +34,7 @@ namespace ezStore.Product.ApplicationCore.ProductAggregate
 
         public void Delete(Guid id)
         {
-            dataAccessService.Repository<ProductCategory>().Delete(i => i.Id == id);
+            _dataAccessService.Repository<ProductCategory>().Delete(i => i.Id == id);
 
             AddEvent(new ProductCategoryDeleted(id));
         }

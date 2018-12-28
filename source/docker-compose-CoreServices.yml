@@ -1,0 +1,41 @@
+version: '3.5'
+
+services:
+  microservices.identityserver:
+    image: microservices.identityserver
+    container_name: microservices-identityserver
+    build:
+      context: .
+      dockerfile: 02.CoreServices/Member/Microservices.IdentityServer/Dockerfile
+
+  microservices.logging.api:
+    image: microservices.logging.api
+    build:
+      context: .
+      dockerfile: 02.CoreServices/Logging/Microservices.Logging.API/Dockerfile
+
+  microservices.setting.api:
+    image: microservices.setting.api
+    container_name: microservices-setting-api
+    build:
+      context: .
+      dockerfile: 02.CoreServices/Setting/Microservices.Setting.API/Dockerfile
+
+  microservices.filesystem.api:
+    image: microservices.filesystem.api
+    container_name: microservices-filesystem-api
+    build:
+      context: .
+      dockerfile: 02.CoreServices/FileSystem/Microservices.FileSystem.API/Dockerfile
+
+  microservices.logging.backgroundprocess:
+    image: microservices.logging.backgroundprocess
+    build:
+      context: .
+      dockerfile: 02.CoreServices/Logging/Microservices.Logging.BackgroundProcess/Dockerfile
+
+  microservices.notification.backgroundprocess:
+    image: microservices.notification.backgroundprocess
+    build:
+      context: .
+      dockerfile: 02.CoreServices/Notification/Microservices.Notification.BackgroundProcess/Dockerfile

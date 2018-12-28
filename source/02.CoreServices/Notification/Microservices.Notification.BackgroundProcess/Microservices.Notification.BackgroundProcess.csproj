@@ -9,13 +9,11 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Ws4vn.Microservices.ApplicationCore" Version="1.0.3" />
+    <PackageReference Include="Ws4vn.Microservices.Infrastructure.RabbitMQ" Version="1.0.3" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Properties\" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\..\01.Libraries\Microservices.Infrastructure\Ws4vn.Microservices.Infrastructure.csproj" />
-    <ProjectReference Include="..\..\..\01.Libraries\Ws4vn.Microservices.Infrastructure.RabbitMQ\Ws4vn.Microservices.Infrastructure.RabbitMQ.csproj" />
   </ItemGroup>
 
 </Project>

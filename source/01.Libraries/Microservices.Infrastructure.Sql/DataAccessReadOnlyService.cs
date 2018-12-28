@@ -7,15 +7,14 @@ namespace Ws4vn.Microservices.Infrastructure.Sql
 {
     public class DataAccessReadOnlyService : IDataAccessReadOnlyService
     {
+        private DbContext _context { get; }
         private readonly Hashtable _hashRepository;
 
         public DataAccessReadOnlyService(DbContext dbContext)
         {
             _hashRepository = new Hashtable();
-            Context = dbContext;
+            _context = dbContext;
         }
-
-        private DbContext Context { get; }
 
         public IDataAccessReadOnlyRepository<TEntity> Repository<TEntity>() where TEntity : class
         {
@@ -23,7 +22,7 @@ namespace Ws4vn.Microservices.Infrastructure.Sql
             if (!_hashRepository.Contains(key))
             {
                 var repositoryType = typeof(BaseModelRepository<>);
-                var repository = Activator.CreateInstance(repositoryType.MakeGenericType(typeof(TEntity)), Context);
+                var repository = Activator.CreateInstance(repositoryType.MakeGenericType(typeof(TEntity)), _context);
                 _hashRepository[key] = repository;
             }
 

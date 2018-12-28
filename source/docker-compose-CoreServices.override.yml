@@ -1,0 +1,65 @@
+version: '3.5'
+
+networks:
+  microservices-network:
+    name: microservices-network
+    driver: bridge
+
+services:
+  microservices.identityserver:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    ports:
+      - "80"
+    ports:
+      - 5001:80
+    networks:
+      - microservices-network
+
+  microservices.logging.api:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    ports:
+      - "80"
+    ports:
+      - 5002:80
+    networks:
+      - microservices-network
+
+  microservices.setting.api:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    ports:
+      - "80"
+    ports:
+      - 5003:80
+    networks:
+      - microservices-network
+
+  microservices.filesystem.api:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    ports:
+      - "80"
+    ports:
+      - 5004:80
+    networks:
+      - microservices-network
+
+  microservices.logging.backgroundprocess:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    ports:
+      - "80"
+    networks:
+      - microservices-network
+
+  microservices.notification.backgroundprocess:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    ports:
+      - "80"
+    dns:
+      - 8.8.8.8
+    networks:
+      - microservices-network

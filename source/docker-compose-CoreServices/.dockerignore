@@ -1,0 +1,16 @@
+.dockerignore
+.env
+.git
+.gitignore
+.vs
+.vscode
+docker-compose.yml
+docker-compose.*.yml
+*/bin
+*/obj
+./log
+./tmp
+package.lock.json
+*Dockerfile*
+*docker-compose*
+node_modules

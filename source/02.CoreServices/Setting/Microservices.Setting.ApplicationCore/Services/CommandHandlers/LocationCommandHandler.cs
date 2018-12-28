@@ -9,39 +9,39 @@ namespace Microservices.Setting.ApplicationCore.Services.CommandHandlers
         ICommandHandler<UpdateCountryCommand>,
         ICommandHandler<DeleteCountryCommand>
     {
-        private readonly IDomainService domainService;
-        private readonly IDataAccessWriteService writeService;
+        private readonly IDomainService _domainService;
+        private readonly IDataAccessWriteService _writeService;
 
         public LocationCommandHandler(IDomainService domainService, IDataAccessWriteService writeService)
         {
-            this.domainService = domainService;
-            this.writeService = writeService;
+            _domainService = domainService;
+            _writeService = writeService;
         }
 
         public Task ExecuteAsync(CreateCountryCommand command)
         {
-            var locationDomain = new LocationDomain(writeService);
+            var locationDomain = new LocationDomain(_writeService);
             locationDomain.CreateCountry(command.Name, command.IsoCode, command.DisplayOrder, command.Published);
 
-            domainService.ApplyChanges(locationDomain);
+            _domainService.ApplyChanges(locationDomain);
             return Task.CompletedTask;
         }
 
         public Task ExecuteAsync(UpdateCountryCommand command)
         {
-            var locationDomain = new LocationDomain(writeService);
+            var locationDomain = new LocationDomain(_writeService);
             locationDomain.UpdateCountry(command.Id, command.Name, command.IsoCode, command.DisplayOrder, command.Published);
 
-            domainService.ApplyChanges(locationDomain);
+            _domainService.ApplyChanges(locationDomain);
             return Task.CompletedTask;
         }
 
         public Task ExecuteAsync(DeleteCountryCommand command)
         {
-            var locationDomain = new LocationDomain(writeService);
+            var locationDomain = new LocationDomain(_writeService);
             locationDomain.DeleteCountry(command.Id);
 
-            domainService.ApplyChanges(locationDomain);
+            _domainService.ApplyChanges(locationDomain);
             return Task.CompletedTask;
         }
     }

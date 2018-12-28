@@ -114,7 +114,7 @@ spec:
   - name: mongodb
     protocol: TCP
     port: 27017
-    targetPort: 27017
+    targetPort: 27018
   selector:
     app: microservices-settings-db
 ---
@@ -135,6 +135,41 @@ spec:
       containers:
       - image: ezstoremicroservices/microservices.settings.db
         name: microservices-settings-db
+        ports:
+        - containerPort: 27017
+          name: mongodb
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: microservices-filesystem-db
+spec:
+  type: ClusterIP
+  ports:
+  - name: mongodb
+    protocol: TCP
+    port: 27017
+    targetPort: 27019
+  selector:
+    app: microservices-filesystem-db
+---
+apiVersion: apps/v1 # for versions before 1.9.0 use apps/v1beta2
+kind: Deployment
+metadata:
+  name: microservices-filesystem-db
+spec:
+  minReadySeconds: 10
+  selector:
+    matchLabels:
+      app: microservices-filesystem-db
+  template:
+    metadata:
+      labels:
+        app: microservices-filesystem-db
+    spec:
+      containers:
+      - image: ezstoremicroservices/microservices.filesystem.db
+        name: microservices-filesystem-db
         ports:
         - containerPort: 27017
           name: mongodb

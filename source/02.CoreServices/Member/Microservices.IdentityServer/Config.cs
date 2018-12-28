@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 namespace Microservices.IdentityServer
 {
-    public class Config
+    public static class Config
     {
         // scopes define the resources in your system
         public static IEnumerable<IdentityResource> GetIdentityResources()

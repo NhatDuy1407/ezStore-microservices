@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.2</TargetFramework>
@@ -7,19 +7,17 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Services\Commands\" />
-    <Folder Include="Services\Queries\" />
-    <Folder Include="Mapper\" />
+    <Compile Remove="Mapper\**" />
+    <Compile Remove="Services\**" />
+    <EmbeddedResource Remove="Mapper\**" />
+    <EmbeddedResource Remove="Services\**" />
+    <None Remove="Mapper\**" />
+    <None Remove="Services\**" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\01.Libraries\Microservices.ApplicationCore\Ws4vn.Microservices.ApplicationCore.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Reference Include="Microsoft.Extensions.DependencyInjection.Abstractions">
-      <HintPath>C:\Program Files\dotnet\sdk\NuGetFallbackFolder\microsoft.extensions.dependencyinjection.abstractions\2.1.1\lib\netstandard2.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll</HintPath>
-    </Reference>
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="2.2.0" />
+    <PackageReference Include="Ws4vn.Microservices.ApplicationCore" Version="1.0.3" />
   </ItemGroup>
 
 </Project>

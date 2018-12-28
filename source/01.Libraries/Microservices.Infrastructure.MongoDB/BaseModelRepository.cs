@@ -1,32 +1,31 @@
-﻿using Ws4vn.Microservices.ApplicationCore.Entities;
-using Microservices.DataAccess.Core;
-using Microservices.DataAccess.Core.Entities;
-using Ws4vn.Microservices.ApplicationCore.Interfaces;
+﻿using Microservices.DataAccess.Core.Entities;
 using MongoDB.Bson;
 using MongoDB.Driver;
 using System;
 using System.Linq;
 using System.Linq.Expressions;
+using Ws4vn.Microservices.ApplicationCore.Entities;
+using Ws4vn.Microservices.ApplicationCore.Interfaces;
 using Ws4vn.Microservices.ApplicationCore.SharedKernel;
 
 namespace Ws4vn.Microservices.Infrastructure.MongoDB
 {
     public class BaseModelRepository<TModel> : IDataAccessWriteRepository<TModel> where TModel : ModelEntity<ObjectId>
     {
-        protected readonly MongoDbContext Context;
-        internal IMongoCollection<TModel> DbSet;
+        protected readonly MongoDbContext _context;
+        internal IMongoCollection<TModel> _dbSet;
 
         public BaseModelRepository(MongoDbContext context)
         {
-            Context = context;
-            DbSet = Context.Set<TModel>();
+            _context = context;
+            _dbSet = _context.Set<TModel>();
         }
 
         public IQueryable<TModel> Get(Expression<Func<TModel, bool>> filter,
             Func<IQueryable<TModel>, IOrderedQueryable<TModel>> orderBy,
             string includeProperties = "", bool isIncludedIsDeleted = true)
         {
-            var query = GetQueryable(filter, includeProperties, isIncludedIsDeleted);
+            var query = GetQueryable(filter, isIncludedIsDeleted);
             return orderBy != null ? orderBy(query) : query;
         }
 
@@ -43,7 +42,7 @@ namespace Ws4vn.Microservices.Infrastructure.MongoDB
             {
                 methodName = "OrderByDescending";
             }
-            var query = GetQueryable(filter, includeProperties, isIncludedIsDeleted);
+            var query = GetQueryable(filter, isIncludedIsDeleted);
             if (!string.IsNullOrEmpty(orderBy))
             {
                 var orderQuery = query.ApplyOrder(orderBy, methodName);
@@ -54,7 +53,7 @@ namespace Ws4vn.Microservices.Infrastructure.MongoDB
         }
 
         private IQueryable<TModel> GetQueryable(Expression<Func<TModel, bool>> filter = null,
-            string includeProperties = "", bool isIncludedIsDeleted = true)
+            bool isIncludedIsDeleted = true)
         {
             if (filter == null)
                 filter = i => true;
@@ -72,7 +71,7 @@ namespace Ws4vn.Microservices.Infrastructure.MongoDB
             }
 
             // Todo: optimize order
-            return DbSet.Find(filterDefinition).ToListAsync().Result.AsQueryable();
+            return _dbSet.Find(filterDefinition).ToListAsync().Result.AsQueryable();
         }
 
         public PagedResult<TModel> GetPaged(Expression<Func<TModel, bool>> filter,
@@ -111,7 +110,7 @@ namespace Ws4vn.Microservices.Infrastructure.MongoDB
             {
                 methodName = "OrderByDescending";
             }
-            var query = GetQueryable(filter, includeProperties, isIncludedIsDeleted);
+            var query = GetQueryable(filter, isIncludedIsDeleted);
             if (!string.IsNullOrEmpty(orderBy))
             {
                 var orderQuery = query.ApplyOrder(orderBy, methodName);
@@ -129,12 +128,12 @@ namespace Ws4vn.Microservices.Infrastructure.MongoDB
 
         public void Delete(Expression<Func<TModel, bool>> filter = null)
         {
-            DbSet.DeleteOne(filter);
+            _dbSet.DeleteOne(filter);
         }
 
         public void Insert(TModel entity)
         {
-            DbSet.InsertOne(entity);
+            _dbSet.InsertOne(entity);
         }
 
         public void Save(TModel entity)

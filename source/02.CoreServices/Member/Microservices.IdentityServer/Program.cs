@@ -9,6 +9,10 @@ namespace Microservices.IdentityServer
 {
     public class Program
     {
+        protected Program()
+        {
+        }
+
         public static void Main(string[] args)
         {
             var host = BuildWebHost(args);

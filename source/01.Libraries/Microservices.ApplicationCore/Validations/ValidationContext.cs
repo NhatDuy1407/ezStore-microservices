@@ -6,21 +6,21 @@ namespace Ws4vn.Microservices.ApplicationCore.Validations
 {
     public class ValidationContext : IValidationContext
     {
-        private readonly IList<string> ErrorMessages;
+        private readonly IList<string> _errorMessages;
 
         public ValidationContext()
         {
-            ErrorMessages = new List<string>();
+            _errorMessages = new List<string>();
         }
 
         public void AddValidationError(string erorrMessage)
         {
-            ErrorMessages.Add(erorrMessage);
+            _errorMessages.Add(erorrMessage);
         }
 
         public string FormatValidationError()
         {
-            return JsonConvert.SerializeObject(ErrorMessages);
+            return JsonConvert.SerializeObject(_errorMessages);
         }
     }
 }

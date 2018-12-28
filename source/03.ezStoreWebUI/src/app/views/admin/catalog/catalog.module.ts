@@ -8,6 +8,7 @@ import { ProductHttpService } from '../../../core/services/product.service';
 import { ProductComponent } from './product.component';
 import { ProductCategoryComponent } from './product-category.component';
 import { ManufactureComponent } from './manufacture.component';
+import { FileSystemService } from '../../../core/services/filesystem.service';
 
 @NgModule({
   imports: [
@@ -17,7 +18,8 @@ import { ManufactureComponent } from './manufacture.component';
     ReactiveFormsModule,
   ],
   providers: [
-    ProductHttpService
+    ProductHttpService,
+    FileSystemService
   ],
   declarations: [
     ProductComponent,

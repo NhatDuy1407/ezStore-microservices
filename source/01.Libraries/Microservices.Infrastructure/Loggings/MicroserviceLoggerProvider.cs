@@ -20,8 +20,17 @@ namespace Ws4vn.Microservices.Infrastructure.Loggings
             return new MicroservicesLogging(categoryName, Configuration, _messageBus);
         }
 
+        protected virtual void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                // do nothing now
+            }
+        }
+
         public void Dispose()
         {
+            Dispose(true);
         }
     }
 }
